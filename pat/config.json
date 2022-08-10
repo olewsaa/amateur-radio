@@ -1,0 +1,78 @@
+{
+  "mycall": "CALLSIGN",
+  "secure_login_password": "PASSWORD",
+  "auxiliary_addresses": [],
+  "locator": "JO59JX",
+  "service_codes": [
+    "PUBLIC"
+  ],
+  "http_addr": "0.0.0.0:5000",
+  "motd": [
+    "Open source Winlink client - getpat.io"
+  ],
+  "connect_aliases": {
+    "LA2T-160m": "vara:///LA2T?freq=1843&bw=500",
+    "LA2T-80m":  "vara:///LA2T?freq=3595.5&bw=500",
+    "LA1T-60m":  "vara:///LA1T?freq=5273&bw=2300",
+    "telnet":    "telnet://{mycall}:CMSTelnet@cms.winlink.org:8772/wl2k"
+  },
+  "listen": [],
+  "hamlib_rigs": {"G90": {"address": "localhost:4532", "network": "tcp"}},
+  "ax25": {
+    "port": "wl2k",
+    "beacon": {
+      "every": 3600,
+      "message": "Winlink P2P",
+      "destination": "IDENT"
+    },
+    "rig": "G90"
+  },
+  "serial-tnc": {
+    "path": "/dev/ttyUSB0",
+    "serial_baud": 9600,
+    "hbaud": 1200,
+    "type": "Kenwood"
+  },
+  "winmor": {
+    "addr": "localhost:8500",
+    "inbound_bandwidth": 1600,
+    "drive_level": 0,
+    "rig": "",
+    "ptt_ctrl": false
+  },
+  "ardop": {
+    "addr": "localhost:8515",
+    "arq_bandwidth": {
+      "Forced": false,
+      "Max": 2000
+    },
+    "rig": "G90",
+    "ptt_ctrl": true,
+    "beacon_interval": 0,
+    "cwid_enabled": true
+  },
+   "vara": {
+   "host": "localhost",
+   "cmdPort": 8300,
+   "dataPort": 8301,
+   "rig": "G90",
+   "ptt_ctrl": true
+   },
+  "pactor": {
+    "path": "/dev/ttyUSB0",
+    "baudrate": 57600,
+    "rig": "",
+    "custom_init_script": ""
+  },
+  "telnet": {
+    "listen_addr": ":8774",
+    "password": ""
+  },
+  "gpsd": {
+    "enable_http": false,
+    "use_server_time": false,
+    "addr": "localhost:2947"
+  },
+  "schedule": {},
+  "version_reporting_disabled": false
+}
