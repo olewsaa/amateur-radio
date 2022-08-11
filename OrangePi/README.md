@@ -1,6 +1,6 @@
 # Orange Pi 4
 * [Introduction](#Introduction)
-* [hamutils](#hamutils)
+* [Hamutils](#Hamutils)
 * [ARDOP](#ARDOP)
 * [pat](#pat)
 * [VARA](#VARA)
@@ -20,7 +20,7 @@ installed by default, but apt search and install fix all of
 these. Common applications like flrig, fldigi, hamlib, ardopc etc build
 without issues (VARA poses a challenge in the pure 64bit environment).
 
-## hamutils
+## Hamutils
 The utils flrig, fldigi, hamlib are needed to run the rig.
 
 The following packages need to be installed to build the programs:
@@ -32,9 +32,9 @@ generally ./configure, make and make install.
 ## ARDOP 
 The ARDOP sources are available and contained in a [zip archive](https://www.cantab.net/users/john.wiseman/Downloads/Beta/TeensyProjects.zip).  There are several 
 ARDOP variants, I used ARDOPC (it's a bit unclear which version to use). 
-There is a makefile and issuing this built the ARDOPC without issues. 
+There is a makefile and issuing this makefile built the ARDOPC without issues. 
 It runs and display different audio devices. Testing remain to validate 
-the correctness of the build.
+the correctness of the build. Some more documentation should be prepared.
 
 ## pat
 There is a [64 bit build of pat](https://harenber.web.cern.ch/harenber/pat_0.12.1_arm64.deb).
