@@ -1,0 +1,240 @@
+07:20:36.235 ardopc Version 1.0.4.1mBPQ-Debug4
+07:20:36.236 Capture Devices
+07:20:36.568 0 Stereo Mix (2- Realtek High Def
+07:20:36.576 1 CABLE Output (VB-Audio Virtual 
+07:20:36.583 2 CABLE-B Output (VB-Audio Cable 
+07:20:36.590 3 CABLE-C Output (VB-Audio Cable 
+07:20:36.597 4 Signalink (13- USB Audio CODEC 
+07:20:36.604 5 CABLE-A Output (VB-Audio Cable 
+07:20:36.611 6 New 7100 (11- USB Audio CODEC )
+07:20:36.617 7 Old 7100 (10- USB Audio CODEC )
+07:20:36.623 8 CABLE-D Output (VB-Audio Cable 
+07:20:36.624 Playback Devices
+07:20:36.655 0 Speakers (2- Realtek High Defin
+07:20:36.672 1 Acer KA240H (2- Intel(R) Displa
+07:20:36.688 2 CABLE-D Input (VB-Audio Cable D
+07:20:36.704 3 CABLE Input (VB-Audio Virtual C
+07:20:36.722 4 New 7100 (11- USB Audio CODEC )
+07:20:36.742 5 Signalink (13- USB Audio CODEC 
+07:20:36.751 6 CABLE-B Input (VB-Audio Cable B
+07:20:36.758 7 CABLE-C Input (VB-Audio Cable C
+07:20:36.766 8 CABLE-A Input (VB-Audio Cable A
+07:20:36.783 9 Old 7100 (10- USB Audio CODEC )
+07:20:36.795 Opened WaveOut Device Speakers (2- Realtek High Defin
+07:20:36.803 Opened WaveIn Device Stereo Mix (2- Realtek High Def
+07:20:36.847 ardopc listening on port 8520
+07:20:36.864 Input peaks = -7, 3
+07:20:39.364 GUI Connected from Address 127.0.0.1
+07:20:41.113 Host Control Session Connected
+07:20:41.113 Host Data Session Connected
+07:20:41.713 Prior-Offset= -1.962991
+07:20:41.812 EnvelopeCorrelator CorMax:MaxProd= 61.095279  J= 357
+07:20:41.813 [Acquire2ToneLeaderSymbolFraming] intIatMinError= -1
+07:20:42.014  Command Trace TO Host BUSY TRUE
+07:20:42.110 Frame Decode type c fc 3 Dist 0.48 0.35 0.35 Sess ff pend 0 conn 0 lastsess 0
+07:20:42.111 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.894884 dB, Full 5.274546 dB, Offset= 0.161456 Hz:  MD Decode;5 Type1=HC, Type2=HFC, D1= 0.48, D2= 0.35
+07:20:42.111 poor frame type decode
+07:20:42.122 [Command Trace FROM host: INITIALIZE
+07:20:42.122  Command Trace TO Host BUFFER 0
+07:20:42.122  Command Trace TO Host INITIALIZE
+07:20:42.123 [Command Trace FROM host: VERSION
+07:20:42.123  Command Trace TO Host VERSION ardopc_1.0.4.1mBPQ-Debug4
+07:20:42.124 [Command Trace FROM host: CWID FALSE
+07:20:42.124  Command Trace TO Host CWID now FALSE
+07:20:42.125 [Command Trace FROM host: PROTOCOLMODE ARQ
+07:20:42.125  Command Trace TO Host PROTOCOLMODE now ARQ
+07:20:42.125 [Command Trace FROM host: ARQTIMEOUT 90
+07:20:42.126  Command Trace TO Host ARQTIMEOUT now 90
+07:20:42.126 [Command Trace FROM host: TXOFFSET 100
+07:20:42.127  Command Trace TO Host FAULT CMD TXOFFSET not recoginized
+07:20:42.127 [Command Trace FROM host: CONSOLELOG 7
+07:20:42.128  Command Trace TO Host CONSOLELOG now 7
+07:20:42.128 [Command Trace FROM host: DEBUGLOG TRUE
+07:20:42.129  Command Trace TO Host DEBUGLOG now TRUE
+07:20:42.129 [Command Trace FROM host: CMDTRACE TRUE
+07:20:42.130  Command Trace TO Host CMDTRACE now TRUE
+07:20:42.130 [Command Trace FROM host: CWID FALSE
+07:20:42.130  Command Trace TO Host CWID now FALSE
+07:20:42.131 [Command Trace FROM host: DRIVELEVEL 100
+07:20:42.131  Command Trace TO Host DRIVELEVEL now 100
+07:20:42.132 [Command Trace FROM host: GRIDSQUARE IO68VL
+07:20:42.132  Command Trace TO Host GRIDSQUARE now IO68VL
+07:20:42.132 [Command Trace FROM host: FECREPEATS 0
+07:20:42.133  Command Trace TO Host FECREPEATS now 0
+07:20:42.134 [Command Trace FROM host: PAC RETRIES 10
+07:20:42.134  Command Trace TO Host PAC RETRIES now 10
+07:20:42.136 [Command Trace FROM host: ARQBW 2000MAX
+07:20:42.137  Command Trace TO Host ARQBW now 2000MAX
+07:20:42.137 [Command Trace FROM host: ARQBW 2500
+07:20:42.137  Command Trace TO Host FAULT Syntax Err: ARQBW 2500
+07:20:42.138 [Command Trace FROM host: MYCALL GM8BPQ-2
+07:20:42.138  Command Trace TO Host MYCALL now GM8BPQ-2
+07:20:42.138 [Command Trace FROM host: MYAUX GM8BPQ,GM8BPQ-3,GM8BPQ-10,GM8BPQ-11,GM8BPQ-15
+07:20:42.139  Command Trace TO Host MYAUX now GM8BPQ,GM8BPQ-3,GM8BPQ-10,GM8BPQ-11,GM8BPQ-15
+07:20:46.915 Input peaks = -10, 9
+07:20:48.087  Command Trace TO Host BUSY FALSE
+07:20:48.917 Prior-Offset= -2.117235
+07:20:49.013 EnvelopeCorrelator CorMax:MaxProd= 62.936216  J= 313
+07:20:49.014 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+07:20:49.214  Command Trace TO Host BUSY TRUE
+07:20:49.308 Frame Decode type d0 42 35 Dist 0.46 0.63 0.62 Sess ff pend 0 conn 0 lastsess 0
+07:20:49.309 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.857069 dB, Full 1.223415 dB, Offset= 0.300539 Hz:  MD Decode;5 Type1=HD0, Type2=H42, D1= 0.46, D2= 0.63
+07:20:49.309 poor frame type decode
+07:20:55.314  Command Trace TO Host BUSY FALSE
+07:20:56.014 Prior-Offset= -1.741201
+07:20:56.109 EnvelopeCorrelator CorMax:MaxProd= 59.312763  J= 140
+07:20:56.110 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+07:20:56.312  Command Trace TO Host BUSY TRUE
+07:20:56.317 Frame Decode type f4 f3 c Dist 0.54 0.48 0.48 Sess ff pend 0 conn 0 lastsess 0
+07:20:56.318 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.874807 dB, Full 6.299133 dB, Offset= -0.073408 Hz:  MD Decode;5 Type1=HF4, Type2=HF3, D1= 0.54, D2= 0.48
+07:20:56.318 poor frame type decode
+07:20:56.956 Input peaks = -166, 161
+07:21:02.389  Command Trace TO Host BUSY FALSE
+07:21:03.074 Prior-Offset= -2.061189
+07:21:03.169 EnvelopeCorrelator CorMax:MaxProd= 62.444024  J= 357
+07:21:03.173 [Acquire2ToneLeaderSymbolFraming] intIatMinError= -1
+07:21:03.267  Command Trace TO Host BUSY TRUE
+07:21:03.469 Frame Decode type d0 47 35 Dist 0.46 0.63 0.63 Sess ff pend 0 conn 0 lastsess 0
+07:21:03.472 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.866618 dB, Full 4.509670 dB, Offset= 0.257596 Hz:  MD Decode;5 Type1=HD0, Type2=H47, D1= 0.46, D2= 0.63
+07:21:03.474 poor frame type decode
+07:21:03.979 [Command Trace FROM host: STATE
+07:21:03.979  Command Trace TO Host STATE DISC
+07:21:07.008 Input peaks = -9, 9
+07:21:09.589  Command Trace TO Host BUSY FALSE
+07:21:10.255 Prior-Offset= -0.899135
+07:21:10.350 EnvelopeCorrelator CorMax:MaxProd= 64.564716  J= 8
+07:21:10.352 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 2
+07:21:10.554  Command Trace TO Host BUSY TRUE
+07:21:10.555 Frame Decode type f4 f3 c Dist 0.50 0.49 0.49 Sess ff pend 0 conn 0 lastsess 0
+07:21:10.557 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.876143 dB, Full -0.518990 dB, Offset= 0.314426 Hz:  MD Decode;5 Type1=HF4, Type2=HF3, D1= 0.50, D2= 0.49
+07:21:10.558 poor frame type decode
+07:21:16.635  Command Trace TO Host BUSY FALSE
+07:21:17.070 Input peaks = -9, 10
+07:21:17.331 Prior-Offset= -1.778564
+07:21:17.430 EnvelopeCorrelator CorMax:MaxProd= 63.665683  J= 224
+07:21:17.431 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+07:21:17.736  Command Trace TO Host BUSY TRUE
+07:21:17.737 Frame Decode type d0 42 35 Dist 0.46 0.63 0.62 Sess ff pend 0 conn 0 lastsess 0
+07:21:17.739 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.903802 dB, Full -4.177797 dB, Offset= 0.632071 Hz:  MD Decode;5 Type1=HD0, Type2=H42, D1= 0.46, D2= 0.63
+07:21:17.739 poor frame type decode
+07:21:19.055 Prior-Offset= -2.137649
+07:21:19.154 EnvelopeCorrelator CorMax:MaxProd= 63.194055  J= 346
+07:21:19.155 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+07:21:19.455 Frame Decode type 43 d 31 Dist 0.54 0.60 0.59 Sess ff pend 0 conn 0 lastsess 0
+07:21:19.457 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.875010 dB, Full 3.627651 dB, Offset= 0.332073 Hz:  MD Decode;5 Type1=H43, Type2=HD, D1= 0.54, D2= 0.60
+07:21:19.458 poor frame type decode
+07:21:20.726 Prior-Offset= 1.027826
+07:21:20.832 EnvelopeCorrelator CorMax:MaxProd= 74.517994  J= 155
+07:21:20.833 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 1
+07:21:21.329 Frame Decode type e9 71 42 Dist 0.52 0.53 0.55 Sess ff pend 0 conn 0 lastsess 0
+07:21:21.330 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -13.318836 dB, Full -12.808568 dB, Offset= 0.998228 Hz:  MD Decode;5 Type1=HE9, Type2=H71, D1= 0.52, D2= 0.53
+07:21:21.332 poor frame type decode
+07:21:26.432  Command Trace TO Host BUSY FALSE
+07:21:27.137 Input peaks = -9, 10
+07:21:37.170 Input peaks = -8, 9
+07:21:47.216 Input peaks = -9, 10
+07:21:57.277 Input peaks = -10, 10
+07:22:07.370 Input peaks = -9, 8
+07:22:17.429 Input peaks = -9, 9
+07:22:24.777 [Command Trace FROM host: STATE
+07:22:24.779  Command Trace TO Host STATE DISC
+07:22:27.477 Input peaks = -10, 9
+07:22:37.557 Input peaks = -11, 9
+07:22:47.619 Input peaks = -11, 10
+07:22:57.676 Input peaks = -8, 8
+07:23:07.737 Input peaks = -9, 9
+07:23:17.794 Input peaks = -9, 10
+07:23:27.838 Input peaks = -9, 9
+07:23:37.877 Input peaks = -10, 8
+07:23:45.132 [Command Trace FROM host: STATE
+07:23:45.133  Command Trace TO Host STATE DISC
+07:23:47.921 Input peaks = -8, 10
+07:23:57.977 Input peaks = -9, 8
+07:24:08.055 Input peaks = -8, 9
+07:24:18.096 Input peaks = -10, 8
+07:24:28.140 Input peaks = -8, 10
+07:24:38.215 Input peaks = -9, 10
+07:24:48.276 Input peaks = -9, 10
+07:24:58.320 Input peaks = -9, 9
+07:25:06.160 [Command Trace FROM host: STATE
+07:25:06.161  Command Trace TO Host STATE DISC
+07:25:08.379 Input peaks = -8, 10
+07:25:18.455 Input peaks = -10, 9
+07:25:24.934 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+07:25:24.936 Sending Frame Type IDFrame
+07:25:24.936 [Main.KeyPTT]  PTT-TRUE
+07:25:26.671 [Main.KeyPTT]  PTT-FALSE
+07:25:28.538 Input peaks = -102, 104
+07:25:38.598 Input peaks = -11, 8
+07:25:48.018 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+07:25:48.018 Sending Frame Type IDFrame
+07:25:48.019 [Main.KeyPTT]  PTT-TRUE
+07:25:48.676 Input peaks = -104, 103
+07:25:49.748 [Main.KeyPTT]  PTT-FALSE
+07:25:58.740 Input peaks = -8, 9
+07:26:08.798 Input peaks = -9, 11
+07:26:18.895 Input peaks = -11, 9
+07:26:26.491 [Command Trace FROM host: STATE
+07:26:26.491  Command Trace TO Host STATE DISC
+07:26:27.837 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+07:26:27.838 Sending Frame Type IDFrame
+07:26:27.838 [Main.KeyPTT]  PTT-TRUE
+07:26:28.964 Input peaks = -104, 104
+07:26:29.573 [Main.KeyPTT]  PTT-FALSE
+07:26:39.042 Input peaks = -10, 9
+07:26:49.095 Input peaks = -8, 9
+07:26:59.155 Input peaks = -7, 8
+07:27:09.204 Input peaks = -8, 8
+07:27:19.243 Input peaks = -10, 8
+07:27:29.320 Input peaks = -9, 10
+07:27:39.384 Input peaks = -9, 10
+07:27:47.069 [Command Trace FROM host: STATE
+07:27:47.069  Command Trace TO Host STATE DISC
+07:27:49.445 Input peaks = -9, 8
+07:27:59.518 Input peaks = -9, 9
+07:28:09.579 Input peaks = -38, 37
+07:28:09.700  Command Trace TO Host BUSY TRUE
+07:28:15.742  Command Trace TO Host BUSY FALSE
+07:28:19.646 Input peaks = -10, 8
+07:28:29.703 Input peaks = -10, 10
+07:28:39.780 Input peaks = -10, 9
+07:28:48.462  Command Trace TO Host BUSY TRUE
+07:28:49.825 Input peaks = -53, 48
+07:28:54.306  Command Trace TO Host BUSY FALSE
+07:28:59.880 Input peaks = -8, 9
+07:29:07.917 [Command Trace FROM host: STATE
+07:29:07.917  Command Trace TO Host STATE DISC
+07:29:09.947 Input peaks = -8, 8
+07:29:20.000 Input peaks = -9, 9
+07:29:30.100 Input peaks = -8, 10
+07:29:40.167 Input peaks = -11, 10
+07:29:50.205 Input peaks = -9, 9
+07:30:00.264 Input peaks = -9, 9
+07:30:10.321 Input peaks = -9, 9
+07:30:20.388 Input peaks = -9, 9
+07:30:28.029 [Command Trace FROM host: STATE
+07:30:28.030  Command Trace TO Host STATE DISC
+07:30:30.448 Input peaks = -11, 8
+07:30:40.509 Input peaks = -9, 10
+07:30:50.568 Input peaks = -8, 9
+07:30:56.070  Command Trace TO Host BUSY TRUE
+07:31:00.644 Input peaks = -8, 9
+07:31:01.547  Command Trace TO Host BUSY FALSE
+07:31:10.709 Input peaks = -8, 8
+07:31:20.764 Input peaks = -9, 9
+07:31:30.827 Input peaks = -8, 9
+07:31:40.885 Input peaks = -9, 10
+07:31:48.561 [Command Trace FROM host: STATE
+07:31:48.561  Command Trace TO Host STATE DISC
+07:31:50.970 Input peaks = -8, 10
+07:32:00.807 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+07:32:00.808 Sending Frame Type IDFrame
+07:32:00.808 [Main.KeyPTT]  PTT-TRUE
+07:32:01.010 Input peaks = -104, 107
+07:32:02.541 [Main.KeyPTT]  PTT-FALSE
+07:32:09.166  Command Trace TO Host BUSY TRUE
+07:32:10.996 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+07:32:10.996 Sending Frame Type IDFrame
+07:32:10.997 [Main.KeyPTT]  PTT-TRUE
+07:32:11.072 Input peaks = -19970, 19966
+07:32:12.734 [Main.KeyPTT]  

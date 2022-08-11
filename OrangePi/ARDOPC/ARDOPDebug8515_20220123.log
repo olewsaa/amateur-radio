@@ -1,0 +1,30 @@
+14:29:58.194 ardopc Version 1.0.4.1mBPQ-Debug
+14:29:58.195 Capture Devices
+14:29:58.550 0 Stereo Mix (2- Realtek High Def
+14:29:58.558 1 CABLE Output (VB-Audio Virtual 
+14:29:58.566 2 CABLE-B Output (VB-Audio Cable 
+14:29:58.574 3 CABLE-C Output (VB-Audio Cable 
+14:29:58.581 4 Signalink (13- USB Audio CODEC 
+14:29:58.590 5 CABLE-A Output (VB-Audio Cable 
+14:29:58.597 6 New 7100 (11- USB Audio CODEC )
+14:29:58.605 7 Old 7100 (10- USB Audio CODEC )
+14:29:58.613 8 CABLE-D Output (VB-Audio Cable 
+14:29:58.613 Playback Devices
+14:29:58.650 0 Speakers (2- Realtek High Defin
+14:29:58.671 1 Acer KA240H (2- Intel(R) Displa
+14:29:58.690 2 CABLE-D Input (VB-Audio Cable D
+14:29:58.710 3 CABLE Input (VB-Audio Virtual C
+14:29:58.723 4 New 7100 (11- USB Audio CODEC )
+14:29:58.738 5 Signalink (13- USB Audio CODEC 
+14:29:58.747 6 CABLE-B Input (VB-Audio Cable B
+14:29:58.757 7 CABLE-C Input (VB-Audio Cable C
+14:29:58.765 8 CABLE-A Input (VB-Audio Cable A
+14:29:58.777 9 Old 7100 (10- USB Audio CODEC )
+14:29:58.788 Opened WaveOut Device Speakers (2- Realtek High Defin
+14:29:58.794 Opened WaveIn Device Stereo Mix (2- Realtek High Def
+14:29:58.812 ardopc listening on port 8515
+14:29:58.870 Input peaks = -40, 197
+14:30:08.948 Input peaks = -9, 8
+14:30:19.030 Input peaks = -10, 11
+14:30:29.116 Input peaks = -9, 9
+14:30:39.238 Input peaks = -11, 9

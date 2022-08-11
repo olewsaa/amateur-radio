@@ -44,15 +44,24 @@ The utils flrig, fldigi, hamlib are needed to run the rig.
 The following packages need to be installed to build the programs:
 ```build-essential libfltk1.1-dev:arm64 libfltk1.3:arm64 libfltk-cairo1.3:arm64 libfltk-forms1.3:arm64 libfltk-gl1.3:arm64 libfltk-images1.3:arm64 libfltk1.3-dev:arm64 libudev-dev:arm64 libpng-dev:arm64 libsamplerate0-dev:arm64 libogg-dev:arm64 libflac-dev:arm64 libvorbis-dev:arm64 libsndfile1-dev:arm64 libjack0:arm64 libasound2-dev:arm64 libjack-dev:arm64 libportaudio2:arm64 libportaudiocpp0:arm64 portaudio19-dev:arm64``` 
 
+* [flrig](http://www.w1hkj.com/files/flrig/flrig-1.4.7.tar.gz)
+* [fldigi](http://www.w1hkj.com/files/fldigi/fldigi-4.1.23.tar.gz)
+* [hamlib](https://github.com/Hamlib/Hamlib/releases/download/4.4/hamlib-4.4.tar.gz)
+
 Instructions to build are given by the different packages, but
 generally ./configure, make and make install.
 
 ## ARDOP 
 The ARDOP sources are available and contained in a [zip archive](https://www.cantab.net/users/john.wiseman/Downloads/Beta/TeensyProjects.zip).  There are several 
 ARDOP variants, I used ARDOPC (it's a bit unclear which version to use). 
-There is a makefile and issuing this makefile built the ARDOPC without issues. 
-It runs and display different audio devices. Testing remain to validate 
-the correctness of the build. Some more documentation should be prepared.
+I have made a [copy](https://github.com/olewsaa/amateur-radio/tree/main/OrangePi).
+
+There is a makefile and issuing this makefile built the ARDOPC without issues under 
+«focal», but under «jammy» you need to add the flag ```-fcommon``` to the CFLAGS.
+It runs and display different audio devices, I've included a pre build binary. 
+Testing remain to validate the correctness of the build. Some more documentation 
+should be prepared.
+
 
 ## pat
 There is a [64 bit build of pat](https://harenber.web.cern.ch/harenber/pat_0.12.1_arm64.deb).

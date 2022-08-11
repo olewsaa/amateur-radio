@@ -1,0 +1,26 @@
+16:34:33.510 ardopc Version 1.0.4.1mBPQ
+16:34:33.510 Capture Devices
+16:34:33.884 0 Stereo Mix (2- Realtek High Def
+16:34:33.892 1 CABLE Output (VB-Audio Virtual 
+16:34:33.899 2 CABLE-B Output (VB-Audio Cable 
+16:34:33.907 3 CABLE-C Output (VB-Audio Cable 
+16:34:33.915 4 Signalink (13- USB Audio CODEC 
+16:34:33.923 5 CABLE-A Output (VB-Audio Cable 
+16:34:33.930 6 New 7100 (11- USB Audio CODEC )
+16:34:33.937 7 Old 7100 (10- USB Audio CODEC )
+16:34:33.944 8 CABLE-D Output (VB-Audio Cable 
+16:34:33.944 Playback Devices
+16:34:33.972 0 Speakers (2- Realtek High Defin
+16:34:33.991 1 Acer KA240H (2- Intel(R) Displa
+16:34:34.010 2 CABLE-D Input (VB-Audio Cable D
+16:34:34.029 3 CABLE Input (VB-Audio Virtual C
+16:34:34.040 4 New 7100 (11- USB Audio CODEC )
+16:34:34.055 5 Signalink (13- USB Audio CODEC 
+16:34:34.063 6 CABLE-B Input (VB-Audio Cable B
+16:34:34.071 7 CABLE-C Input (VB-Audio Cable C
+16:34:34.079 8 CABLE-A Input (VB-Audio Cable A
+16:34:34.090 9 Old 7100 (10- USB Audio CODEC )
+16:34:34.101 Opened WaveOut Device Speakers (2- Realtek High Defin
+16:34:34.106 Opened WaveIn Device Stereo Mix (2- Realtek High Def
+16:34:34.151 ardopc listening on port 8515
+16:34:34.175 Input peaks = -4, 5

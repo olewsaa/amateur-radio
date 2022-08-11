@@ -1,0 +1,771 @@
+14:31:28.179 ardopc Version 1.0.4.1mBPQ-Debug
+14:31:28.180 Capture Devices
+14:31:28.553 0 Stereo Mix (2- Realtek High Def
+14:31:28.561 1 CABLE Output (VB-Audio Virtual 
+14:31:28.570 2 CABLE-B Output (VB-Audio Cable 
+14:31:28.578 3 CABLE-C Output (VB-Audio Cable 
+14:31:28.587 4 Signalink (13- USB Audio CODEC 
+14:31:28.595 5 CABLE-A Output (VB-Audio Cable 
+14:31:28.604 6 New 7100 (11- USB Audio CODEC )
+14:31:28.611 7 Old 7100 (10- USB Audio CODEC )
+14:31:28.619 8 CABLE-D Output (VB-Audio Cable 
+14:31:28.619 Playback Devices
+14:31:28.654 0 Speakers (2- Realtek High Defin
+14:31:28.672 1 Acer KA240H (2- Intel(R) Displa
+14:31:28.689 2 CABLE-D Input (VB-Audio Cable D
+14:31:28.708 3 CABLE Input (VB-Audio Virtual C
+14:31:28.721 4 New 7100 (11- USB Audio CODEC )
+14:31:28.735 5 Signalink (13- USB Audio CODEC 
+14:31:28.744 6 CABLE-B Input (VB-Audio Cable B
+14:31:28.753 7 CABLE-C Input (VB-Audio Cable C
+14:31:28.763 8 CABLE-A Input (VB-Audio Cable A
+14:31:28.776 9 Old 7100 (10- USB Audio CODEC )
+14:31:28.788 Opened WaveOut Device Speakers (2- Realtek High Defin
+14:31:28.794 Opened WaveIn Device Stereo Mix (2- Realtek High Def
+14:31:28.838 ardopc listening on port 8520
+14:31:28.859 Input peaks = -6, 5
+14:31:33.096 Host Control Session Connected
+14:31:33.096 Host Data Session Connected
+14:31:34.443 [Command Trace FROM host: INITIALIZE
+14:31:34.443  Command Trace TO Host BUFFER 0
+14:31:34.445  Command Trace TO Host INITIALIZE
+14:31:34.445 [Command Trace FROM host: VERSION
+14:31:34.446  Command Trace TO Host VERSION ardopc_1.0.4.1mBPQ-Debug
+14:31:34.446 [Command Trace FROM host: CWID FALSE
+14:31:34.446  Command Trace TO Host CWID now FALSE
+14:31:34.446 [Command Trace FROM host: PROTOCOLMODE ARQ
+14:31:34.447  Command Trace TO Host PROTOCOLMODE now ARQ
+14:31:34.447 [Command Trace FROM host: ARQTIMEOUT 90
+14:31:34.447  Command Trace TO Host ARQTIMEOUT now 90
+14:31:34.448 [Command Trace FROM host: TXOFFSET 100
+14:31:34.448  Command Trace TO Host FAULT CMD TXOFFSET not recoginized
+14:31:34.448 [Command Trace FROM host: CONSOLELOG 7
+14:31:34.449  Command Trace TO Host CONSOLELOG now 7
+14:31:34.449 [Command Trace FROM host: DEBUGLOG TRUE
+14:31:34.449  Command Trace TO Host DEBUGLOG now TRUE
+14:31:34.450 [Command Trace FROM host: CMDTRACE TRUE
+14:31:34.451  Command Trace TO Host CMDTRACE now TRUE
+14:31:34.452 [Command Trace FROM host: CWID FALSE
+14:31:34.453  Command Trace TO Host CWID now FALSE
+14:31:34.453 [Command Trace FROM host: DRIVELEVEL 100
+14:31:34.453  Command Trace TO Host DRIVELEVEL now 100
+14:31:34.454 [Command Trace FROM host: GRIDSQUARE IO68VL
+14:31:34.454  Command Trace TO Host GRIDSQUARE now IO68VL
+14:31:34.455 [Command Trace FROM host: FECREPEATS 0
+14:31:34.456  Command Trace TO Host FECREPEATS now 0
+14:31:34.457 [Command Trace FROM host: PAC RETRIES 10
+14:31:34.458  Command Trace TO Host PAC RETRIES now 10
+14:31:34.458 [Command Trace FROM host: ARQBW 2000MAX
+14:31:34.458  Command Trace TO Host ARQBW now 2000MAX
+14:31:34.459 [Command Trace FROM host: ARQBW 2500
+14:31:34.459  Command Trace TO Host FAULT Syntax Err: ARQBW 2500
+14:31:34.459 [Command Trace FROM host: MYCALL GM8BPQ-2
+14:31:34.460  Command Trace TO Host MYCALL now GM8BPQ-2
+14:31:34.460 [Command Trace FROM host: MYAUX GM8BPQ,GM8BPQ-3,GM8BPQ-10,GM8BPQ-11,GM8BPQ-15
+14:31:34.460  Command Trace TO Host MYAUX now GM8BPQ,GM8BPQ-3,GM8BPQ-10,GM8BPQ-11,GM8BPQ-15
+14:31:35.668 [Command Trace FROM host: STATE
+14:31:35.669  Command Trace TO Host STATE DISC
+14:31:38.920 Input peaks = -10, 9
+14:31:43.696 GUI Connected from Address 127.0.0.1
+14:31:48.981 Input peaks = -10, 9
+14:31:53.285  Command Trace TO Host BUSY TRUE
+14:31:53.991 Prior-Offset= -0.512188
+14:31:54.079 EnvelopeCorrelator CorMax:MaxProd= 49.029219  J= 205
+14:31:54.081 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 1
+14:31:54.287 Frame Decode type 64 2d 72 Dist 0.56 0.52 0.58 Sess ff pend 0 conn 0 lastsess 0
+14:31:54.288 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -14.711058 dB, Full -10.122931 dB, Offset= 51.621708 Hz:  MD Decode;5 Type1=H64, Type2=H2D, D1= 0.56, D2= 0.52
+14:31:54.289 poor frame type decode
+14:31:58.823  Command Trace TO Host BUSY FALSE
+14:31:59.063 Input peaks = -978, 1188
+14:32:03.347 Prior-Offset= 1.836202
+14:32:03.445 EnvelopeCorrelator CorMax:MaxProd= 58.646438  J= 262
+14:32:03.448 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+14:32:03.543  Command Trace TO Host BUSY TRUE
+14:32:03.746 Frame Decode type 34 34 f7 Dist 0.31 0.19 0.45 Sess ff pend 0 conn 0 lastsess 0
+14:32:03.748 [Frame Type Decode OK  ] Ldr; S:N(3KHz) Early= -7.776958 dB, Full -2.145760 dB, Offset= -1.159598 Hz:  MD Decode;2 ID=HFF, Type=H34:ConReq2000M, D1= 0.31, D2= 0.19
+14:32:03.749  Command Trace TO Host PENDING
+14:32:03.749 New frame type - MEMARQ flags reset
+14:32:03.750 MEMARQ Flags 0 0 0 0 0 0 0 0
+14:32:05.043 Qual = 65
+14:32:05.044 DecodeFrame MEMARQ Flags 0 0 0 0 0 0 0 0
+14:32:05.045 CONREQ Frame Corrected by RS
+14:32:05.045 DemodDecode4FSKConReq:  S:N=-3 Q=65
+14:32:05.045 [DecodeFrame] Frame: ConReq2000M Decode PASS,   Constellation Quality= 65
+14:32:05.046 RS Errors 0 Carriers 1 RLen 4 Qual 65 - adjusting Qual
+14:32:05.046 Time since received = 3
+14:32:05.295 CONREQ From WD1F to K1EHZ Listen = 1
+14:32:05.295  Command Trace TO Host CANCELPENDING
+14:32:05.295 [AddTagToDataAndSendToHost] bytes=28 Tag ARQ
+14:32:09.332 Input peaks = -7927, 12636
+14:32:11.890  Command Trace TO Host BUSY FALSE
+14:32:15.592 Prior-Offset= 1.922403
+14:32:15.690 EnvelopeCorrelator CorMax:MaxProd= 58.400505  J= 184
+14:32:15.691 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+14:32:15.895  Command Trace TO Host BUSY TRUE
+14:32:15.992 Frame Decode type 34 34 e9 Dist 0.15 0.13 0.40 Sess ff pend 0 conn 0 lastsess 0
+14:32:15.993 [Frame Type Decode OK  ] Ldr; S:N(3KHz) Early= -9.287244 dB, Full 5.039225 dB, Offset= -1.662498 Hz:  MD Decode;2 ID=HFF, Type=H34:ConReq2000M, D1= 0.15, D2= 0.13
+14:32:15.994  Command Trace TO Host PENDING
+14:32:15.995 MEMARQ Flags 0 0 0 0 0 0 0 0
+14:32:17.188 Qual = 76
+14:32:17.189 DecodeFrame MEMARQ Flags 0 0 0 0 0 0 0 0
+14:32:17.190 DemodDecode4FSKConReq:  S:N=0 Q=76
+14:32:17.190 [DecodeFrame] Frame: ConReq2000M Decode PASS,   Constellation Quality= 76
+14:32:17.191 RS Errors 0 Carriers 1 RLen 4 Qual 76 - adjusting Qual
+14:32:17.192 Time since received = 3
+14:32:17.440 CONREQ From WD1F to K1EHZ Listen = 1
+14:32:17.441  Command Trace TO Host CANCELPENDING
+14:32:17.441 [AddTagToDataAndSendToHost] bytes=28 Tag ARQ
+14:32:19.460 Input peaks = -5999, 8130
+14:32:22.497  Command Trace TO Host BUSY FALSE
+14:32:29.502 Input peaks = -9, 11
+14:32:31.857 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+14:32:31.858 Sending Frame Type IDFrame
+14:32:31.859 [Main.KeyPTT]  PTT-TRUE
+14:32:33.596 [Main.KeyPTT]  PTT-FALSE
+14:32:39.336  Command Trace TO Host BUSY TRUE
+14:32:39.543 Input peaks = -1951, 2009
+14:32:41.470 [AddTagToDataAndSendToHost] bytes=19 Tag IDF
+14:32:41.474 Sending Frame Type IDFrame
+14:32:41.476 [Main.KeyPTT]  PTT-TRUE
+14:32:43.209 [Main.KeyPTT]  PTT-FALSE
+14:32:45.901  Command Trace TO Host BUSY FALSE
+14:32:49.602 Input peaks = -9, 10
+14:32:56.515 [Command Trace FROM host: STATE
+14:32:56.515  Command Trace TO Host STATE DISC
+14:32:59.681 Input peaks = -9, 9
+14:33:09.756 Input peaks = -11, 9
+14:33:17.138  Command Trace TO Host BUSY TRUE
+14:33:19.842 Input peaks = -241, 272
+14:33:23.623  Command Trace TO Host BUSY FALSE
+14:33:29.879 Input peaks = -8, 10
+14:33:39.958 Input peaks = -9, 10
+14:33:50.021 Input peaks = -9, 10
+14:34:00.081 Input peaks = -9, 10
+14:34:10.161 Input peaks = -9, 8
+14:34:18.116 [Command Trace FROM host: STATE
+14:34:18.117  Command Trace TO Host STATE DISC
+14:34:20.203 Input peaks = -9, 9
+14:34:30.283 Input peaks = -9, 9
+14:34:40.320 Input peaks = -9, 9
+14:34:50.362 Input peaks = -10, 8
+14:35:00.418 Input peaks = -8, 9
+14:35:10.459 Input peaks = -9, 9
+14:35:20.506 Input peaks = -9, 9
+14:35:30.582 Input peaks = -9, 10
+14:35:39.742 [Command Trace FROM host: STATE
+14:35:39.743  Command Trace TO Host STATE DISC
+14:35:40.645 Input peaks = -9, 9
+14:35:50.706 Input peaks = -10, 10
+14:36:00.781 Input peaks = -10, 11
+14:36:10.860 Input peaks = -8, 10
+14:36:20.925 Input peaks = -8, 8
+14:36:30.986 Input peaks = -9, 9
+14:36:41.024 Input peaks = -9, 9
+14:36:51.084 Input peaks = -8, 9
+14:37:00.658 [Command Trace FROM host: STATE
+14:37:00.659  Command Trace TO Host STATE DISC
+14:37:01.146 Input peaks = -9, 9
+14:37:11.189 Input peaks = -10, 8
+14:37:21.243 Input peaks = -8, 9
+14:37:31.281 Input peaks = -9, 8
+14:37:41.323 Input peaks = -9, 11
+14:37:51.408 Input peaks = -8, 10
+14:38:01.468 Input peaks = -10, 9
+14:38:11.528 Input peaks = -8, 9
+14:38:21.567 Input peaks = -9, 9
+14:38:21.883 [Command Trace FROM host: STATE
+14:38:21.886  Command Trace TO Host STATE DISC
+14:38:31.665 Input peaks = -8, 10
+14:38:41.709 Input peaks = -8, 8
+14:38:51.732 Input peaks = -11, 9
+14:39:01.790 Input peaks = -9, 9
+14:39:11.865 Input peaks = -8, 10
+14:39:21.926 Input peaks = -9, 9
+14:39:31.971 Input peaks = -10, 9
+14:39:42.066 Input peaks = -9, 8
+14:39:42.644 [Command Trace FROM host: STATE
+14:39:42.645  Command Trace TO Host STATE DISC
+14:39:52.133 Input peaks = -8, 8
+14:40:02.190 Input peaks = -10, 9
+14:40:12.250 Input peaks = -9, 10
+14:40:22.312 Input peaks = -9, 9
+14:40:32.395 Input peaks = -10, 10
+14:40:42.472 Input peaks = -9, 9
+14:40:52.551 Input peaks = -10, 9
+14:41:02.636 Input peaks = -9, 9
+14:41:04.116 [Command Trace FROM host: STATE
+14:41:04.117  Command Trace TO Host STATE DISC
+14:41:12.706 Input peaks = -9, 10
+14:41:22.772 Input peaks = -9, 10
+14:41:32.854 Input peaks = -9, 10
+14:41:42.936 Input peaks = -10, 8
+14:41:52.990 Input peaks = -9, 8
+14:42:03.030 Input peaks = -8, 9
+14:42:13.097 Input peaks = -10, 9
+14:42:23.154 Input peaks = -9, 9
+14:42:24.983 [Command Trace FROM host: STATE
+14:42:24.984  Command Trace TO Host STATE DISC
+14:42:33.198 Input peaks = -9, 9
+14:42:43.255 Input peaks = -9, 10
+14:42:53.296 Input peaks = -10, 10
+14:43:03.351 Input peaks = -8, 9
+14:43:13.399 Input peaks = -9, 9
+14:43:23.451 Input peaks = -10, 11
+14:43:33.513 Input peaks = -9, 10
+14:43:43.571 Input peaks = -11, 10
+14:43:45.902 [Command Trace FROM host: STATE
+14:43:45.903  Command Trace TO Host STATE DISC
+14:43:53.613 Input peaks = -8, 8
+14:44:03.655 Input peaks = -9, 9
+14:44:13.718 Input peaks = -9, 8
+14:44:23.772 Input peaks = -8, 10
+14:44:33.816 Input peaks = -8, 10
+14:44:43.874 Input peaks = -8, 9
+14:44:53.917 Input peaks = -9, 9
+14:45:03.958 Input peaks = -9, 8
+14:45:06.675 [Command Trace FROM host: STATE
+14:45:06.676  Command Trace TO Host STATE DISC
+14:45:14.060 Input peaks = -10, 9
+14:45:24.158 Input peaks = -8, 9
+14:45:34.201 Input peaks = -9, 9
+14:45:44.260 Input peaks = -9, 9
+14:45:54.316 Input peaks = -10, 9
+14:46:04.378 Input peaks = -7, 9
+14:46:14.440 Input peaks = -10, 10
+14:46:24.520 Input peaks = -8, 8
+14:46:26.934 [Command Trace FROM host: STATE
+14:46:26.935  Command Trace TO Host STATE DISC
+14:46:34.600 Input peaks = -10, 10
+14:46:44.664 Input peaks = -9, 9
+14:46:54.739 Input peaks = -10, 9
+14:47:04.804 Input peaks = -9, 10
+14:47:14.878 Input peaks = -10, 10
+14:47:24.959 Input peaks = -8, 9
+14:47:35.016 Input peaks = -9, 9
+14:47:45.078 Input peaks = -10, 9
+14:47:48.360 [Command Trace FROM host: STATE
+14:47:48.361  Command Trace TO Host STATE DISC
+14:47:55.138 Input peaks = -8, 9
+14:48:05.223 Input peaks = -8, 9
+14:48:15.282 Input peaks = -9, 9
+14:48:25.358 Input peaks = -10, 9
+14:48:35.427 Input peaks = -8, 10
+14:48:45.487 Input peaks = -9, 8
+14:48:55.561 Input peaks = -9, 10
+14:49:05.620 Input peaks = -8, 9
+14:49:08.924 [Command Trace FROM host: STATE
+14:49:08.925  Command Trace TO Host STATE DISC
+14:49:15.707 Input peaks = -8, 9
+14:49:25.748 Input peaks = -10, 9
+14:49:35.841 Input peaks = -9, 8
+14:49:45.906 Input peaks = -9, 11
+14:49:55.964 Input peaks = -8, 8
+14:50:06.019 Input peaks = -9, 8
+14:50:16.082 Input peaks = -10, 9
+14:50:26.146 Input peaks = -8, 9
+14:50:30.297 [Command Trace FROM host: STATE
+14:50:30.297  Command Trace TO Host STATE DISC
+14:50:36.206 Input peaks = -9, 9
+14:50:46.249 Input peaks = -9, 8
+14:50:56.304 Input peaks = -10, 9
+14:51:06.383 Input peaks = -8, 9
+14:51:16.447 Input peaks = -10, 10
+14:51:26.506 Input peaks = -9, 9
+14:51:36.546 Input peaks = -8, 8
+14:51:46.608 Input peaks = -9, 9
+14:51:50.979 [Command Trace FROM host: STATE
+14:51:50.979  Command Trace TO Host STATE DISC
+14:51:56.648 Input peaks = -10, 9
+14:52:06.708 Input peaks = -11, 9
+14:52:16.767 Input peaks = -9, 8
+14:52:26.850 Input peaks = -10, 10
+14:52:36.908 Input peaks = -9, 10
+14:52:46.970 Input peaks = -9, 10
+14:52:56.993 Input peaks = -9, 9
+14:53:07.033 Input peaks = -9, 9
+14:53:12.245 [Command Trace FROM host: STATE
+14:53:12.246  Command Trace TO Host STATE DISC
+14:53:17.108 Input peaks = -10, 10
+14:53:27.171 Input peaks = -8, 12
+14:53:37.230 Input peaks = -8, 8
+14:53:47.306 Input peaks = -10, 9
+14:53:57.373 Input peaks = -8, 9
+14:54:07.413 Input peaks = -9, 9
+14:54:17.474 Input peaks = -8, 9
+14:54:27.530 Input peaks = -8, 10
+14:54:33.914 [Command Trace FROM host: STATE
+14:54:33.921  Command Trace TO Host STATE DISC
+14:54:37.611 Input peaks = -11, 9
+14:54:47.673 Input peaks = -10, 11
+14:54:57.734 Input peaks = -9, 9
+14:55:07.813 Input peaks = -9, 9
+14:55:17.871 Input peaks = -9, 9
+14:55:27.916 Input peaks = -8, 9
+14:55:37.976 Input peaks = -10, 10
+14:55:48.027 Input peaks = -9, 10
+14:55:55.030 [Command Trace FROM host: STATE
+14:55:55.032  Command Trace TO Host STATE DISC
+14:55:58.069 Input peaks = -8, 9
+14:56:08.115 Input peaks = -10, 9
+14:56:18.194 Input peaks = -10, 10
+14:56:28.231 Input peaks = -9, 9
+14:56:38.311 Input peaks = -9, 10
+14:56:48.370 Input peaks = -9, 10
+14:56:58.416 Input peaks = -8, 9
+14:57:08.478 Input peaks = -10, 8
+14:57:16.279 [Command Trace FROM host: STATE
+14:57:16.279  Command Trace TO Host STATE DISC
+14:57:18.530 Input peaks = -10, 10
+14:57:28.573 Input peaks = -9, 9
+14:57:38.657 Input peaks = -11, 9
+14:57:48.712 Input peaks = -10, 9
+14:57:58.753 Input peaks = -8, 9
+14:58:08.799 Input peaks = -9, 9
+14:58:17.200  Command Trace TO Host BUSY TRUE
+14:58:18.860 Input peaks = -880, 880
+14:58:23.696  Command Trace TO Host BUSY FALSE
+14:58:28.918 Input peaks = -10, 10
+14:58:37.398 [Command Trace FROM host: STATE
+14:58:37.399  Command Trace TO Host STATE DISC
+14:58:38.977 Input peaks = -9, 8
+14:58:49.041 Input peaks = -9, 8
+14:58:59.080 Input peaks = -10, 10
+14:59:09.160 Input peaks = -8, 9
+14:59:11.057  Command Trace TO Host BUSY TRUE
+14:59:19.254 Input peaks = -1243, 1239
+14:59:29.301 Input peaks = -32768, 32767
+14:59:30.794 Prior-Offset= 0.210999
+14:59:30.903 EnvelopeCorrelator CorMax:MaxProd= 58.215908  J= 122
+14:59:30.904 [Acquire2ToneLeaderSymbolFraming] intIatMinError= -2
+14:59:31.097 Frame Decode type 4a 32 45 Dist 0.48 0.48 0.43 Sess ff pend 0 conn 0 lastsess 0
+14:59:31.098 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -15.280835 dB, Full -15.433098 dB, Offset= -11.648523 Hz:  MD Decode;5 Type1=H4A, Type2=H32, D1= 0.48, D2= 0.48
+14:59:31.098 poor frame type decode
+14:59:32.593 Prior-Offset= 1.653297
+14:59:32.703 EnvelopeCorrelator CorMax:MaxProd= 52.090924  J= 299
+14:59:32.703 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 2
+14:59:33.300 Frame Decode type 1e 4a fe Dist 0.56 0.55 0.57 Sess ff pend 0 conn 0 lastsess 0
+14:59:33.301 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -9.472508 dB, Full -15.766676 dB, Offset= -72.091347 Hz:  MD Decode;5 Type1=H1E, Type2=H4A, D1= 0.56, D2= 0.55
+14:59:33.301 poor frame type decode
+14:59:39.378 Input peaks = -1278, 1275
+14:59:49.459 Input peaks = -450, 472
+14:59:58.170 [Command Trace FROM host: STATE
+14:59:58.170  Command Trace TO Host STATE DISC
+14:59:59.514 Input peaks = -464, 453
+15:00:09.560 Input peaks = -449, 446
+15:00:19.602 Input peaks = -454, 456
+15:00:29.659 Input peaks = -453, 452
+15:00:39.716 Input peaks = -458, 446
+15:00:49.796 Input peaks = -453, 447
+15:00:59.839 Input peaks = -464, 459
+15:01:09.921 Input peaks = -455, 443
+15:01:19.980 Input peaks = -462, 454
+15:01:20.176 [Command Trace FROM host: STATE
+15:01:20.176  Command Trace TO Host STATE DISC
+15:01:30.037 Input peaks = -455, 463
+15:01:40.079 Input peaks = -453, 459
+15:01:50.115 Input peaks = -454, 455
+15:02:00.184 Input peaks = -466, 458
+15:02:10.261 Input peaks = -447, 457
+15:02:20.303 Input peaks = -452, 448
+15:02:30.338 Input peaks = -458, 452
+15:02:40.386 Input peaks = -458, 445
+15:02:41.289 [Command Trace FROM host: STATE
+15:02:41.289  Command Trace TO Host STATE DISC
+15:02:50.459 Input peaks = -447, 447
+15:03:00.526 Input peaks = -450, 451
+15:03:10.580 Input peaks = -445, 464
+15:03:20.624 Input peaks = -458, 458
+15:03:30.700 Input peaks = -455, 459
+15:03:40.764 Input peaks = -457, 452
+15:03:50.809 Input peaks = -443, 450
+15:04:00.847 Input peaks = -452, 449
+15:04:02.277 [Command Trace FROM host: STATE
+15:04:02.277  Command Trace TO Host STATE DISC
+15:04:10.887 Input peaks = -452, 450
+15:04:20.964 Input peaks = -450, 458
+15:04:31.003 Input peaks = -449, 452
+15:04:41.065 Input peaks = -469, 457
+15:04:51.109 Input peaks = -459, 464
+15:05:01.170 Input peaks = -455, 452
+15:05:11.231 Input peaks = -463, 455
+15:05:21.311 Input peaks = -450, 444
+15:05:23.970 [Command Trace FROM host: STATE
+15:05:23.970  Command Trace TO Host STATE DISC
+15:05:31.391 Input peaks = -455, 450
+15:05:41.448 Input peaks = -450, 448
+15:05:51.524 Input peaks = -452, 446
+15:06:01.584 Input peaks = -460, 455
+15:06:11.629 Input peaks = -463, 446
+15:06:21.691 Input peaks = -456, 457
+15:06:31.765 Input peaks = -459, 451
+15:06:41.832 Input peaks = -450, 462
+15:06:45.242 [Command Trace FROM host: STATE
+15:06:45.243  Command Trace TO Host STATE DISC
+15:06:51.889 Input peaks = -457, 467
+15:07:01.928 Input peaks = -459, 453
+15:07:11.986 Input peaks = -468, 460
+15:07:22.047 Input peaks = -465, 466
+15:07:32.088 Input peaks = -455, 448
+15:07:42.167 Input peaks = -451, 467
+15:07:52.230 Input peaks = -436, 460
+15:08:02.287 Input peaks = -457, 451
+15:08:06.668 [Command Trace FROM host: STATE
+15:08:06.670  Command Trace TO Host STATE DISC
+15:08:12.331 Input peaks = -453, 451
+15:08:22.372 Input peaks = -449, 448
+15:08:32.436 Input peaks = -464, 461
+15:08:42.512 Input peaks = -458, 454
+15:08:52.571 Input peaks = -448, 444
+15:09:02.633 Input peaks = -475, 461
+15:09:12.691 Input peaks = -447, 455
+15:09:22.773 Input peaks = -458, 459
+15:09:27.737 [Command Trace FROM host: STATE
+15:09:27.738  Command Trace TO Host STATE DISC
+15:09:32.854 Input peaks = -450, 458
+15:09:42.932 Input peaks = -446, 452
+15:09:52.991 Input peaks = -461, 452
+15:10:03.056 Input peaks = -453, 461
+15:10:13.118 Input peaks = -449, 468
+15:10:23.193 Input peaks = -461, 448
+15:10:33.236 Input peaks = -453, 453
+15:10:43.315 Input peaks = -460, 452
+15:10:49.100 [Command Trace FROM host: STATE
+15:10:49.101  Command Trace TO Host STATE DISC
+15:10:53.359 Input peaks = -453, 452
+15:11:03.459 Input peaks = -457, 452
+15:11:13.538 Input peaks = -456, 459
+15:11:23.599 Input peaks = -443, 453
+15:11:33.663 Input peaks = -448, 453
+15:11:43.702 Input peaks = -448, 448
+15:11:53.779 Input peaks = -453, 456
+15:12:03.839 Input peaks = -470, 447
+15:12:11.059 [Command Trace FROM host: STATE
+15:12:11.060  Command Trace TO Host STATE DISC
+15:12:13.915 Input peaks = -456, 450
+15:12:23.961 Input peaks = -456, 453
+15:12:34.041 Input peaks = -447, 458
+15:12:44.082 Input peaks = -464, 463
+15:12:54.162 Input peaks = -451, 451
+15:13:04.257 Input peaks = -451, 452
+15:13:14.317 Input peaks = -462, 446
+15:13:24.404 Input peaks = -476, 452
+15:13:32.727 [Command Trace FROM host: STATE
+15:13:32.727  Command Trace TO Host STATE DISC
+15:13:34.484 Input peaks = -475, 457
+15:13:44.561 Input peaks = -453, 444
+15:13:54.617 Input peaks = -446, 440
+15:14:04.682 Input peaks = -457, 454
+15:14:14.726 Input peaks = -452, 462
+15:14:24.784 Input peaks = -448, 462
+15:14:34.826 Input peaks = -464, 467
+15:14:44.864 Input peaks = -463, 453
+15:14:54.903 Input peaks = -456, 447
+15:14:55.053 [Command Trace FROM host: STATE
+15:14:55.053  Command Trace TO Host STATE DISC
+15:15:04.947 Input peaks = -457, 460
+15:15:15.023 Input peaks = -469, 453
+15:15:25.087 Input peaks = -468, 453
+15:15:35.185 Input peaks = -461, 455
+15:15:45.243 Input peaks = -458, 451
+15:15:55.289 Input peaks = -450, 454
+15:16:05.368 Input peaks = -458, 453
+15:16:15.420 Input peaks = -463, 456
+15:16:16.986 [Command Trace FROM host: STATE
+15:16:16.986  Command Trace TO Host STATE DISC
+15:16:25.483 Input peaks = -448, 453
+15:16:35.542 Input peaks = -453, 455
+15:16:45.566 Input peaks = -457, 458
+15:16:55.627 Input peaks = -451, 461
+15:17:05.664 Input peaks = -458, 451
+15:17:15.725 Input peaks = -450, 447
+15:17:25.787 Input peaks = -467, 455
+15:17:35.844 Input peaks = -443, 460
+15:17:38.857 [Command Trace FROM host: STATE
+15:17:38.857  Command Trace TO Host STATE DISC
+15:17:45.910 Input peaks = -461, 446
+15:17:55.989 Input peaks = -448, 461
+15:18:06.031 Input peaks = -457, 456
+15:18:16.105 Input peaks = -452, 449
+15:18:26.184 Input peaks = -453, 452
+15:18:36.225 Input peaks = -452, 450
+15:18:46.291 Input peaks = -450, 455
+15:18:56.352 Input peaks = -448, 465
+15:19:00.571 [Command Trace FROM host: STATE
+15:19:00.571  Command Trace TO Host STATE DISC
+15:19:06.431 Input peaks = -463, 467
+15:19:16.487 Input peaks = -467, 455
+15:19:26.566 Input peaks = -456, 453
+15:19:36.611 Input peaks = -448, 462
+15:19:46.691 Input peaks = -461, 460
+15:19:56.732 Input peaks = -458, 458
+15:20:06.793 Input peaks = -453, 465
+15:20:16.848 Input peaks = -449, 456
+15:20:23.158 [Command Trace FROM host: STATE
+15:20:23.159  Command Trace TO Host STATE DISC
+15:20:26.931 Input peaks = -470, 442
+15:20:36.989 Input peaks = -451, 477
+15:20:47.048 Input peaks = -448, 453
+15:20:57.093 Input peaks = -447, 450
+15:21:07.148 Input peaks = -468, 462
+15:21:17.210 Input peaks = -460, 456
+15:21:27.255 Input peaks = -462, 457
+15:21:37.291 Input peaks = -453, 455
+15:21:46.280 [Command Trace FROM host: STATE
+15:21:46.280  Command Trace TO Host STATE DISC
+15:21:47.349 Input peaks = -453, 472
+15:21:57.431 Input peaks = -468, 454
+15:22:07.492 Input peaks = -456, 458
+15:22:17.549 Input peaks = -451, 453
+15:22:27.617 Input peaks = -458, 461
+15:22:37.695 Input peaks = -453, 452
+15:22:47.752 Input peaks = -440, 446
+15:22:57.837 Input peaks = -447, 463
+15:23:07.868 [Command Trace FROM host: STATE
+15:23:07.870  Command Trace TO Host STATE DISC
+15:23:07.883 Input peaks = -451, 449
+15:23:17.933 Input peaks = -459, 452
+15:23:27.992 Input peaks = -451, 448
+15:23:38.051 Input peaks = -455, 454
+15:23:48.119 Input peaks = -510, 475
+15:23:58.180 Input peaks = -459, 467
+15:24:08.273 Input peaks = -459, 450
+15:24:18.301 Input peaks = -457, 443
+15:24:28.361 Input peaks = -449, 453
+15:24:29.620 [Command Trace FROM host: STATE
+15:24:29.621  Command Trace TO Host STATE DISC
+15:24:38.422 Input peaks = -452, 452
+15:24:48.498 Input peaks = -453, 467
+15:24:58.539 Input peaks = -460, 461
+15:25:08.603 Input peaks = -457, 459
+15:25:18.661 Input peaks = -442, 450
+15:25:28.738 Input peaks = -463, 444
+15:25:38.804 Input peaks = -458, 450
+15:25:48.846 Input peaks = -457, 455
+15:25:50.819 [Command Trace FROM host: STATE
+15:25:50.819  Command Trace TO Host STATE DISC
+15:25:58.922 Input peaks = -450, 456
+15:26:08.967 Input peaks = -448, 452
+15:26:19.022 Input peaks = -447, 454
+15:26:29.083 Input peaks = -450, 457
+15:26:39.162 Input peaks = -463, 447
+15:26:49.223 Input peaks = -456, 450
+15:26:59.305 Input peaks = -449, 451
+15:27:09.365 Input peaks = -453, 449
+15:27:11.982 [Command Trace FROM host: STATE
+15:27:11.983  Command Trace TO Host STATE DISC
+15:27:19.408 Input peaks = -458, 456
+15:27:29.484 Input peaks = -471, 461
+15:27:39.564 Input peaks = -453, 447
+15:27:49.644 Input peaks = -454, 452
+15:27:59.705 Input peaks = -443, 454
+15:28:09.749 Input peaks = -455, 456
+15:28:19.805 Input peaks = -457, 462
+15:28:29.850 Input peaks = -458, 450
+15:28:33.403 [Command Trace FROM host: STATE
+15:28:33.404  Command Trace TO Host STATE DISC
+15:28:39.923 Input peaks = -462, 455
+15:28:49.984 Input peaks = -454, 455
+15:29:00.031 Input peaks = -453, 462
+15:29:10.091 Input peaks = -454, 462
+15:29:20.128 Input peaks = -474, 461
+15:29:30.165 Input peaks = -457, 463
+15:29:40.227 Input peaks = -458, 458
+15:29:50.272 Input peaks = -445, 452
+15:29:54.665 [Command Trace FROM host: STATE
+15:29:54.666  Command Trace TO Host STATE DISC
+15:30:00.312 Input peaks = -461, 459
+15:30:10.387 Input peaks = -467, 448
+15:30:20.469 Input peaks = -452, 459
+15:30:30.531 Input peaks = -451, 448
+15:30:40.571 Input peaks = -453, 464
+15:30:50.608 Input peaks = -451, 457
+15:31:00.692 Input peaks = -450, 461
+15:31:10.772 Input peaks = -445, 451
+15:31:15.670 [Command Trace FROM host: STATE
+15:31:15.671  Command Trace TO Host STATE DISC
+15:31:20.830 Input peaks = -460, 463
+15:31:30.873 Input peaks = -451, 456
+15:31:40.930 Input peaks = -458, 452
+15:31:50.994 Input peaks = -457, 451
+15:32:01.051 Input peaks = -456, 454
+15:32:11.108 Input peaks = -463, 446
+15:32:21.136 Input peaks = -443, 452
+15:32:31.212 Input peaks = -454, 450
+15:32:36.608 [Command Trace FROM host: STATE
+15:32:36.609  Command Trace TO Host STATE DISC
+15:32:41.290 Input peaks = -467, 464
+15:32:51.352 Input peaks = -8023, 7469
+15:32:54.030 Prior-Offset= 0.589615
+15:32:54.128 EnvelopeCorrelator CorMax:MaxProd= 45.966444  J= 1
+15:32:54.128 [Acquire2ToneLeaderSymbolFraming] intIatMinError= -2
+15:32:54.334 Frame Decode type 43 0 ff Dist 0.51 0.56 0.56 Sess ff pend 0 conn 0 lastsess 0
+15:32:54.336 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -10.917723 dB, Full -11.026667 dB, Offset= -97.148331 Hz:  MD Decode;5 Type1=H43, Type2=H0, D1= 0.51, D2= 0.56
+15:32:54.336 poor frame type decode
+15:33:01.411 Input peaks = -769, 768
+15:33:07.653  Command Trace TO Host BUSY FALSE
+15:33:10.492  Command Trace TO Host BUSY TRUE
+15:33:11.454 Input peaks = -768, 772
+15:33:21.497 Input peaks = -795, 794
+15:33:23.213 Prior-Offset= -1.478062
+15:33:23.313 EnvelopeCorrelator CorMax:MaxProd= 61.426880  J= 103
+15:33:23.313 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+15:33:23.518 Frame Decode type 44 65 65 Dist 0.60 0.58 0.61 Sess ff pend 0 conn 0 lastsess 0
+15:33:23.519 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -8.906069 dB, Full -14.124355 dB, Offset= 31.710531 Hz:  MD Decode;5 Type1=H44, Type2=H65, D1= 0.60, D2= 0.58
+15:33:23.520 poor frame type decode
+15:33:24.532 Prior-Offset= 1.752859
+15:33:24.631 EnvelopeCorrelator CorMax:MaxProd= 62.507896  J= 103
+15:33:24.632 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+15:33:25.434 Frame Decode type 53 d0 3e Dist 0.55 0.60 0.53 Sess ff pend 0 conn 0 lastsess 0
+15:33:25.435 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -8.697023 dB, Full -12.438414 dB, Offset= 28.914083 Hz:  MD Decode;5 Type1=H53, Type2=HD0, D1= 0.55, D2= 0.60
+15:33:25.435 poor frame type decode
+15:33:28.411 Prior-Offset= 1.724560
+15:33:28.510 EnvelopeCorrelator CorMax:MaxProd= 53.901292  J= 359
+15:33:28.511 [Acquire2ToneLeaderSymbolFraming] intIatMinError= 0
+15:33:28.811 Frame Decode type 55 e9 52 Dist 0.52 0.52 0.49 Sess ff pend 0 conn 0 lastsess 0
+15:33:28.812 [Frame Type Decode Fail] Ldr; S:N(3KHz) Early= -10.836967 dB, Full -15.329703 dB, Offset= -58.893394 Hz:  MD Decode;5 Type1=H55, Type2=HE9, D1= 0.52, D2= 0.52
+15:33:28.813 poor frame type decode
+15:33:31.570 Input peaks = -810, 809
+15:33:41.635 Input peaks = -737, 733
+15:33:51.677 Input peaks = -699, 705
+15:33:57.693 [Command Trace FROM host: STATE
+15:33:57.694  Command Trace TO Host STATE DISC
+15:34:01.734 Input peaks = -718, 738
+15:34:11.797 Input peaks = -750, 751
+15:34:21.872 Input peaks = -749, 759
+15:34:31.935 Input peaks = -753, 742
+15:34:41.977 Input peaks = -748, 754
+15:34:52.036 Input peaks = -745, 747
+15:35:02.113 Input peaks = -728, 741
+15:35:12.139 Input peaks = -729, 710
+15:35:19.880 [Command Trace FROM host: STATE
+15:35:19.881  Command Trace TO Host STATE DISC
+15:35:22.234 Input peaks = -745, 725
+15:35:32.313 Input peaks = -741, 742
+15:35:42.380 Input peaks = -724, 722
+15:35:52.457 Input peaks = -709, 713
+15:36:02.517 Input peaks = -760, 761
+15:36:12.579 Input peaks = -747, 747
+15:36:22.655 Input peaks = -755, 748
+15:36:32.717 Input peaks = -711, 731
+15:36:40.676 [Command Trace FROM host: STATE
+15:36:40.676  Command Trace TO Host STATE DISC
+15:36:42.779 Input peaks = -748, 751
+15:36:52.858 Input peaks = -749, 750
+15:37:02.920 Input peaks = -732, 743
+15:37:12.976 Input peaks = -741, 721
+15:37:23.022 Input peaks = -706, 699
+15:37:33.100 Input peaks = -715, 730
+15:37:43.175 Input peaks = -746, 748
+15:37:53.258 Input peaks = -753, 748
+15:38:01.601 [Command Trace FROM host: STATE
+15:38:01.601  Command Trace TO Host STATE DISC
+15:38:03.298 Input peaks = -751, 747
+15:38:13.341 Input peaks = -752, 758
+15:38:23.405 Input peaks = -754, 752
+15:38:33.480 Input peaks = -759, 751
+15:38:43.538 Input peaks = -756, 750
+15:38:53.595 Input peaks = -754, 752
+15:39:03.666 Input peaks = -753, 757
+15:39:13.738 Input peaks = -754, 746
+15:39:22.520 [Command Trace FROM host: STATE
+15:39:22.521  Command Trace TO Host STATE DISC
+15:39:23.800 Input peaks = -742, 748
+15:39:33.866 Input peaks = -747, 746
+15:39:43.920 Input peaks = -748, 753
+15:39:53.983 Input peaks = -755, 750
+15:40:04.043 Input peaks = -749, 756
+15:40:14.126 Input peaks = -746, 742
+15:40:24.200 Input peaks = -743, 752
+15:40:34.242 Input peaks = -753, 753
+15:40:43.272 [Command Trace FROM host: STATE
+15:40:43.273  Command Trace TO Host STATE DISC
+15:40:44.283 Input peaks = -752, 752
+15:40:54.367 Input peaks = -748, 749
+15:41:04.423 Input peaks = -755, 752
+15:41:14.486 Input peaks = -748, 748
+15:41:24.567 Input peaks = -760, 760
+15:41:34.646 Input peaks = -755, 758
+15:41:44.702 Input peaks = -749, 752
+15:41:54.768 Input peaks = -756, 750
+15:42:04.789 Input peaks = -752, 753
+15:42:05.381 [Command Trace FROM host: STATE
+15:42:05.382  Command Trace TO Host STATE DISC
+15:42:14.889 Input peaks = -751, 751
+15:42:24.950 Input peaks = -750, 747
+15:42:35.031 Input peaks = -754, 758
+15:42:45.048 Input peaks = -752, 747
+15:42:55.111 Input peaks = -749, 757
+15:43:05.184 Input peaks = -752, 748
+15:43:15.264 Input peaks = -753, 757
+15:43:25.310 Input peaks = -748, 751
+15:43:26.353 [Command Trace FROM host: STATE
+15:43:26.356  Command Trace TO Host STATE DISC
+15:43:35.369 Input peaks = -746, 746
+15:43:45.453 Input peaks = -750, 755
+15:43:55.491 Input peaks = -756, 754
+15:44:05.566 Input peaks = -749, 744
+15:44:15.623 Input peaks = -753, 752
+15:44:25.686 Input peaks = -750, 749
+15:44:35.741 Input peaks = -747, 754
+15:44:45.776 Input peaks = -755, 749
+15:44:47.844 [Command Trace FROM host: STATE
+15:44:47.845  Command Trace TO Host STATE DISC
+15:44:55.804 Input peaks = -755, 750
+15:45:05.866 Input peaks = -700, 705
+15:45:15.939 Input peaks = -750, 747
+15:45:26.021 Input peaks = -749, 756
+15:45:36.087 Input peaks = -748, 755
+15:45:46.162 Input peaks = -748, 746
+15:45:56.238 Input peaks = -740, 758
+15:46:06.282 Input peaks = -749, 746
+15:46:10.024 [Command Trace FROM host: STATE
+15:46:10.025  Command Trace TO Host STATE DISC
+15:46:16.347 Input peaks = -750, 750
+15:46:26.405 Input peaks = -751, 749
+15:46:36.487 Input peaks = -752, 750
+15:46:46.526 Input peaks = -751, 754
+15:46:56.582 Input peaks = -745, 747
+15:47:06.643 Input peaks = -752, 754
+15:47:16.702 Input peaks = -746, 752
+15:47:26.765 Input peaks = -752, 750
+15:47:32.413 [Command Trace FROM host: STATE
+15:47:32.413  Command Trace TO Host STATE DISC
+15:47:36.828 Input peaks = -752, 756
+15:47:46.886 Input peaks = -720, 720
+15:47:56.966 Input peaks = -747, 746
+15:48:07.030 Input peaks = -734, 736
+15:48:17.083 Input peaks = -731, 710
+15:48:27.127 Input peaks = -748, 756
+15:48:37.209 Input peaks = -741, 747
+15:48:47.250 Input peaks = -753, 752
+15:48:55.143 [Command Trace FROM host: STATE
+15:48:55.145  Command Trace TO Host STATE DISC
+15:48:57.326 Input peaks = -713, 711
+15:49:07.390 Input peaks = -749, 749
+15:49:17.469 Input peaks = -757, 757
+15:49:27.548 Input peaks = -748, 758
+15:49:37.626 Input peaks = -755, 752
+15:49:47.708 Input peaks = -755, 751
+15:49:57.753 Input peaks = -750, 754
+15:50:07.794 Input peaks = -750, 752
+15:50:17.832 Input peaks = -755, 751
+15:50:18.322 [Command Trace FROM host: STATE
+15:50:18.322  Command Trace TO Host STATE DISC
+15:50:27.891 Input peaks = -753, 760
+15:50:37.971 Input peaks = -748, 750
+15:50:48.029 Input peaks = -754, 752
+15:50:58.085 Input peaks = -748, 751
+15:51:08.115 Input peaks = -750, 746
+15:51:18.185 Input peaks = -752, 749
+15:51:28.240 Input peaks = -748, 749
+15:51:38.323 Input peaks = -742, 739
+15:51:40.262 [Command Trace FROM host: STATE
+15:51:40.262  Command Trace TO Host STATE DISC
+15:51:48.382 Input peaks = -762, 747
+15:51:58.441 Input peaks = -754, 750
+15:52:08.484 Input peaks = -748, 748
+15:52:18.566 Input peaks = -746, 754
+15:52:28.602 Input peaks = -752, 753
+15:52:28.624 GUI Connection lost
+15:52:38.664 Input peaks = -751, 748
+15:52:48.699 Input peaks = -748, 752
