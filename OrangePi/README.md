@@ -24,7 +24,8 @@ without issues (VARA poses a challenge in the pure 64bit environment).
 ## VNC
 While ssh and X11 works excellent, VNC is often used and in many cases an excellent
 way of connecting. With Orange Pi some extra steps are needed.
-```apt install tightvncserver
+```
+   apt install tightvncserver
    mkdir /etc/tightvnc
    nano  /etc/tightvnc/vncserver.users
    cp vncserver@:1.service /etc/systemd/system/vncserver@:1.service
