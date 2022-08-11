@@ -54,7 +54,7 @@ The following packages need to be installed to build the programs:
 Instructions to build are given by the different packages, but
 generally ./configure, make and make install.
 Hamlib's rigctl can complain about missing library, libhamlib.so.4, this is found 
-at /usr/local/lib/, just ```ldconfig /usr/local/lib/``` to fix it.
+at /usr/local/lib/, just run ```ldconfig /usr/local/lib/``` to fix it.
 
 
 ## ARDOP 
