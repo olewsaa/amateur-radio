@@ -1,6 +1,6 @@
 # Orange Pi 4
 * [Introduction](#Introduction)
-* [flrig, fldigi, hamlib](#flrig, fldigi, hamlib)
+* [flrig-fldigi-hamlib](#flrig, fldigi, hamlib)
 * [ARDOP](#ARDOP)
 * [pat](#pat)
 * [VARA](#VARA)
