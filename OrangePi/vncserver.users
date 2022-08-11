@@ -1,0 +1,4 @@
+# This file assigns users to specific VNC display numbers.
+# The syntax is =. E.g.:
+#
+:1=ole

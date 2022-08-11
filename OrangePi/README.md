@@ -1,5 +1,6 @@
 # Orange Pi 4
 * [Introduction](#Introduction)
+* [VNC](#VNC)
 * [Hamutils](#Hamutils)
 * [ARDOP](#ARDOP)
 * [pat](#pat)
@@ -19,6 +20,22 @@ compile just out of the box. Some libraries and extras are not
 installed by default, but apt search and install fix all of
 these. Common applications like flrig, fldigi, hamlib, ardopc etc build
 without issues (VARA poses a challenge in the pure 64bit environment).
+
+## VNC
+While ssh and X11 works excellent, VNC is often used and in many cases an excellent
+way of connecting. With Orange Pi some extra steps are needed.
+```apt install tightvncserver
+   mkdir /etc/tightvnc
+   nano  /etc/tightvnc/vncserver.users
+   cp vncserver@:1.service /etc/systemd/system/vncserver@:1.service
+```   
+Test with:
+```systemctl start vncserver@:1 --now```
+The server listen on port 5901, this might need to be added in the address giver in the client, in my case 192.168.0.172:5901. If everything works enable the service :
+```systemctl enable vncserver@:1 --now```
+I use the realVNC client which works fine with the tight VNC server. When using a 
+laptop the resolution might not be optimal at 1920x1200, review the 
+vncserver@:1.service file and update resolution as needed. 
 
 ## Hamutils
 The utils flrig, fldigi, hamlib are needed to run the rig.
