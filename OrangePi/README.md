@@ -13,7 +13,7 @@ with a different ARM processor, but still binary compatible
 (AFAIK). The OS for the 4 variant is 64 bit with less support for 32
 bit alternatives. Both [Ubuntu and Debian](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-4.html) 
 (plus some more like Armbian, Android etc are supported). I have selected 
-[Ubuntu](https://drive.google.com/file/d/1ckq2YF0bnvmjxvw3tUyfZFVVle8N4Zyf/view?usp=sharing).
+[Ubuntu 22](https://drive.google.com/file/d/12C7mLMsiMOmClAoYMlWcZ5xnpRniBINq/view?usp=sharing), [download](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-4-LTS.html).
 
 The build system for 64 bit is working as expected and most codes just
 compile just out of the box. Some libraries and extras are not
@@ -29,7 +29,9 @@ way of connecting. With Orange Pi some extra steps are needed.
    mkdir /etc/tightvnc
    nano  /etc/tightvnc/vncserver.users
    cp vncserver@:1.service /etc/systemd/system/vncserver@:1.service
-```   
+``` 
+Set password for user, ```vncpasswd```.
+
 Test with:
 ```systemctl start vncserver@:1 --now```
 The server listen on port 5901, this might need to be added in the address giver in the client, in my case 192.168.0.172:5901. If everything works enable the service :
@@ -57,10 +59,11 @@ ARDOP variants, I used ARDOPC (it's a bit unclear which version to use).
 I have made a [copy](https://github.com/olewsaa/amateur-radio/tree/main/OrangePi).
 
 There is a makefile and issuing this makefile built the ARDOPC without issues under 
-«focal», but under «jammy» you need to add the flag ```-fcommon``` to the CFLAGS.
-It runs and display different audio devices, I've included a pre build binary. 
-Testing remain to validate the correctness of the build. Some more documentation 
-should be prepared.
+«focal» (20), but under «jammy» (22) you need to add the flag ```-fcommon``` 
+to the CFLAGS.
+
+It runs and display different audio devices so it should be working. I've included 
+a pre build binary. Testing remain to validate the correctness of the build. Some more documentation should be prepared.
 
 
 ## pat
