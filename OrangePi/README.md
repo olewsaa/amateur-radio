@@ -40,6 +40,7 @@ I use the realVNC client which works fine with the tight VNC server. When using 
 laptop the resolution might not be optimal at 1920x1200, review the 
 vncserver@:1.service file and update resolution as needed. 
 
+
 ## Hamutils
 The utils flrig, fldigi, hamlib are needed to run the rig.
 
@@ -59,7 +60,7 @@ ARDOP variants, I used ARDOPC (it's a bit unclear which version to use).
 I have made a [copy](https://github.com/olewsaa/amateur-radio/tree/main/OrangePi).
 
 There is a makefile and issuing this makefile built the ARDOPC without issues under 
-«focal» (20), but under «jammy» (22) you need to add the flag ```-fcommon``` 
+«focal» (20.04), but under «jammy» (22.04) you need to add the flag ```-fcommon``` 
 to the CFLAGS.
 
 It runs and display different audio devices so it should be working. I've included 
