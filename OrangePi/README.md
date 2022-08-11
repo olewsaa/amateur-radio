@@ -1,6 +1,6 @@
 # Orange Pi 4
 * [Introduction](#Introduction)
-* [flrig-fldigi-hamlib](#flrig, fldigi, hamlib)
+* [flrig fldigi hamlib](#flrig,fldigi,hamlib)
 * [ARDOP](#ARDOP)
 * [pat](#pat)
 * [VARA](#VARA)
@@ -20,7 +20,7 @@ installed by default, but apt search and install fix all of
 these. Common applications like flrig, fldigi, hamlib, ardopc etc build
 without issues (VARA poses a challenge in the pure 64bit environment).
 
-## flrig, fldigi, hamlib
+## flrig,fldigi,hamlib
 The following packages need to be installed to build the programs:
 ```build-essential libfltk1.1-dev:arm64 libfltk1.3:arm64 libfltk-cairo1.3:arm64 libfltk-forms1.3:arm64 libfltk-gl1.3:arm64 libfltk-images1.3:arm64 libfltk1.3-dev:arm64 libudev-dev:arm64 libpng-dev:arm64 libsamplerate0-dev:arm64 libogg-dev:arm64 libflac-dev:arm64 libvorbis-dev:arm64 libsndfile1-dev:arm64 libjack0:arm64 libasound2-dev:arm64 libjack-dev:arm64 libportaudio2:arm64 libportaudiocpp0:arm64 portaudio19-dev:arm64``` 
 
