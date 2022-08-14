@@ -26,4 +26,4 @@ ExecStart=/usr/bin/vncserver  -geometry 1920x1200  -alwaysshared
 ExecStop=/usr/bin/vncserver -kill %i
 
 [Install]
-WantedBy=multi-user.target 
+WantedBy=multi-user.target
