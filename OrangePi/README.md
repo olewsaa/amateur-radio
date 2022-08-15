@@ -113,17 +113,19 @@ sudo apt --fix-broken install
 ## Transfer to eMMC
 A script to copy the installation on the TF card is needed. This scipt
 came with the Ubuntu 20.04 «focal» distro, but works fine with «jammy» 
-also. I have included them in my repo.  Just copy the files and run the 
+also. I have included them (nand-sata-install & exclude.txt) in my repo.  
+Just copy the files and run the script (you maybe need to set it executable
+using ```chmod +x /usr/sbin/nand-sata-install```
 
 ```
 cp nand-sata-install /usr/sbin/
 cp exclude.txt /usr/lib/nand-sata-install/exclude.txt
 ```
 
-then execute the scropt and select:
-* Boot from eMMC - system on eMMC
+then execute the script and select:
+* 2 Boot from eMMC - system on eMMC
 * This script will erase your eMMC. Continue? Yes
-* ext4
+* 1 ext4
 * <Power off> 
 
 System will halt, turn power off end remove thr TF card and turn power 
