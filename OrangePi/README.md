@@ -6,7 +6,7 @@
 * [pat](#pat)
 * [VARA](#VARA)
 * [WSJTX](#WSJTX)
-* [Transfer-to-eMMC](#eMMC)
+* [Transfer to eMMC](#eMMC)
 
 ## Introduction
 Orange Pi is a set of small Raspberry Pi like single board
