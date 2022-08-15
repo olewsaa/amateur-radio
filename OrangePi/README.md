@@ -116,7 +116,7 @@ sudo apt --fix-broken install
 ```
 
 
-## Transfer to eMMC
+## Transfer-to-eMMC
 A script to copy the installation on the TF card is needed. This scipt
 came with the Ubuntu 20.04 «focal» distro, but works fine with «jammy» 
 also. I have included them (nand-sata-install & exclude.txt) in my repo.  
