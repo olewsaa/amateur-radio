@@ -105,5 +105,3 @@ Some extra packages are needed.
 ```sudo apt install libboost-log1.74.0
 sudo dpkg --install wsjtx_2.5.4_arm64.deb
 sudo apt --fix-broken install```
-
-
