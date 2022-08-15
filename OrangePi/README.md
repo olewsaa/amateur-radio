@@ -22,6 +22,11 @@ installed by default, but apt search and install fix all of
 these. Common applications like flrig, fldigi, hamlib, ardopc etc build
 without issues (VARA poses a challenge in the pure 64bit environment).
 
+The file install-OrangePI4.txt provide a cut and paste installation 
+script. It cannot be run as a script because it involved some manual
+steps. These steps could be automated, but it's a one-time step.
+
+
 ## VNC
 While ssh and X11 works excellent, VNC is often used and in many cases an excellent
 way of connecting. With Orange Pi some extra steps are needed.
