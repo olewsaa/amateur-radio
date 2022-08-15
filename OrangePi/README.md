@@ -103,9 +103,11 @@ The WSJTX application cam be installed using a
 
 Some extra packages are needed. 
 
-```sudo apt install libboost-log1.74.0
+```
+sudo apt install libboost-log1.74.0
 sudo dpkg --install wsjtx_2.5.4_arm64.deb
-sudo apt --fix-broken install```
+sudo apt --fix-broken install
+```
 
 
 ## Transfer to eMMC
@@ -113,8 +115,10 @@ A script to copy the installation on the TF card is needed. This scipt
 came with the Ubuntu 20.04 «focal» distro, but works fine with «jammy» 
 also. I have included them in my repo.  Just copy the files and run the 
 
-```cp nand-sata-install /usr/sbin/
-cp exclude.txt /usr/lib/nand-sata-install/exclude.txt```
+```
+cp nand-sata-install /usr/sbin/
+cp exclude.txt /usr/lib/nand-sata-install/exclude.txt
+```
 
 then execute the scropt and select:
 * Boot from eMMC - system on eMMC
