@@ -126,7 +126,7 @@ then execute the script and select:
 * 2 Boot from eMMC - system on eMMC
 * This script will erase your eMMC. Continue? Yes
 * 1 ext4
-* <Power off> 
+* Power off 
 
 System will halt, turn power off end remove thr TF card and turn power 
 on and the system should boot and come up with the embedded multimedia
