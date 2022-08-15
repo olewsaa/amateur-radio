@@ -77,7 +77,8 @@ correctness of the build. Some more documentation should be prepared.
 ## pat
 There is a [64 bit build of pat](https://harenber.web.cern.ch/harenber/pat_0.12.1_arm64.deb).
 This install nicely under Ubuntu on the Orange Pi 4. It runs and seems to be 
-working OK, but validation is pending.
+working OK, but validation is pending. Another option is to just clone
+the git [repo](https://github.com/la5nta/pat) and build it locally.
 
 ## VARA
 VARA is another issue. As the Orange Pi 4 is a 64 bit system and the
@@ -105,3 +106,24 @@ Some extra packages are needed.
 ```sudo apt install libboost-log1.74.0
 sudo dpkg --install wsjtx_2.5.4_arm64.deb
 sudo apt --fix-broken install```
+
+
+## Transfer to eMMC
+A script to copy the installation on the TF card is needed. This scipt
+came with the Ubuntu 20.04 «focal» distro, but works fine with «jammy» 
+also. I have included them in my repo.  Just copy the files and run the 
+
+```cp nand-sata-install /usr/sbin/
+cp exclude.txt /usr/lib/nand-sata-install/exclude.txt```
+
+then execute the scropt and select:
+* Boot from eMMC - system on eMMC
+* This script will erase your eMMC. Continue? Yes
+* ext4
+* <Power off> 
+
+System will halt, turn power off end remove thr TF card and turn power 
+on and the system should boot and come up with the embedded multimedia
+card leaving the TF slot available for removable storage.
+
+
