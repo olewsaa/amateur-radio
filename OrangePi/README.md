@@ -6,7 +6,7 @@
 * [pat](#pat)
 * [VARA](#VARA)
 * [WSJTX](#WSJTX)
-* [Transfer-to-eMMC](#transfer to eMMC)
+* [Transfer-to-eMMC](#eMMC)
 
 ## Introduction
 Orange Pi is a set of small Raspberry Pi like single board
@@ -116,7 +116,7 @@ sudo apt --fix-broken install
 ```
 
 
-## Transfer-to-eMMC
+## eMMC
 A script to copy the installation on the TF card is needed. This scipt
 came with the Ubuntu 20.04 «focal» distro, but works fine with «jammy» 
 also. I have included them (nand-sata-install & exclude.txt) in my repo.  
