@@ -114,8 +114,8 @@ sudo apt --fix-broken install
 A script to copy the installation on the TF card is needed. This scipt
 came with the Ubuntu 20.04 «focal» distro, but works fine with «jammy» 
 also. I have included them (nand-sata-install & exclude.txt) in my repo.  
-Just copy the files and run the script (you maybe need to set it executable
-using ```chmod +x /usr/sbin/nand-sata-install```
+Just copy the two files and run the script (you maybe need to set it executable
+using ```chmod +x /usr/sbin/nand-sata-install```).
 
 ```
 cp nand-sata-install /usr/sbin/
