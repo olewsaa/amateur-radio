@@ -12,7 +12,7 @@ onboard Algol.
 ### Alternative to Raspberry Pi 
 The directory OrangePi contain files and information regarding 
 using Orange Pi single board computers as alternative to Raspberry Pi.
-See [Orange homepage](http://orangepi.org) for detailed information.
+See [Orange homepage](http://www.orangepi.org/) for detailed information.
 The range of offerings are far greater then with Raspberry and supply is
 not an issue. 
 
