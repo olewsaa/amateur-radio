@@ -114,6 +114,12 @@ sudo apt install libboost-log1.74.0
 sudo dpkg --install wsjtx_2.6.1_arm64.deb
 sudo apt --fix-broken install
 ```
+In some cases the audio interface selction are blank, this is caused by a missing package, this might help:
+
+```apt install libqt5multimedia5-plugins```
+
+After installing this package a long list of audio devices becomes available. The list is long and it might require some trial and error to find the correct device.  
+
 
 
 ## eMMC
