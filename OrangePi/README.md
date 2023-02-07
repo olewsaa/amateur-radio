@@ -105,7 +105,7 @@ So far I have put VARA on hold.
 
 ## WSJTX
 The WSJTX application cam be installed using a 
-[package file](https://physics.princeton.edu/pulsar/k1jt/wsjtx_2.5.4_arm64.deb)
+[package file](http://pulsar.princeton.edu/wsjtx_2.5.4_armhf.deb)
 
 Some extra packages are needed. 
 
