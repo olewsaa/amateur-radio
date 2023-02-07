@@ -105,7 +105,7 @@ So far I have put VARA on hold.
 
 ## WSJTX
 The WSJTX application cam be installed using a 
-[package file 32 bit](https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_armhf.deb/download)
+[package file 32 bit](https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_armhf.deb/download) or 
 [package file 64 bit](https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_arm64.deb/download)
 
 Some extra packages are needed. 
