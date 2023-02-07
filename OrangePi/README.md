@@ -105,13 +105,14 @@ So far I have put VARA on hold.
 
 ## WSJTX
 The WSJTX application cam be installed using a 
-[package file](http://pulsar.princeton.edu/wsjtx_2.5.4_armhf.deb)
+[package file 32 bit](https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_armhf.deb/download)
+[package file 64 bit](https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_arm64.deb/download)
 
 Some extra packages are needed. 
 
 ```
 sudo apt install libboost-log1.74.0
-sudo dpkg --install wsjtx_2.5.4_arm64.deb
+sudo dpkg --install wsjtx_2.6.1_arm64.deb
 sudo apt --fix-broken install
 ```
 
