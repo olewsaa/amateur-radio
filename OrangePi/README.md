@@ -135,7 +135,7 @@ then execute the script and select:
 * 1 ext4
 * Power off 
 
-System will halt, turn power off end remove thr TF card and turn power 
+System will halt, turn power off end remove the TF card and turn power 
 on and the system should boot and come up with the embedded multimedia
 card leaving the TF slot available for removable storage.
 
