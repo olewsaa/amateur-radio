@@ -6,6 +6,7 @@
 * [pat](#pat)
 * [VARA](#VARA)
 * [WSJTX](#WSJTX)
+* [JS8Call] (#JS8Call
 * [Transfer to eMMC](#eMMC)
 
 ## Introduction
@@ -120,6 +121,12 @@ In some cases the audio interface selction are blank, this is caused by a missin
 
 After installing this package a long list of audio devices becomes available. The list is long and it might require some trial and error to find the correct device.  
 
+##JS8Call
+Unfortunately the download [links](http://files.js8call.com/latest.html) 
+for JS8Call do not (at time of writing) list a an ARM 64-bit versjon, only js8call_2.2.0_armhf.deb which is
+a 32-bit version.
+
+For OrangePi which is 64-bit it need to be built from [source](http://files.js8call.com/2.2.0/js8call-2.2.0.tgz). 
 
 
 ## eMMC
