@@ -13,10 +13,11 @@
 Orange Pi is a set of small Raspberry Pi like single board
 computers. While similar to RPi it's not directly compatible. It comes
 with a different ARM processor, but still binary compatible
-(AFAIK). The OS for the 4 variant is 64 bit with less support for 32
-bit alternatives. Both [Ubuntu and Debian](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-4.html) 
+(AFAIK). The OS for the 4 variant is 64 bit with less support for 32-bit alternatives. 
+Both [Ubuntu and Debian](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-4.html) 
 (plus some more like Armbian, Android etc are supported). I have selected 
-[Ubuntu 22](https://drive.google.com/file/d/12C7mLMsiMOmClAoYMlWcZ5xnpRniBINq/view?usp=sharing), [download](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-4-LTS.html).
+[Ubuntu 22](https://drive.google.com/file/d/12C7mLMsiMOmClAoYMlWcZ5xnpRniBINq/view?usp=sharing), 
+[OrangePi4](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-pi-4-LTS.html).
 
 The build system for 64 bit is working as expected and most codes just
 compile just out of the box. Some libraries and extras are not
@@ -28,6 +29,8 @@ The file install-OrangePI4.txt provide a cut and paste installation
 script. It cannot be run as a script because it involved some manual
 steps. These steps could be automated, but it's a one-time step.
 
+My setup is using [OrangePi 4](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-4-LTS.html) with
+Ubuntu 22.04.1 LTS (Jammy Jellyfish).
 
 ## VNC
 While ssh and X11 works excellent, VNC is often used and in many cases an excellent
@@ -126,7 +129,13 @@ Unfortunately the download [links](http://files.js8call.com/latest.html)
 for JS8Call do not (at time of writing) list a an ARM 64-bit versjon, only js8call_2.2.0_armhf.deb which is
 a 32-bit version.
 
+Installation from source is relatively straightforward. The tar file content directory need to be renamned to src. 
+Apart from that follow the instructions in the INSTALL file in the src directory. There are some prerequsites, 
+(Qt5, FFTW3 and Hamlib) those need to installed, I built hamlib from source hence both source and installation were already present. 
+
 For OrangePi which is 64-bit it need to be built from [source](http://files.js8call.com/2.2.0/js8call-2.2.0.tgz). 
+My build for this combination is available : 
+[js8call_2.2.1-devel_arm64.deb](https://github.com/olewsaa/amateur-radio/blob/main/OrangePi/js8call_2.2.1-devel_arm64.deb).
 
 
 ## eMMC
