@@ -6,7 +6,7 @@
 * [pat](#pat)
 * [VARA](#VARA)
 * [WSJTX](#WSJTX)
-* [JS8Call] (#JS8Call
+* [JS8Call](#JS8Call)
 * [Transfer to eMMC](#eMMC)
 
 ## Introduction
