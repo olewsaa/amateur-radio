@@ -59,4 +59,13 @@ sudo apt install libboost-log1.74.0
 sudo dpkg --install wsjtx_2.5.4_arm64.deb
 sudo apt --fix-broken install
 
+# JS8Call
+wget http://files.js8call.com/2.2.0/js8call-2.2.0.tgz
+mkdir js8call; mv js8call-2.2.0.tgz js8call
+cd js8call/; tar xf js8call-2.2.0.tgz
+mv js8call src/
+mkdir build ; cd build
+cmake -D CMAKE_PREFIX_PATH=~/hamlib-4.4 -D CMAKE_INSTALL_PREFIX=~/js8call-2.2.0 ../src
+make package
+sudo dpkg --install /home/ole/js8call/build/js8call_2.2.1-devel_arm64.deb
 
