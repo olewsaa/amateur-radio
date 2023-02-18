@@ -68,6 +68,8 @@ generally ./configure, make and make install.
 Hamlib's rigctl can complain about missing library, libhamlib.so.4 or symbol(s)
 the library is installed at /usr/local/lib/, just run 
 ```sudo ldconfig /usr/local/lib/``` to fix it.
+I also used this configure line to get version 4.4 to work :
+```./configure --disable-libtool-lock  --enable-shared=no -enable-static```
 
 
 ## ARDOP 
