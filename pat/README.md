@@ -186,16 +186,20 @@ The pat config file need to have a vara section, I use the following:
 
 ### Hamlib
 
-Become root and install hamlib. Hamlib do not support Xiegu G90 in the 4.4 version.
+Become root and install hamlib. Hamlib do not support Xiegu G90 in the 4.4 version, but 4.5.4 does
+
+*3088  Xiegu  G90  20230109.4  Stable RIG_MODEL_G90*
+
+However, flrig have other benefits, hence I use flrig to control the radio.
 
      sudo -i
      mkdir hamlib; cd hamlib
-     https://github.com/Hamlib/Hamlib/releases/download/4.4/hamlib-4.4.tar.gz
+     wget https://sourceforge.net/projects/hamlib/files/hamlib/4.5.4/hamlib-4.5.4.tar.gz
 
 Building,
 
-     tar xf hamlib-4.4.tar.gz
-     cd hamlib-4.4
+     tar xf hamlib-4.5.4.tar.gz
+     cd hamlib-4.5.4
      ./configure
      make
      make install
@@ -205,7 +209,8 @@ Back as your favourite user,
 
      rigctl -l| grep -i flrig
 
-*4  FLRig  FLRig  202101014.0  Stable  RIG_MODEL_FLRIG*
+*4  FLRig  FLRig  20221109.0   Stable  RIG_MODEL_FLRIG*
+
 Entry number 4, stable support.
 
 Hamlib support flrig and you can control your rig via flrig.
