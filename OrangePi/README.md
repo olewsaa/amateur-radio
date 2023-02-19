@@ -58,18 +58,17 @@ The utils flrig, fldigi, hamlib are needed to run the rig.
 The following packages need to be installed to build the programs (the build-essential is normally already installed) :
 ```libfltk1.3 libfltk1.3-dev libudev-dev:arm64 libpng-dev:arm64 libsamplerate0-dev:arm64 libogg-dev:arm64 libflac-dev:arm64 libvorbis-dev:arm64 libsndfile1-dev:arm64 libjack0:arm64 libasound2-dev:arm64 libjack-dev:arm64 libportaudio2:arm64 libportaudiocpp0:arm64 portaudio19-dev:arm64``` 
 
-* [hamlib](https://github.com/Hamlib/Hamlib/releases/download/4.4/hamlib-4.4.tar.gz)
+* [hamlib](https://github.com/Hamlib/Hamlib/releases/download/4.5.4/hamlib-4.5.4.tar.gz)
 * [flrig](http://www.w1hkj.com/files/flrig/flrig-1.4.7.tar.gz)
 * [fldigi](http://www.w1hkj.com/files/fldigi/fldigi-4.1.23.tar.gz)
 
 
 Instructions to build are given by the different packages, but
 generally ./configure, make and make install.
-Hamlib's rigctl can complain about missing library, libhamlib.so.4 or symbol(s)
+Hamlib's rigctl can complain about missing library, libhamlib.so.4 or symbol(s), like lock_mode, debugmsgsave or others.
 the library is installed at /usr/local/lib/, just run 
 ```sudo ldconfig /usr/local/lib/``` to fix it.
-I also used this configure line to get version 4.4 to work :
-```./configure --disable-libtool-lock  --enable-shared=no -enable-static```
+
 
 
 ## ARDOP 
