@@ -203,7 +203,9 @@ Building,
      ./configure
      make
      make install
-     ldconfig`
+     ldconfig
+
+If still isses with missing symbols try `ldconfig /usr/local/lib/`
 
 Back as your favourite user,
 
@@ -221,7 +223,7 @@ Test, run interactively from the shell:
      rigctl -m 4 M USB 2700
      rigctl -m 4 M LSB 2400
      rigctl -m 4 T 1
-     rigctl -m 4 T 0`
+     rigctl -m 4 T 0
 
 Documentation for [Hamlib](https://github.com/Hamlib/Hamlib/wiki/Documentation)
 
