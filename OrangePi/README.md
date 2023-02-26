@@ -94,19 +94,19 @@ the git [repo](https://github.com/la5nta/pat) and build it locally.
 ## VARA
 VARA is another issue. As the Orange Pi 4 is a 64 bit system and the
 Orange Pi maker insist on running a 64 bit OS and the support for 32 bit
-build support is rather limited. Box86 build but running applications
-run into trouble. Likewise trying to run Wine also encounter issues. 
-In due time these issues will be overcome. 
+build support is rather limited.
 
-It's clear that getting VARA to run require some effort. The lack of
-Raspberry or Orange Pi support is a major issue. 
+Working with the author of the install script we are now very close to a solution.
+The VARA HF and VARA FM install, start and run. Still not tested with a full pat and radio setup. 
+Just download the script:
 
-Being forced to use both an emulator, box86 for fake x86 (32 bit) architecture 
-and a Linux MS windows alike, wine to get VARA running is not a sustainable
-solution. 
-
-So far I have put VARA on hold. 
-
+```
+wget https://raw.githubusercontent.com/WheezyE/Winelink/main/install_winelink.sh
+chmod +x install_winelink.sh
+./install_winelink.sh vara_only
+```
+If you want everything just issue the script without the «vara_only».
+With luck everything should work now and a workable alternative to Raspberry Pi 4 is available.
 
 ## WSJTX
 The WSJTX application can be installed using a 
