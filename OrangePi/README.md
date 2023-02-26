@@ -105,8 +105,10 @@ wget https://raw.githubusercontent.com/WheezyE/Winelink/main/install_winelink.sh
 chmod +x install_winelink.sh
 ./install_winelink.sh vara_only
 ```
-If you want everything just issue the script without the «vara_only».
-With luck everything should work now and a workable alternative to Raspberry Pi 4 is available.
+If you want everything just issue the script without the «vara_only». The installation take a fair amount of time
+to complete.
+
+With luck everything should work now and a workable alternative to Raspberry Pi 4 is possible.
 
 ## WSJTX
 The WSJTX application can be installed using a 
