@@ -89,7 +89,8 @@ correctness of the build. Some more documentation should be prepared.
 There is a [64 bit build of pat](https://github.com/la5nta/pat/releases/download/v0.13.1/pat_0.13.1_linux_arm64.deb).
 This install nicely under Ubuntu on the Orange Pi 4. It runs and seems to be 
 working OK, but validation is pending. Another option is to just clone
-the git [repo](https://github.com/la5nta/pat) and build it locally.
+the git [repo](https://github.com/la5nta/pat) and build it locally. For more look at the
+[RPi4 pat installation](https://github.com/olewsaa/amateur-radio/tree/main/pat).
 
 ## VARA
 VARA is another issue. As the Orange Pi 4 is a 64 bit system and the
@@ -146,7 +147,9 @@ The tar file is the src directory,
 
 My build for this combination is available : 
 [js8call_2.2.1-devel_arm64.deb](https://github.com/olewsaa/amateur-radio/blob/main/OrangePi/js8call_2.2.1-devel_arm64.deb),
-currently not working.
+download using wget https://github.com/olewsaa/amateur-radio/blob/main/OrangePi/js8call_2.2.1-devel_arm64.deb?raw=true ,
+maybe a rename is needed, to js8call_2.2.1-devel_arm64.deb.
+Install with ```dpkg -i js8call_2.2.1-devel_arm64.deb```
 
 
 ## eMMC
