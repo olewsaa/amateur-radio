@@ -133,8 +133,12 @@ for JS8Call do not (at time of writing) list a an ARM 64-bit versjon, only js8ca
 a 32-bit version.
 
 Installation from source is relatively straightforward. The tar file content directory need to be renamned to src. 
-Apart from that follow the instructions in the INSTALL file in the src directory. There are some prerequsites, 
-(cmake, gfortran, Qt5, FFTW3 and Hamlib) those need to installed, I built hamlib from source hence both source and installation were already present. 
+Apart from that follow the instructions in the INSTALL file in the src directory. There are some prerequsites,
+```
+sudo apt install cmake gfortran libfftw3-dev libboost-log1.74.0\
+libqt5multimedia5-plugins libqt5gstreamer-dev install qtmultimedia5-dev libqt5serialport5-dev 
+```
+I built hamlib from source hence both source and installation were already present. 
 
 For OrangePi which is 64-bit it need to be built from [source](http://files.js8call.com/2.2.0/js8call-2.2.0.tgz).
 The tar file is the src directory, 
