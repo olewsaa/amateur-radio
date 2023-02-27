@@ -60,7 +60,7 @@ The following packages need to be installed to build the programs (the build-ess
 
 * [hamlib](https://github.com/Hamlib/Hamlib/releases/download/4.5.4/hamlib-4.5.4.tar.gz)
 * [flrig](http://www.w1hkj.com/files/flrig/flrig-1.4.7.tar.gz)
-* [fldigi](http://www.w1hkj.com/files/fldigi/fldigi-4.1.23.tar.gz)
+* [fldigi](http://www.w1hkj.com/files/fldigi/fldigi-4.1.25.tar.gz)
 
 
 Instructions to build are given by the different packages, but
