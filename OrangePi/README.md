@@ -136,9 +136,14 @@ Installation from source is relatively straightforward. The tar file content dir
 Apart from that follow the instructions in the INSTALL file in the src directory. There are some prerequsites, 
 (Qt5, FFTW3 and Hamlib) those need to installed, I built hamlib from source hence both source and installation were already present. 
 
-For OrangePi which is 64-bit it need to be built from [source](http://files.js8call.com/2.2.0/js8call-2.2.0.tgz). 
+For OrangePi which is 64-bit it need to be built from [source](http://files.js8call.com/2.2.0/js8call-2.2.0.tgz).
+The tar file is the src directory, 
+```mv js8call src; mkdir js8call; mv src js8call; cd js8call```
+The INSTALL file give more information.
+
 My build for this combination is available : 
-[js8call_2.2.1-devel_arm64.deb](https://github.com/olewsaa/amateur-radio/blob/main/OrangePi/js8call_2.2.1-devel_arm64.deb).
+[js8call_2.2.1-devel_arm64.deb](https://github.com/olewsaa/amateur-radio/blob/main/OrangePi/js8call_2.2.1-devel_arm64.deb),
+currently not working.
 
 
 ## eMMC
