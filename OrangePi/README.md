@@ -86,7 +86,7 @@ correctness of the build. Some more documentation should be prepared.
 
 
 ## pat
-There is a [64 bit build of pat](https://harenber.web.cern.ch/harenber/pat_0.12.1_arm64.deb).
+There is a [64 bit build of pat](https://github.com/la5nta/pat/releases/download/v0.13.1/pat_0.13.1_linux_arm64.deb).
 This install nicely under Ubuntu on the Orange Pi 4. It runs and seems to be 
 working OK, but validation is pending. Another option is to just clone
 the git [repo](https://github.com/la5nta/pat) and build it locally.
