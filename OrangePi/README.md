@@ -34,7 +34,7 @@ Ubuntu 22.04.1 LTS (Jammy Jellyfish).
 
 ## VNC
 While ssh and X11 works excellent, VNC is often used and in many cases an excellent
-way of connecting. With Orange Pi some extra steps are needed.
+way of connecting. With Orange Pi some extra steps are needed. Both vncserver.users and vncserver@:1.servic are found in this repo.
 ```
    apt install tightvncserver
    mkdir /etc/tightvnc
