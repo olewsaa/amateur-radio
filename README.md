@@ -23,7 +23,8 @@ good alternative.  It comes with a faster processor build in 16 GiB
 memory for OS, no need for a memory card after the initial installation. 
 The Orange Pi 4 might be overkill, there are smaller boards like Orange Pi 3 or
 even smaller that should be powerful enough to run the pat and radio software. 
-It runs a 64 bit OS which make installing 32 bits executable an issue.
+The only issue is VARA with its x86 emulation and Wine for windows 
+environment, which is a bit demanding. 
 
 
 

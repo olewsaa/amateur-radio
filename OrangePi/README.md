@@ -32,6 +32,11 @@ steps. These steps could be automated, but it's a one-time step.
 My setup is using [OrangePi 4](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-4-LTS.html) with
 Ubuntu 22.04.1 LTS (Jammy Jellyfish).
 
+An Orange Pi 3 LTS might be capable of running the software in question.
+While flrig, fldigi, pat and ARDOP should run without issues with 4 cores and 2 GiB it
+might be an issue for VARA. This remain to be tested. The Orange Pi 3 has a lower cost and 
+lower power consumption and could be a lower cost alternative.
+
 ## VNC
 While ssh and X11 works excellent, VNC is often used and in many cases an excellent
 way of connecting. With Orange Pi some extra steps are needed. Both vncserver.users and vncserver@:1.servic are found in this repo.
