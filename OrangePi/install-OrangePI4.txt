@@ -22,50 +22,69 @@ vncpasswd
 
 
 # Install extra packages 
-sudo apt install libfltk1.3 libfltk1.3-dev libudev-dev:arm64 libpng-dev:arm64 libsamplerate0-dev:arm64 libogg-dev:arm64 libflac-dev:arm64 libvorbis-dev:arm64 libsndfile1-dev:arm64 libjack0:arm64 libasound2-dev:arm64 libjack-dev:arm64 libportaudio2:arm64 libportaudiocpp0:arm64 portaudio19-dev:arm64
+sudo apt install libfltk1.3 libfltk1.3-dev libudev-dev:arm64 libpng-dev:arm64 \
+libsamplerate0-dev:arm64 libogg-dev:arm64 libflac-dev:arm64 \
+libvorbis-dev:arm64 libsndfile1-dev:arm64 libjack0:arm64 libasound2-dev:arm64 \
+libjack-dev:arm64 libportaudio2:arm64 libportaudiocpp0:arm64 \
+portaudio19-dev:arm64 libboost-log1.74.0 libqt5multimedia5-plugins cmake \
+gfortran libfftw3-dev libqt5gstreamer-dev qtmultimedia5-dev libqt5serialport5-dev
 
 
 # Build the common rig infrastructure
 
-#Hamlib:
-wget https://github.com/Hamlib/Hamlib/releases/download/4.4/hamlib-4.4.tar.gz
-tar xf hamlib-4.4.tar.gz
-./configure
-make -j 2
+# Hamlib:
+wget https://github.com/Hamlib/Hamlib/releases/download/4.5.4/hamlib-4.5.4.tar.gz 
+tar xf hamlib-4.5.4.tar.gz 
+cd hamlib-4.5.4/
+./configure 
+make -j 8
 sudo make install
 sudo ldconfig /usr/local/lib 
 
 #Flrig:
 wget http://www.w1hkj.com/files/flrig/flrig-1.4.7.tar.gz
-tar xf flrig-1.4.7.tar.gz
+tar xf flrig-1.4.7.tar.gz 
+cd flrig-1.4.7/
 ./configure 
-make -j 2
+make -j 8
 sudo make install 
 
-#Fldigi:
-wget http://www.w1hkj.com/files/fldigi/fldigi-4.1.23.tar.gz
-tar xf fldigi-4.1.23.tar.gz
-./configure
-make -j 2
+# Fldigi:
+wget http://www.w1hkj.com/files/fldigi/fldigi-4.1.25.tar.gz
+tar xf fldigi-4.1.25.tar.gz 
+cd  fldigi-4.1.25
+./configure 
+make -j 8
 sudo make install 
 
 # 64bit pat
-wget https://harenber.web.cern.ch/harenber/pat_0.12.1_arm64.deb
-sudo dpkg --install pat_0.12.1_arm64.deb
+wget https://github.com/la5nta/pat/releases/download/v0.13.1/pat_0.13.1_linux_arm64.deb
+sudo dpkg --install pat_0.13.1_arm64.deb
 
 
 # WSJTX
-sudo apt install libboost-log1.74.0
-sudo dpkg --install wsjtx_2.5.4_arm64.deb
-sudo apt --fix-broken install
+wget https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_arm64.deb/download
+mv download wsjtx_2.6.1_arm64.deb
+sudo dpkg -i wsjtx_2.6.1_arm64.deb
+
 
 # JS8Call
-wget http://files.js8call.com/2.2.0/js8call-2.2.0.tgz
-mkdir js8call; mv js8call-2.2.0.tgz js8call
-cd js8call/; tar xf js8call-2.2.0.tgz
-mv js8call src/
-mkdir build ; cd build
-cmake -D CMAKE_PREFIX_PATH=~/hamlib-4.4 -D CMAKE_INSTALL_PREFIX=~/js8call-2.2.0 ../src
-make package
-sudo dpkg --install /home/ole/js8call/build/js8call_2.2.1-devel_arm64.deb
+# Download 64-bit deb package,
+wget https://github.com/olewsaa/amateur-radio/blob/main/OrangePi/js8call_2.2.1-devel_arm64.deb?raw=true
+mv js8call_2.2.1-devel_arm64.deb?raw=true js8call_2.2.1-devel_arm64.deb
+sudo dpkg -i js8call_2.2.1-devel_arm64.deb
 
+
+# Build from source,
+wget http://files.js8call.com/2.2.0/js8call-2.2.0.tgz
+tar xf js8call-2.2.0.tgz
+mv js8call src
+mkdir js8call
+mv src/ js8call/
+cd js8call
+mkdir build
+cd build
+cmake -D CMAKE_PREFIX_PATH=~/hamlib-prefix -D CMAKE_INSTALL_PREFIX=~/js8call-prefix ../src
+make -j 8
+make package
+sudo dpkg -i js8call_2.2.1-devel_arm64.deb
