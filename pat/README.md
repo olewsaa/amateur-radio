@@ -50,14 +50,11 @@ and date from the SignalK server using the set-date-from-SignalK.py script.
 
 ### Pat
 Download Pat, check [pat releases](https://github.com/la5nta/pat/releases),
-below is shown 0.12.1 version, this gets updated regularly. This version do not
-support VARA, if you want to use VARA see the VARA section below. You need a special 
-version of pat to use VARA. Install this special version and not the version given here.
-The dpkg command is the same, it's just another pat*deb package file. 
+below is shown 0.13.1 version, this gets updated regularly. 
 
      sudo -i 
-     wget https://github.com/la5nta/pat/releases/download/v0.12.1/pat_0.12.1_linux_armhf.deb
-     dpkg --install pat_0.12.1_linux_armhf.deb`
+     wget https://github.com/la5nta/pat/releases/download/v0.13.1/pat_0.13.1_linux_arm64.deb
+     dpkg --install pat_0.13.1_linux_armhf.deb`
 
 As your prefered user, in my case just pi.
 
