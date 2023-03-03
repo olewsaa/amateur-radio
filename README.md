@@ -9,6 +9,15 @@ The directory pat contain files and instructions for installing and using pat
 (and Winlink) for email using Raspberry Pi 4. This is currently running nicely 
 onboard Algol. 
 
+### Issues with position and grid
+Onboard SignalK is used for communication between devices. Position and time is available using a 
+http request. This can then be used to update the init files for 
+[pat](https://github.com/olewsaa/amateur-radio/blob/main/pat/update.pos.pat.conf.py) and for
+[WSJT-X and JS8Call](https://github.com/olewsaa/amateur-radio/blob/main/pat/update.pos.WSJT-X.conf.py) 
+as well as setting the date and 
+[time on the system](https://github.com/olewsaa/amateur-radio/blob/main/pat/set-date-from-SignalK.py) 
+that run the ham radio software. 
+
 ### Alternative to Raspberry Pi 
 The directory OrangePi contain files and information regarding 
 using Orange Pi single board computers as alternative to Raspberry Pi.
