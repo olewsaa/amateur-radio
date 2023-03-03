@@ -75,10 +75,10 @@ if len(grid) != 6 :
 	exit(1)
 
 print("Updating ESJT-X and JS8Call grid from SignalK to new Grid: ",grid)
-cmd="cat WSJT-X.ini | sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/WSJT-X.ini"
+cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/WSJT-X.ini"
 print(cmd)
 os.system(cmd)
-cmd="cat WSJT-X.ini | sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/JS8Call.ini"
+cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/JS8Call.ini"
 print(cmd)
 os.system(cmd)
 print("ok")
