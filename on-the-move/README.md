@@ -18,8 +18,8 @@ is done using the http protocol.
 Common for these scripts is requesting information from the SignalK server.
 
 - set-date-from-SignalK.py --  set the correct time and date.
-- showpos.py  -- Emit a lat lon position and Maidenhead grid.
-- update.pos.pat.conf.py --  update the position in pat's config file
+- showpos.py  -- Emit a lat, lon position and corresponding Maidenhead grid.
+- update.pos.pat.conf.py --  update the position in pat's config file.
 - update.pos.WSJT-X.conf.py -- update the position in WSJT, JS8Call and TQSL.
 
 

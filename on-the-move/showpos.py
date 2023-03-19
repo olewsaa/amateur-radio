@@ -6,16 +6,25 @@
 #
 # Adapted, collected and edited by Ole W. Saastad, LB4PJ
 # 23 June 2022. 
-# 14 July 2022 Added check for valid SignalK response  
+# 14 July 2022 Added check for valid SignalK response
 # 08 August 2022 Changed to only displaying position
+# 19 March 2023 Updated SignalK sources, added demo.
 
 # Original code to request from Signal K - from user «Sailoog» at 
 # openmarine forum.
 
 import sys, json, requests
 
-resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+# This is you local SignalK server, Openplotter normally assign 10.10.10.1
+#
+
+#resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
 # Insert your local Signal K server name or IP number and default port 3000
+
+
+# To test try signalK demo :
+resp = requests.get('http://demo.signalk.org:/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+
 if (resp.status_code == 404):
 	exit(1)
 # Just exit if no valid response from the SignalK server.

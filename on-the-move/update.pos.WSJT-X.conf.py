@@ -7,7 +7,7 @@
 #
 # Adapted, collected and edited by Ole W. Saastad, LB4PJ
 # 02 March 2023. 
-#
+# 19 March 2023.
 
 # Function "to_grid".
 # Original code to request from Signal K - from user «Sailoog» at 
@@ -56,6 +56,7 @@ import sys, os, json, requests
 
 #resp = requests.get('http://localhost:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
 resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+
 # Insert your local Signal K server name or IP number and default port 3000
 if (resp.status_code == 404):
 	exit(1)
@@ -75,15 +76,23 @@ if len(grid) != 6 :
 	exit(1)
 
 print("Updating ESJT-X, JS8Call & tsql grid from SignalK to new Grid: ",grid)
+
+# Updating WSJT-X's init file.
 cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/WSJT-X.ini"
 #print(cmd)
 os.system(cmd)
+
+# Updating JS8Call's init file.
 cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/JS8Call.ini"
 #print(cmd)
 os.system(cmd)
-cmd="sed -i s/'GRIDSQUARE>JO....'/'GRIDSQUARE>'"+grid+"/ $HOME/.tqsl/station_data"
+
+# Updating TQSL station_data file. 
+cmd="sed -i s/'GRIDSQUARE>......'/'GRIDSQUARE>'"+grid+"/ $HOME/.tqsl/station_data"
 #print(cmd)
 os.system(cmd)
+
+# If we got here all should be ok.
 print("Grid updated:", grid)
 
 
