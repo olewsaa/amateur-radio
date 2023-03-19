@@ -133,6 +133,8 @@ In some cases the audio interface selction are blank, this is caused by a missin
 
 After installing this package a long list of audio devices becomes available. The list is long and it might require some trial and error to find the correct device.  
 
+WSJTX require a correct clock, on board Algol SignalK is available and [simple script](https://github.com/olewsaa/Yacht-computer/blob/master/pat/set-date-from-SignalK.py) will set the clock correctly if internet is not avaiable.
+
 ## JS8Call
 Unfortunately the download [links](http://files.js8call.com/latest.html) (source code is also found here)
 for JS8Call do not (at time of writing) list a an ARM 64-bit versjon, only js8call_2.2.0_armhf.deb which is
