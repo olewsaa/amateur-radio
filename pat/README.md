@@ -343,7 +343,9 @@ and chart plotter. The chart plotter GPS provide all needed data to fulfill
 gpsd's needs, it want a bit more data than just time/lat/long. Data is exported
 over tcp on a dedicated port (default 10110) as NMEA183 sentences which gpsd happily accept.
 
-Editing the gpsd config file at /etc/defaults/gpsd (in this repo) will enable gpsd 
+Editing the gpsd config file at 
+[/etc/defaults/gpsd](https://github.com/olewsaa/amateur-radio/blob/main/pat/gpsd.config)
+(in this repo) will enable gpsd 
 to receive 
 it's GPS data from OpenPlotter instead of a USB GPS. OpenPlotter must be configured
 to export these NMEA183 sentences. 
