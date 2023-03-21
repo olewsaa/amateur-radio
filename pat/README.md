@@ -318,13 +318,15 @@ function.
 
 
 ## Grid from Signal K
-The code get.grid.py is a Python script to request a position from
+The code [get.grid.py](https://github.com/olewsaa/amateur-radio/blob/main/pat/get.grid.py)
+is a Python script to request a position from
 the Signal K server and convert it to a Grid representation to be 
 used for the current position. AFAIK pat will support gpsd, but I
 would be nice to support Signal K also. In this case the position 
 would be updated automatically when a position report is composed.
 
-The script update.pos.pat.conf.py will request a position from the
+The script [update.pos.pat.conf.py](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/update.pos.pat.conf.py) 
+will request a position from the
 Signal K server and update the pat config file. Runing this before 
 launching pat your current position will be used. As you sail along
 towards your destination your position changes and you need to restart pat
@@ -341,7 +343,8 @@ and chart plotter. The chart plotter GPS provide all needed data to fulfill
 gpsd's needs, it want a bit more data than just time/lat/long. Data is exported
 over tcp on a dedicated port (default 10110) as NMEA183 sentences which gpsd happily accept.
 
-Editing the gpsd config file at /etc/defaults/gpsd (in this repo) will enable gpsd to receive 
+Editing the gpsd config file at /etc/defaults/gpsd (in this repo) will enable gpsd 
+to receive 
 it's GPS data from OpenPlotter instead of a USB GPS. OpenPlotter must be configured
 to export these NMEA183 sentences. 
 
