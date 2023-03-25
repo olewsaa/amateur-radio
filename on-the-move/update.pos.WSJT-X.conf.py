@@ -107,14 +107,14 @@ if len(grid) != 6 :
 
 print("Updating ESJT-X, JS8Call & tsql grid from SignalK to new Grid: ",grid)
 cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/WSJT-X.ini"
-print(cmd)
-#os.system(cmd)
+#print(cmd)
+os.system(cmd)
 cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/JS8Call.ini"
-print(cmd)
-#os.system(cmd)
+#print(cmd)
+os.system(cmd)
 cmd="sed -i s/'GRIDSQUARE>JO....'/'GRIDSQUARE>'"+grid+"/ $HOME/.tqsl/station_data"
-print(cmd)
-#os.system(cmd)
+#print(cmd)
+os.system(cmd)
 print("Grid updated:", grid)
 
 
