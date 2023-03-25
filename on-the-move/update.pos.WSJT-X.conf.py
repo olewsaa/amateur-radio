@@ -7,7 +7,7 @@
 #
 # Adapted, collected and edited by Ole W. Saastad, LB4PJ
 # 02 March 2023. 
-# 19 March 2023.
+# 25 March 2023, added support for gpsd. 
 
 # Function "to_grid".
 # Original code to request from Signal K - from user «Sailoog» at 
@@ -48,51 +48,73 @@ def to_grid(dec_lat, dec_lon):
     grid_lon_subsq = lower[int(adj_lon_remainder/5)]
 
     return grid_lon_sq + grid_lat_sq + grid_lon_field + grid_lat_field + grid_lon_subsq + grid_lat_subsq
+# End to_grid
 
 
-# Main start here.
+def gpsdclient():
+    import gps
+    host='192.168.0.175'
+    port='2947'
+    session = gps.gps(host=host, port=port,mode=gps.WATCH_ENABLE)
+    while 0 == session.read() :
+        if not (gps.MODE_SET & session.valid):
+            # not useful, probably not a TPV message
+            continue        
+        if ((gps.isfinite(session.fix.latitude) and
+             gps.isfinite(session.fix.longitude))):
+            #print(" Lat %.6f Lon %.6f" %
+            #      (session.fix.latitude, session.fix.longitude))
+            return session.fix.latitude, session.fix.longitude
+            break
+    session.close()
+# End gpsdclient
+    
+    
+def signalkclient():
+    import json, requests
 
-import sys, os, json, requests
+# This is a demo address for SignalK
+    resp = requests.get('http://demo.signalk.org:/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
 
-#resp = requests.get('http://localhost:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
-resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+# Localhost    
+    #resp = requests.get('http://localhost:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
 
-# Insert your local Signal K server name or IP number and default port 3000
-if (resp.status_code == 404):
-	exit(1)
-# Just exit if no valid response from the SignalK server.
+# Specify a network SignalK server, insert your local SignalK server name or
+# IP number and default port 3000
+    #resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+    
+    if (resp.status_code == 404):
+        exit(1)
+        # Just exit if no valid response from the SignalK server.
 
-data = json.loads(resp.content)
-#print(data)
-#print(data['longitude'])
-#print(data['latitude'])
-#print(data['latitude'], data['longitude'])
-# Convert lat long to grid:
-grid=to_grid(float(data['latitude']), float((data['longitude'])))
-#print(grid)
-#print(len(grid))
+    data = json.loads(resp.content)
+    return float(data['latitude']), float(data['longitude'])
+# End signalkclient
+
+
+# Main start here,  convert lat long from signalK or gpsd to grid:
+
+import sys, os
+
+# Select source:
+#lat, long = signalkclient()
+lat, long = gpsdclient()
+
+grid=to_grid(lat, long)
 if len(grid) != 6 :
-	print("Length differ from valid grid")	
-	exit(1)
+    print("Length differ from valid grid")	
+    exit(1)
 
 print("Updating ESJT-X, JS8Call & tsql grid from SignalK to new Grid: ",grid)
-
-# Updating WSJT-X's init file.
 cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/WSJT-X.ini"
-#print(cmd)
-os.system(cmd)
-
-# Updating JS8Call's init file.
+print(cmd)
+#os.system(cmd)
 cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ $HOME/.config/JS8Call.ini"
-#print(cmd)
-os.system(cmd)
-
-# Updating TQSL station_data file. 
-cmd="sed -i s/'GRIDSQUARE>......'/'GRIDSQUARE>'"+grid+"/ $HOME/.tqsl/station_data"
-#print(cmd)
-os.system(cmd)
-
-# If we got here all should be ok.
+print(cmd)
+#os.system(cmd)
+cmd="sed -i s/'GRIDSQUARE>JO....'/'GRIDSQUARE>'"+grid+"/ $HOME/.tqsl/station_data"
+print(cmd)
+#os.system(cmd)
 print("Grid updated:", grid)
 
 
