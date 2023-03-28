@@ -25,7 +25,7 @@ Common for these scripts is requesting information from the SignalK server.
 ## Automatic run at boot time
 The two scripts can be launched at boot time by means of the cron system.
 The cron file have a keyword to run a script at boot time. The file crotab
-contain an exaple of a typical setup to run the script that update the pat and
+contain an example of a typical setup to run the script that update the pat and
 other application containing QTH info.
 
 
