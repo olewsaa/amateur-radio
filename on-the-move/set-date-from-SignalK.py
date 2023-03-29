@@ -24,7 +24,7 @@ resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigati
 data = json.loads(resp.content)
 #print(data)
 cmd="sudo date -s "+data
-print(cmd)
-#os.system(cmd)
+#print(cmd)
+os.system(cmd)
 
 
