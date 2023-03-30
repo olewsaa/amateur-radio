@@ -20,6 +20,9 @@ import os, json, requests
 #
 
 resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/datetime/value', verify=False)
+if (resp.status_code == 404):
+    exit(1)
+    # Just exit if no valid response from the SignalK server.
 #print(resp)
 data = json.loads(resp.content)
 #print(data)
