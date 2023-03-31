@@ -75,6 +75,10 @@ save and exit.
 If you do not have winlink account contacting them for the first time will
 issue a password for you, edit the file : $HOME/.config/pat/config.json 
 
+For more info on the web interface there is a [https://github.com/la5nta/pat/wiki/The-web-GUI](wiki) 
+in the google group pat.
+
+
 You can find copy of my [config.json](https://github.com/olewsaa/Yacht-computer/edit/master/pat/config.json).
 
 ### ARDOP
