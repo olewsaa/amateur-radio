@@ -42,7 +42,7 @@ environment, which is a bit demanding.
 
 ## Upgrading the G90 firmware 
 I have included some instructions to explain and document how to 
-upgrade the G90's firmware using a Pi or a x86-64 based PC.
+upgrade the G90's firmware using a Pi or a x86-64 based PC running Linux.
 Script and explanations are found in the G90 directory.
 
 
