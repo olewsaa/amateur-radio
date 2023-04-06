@@ -1,7 +1,7 @@
-# Update Firmware G90
+# Update Xiegu G90 Firmware 
 
 ## Introduction
-The G90 is a popular transceiver used by amateur radio operators for
+The Xiegu G90 is a popular transceiver used by amateur radio operators for
 communication purposes. Over time, the manufacturer of the G90 may
 release new updates to the firmware of the device, which can provide
 additional features or improve existing ones. Upgrading the firmware
