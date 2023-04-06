@@ -40,4 +40,10 @@ The only issue is VARA with its x86 emulation and Wine for windows
 environment, which is a bit demanding. 
 
 
+## Upgrading the G90 firmware 
+I have included some instructions to explain and document how to 
+upgrade the G90's firmware using a Pi or a x86-64 based PC.
+Script and explaiantions are found in the G90 directory.
+
+
 

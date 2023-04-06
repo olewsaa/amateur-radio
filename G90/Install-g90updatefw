@@ -1,0 +1,53 @@
+# Hints on upgrading firmware in the Xiegu G90 using
+# Linux. While this is not a runable script it's a copy paste
+# solution with the comments prefixed with # to facilitate the process
+#
+# Install golang and g90updatefw
+#
+# The application g90updatefw is written in go, hence the
+# go language compiler need to be installed. The go compiler
+# is part of most distros.
+#
+# AMD64, Linux Mint
+#
+apt install golang
+#
+# Download or checkout
+# https://github.com/DaleFarnsworth/g90updatefw
+# https://github.com/DaleFarnsworth/go-xmodem
+# https://github.com/DaleFarnsworth/term
+#
+mkdir -p   /usr/lib/go-1.10/src/github.com/dalefarnsworth/
+mv go-xmodem-master go-xmodem
+mv /home/ole/Radio/G90/FW/g90updatefw-master/go-xmodem /usr/lib/go-1.10/src/github.com/dalefarnsworth/
+mkdir -p   /usr/lib/go-1.10/src/github.com/pkg/
+mv /home/ole/Radio/G90/FW/g90updatefw-master/term  /usr/lib/go-1.10/src/github.com/pkg
+cd /usr/lib/go-1.10/src/github.com/pkg
+cp -r term/ ../dalefarnsworth/
+apt install  upx
+#
+make
+
+
+
+# ARM64 Ubuntu 22.04
+#
+apt install  golang
+# Download or checkpout and for AMD64
+#
+mkdir -p  /usr/lib/go-1.18/src/github.com/dalefarnsworth
+mkdir -p  /usr/lib/go-1.18/src/github.com/pkg
+mv /home/orangepi/g90/fw/go-xmodem-master /home/orangepi/g90/fw/go-xmodem
+mv /home/orangepi/g90/fw/go-xmodem /usr/lib/go-1.18/src/github.com/dalefarnsworth
+mv /home/orangepi/g90/fw/term-master  /home/orangepi/g90/fw/ter
+mv /home/orangepi/g90/fw/term /usr/lib/go-1.18/src/github.com/pkg/
+cd  /usr/lib/go-1.18/src/github.com/pkg/
+cp -r term ../dalefarnsworth/
+apt install upx
+#
+#Edit makefile to : default: linux/arm64/g90updatefw
+make
+ln -s linux/arm64/g90updatefw  .
+
+
+
