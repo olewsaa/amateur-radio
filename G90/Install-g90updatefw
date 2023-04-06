@@ -1,6 +1,7 @@
 # Hints on upgrading firmware in the Xiegu G90 using
 # Linux. While this is not a runable script it's a copy paste
-# solution with the comments prefixed with # to facilitate the process
+# solution as this is typically a manuel process. The comments prefixed
+# with '#' to make cut & paste simpler.
 #
 # Install golang and g90updatefw
 #
@@ -27,8 +28,8 @@ cp -r term/ ../dalefarnsworth/
 apt install  upx
 #
 make
-
-
+#
+# The executable should now be found here: linux/amd64/g90updatefw 
 
 # ARM64 Ubuntu 22.04
 #
@@ -47,7 +48,10 @@ apt install upx
 #
 #Edit makefile to : default: linux/arm64/g90updatefw
 make
+#
+# # The executable should now be found here: linux/arm64/g90updatefw 
+# 
 ln -s linux/arm64/g90updatefw  .
-
-
+# easier to find : ./g90updatefw  
+#
 
