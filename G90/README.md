@@ -17,9 +17,9 @@ under the section «G90 Firmware, Manuals & Utils».
 ## Download g90updatefw
 The g90updatefw is written in go.
 If the [golang](https://go.dev/) compiler it not installed install using: 
-´´´
+```
 apt install golang
-´´´
+```
 
 g90updatefw is a utility written by Dale Farnsworth, all source are found at the 
 [github repo](https://github.com/DaleFarnsworth). You need to download 
