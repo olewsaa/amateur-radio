@@ -19,9 +19,9 @@ apt install golang
 #
 mkdir -p   /usr/lib/go-1.10/src/github.com/dalefarnsworth/
 mv go-xmodem-master go-xmodem
-mv /home/ole/Radio/G90/FW/g90updatefw-master/go-xmodem /usr/lib/go-1.10/src/github.com/dalefarnsworth/
+mv $HOME/Radio/G90/FW/g90updatefw-master/go-xmodem /usr/lib/go-1.10/src/github.com/dalefarnsworth/
 mkdir -p   /usr/lib/go-1.10/src/github.com/pkg/
-mv /home/ole/Radio/G90/FW/g90updatefw-master/term  /usr/lib/go-1.10/src/github.com/pkg
+mv $HOME/Radio/G90/FW/g90updatefw-master/term  /usr/lib/go-1.10/src/github.com/pkg
 cd /usr/lib/go-1.10/src/github.com/pkg
 cp -r term/ ../dalefarnsworth/
 apt install  upx
@@ -37,10 +37,10 @@ apt install  golang
 #
 mkdir -p  /usr/lib/go-1.18/src/github.com/dalefarnsworth
 mkdir -p  /usr/lib/go-1.18/src/github.com/pkg
-mv /home/orangepi/g90/fw/go-xmodem-master /home/orangepi/g90/fw/go-xmodem
-mv /home/orangepi/g90/fw/go-xmodem /usr/lib/go-1.18/src/github.com/dalefarnsworth
-mv /home/orangepi/g90/fw/term-master  /home/orangepi/g90/fw/ter
-mv /home/orangepi/g90/fw/term /usr/lib/go-1.18/src/github.com/pkg/
+mv $HOME/g90/fw/go-xmodem-master $HOME/g90/fw/go-xmodem
+mv $HOME/g90/fw/go-xmodem /usr/lib/go-1.18/src/github.com/dalefarnsworth
+mv $HOME/g90/fw/term-master  $HOME/g90/fw/ter
+mv $HOME/g90/fw/term /usr/lib/go-1.18/src/github.com/pkg/
 cd  /usr/lib/go-1.18/src/github.com/pkg/
 cp -r term ../dalefarnsworth/
 apt install upx
