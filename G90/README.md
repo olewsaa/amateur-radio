@@ -62,5 +62,6 @@ Issue the following command :
 ```
 It should emit messages about erasing and copying of the new firmware.
 
-Have fun.
+Have fun / 73
+
 
