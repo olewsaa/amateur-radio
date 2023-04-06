@@ -39,7 +39,7 @@ guide is is found in Install-g90updatefw in this repo.
 
 ## Update the firmware
 
-Example is shown for 1.79b03 version, the firmware files have the extension xgf.
+Example is shown for the 1.79b03 version, the firmware files have the extension xgf.
 
 ### Display unit
 Unplug radio from power, plug power back and
