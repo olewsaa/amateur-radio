@@ -13,6 +13,12 @@ for distributing data. From the web page :«A Free and Open Source universal
 marine data exchange format». The requests for data from the SignalK server 
 is done using the http protocol.
 
+## No internet, no NTP server
+While the Yacht computer is expected to only be running when the instruments are
+running it do not have its own GPS. The local time is syncronised every 10 mins using
+cron job that sets the local clock. This time is picked up by NTP if there is no
+internet and others systems can update their time using NTP-client from the yacht 
+server's NTP server process. Please see the ntp.conf for details. 
 
 ## Python scripts
 Common for these scripts is requesting information from the SignalK server.
