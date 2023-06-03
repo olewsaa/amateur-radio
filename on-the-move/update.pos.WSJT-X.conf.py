@@ -53,7 +53,7 @@ def to_grid(dec_lat, dec_lon):
 
 def gpsdclient():
     import gps
-    host='192.168.0.175'
+    host='10.10.10.1' 
     port='2947'
     session = gps.gps(host=host, port=port,mode=gps.WATCH_ENABLE)
     while 0 == session.read() :

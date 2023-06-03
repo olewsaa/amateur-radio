@@ -9,25 +9,7 @@
 # Adapted, collected and edited by Ole W. Saastad, LB4PJ
 # 23 June 2022. 
 # 14 July 2022 Added check for valid SignalK response  
-#
-
-# Original code to request from Signal K - from user «Sailoog» at 
-# openmarine forum.
-
-import sys, json, requests
-
-#resp = requests.get('http://localhost:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
-resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
-# Insert your local Signal K server name or IP number and default port 3000
-if (resp.status_code == 404):
-	exit(1)
-# Just exit if no valid response from the SignalK server.
-
-data = json.loads(resp.content)
-#print(data)
-#print(data['longitude'])
-#print(data['latitude'])
-
+# 03 June 2023 Added GPSD support
 
 
 # 
@@ -66,14 +48,67 @@ def to_grid(dec_lat, dec_lon):
     grid_lon_subsq = lower[int(adj_lon_remainder/5)]
 
     return grid_lon_sq + grid_lat_sq + grid_lon_field + grid_lat_field + grid_lon_subsq + grid_lat_subsq
+# End  to_grid
 
-#print(data['latitude'], data['longitude'])
+def gpsdclient():
+    import gps
+#    host='192.168.0.175'
+    host='10.10.10.1'
+    port='2947'
+    session = gps.gps(host=host, port=port,mode=gps.WATCH_ENABLE)
+    while 0 == session.read() :
+        if not (gps.MODE_SET & session.valid):
+            # not useful, probably not a TPV message
+            continue        
+        if ((gps.isfinite(session.fix.latitude) and
+             gps.isfinite(session.fix.longitude))):
+            #print(" Lat %.6f Lon %.6f" %
+            #      (session.fix.latitude, session.fix.longitude))
+            return session.fix.latitude, session.fix.longitude
+            break
+    session.close()
+# End gpsdclient
+    
 
-grid=to_grid(float(data['latitude']), float((data['longitude'])))
-#print(grid)
+# Original code to request from Signal K - from user «Sailoog» at 
+# openmarine forum.
+
+def signalkclient():
+    import json, requests
+
+# This is a demo address for SignalK
+    resp = requests.get('http://demo.signalk.org:/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+
+# Localhost    
+    #resp = requests.get('http://localhost:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+
+# Specify a network SignalK server, insert your local SignalK server name or
+# IP number and default port 3000
+    #resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+    
+    if (resp.status_code == 404):
+        exit(1)
+        # Just exit if no valid response from the SignalK server.
+
+    data = json.loads(resp.content)
+    return float(data['latitude']), float(data['longitude'])
+# End signalkclient
+
 
 
 # Main start here.
+import sys, json, requests, gps
+
+
+# Select source:
+#lat, long = signalkclient()
+lat, long = gpsdclient()
+
+grid=to_grid(lat, long)
+if len(grid) != 6 :
+    print("Length differ from valid grid")	
+    exit(1)
+
 
 # Update the pat config file, a quick fix so that each time pat
 # started the position is updated. Put this file in the pat launch
@@ -84,7 +119,7 @@ grid=to_grid(float(data['latitude']), float((data['longitude'])))
 cf="/home/pi/.config/pat/config.json"
 f=open(cf,"r+")
 config = json.load(f)
-config['locator']=to_grid(data['latitude'], (data['longitude']))
+config['locator']=grid
 json_obj=json.dumps(config, indent=4)
 f.truncate(0) # Clear the file 
 f.seek(0) # I miss the rewind statement.
