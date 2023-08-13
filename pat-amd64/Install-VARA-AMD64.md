@@ -27,8 +27,9 @@ sudo apt update
 sudo apt install --install-recommends winehq-stable
 winecfg
 wine iexplore
-
+```
 ### Winetricks
+```
 sudo wget ‘https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks’ -O /usr/local/bin/winetricks
 /usr/local/bin/winetricks vb6run
 /usr/local/bin/winetricks corefonts vcrun6 
