@@ -27,13 +27,19 @@ sudo apt update
 sudo apt install --install-recommends winehq-stable
 winecfg
 wine iexplore
+
+### Winetricks
 sudo wget ‘https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks’ -O /usr/local/bin/winetricks
 /usr/local/bin/winetricks vb6run
 /usr/local/bin/winetricks corefonts vcrun6 
 ```
-### Winetricks
-The  "winetricks -q dotnet48" is probably not needed for only VARA
-same for this  winetricks vcrun2015 probably not needed for only VARA.
+The lines:
+```
+winetricks -q dotnet48
+winetricks vcrun2015
+``` 
+are probably not needed for a VARA only installation.
+
 
 ## Installing VARA
 Go to  https://rosmodem.wordpress.com/ and  Download VARA : 
