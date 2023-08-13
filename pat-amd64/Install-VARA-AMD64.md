@@ -7,17 +7,16 @@ the latest version, https://github.com/la5nta/pat/releases and
 install the dep package. 
 
 
-# Relevant web pages to start with.
+## Relevant web pages to start with.
 
-https://aarg.club/?page_id=308
-I did not install Winlink Express.
-
-https://wiki.winehq.org/Winetricks
-https://rosmodem.wordpress.com/
-https://forum.winehq.org/viewtopic.php?t=18949
+- https://aarg.club/?page_id=308 I did not install Winlink Express.
+- https://wiki.winehq.org/Winetricks
+- https://rosmodem.wordpress.com/
+- https://forum.winehq.org/viewtopic.php?t=18949
 
 
-## A transcript of the commands used.
+## Installing WINE
+### A transcript of the commands used.
 ```
 sudo dpkg --add-architecture i386
 sudo mkdir -pm755 /etc/apt/keyrings
@@ -32,28 +31,34 @@ sudo wget ‘https://raw.githubusercontent.com/Winetricks/winetricks/master/src/
 /usr/local/bin/winetricks vb6run
 /usr/local/bin/winetricks corefonts vcrun6 
 ```
+### Winetricks
 The  "winetricks -q dotnet48" is probably not needed for only VARA
 same for this  winetricks vcrun2015 probably not needed for only VARA.
 
+## Installing VARA
 Go to  https://rosmodem.wordpress.com/ and  Download VARA : 
-Two links 
+Two links:
 - VARA HF v4.7.7 (High Performance HF Modem)
 - VARA FM v4.2.9 (VARA for FM transceivers)
+They will open a new tab for download of the relevant zip files.
+
+Download http://files.k6eta.com/VARA_Components.zip and unzip the 
+file ```VARA_components.zip```.
 ```
-cd Nedlastinger/
+cd Downloads/
 unzip VARA\ HF\ v4.7.7\ Setup.zip 
 unzip VARA_components.zip 
 unzip VARA\ FM\ v4.2.9\ setup.zip
 
 cp VARA\ setup\ \(Run\ as\ Administrator\).exe ~/.wine/drive_c/windows/system32
-cd Nedlastinger
+cd Downloads
 cp Put_in_System32/* ~/.wine/drive_c/windows/system32 
 wget 'http://download.microsoft.com/download/winntsrv40/update/5.0.2195.2668/nt4/en-us/nt4pdhdll.exe' -O nt4pdhdll.exe
-wine ~/Nedlastinger/nt4pdhdll.exe
+wine ~/Downloads/nt4pdhdll.exe
 cp ~/.wine/drive_c/users/ole/Temp/pdh.??? ~/.wine/drive_c/windows/system32/
 
-wine ~/Nedlastinger/VARA\ setup\ \(Run\ as\ Administrator\).exe
-wine ~/Nedlastinger/VARA\ FM\ setup\ \(Run\ as\ Administrator\).exe
+wine ~/Downloads/VARA\ setup\ \(Run\ as\ Administrator\).exe
+wine ~/Downloads/VARA\ FM\ setup\ \(Run\ as\ Administrator\).exe
 ```
 
 If all went ok it should work ok.
