@@ -19,12 +19,17 @@ Windows (WINE) click boxes, mainly «install» or «yes».
 It does not check fro any newer versions of pat, but VARA site 
 list the latest which is the one downloaded.
 
-A fair bit of text output is emitted, as it can provide clues when things
-fail I have not redirected it. While not totally automated it reduces the 
-effort to just a few clicks. 
+A small bit of text output is emitted, as it can provide clues when things
+fail I have not redirected it, just tuned on -quiet flags. 
+While not totally automated it reduces the effort to just a few clicks. 
+
+Any installation error will terminate the process. Try removing the «-q=2» flags
+to see all messages.
 
 It takes a bit of time, grap some coffee and watch the install process
-proceed.
+proceed. If the sudo keep time times out add a line using «sudo visudo» after
+«Defaults env_reset» containing : «Defaults timestamp_timeout=60», this will 
+give you a passwordless sudo for 60 mins.
 
 EOF
 read -n 1 -p "To continue Press enter"?
@@ -40,29 +45,31 @@ INSTDIR=${CWD}/install.tmp
 UNAME=$(whoami)
 
 echo "Using install directory " $INSTDIR
-echo "Installing prerequisites"
-sudo apt-get -q -y update
-sudo apt-get -q -y upgrade
+echo "Updating distro"
+sudo apt-get -q=2 -y update
+sudo apt-get -q=2 -y upgrade
 #sudo apt install build-essential
-sudo apt -q -y install megatools
-sudo apt -q -y install cabextract libmspack0 
+echo "Installing prerequisites"
+sudo apt -q=2 -y install megatools
+sudo apt -q=2 -y install cabextract libmspack0 
 
 
 echo "Installing pat"
 wget -q https://github.com/la5nta/pat/releases/download/v0.15.0/pat_0.15.0_linux_amd64.deb
 sudo dpkg  --install pat_0.15.0_linux_amd64.deb 
-
 echo "pat installed"
 
-echo "Installing WINE"
+echo "Installing WINE, this takes some time...."
 sudo dpkg --add-architecture i386
 sudo mkdir -pm755 /etc/apt/keyrings
 sudo wget -q -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-wget -q -nc https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
-sudo mv winehq-bullseye.sources /etc/apt/sources.list.d/
-sudo apt-get -q -y update
+#wget -q -nc https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
+wget -q -nc  https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+#sudo mv winehq-bullseye.sources /etc/apt/sources.list.d/
+sudo mv winehq-bookworm.sources /etc/apt/sources.list.d/
+sudo apt-get -q=2 -y update
 set +e
-sudo apt-get -q -y install --install-recommends winehq-stable
+sudo apt-get -q=2 -y install --install-recommends winehq-stable
 winecfg
 
 set -e
