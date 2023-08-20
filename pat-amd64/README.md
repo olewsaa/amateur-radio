@@ -23,7 +23,7 @@ The file [Install-VARA-AMD64.md](https://github.com/olewsaa/amateur-radio/blob/m
 contain a step by step installation
 instructions for manual assisted installation. This can used for a
 full control manual installations, just cut'n paste the commands and
-review each step. Some images of WINE (Windows) popups are includes,
+review each step. Some images of WINE (Windows) popups are included,
 but it's fairly evident what to click.
 
 Currently the script have been tested on a system running Linuxmint

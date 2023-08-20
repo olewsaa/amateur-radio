@@ -2,7 +2,7 @@
 # Installing VARA on amd64 using Linux.
 
 ## Install VARA on Linux, amd64. Wine and VARA.
-I did not install Winlink Express, I use PAT, just download 
+I did not install Winlink Express, I use pat, just download 
 the latest version, https://github.com/la5nta/pat/releases and
 install the dep package. 
 
@@ -21,8 +21,8 @@ install the dep package.
 sudo dpkg --add-architecture i386
 sudo mkdir -pm755 /etc/apt/keyrings
 sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-wget -nc https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
-sudo mv winehq-bullseye.sources /etc/apt/sources.list.d/
+wget -nc https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+sudo mv winehq-bookworm.sources /etc/apt/sources.list.d/
 sudo apt update
 sudo apt install --install-recommends winehq-stable
 winecfg
@@ -53,6 +53,7 @@ Click unzip, ok and close to unpack the needed files:
 Just click yes to install the required software.
 ![VB](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VB.png
 "Clik yes")
+
 ![VCRedist](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VCRedist.png
 "Click yes")
 
@@ -64,7 +65,9 @@ Two links:
 They will open a new tab for download of the relevant zip files.
 
 Download http://files.k6eta.com/VARA_Components.zip and unzip the 
-file ```VARA_components.zip```.
+file ```VARA_components.zip```
+
+Check username below, replace my user name with your username.
 ```
 cd Downloads/
 unzip VARA\ HF\ v4.7.7\ Setup.zip 
