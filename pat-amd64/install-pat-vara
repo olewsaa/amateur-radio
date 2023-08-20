@@ -11,18 +11,20 @@
 set -e
 
 cat << EOF
-Script to install WINE and VARA on Linux systems with x86-64 aechitecture,
-it require X11 console, WINE and VARA need graphical console. 
+A minimum simple cript to install WINE and VARA on Linux systems with x86-64 
+architecture, it require an X11 console, WINE and VARA need graphical console. 
 
 The script download and install the software, it expect the user to accept
-Windows (WINE) click boxes, mainly «install» or «yes».
+Windows (WINE) click boxes, mainly «install» or «yes». 
+It does not check fro any newer versions of pat, but VARA site 
+list the latest which is the one downloaded.
 
 A fair bit of text output is emitted, as it can provide clues when things
 fail I have not redirected it. While not totally automated it reduces the 
-effort to just a few clicks.
+effort to just a few clicks. 
 
 It takes a bit of time, grap some coffee and watch the install process
-progress.
+proceed.
 
 EOF
 read -n 1 -p "To continue Press enter"?
