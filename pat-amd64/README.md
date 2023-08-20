@@ -19,7 +19,8 @@ configurations.
 
 ### Step by step cut'n paste
 
-The file Install-VARA-AMD64.md contain a step by step installation
+The file [Install-VARA-AMD64.md](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/Install-VARA-AMD64.md) 
+contain a step by step installation
 instructions for manual assisted installation. This can used for a
 full control manual installations, just cut'n paste the commands and
 review each step. Some images of WINE (Windows) popups are includes,
@@ -34,7 +35,8 @@ coded into the installation scripts.
 
 ### Script to install the software
 
-The script «install-pat-vara» will download and install
+The script [install-pat-vara](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/install-pat-vara) 
+will download and install
 both pat and VARA. Some manual boxes have to be clicked implying 
 a graphical X11 console. This is the simple and easy way to install.
 It should work, it's been tested and verified. However, there are some
