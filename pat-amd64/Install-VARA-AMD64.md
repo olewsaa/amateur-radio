@@ -42,9 +42,11 @@ winetricks vcrun2015
 are probably not needed for a VARA only installation.
 
 
-![wine mono](https://github.com/olewsaa/amateur-radio/pat-amd64/wine-mono.png 
+![wine mono](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/wine-mono.png
 "Click yes to install mono")
 
+![unzip](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/unzip.png
+"click unzip, ok and close")
 
 ## Installing VARA
 Go to  https://rosmodem.wordpress.com/ and  Download VARA : 
