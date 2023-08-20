@@ -1,0 +1,91 @@
+#!/bin/bash
+#
+# Script to download install pat and VARA under Linux on x86_64 architecture.
+#
+# version 0.1 20 Aug 2023 -  Initial working version.
+#
+#
+# Ole W. Saastad, LB4PJ
+#
+
+set -e
+
+cat << EOF
+Script to install WINE and VARA on Linux systems with x86-64 aechitecture,
+it require X11 console, WINE and VARA need graphical console. 
+
+The script download and install the software, it expect the user to accept
+Windows (WINE) click boxes, mainly «install» or «yes».
+
+A fair bit of text output is emitted, as it can provide clues when things
+fail I have not redirected it. While not totally automated it reduces the 
+effort to just a few clicks.
+
+It takes a bit of time, grap some coffee and watch the install process
+progress.
+
+EOF
+read -n 1 -p "To continue Press enter"?
+
+
+echo "Installing pat and VARA"
+
+CWD=$(pwd)
+rm -rf ${CWD}/install.tmp
+mkdir ${CWD}/install.tmp
+cd  ${CWD}/install.tmp
+INSTDIR=${CWD}/install.tmp
+UNAME=$(whoami)
+
+echo "Using install directory " $INSTDIR
+echo "Installing prerequisites"
+sudo apt-get -q -y update
+sudo apt-get -q -y upgrade
+#sudo apt install build-essential
+sudo apt -q -y install megatools
+sudo apt -q -y install cabextract libmspack0 
+
+
+echo "Installing pat"
+wget -q https://github.com/la5nta/pat/releases/download/v0.15.0/pat_0.15.0_linux_amd64.deb
+sudo dpkg  --install pat_0.15.0_linux_amd64.deb 
+
+echo "pat installed"
+
+echo "Installing WINE"
+sudo dpkg --add-architecture i386
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -q -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+wget -q -nc https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
+sudo mv winehq-bullseye.sources /etc/apt/sources.list.d/
+sudo apt-get -q -y update
+set +e
+sudo apt-get -q -y install --install-recommends winehq-stable
+winecfg
+
+set -e
+echo "Installing winetricks" 
+sudo wget  -O /usr/local/bin/winetricks  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+sudo chmod a+x /usr/local/bin/winetricks
+/usr/local/bin/winetricks vb6run
+/usr/local/bin/winetricks corefonts vcrun6
+
+echo "WINE and winetricks installed"
+
+echo "Installing VARA"
+VARAHFLINK=$(curl -s https://rosmodem.wordpress.com/ | grep -oP '(?=https://mega.nz).*?(?=" target="_blank" rel="noopener noreferrer">VARA HF v)')
+megadl  ${VARAHFLINK}
+unzip VARA\ HF*Setup.zip 
+wget -q http://files.k6eta.com/VARA_Components.zip
+unzip VARA_Components.zip
+
+cp Put_in_System32/* ~/.wine/drive_c/windows/system32
+
+wget 'http://download.microsoft.com/download/winntsrv40/update/5.0.2195.2668/nt4/en-us/nt4pdhdll.exe' -O nt4pdhdll.exe
+wine ${INSTDIR}/nt4pdhdll.exe
+cp ~/.wine/drive_c/users/${UNAME}/Temp/pdh.??? ~/.wine/drive_c/windows/system32/
+
+wine ${CWD}/install.tmp/VARA\ setup\ \(Run\ as\ Administrator\).exe
+
+echo "Select audio device and rig control"
+
