@@ -2,7 +2,8 @@
 
 ## Installing pat and VARA
 As winlink and VARA are software running under Windows only some
-steps have been taken to address  the issue. The pat software is
+steps have been taken to address  the issue. The 
+[pat](https://getpat.io/) software is
 a noticable piece of software. Written to replace winlink with support
 for a range of transports layers, o.a. TCP/IP, ARDOP and VARA. 
 ARDOP has Linux support, but it's outperformed by the windows and 
