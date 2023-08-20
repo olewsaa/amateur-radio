@@ -41,10 +41,11 @@ winetricks vcrun2015
 ``` 
 are probably not needed for a VARA only installation.
 
-
+Click install to install mono:
 ![wine mono](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/wine-mono.png
 "Click yes to install mono")
 
+Click unzip, ok and close to unpack the needed files:
 ![unzip](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/unzip.png
 "click unzip, ok and close")
 
