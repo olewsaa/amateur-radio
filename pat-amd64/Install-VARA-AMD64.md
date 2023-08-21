@@ -1,18 +1,25 @@
 
 # Installing VARA on amd64 using Linux.
 
-## Install VARA on Linux, amd64. Wine and VARA.
-I did not install Winlink Express, I use pat, just download 
-the latest version, https://github.com/la5nta/pat/releases and
-install the dep package. 
-
-
 ## Relevant web pages to start with.
+
+To learn more about this topic these sites provide valuable 
+insight.
 
 - https://aarg.club/?page_id=308 I did not install Winlink Express.
 - https://wiki.winehq.org/Winetricks
 - https://rosmodem.wordpress.com/
 - https://forum.winehq.org/viewtopic.php?t=18949
+
+
+
+## Install VARA on Linux, amd64. Wine and VARA.
+I use pat instead of Winlink hence this document only deal with
+pat and vara. 
+just download the latest pad version, https://github.com/la5nta/pat/releases 
+and install the dep package. Presently it's the 
+[0.15 version](https://github.com/la5nta/pat/releases/download/v0.15.0/pat_0.15.0_linux_amd64.deb).
+
 
 
 ## Installing WINE
