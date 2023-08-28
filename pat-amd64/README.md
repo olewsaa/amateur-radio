@@ -29,9 +29,11 @@ but it's fairly evident what to click.
 Currently the script have been tested on a system running Linuxmint
 [21.2 victoria](https://linuxmint.com/download_all.php), corresponding 
 to Ubuntu (on which mint is based) Jammy, which in turn 
-[correspond](https://askubuntu.com/questions/445487/what-debian-version-are-the-different-ubuntu-versions-based-on) to Debian bookworm. These versions are hard 
-coded into the installation scripts. 
+[correspond](https://askubuntu.com/questions/445487/what-debian-version-are-the-different-ubuntu-versions-based-on) 
+to Debian bookworm. These versions are hard coded into the installation scripts. 
 
+The distros get updated from time to time and these names need to be kept up to date,
+a manual job.
 
 ### Script to install the software
 
@@ -45,6 +47,9 @@ prerequsites have been added to the script, but some assumptions on the
 installation in quest has to be made. The script is set to exit if any
 of the commands return with an error code. If installation fails, take
 it step by step by cut's paste the commands and see where it fails. 
+
+Things might fail if some versions have been updated, check versions 
+before giving up.
 
 
 
