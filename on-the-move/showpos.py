@@ -2,43 +2,30 @@
 # -*- coding: utf-8 -*-
 #
 # Python script to collect the current GPS position from 
-# Signal K and display it.
+# gpsd or Signal K and display it.
 #
 # Adapted, collected and edited by Ole W. Saastad, LB4PJ
 # 23 June 2022. 
-# 14 July 2022 Added check for valid SignalK response
+# 14 July 2022 Added check for valid SignalK response  
 # 08 August 2022 Changed to only displaying position
-# 19 March 2023 Updated SignalK sources, added demo.
-
+# 22 Decemer 2023 Added dd mm ss and dd mm.mmm printout
+# 10 January 2024 Added popup window with data
+#
 # Original code to request from Signal K - from user «Sailoog» at 
 # openmarine forum.
 
-import sys, json, requests
+import sys, math, json, requests
+import tkinter as tk
 
-# This is you local SignalK server, Openplotter normally assign 10.10.10.1
-#
+# Set the IP address of the GPSD or SignalK server. 
 
-#resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
-# Insert your local Signal K server name or IP number and default port 3000
+#host='192.168.0.160'
+#host='10.10.10.1'
+#host='127.0.0.1'   # Localhost
+host = 'demo.signalk.org' # This is a demo address for SignalK.
+#host = '10.10.10.1'       # My yacht OpenPlotter Raspberry.
 
-
-# To test try signalK demo :
-resp = requests.get('http://demo.signalk.org:/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
-
-if (resp.status_code == 404):
-	exit(1)
-# Just exit if no valid response from the SignalK server.
-
-data = json.loads(resp.content)
-
-# 
-# Converting to grid, original code by Walter Underwood, K6WRU 
-#
-# Convert latitude and longitude to Maidenhead grid locators.
-#
-# Arguments are in signed decimal latitude and longitude. For example,
-# the location of my QTH Palo Alto, CA is: 37.429167, -122.138056 or
-# in degrees, minutes, and seconds: 37° 24' 49" N 122° 6' 26" W
+# In the main body set gpsdclient or openplotterclient
 
 upper = 'ABCDEFGHIJKLMNOPQRSTUVWX'
 lower = 'abcdefghijklmnopqrstuvwx'
@@ -69,16 +56,103 @@ def to_grid(dec_lat, dec_lon):
     return grid_lon_sq + grid_lat_sq + grid_lon_field + grid_lat_field + grid_lon_subsq + grid_lat_subsq
 
 
-#print(data['latitude'], data['longitude'])
+
+def signalkclient():
+    import json, requests, urllib3
+    
+#    print("SignalK client host",host)
+    urllib3.disable_warnings()  # Disable the warnings.    
+    
+    requeststring='https://'+host+':/signalk/v1/api/vessels/self/navigation/position/value'
+    resp = requests.get(requeststring, verify=False) 
+    
+    if (resp.status_code == 404):
+        return 0.0, 0.0
+        # Just return zeros if no valid response from the SignalK server.
+
+    data = json.loads(resp.content)
+    return float(data['latitude']), float(data['longitude'])
+# End signalkclient    
+
+
+
+def gpsdclient():
+    import gps
+    port='2947' # Port is default, seldom changed.
+
+    session = gps.gps(host=host, port=port,mode=gps.WATCH_ENABLE)
+    while 0 == session.read() :
+        if not (gps.MODE_SET & session.valid):
+            # not useful, probably not a TPV message
+            continue        
+        if ((gps.isfinite(session.fix.latitude) and
+             gps.isfinite(session.fix.longitude))):
+#            print(" Lat %.6f Lon %.6f" %
+#                  (session.fix.latitude, session.fix.longitude))
+            return session.fix.latitude, session.fix.longitude
+            break
+    session.close()
+# End gpsdclient
+
+
+
+def display_info(serv, lat, lon, latd, lond, grid):
+    tk.Label(master, text="Position",anchor="e").grid(row=0,columnspan = 2)
+    lb=["Server   ","Lat    ","Lon    ","Lat    ","Lon    ","Grid   "]
+    a=[serv, lat, lon, latd, lond, grid]
+    for r in range(len(lb)):
+        tk.Label(master, text=lb[r]).grid(row=r+1)
+        e  = tk.Entry(master, width="14")
+        e.insert(0, a[r])
+        e.grid(row=r+1, column=1)
+
+
 
 
 # Main start here.
 
-print(data['latitude'])
-print(data['longitude'])
+#lat, lon = gpsdclient()
+lat, lon = signalkclient()
 
-grid=to_grid(float(data['latitude']), float((data['longitude'])))
+print(lat, lon)
+#
+print(math.floor(lat),'°',"%.3f" % (60*(lat-math.floor(lat))),"'")
+print(math.floor(lon),'°',"%.3f" % (60*(lon-math.floor(lon))),"'")
+#
+latd = "N "+str(math.floor(lat))+'°'+str("%.3f" % (60*(lat-math.floor(lat))))+"'"
+lond = "E "+str(math.floor(lon))+'°'+str("%.3f" % (60*(lon-math.floor(lon))))+"'"
+#
+min, sec = divmod(abs(lat)*3600, 60)
+deg, min = divmod(min, 60)
+print(math.floor(deg),'°',math.floor(min),"'","%.0f" % round(sec,0),'"')
+min, sec = divmod(abs(lon)*3600, 60)
+deg, min = divmod(min, 60)
+print(math.floor(deg),'°',math.floor(min),"'","%.0f" % round(sec,0),'"')
+
+#print(data['latitude'])
+#print(data['longitude'])
+
+#grid=to_grid(float(data['latitude']), float((data['longitude'])))
+grid=to_grid(lat, lon)
+
 print(grid)
+
+# Make a GUI pop-up with dd.ddddd and dd mm.mmm positions.
+
+master = tk.Tk()
+master.title("Position")
+
+resp="OK"
+
+display_info(host, lat, lon, latd, lond, grid)
+tk.Button(master, text=resp, height="2",
+          command=master.quit).grid(row=7, column=1, sticky=tk.W, pady=1)
+master.mainloop()
+
+
+
+
+
 
 # end main
 
