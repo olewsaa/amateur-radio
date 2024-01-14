@@ -301,24 +301,38 @@ and use the pat.start to launch just pat and if necessary flrig and hamlib.
 As said in the beginning, if you run only ARDOP it can run on the same 
 Raspberry as the OpenPlotter services. 
 
-The script pat-control.py is used to launch and test the services for
-a pure ARDOP setup. Maybe this should be cleaned up :)
-It's a combination of Python GUI and bash scripts. 
+If you want manual control of the pat launch the script *pat.start*
+can be used to launch the services, an icob on the desktop might
+be handy, just copy the file *pat.desktop* to the *Desktop* directory
+and you will start the different applications and display their process 
+IDs to verify that they are running.
 
-The script is placed on my desktop with a "Postman Pat" icon (copyrighted ?). 
+The script pat.control is used to launch and test the services for
+a pat and VARA setup. It starts flrig (if not already started), hamlib 
+(rigctld deamon) and VARA (ARDOP is commented out, if needed just activate
+the lines) and last but not least pat.
 
-If you have a dedicated RPi and want pat active at all times there is no need for 
-any of these scripts, just launch the services at boot time.  This is nicely 
-explained in the videos. I use the rig to receive weatherfax, RTTY forecasts and
-record MSI audio messages all which need the audio device. Hence ARDOP and VARA 
-should be stopped. Pat could probaly be left running, but I stop that too when 
-not doing email communication. 
+If you have a dedicated RPi and want pat active at all times there is
+no need for any of these scripts, just launch the services at boot
+time.  This is nicely explained in the videos. I use the rig to
+receive weatherfax, RTTY forecasts and record MSI audio messages all
+which need the audio device. Hence ARDOP and VARA should be
+stopped. Pat could probaly be left running, but I stop that too when
+not doing email communication.
 
 I'm using a Xiegu G90 for which Hamlib (current version March 2022)
 don't support.  However, flrig support G90 and I'm using hamlib with
 device 4 which is flrig.  I still need to press the "Tune" button
 after changing frequency as my hamlib build do not support this
 function.
+
+#### Older scrips (using ARDOP)
+
+The older script pat-control.py is used to launch and test the services for
+a pure ARDOP setup. Maybe this should be cleaned up :)
+It's a combination of Python GUI and bash scripts. 
+
+The script is placed on my desktop with a "Postman Pat" icon (copyrighted ?). 
 
 
 ## Grid from Signal K

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=pat
+GenericName=pat
+Comment=pat
+Exec=/home/pi/pat/pat.control.py
+Type=Application
+StartupNotify=true
+Icon=/home/pi/pat/pat.png
+StartupWMClass=pat
+Categories=HamRadio

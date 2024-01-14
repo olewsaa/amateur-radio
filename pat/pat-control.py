@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+
+
+# Ole W. Saastad, LB4PJ
+#
+# An older version of pat control, for pat and ARDOP.
+#
+
 import os
 import time
 import tkinter as tk
