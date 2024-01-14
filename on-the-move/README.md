@@ -6,6 +6,13 @@ Hence the config files do not necessarily contain the current location.
 While some applications can use gpsd to request a location this not
 always the case. I have put together a little selection of scripts that update the config files for some of the applications I use. 
 
+## Showpos
+A small script that scan for GPSD and SignalK servers. It start with 
+scanning a predefined list of known addresses (this is normally enough).
+If no servers are found it scan through the entire subnet, this might take
+some time. In nothing is found it emits data from «demo.signalk.org».
+![Control window]((https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/showpos.png)
+
 ## SignalK
 
 [SignalK](https://signalk.org/) is a popular protocol used in boating 
@@ -27,6 +34,10 @@ Common for these scripts is requesting information from the SignalK server.
 - showpos.py  -- Emit a lat, lon position and corresponding Maidenhead grid.
 - update.pos.pat.conf.py --  update the position in pat's config file.
 - update.pos.WSJT-X.conf.py -- update the position in WSJT, JS8Call and TQSL.
+
+The script update.pos.WSJT-X.conf.py emit a window showing position and which 
+config files that have been updated.
+![Control window]((https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/QTH-update.png)
 
 ## Automatic run at boot time
 The two scripts can be launched at boot time by means of the cron system.
