@@ -6,7 +6,6 @@
 # 1.0 14 January 2024
 #
 
-
 # change to a log dir.
 cd ${HOME}/pat/log
 

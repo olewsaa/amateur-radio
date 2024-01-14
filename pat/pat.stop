@@ -7,7 +7,6 @@
 # 1.0 14 January 2024
 #
 
-
 killall pat
 killall piardopc
 killall rigctld
