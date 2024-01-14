@@ -313,7 +313,7 @@ and you will start the different applications and display their process
 IDs to verify that they are running.
 
 The script 
-[pat.control](https://github.com/olewsaa/amateur-radio/blob/main/pat/pat.control) 
+[pat.control.py](https://github.com/olewsaa/amateur-radio/blob/main/pat/pat.control.py) 
 is used to launch and test the services for
 a pat and VARA setup. It starts flrig (if not already started), hamlib 
 (rigctld deamon) and VARA (ARDOP is commented out, if needed just activate
