@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# Ole W. Saastad, LB4PJ
+#
+# 0.x versions 2022-2023
+# 1.0 14 January 2024
+#
+
 
 # change to a log dir.
-cd $HOME/pi/pat/log
+cd ${HOME}/pat/log
 
 # Start flrig if not running
 PID_FLRIG=$(pidof flrig)
@@ -25,19 +31,26 @@ if [ $? -ne 0 ]; then
 	rigctld -m 4 > rigctld.log &
 fi
 
-PID_ARDOP=$(pidof piardopc)
-if [ $? -ne 0 ]; then
-	echo "Starting piardopc";
-	piardopc 8515 plughw:2,0 plughw:2,0 > piardopc.log &
-else
-	echo "piardopc running";
-fi
-PID_ARDOP_GUI=$(pidof piARDOP_GUI)
-if [ $? -ne 0 ]; then
-        piARDOP_GUI &
-fi
+#PID_ARDOP=$(pidof piardopc)
+#if [ $? -ne 0 ]; then
+#	echo "Starting piardopc";
+#	piardopc 8515 plughw:2,0 plughw:2,0 > piardopc.log &
+#else
+#	echo "piardopc running";
+#fi
+#PID_ARDOP_GUI=$(pidof piARDOP_GUI)
+#if [ $? -ne 0 ]; then
+#        piARDOP_GUI &
+#fi
 
+# Starting VARA
+env WINEDEBUG=-all wine /home/pi/.wine/drive_c/VARA/VARA.exe &
 
+#sleep 2
+
+# Update the pat config file with current position from
+# GPS via NMEA2000 using Signal K server.
+/home/pi/pat/update.pos.pat.conf.py
 
 PID_PAT=$(pidof pat)
 if [ $? -ne 0 ]; then

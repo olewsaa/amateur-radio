@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+# Ole W. Saastad, LB4PJ
+#
+# 0.x versions 2022-2023
+# 1.0 14 January 2024
+#
+
+
 killall pat
 killall piardopc
 killall rigctld
