@@ -311,7 +311,7 @@ be handy, just copy the file
 to the [Desktop] directory
 and you will start the different applications and display their process 
 IDs to verify that they are running.
-![Control window](https://github.com/olewsaa/amateur-radio/blob/main/pat/winlinl-pat-window.png)
+![Control window](https://github.com/olewsaa/amateur-radio/blob/main/pat/winlink-pat-window.png)
 
 The script 
 [pat.control.py](https://github.com/olewsaa/amateur-radio/blob/main/pat/pat.control.py) 
