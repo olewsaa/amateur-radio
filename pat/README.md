@@ -327,11 +327,9 @@ which need the audio device. Hence ARDOP and VARA should be
 stopped. Pat could probably be left running, but I stop that too when
 not doing email communication.
 
-I'm using a Xiegu G90 for which Hamlib (current version March 2022)
-don't support.  However, flrig support G90 and I'm using hamlib with
-device 4 which is flrig.  I still need to press the "Tune" button
-after changing frequency as my hamlib build do not support this
-function.
+I'm using a Xiegu G90 and as of 2024 hamlib do support the G90.
+The flrig also support G90 and I'm using hamlib with
+device 4 which is flrig. Most functions on the G90 works fine.
 
 #### Older scrips (using ARDOP)
 
