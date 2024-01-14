@@ -297,17 +297,17 @@ and PID buttons, the latter to check that the services have started.
 As touched upon the introduction,
 there are two set of scrips, one set for the control when only ARDOP is 
 used and another when VARA is used, I start and stop VARA with its icon,
-and use the pat.start to launch just pat and if necessary flrig and hamlib.
+and use the *pat.start* to launch just pat and if necessary flrig and hamlib.
 As said in the beginning, if you run only ARDOP it can run on the same 
 Raspberry as the OpenPlotter services. 
 
 If you want manual control of the pat launch the script *pat.start*
-can be used to launch the services, an icob on the desktop might
+can be used to launch the services, an icon on the desktop might
 be handy, just copy the file *pat.desktop* to the *Desktop* directory
 and you will start the different applications and display their process 
 IDs to verify that they are running.
 
-The script pat.control is used to launch and test the services for
+The script *pat.control* is used to launch and test the services for
 a pat and VARA setup. It starts flrig (if not already started), hamlib 
 (rigctld deamon) and VARA (ARDOP is commented out, if needed just activate
 the lines) and last but not least pat.
