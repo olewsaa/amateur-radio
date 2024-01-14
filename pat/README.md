@@ -337,7 +337,7 @@ The older script pat-control.py is used to launch and test the services for
 a pure ARDOP setup. Maybe this should be cleaned up :)
 It's a combination of Python GUI and bash scripts. 
 
-The script is placed on my desktop with a "Postman Pat" icon (copyrighted ?). 
+
 
 
 ## Grid from Signal K
