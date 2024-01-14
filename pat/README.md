@@ -308,8 +308,7 @@ If you want manual control of the pat launch the script
 can be used to launch the services, an icon on the desktop might
 be handy, just copy the file 
 [pat.desktop](https://github.com/olewsaa/amateur-radio/blob/main/pat/pat.desktop) 
-to the [Desktop] directory
-and you will start the different applications and display their process 
+to the «Desktop» directory and you will start the different applications and display their process 
 IDs to verify that they are running.
 ![Control window](https://github.com/olewsaa/amateur-radio/blob/main/pat/winlink-pat-window.png)
 
