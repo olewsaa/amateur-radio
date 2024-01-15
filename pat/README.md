@@ -92,7 +92,7 @@ You can find copy of my [config.json](https://github.com/olewsaa/Yacht-computer/
 
 ### ARDOP
 
-The Amateur Radio Digital Open Protocol [ARPAP](https://www.cantab.net/users/john.wiseman/Documents/ARDOPC.html) is used as the transport layer.
+The Amateur Radio Digital Open Protocol [ARDOP](https://www.cantab.net/users/john.wiseman/Documents/ARDOPC.html) is used as the transport layer.
 
 The ardopc is distributed as a binary, source code is available.
 
