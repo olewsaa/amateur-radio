@@ -75,15 +75,18 @@ save and exit.
 If you do not have winlink account contacting them for the first time will
 issue a password for you, edit the file : $HOME/.config/pat/config.json 
 
-For more info on the web interface there is a [https://github.com/la5nta/pat/wiki/The-web-GUI](wiki) 
+For more info on the web interface there is a 
+[wiki](https://github.com/la5nta/pat/wiki/The-web-GUI)
 in the google group pat.
 
 
-You can also add a GPS section to enable pat to query the gpsd server.
+You can also add a GPS section to enable pat to query the gpsd server,
+if you are using an external GPS server replace localhost with the ip
+number or name. 
 
 	"gpsd": {
-		"enable_http": false,
-		"use_server_time": false,
+		"enable_http": true,
+		"use_server_time": true,
 		"addr": "localhost:2947"
 	},
 
