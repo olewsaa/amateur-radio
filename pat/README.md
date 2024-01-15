@@ -164,10 +164,11 @@ I suggest doing it a bit more manual, as it's a one time job.
 It takes some time and the installer use X11 (Wine) so you need a
 console VNC or screen. It's a complicated installation, follow closely and
 do not ignore errors that might appear. Make sure to install the extras that
-are called for. You need to answer a few questions. Select your audio device, often a USB device.
+are called for. You need to answer a few questions. Select your audio device, 
+often a USB device.
 
-It does not work using a ssh connection (maybe if you set up X11 forwarding? 
-- I did not try), VNC is the safest option. 
+It does not work using a ssh connection (X11 forwarding is on, it might work? 
+I did not try), VNC seems like  the safest option. 
 
 The instructions found in the git repo linked to above give far more details. 
 
@@ -176,7 +177,8 @@ license fee. My experience is very good, VARA works as good as the
 user stories tell. Two main issues with VARA is Windows/x86 and the
 license.
 
-Keep a copy of the script as it deletes itself when run, saves you from downloading it again if something goes wrong (as it some times do).
+Keep a copy of the script as it deletes itself when run, saves you from 
+downloading it again if something goes wrong (as it some times do).
 
 The pat config file need to have a vara section, I use the following:
 
@@ -188,6 +190,14 @@ The pat config file need to have a vara section, I use the following:
    	"ptt_ctrl": true
    	},
 
+You can also add a GPS section to enable pat to query the gpsd server.
+
+	"gpsd": {
+		"enable_http": false,
+		"use_server_time": false,
+		"addr": "localhost:2947"
+	},
+  
 ### Hamlib
 
 Become root and install hamlib. Hamlib do not support Xiegu G90 in the 4.4 version, but 4.5.4 does
