@@ -50,11 +50,11 @@ and date from the SignalK server using the set-date-from-SignalK.py script.
 
 ### Pat
 Download Pat, check [pat releases](https://github.com/la5nta/pat/releases),
-below is shown 0.13.1 version, this gets updated regularly. 
+below is shown 0.15.1 version, this gets updated regularly. 
 
      sudo -i 
-     wget https://github.com/la5nta/pat/releases/download/v0.13.1/pat_0.13.1_linux_arm64.deb
-     dpkg --install pat_0.13.1_linux_armhf.deb`
+     wget https://github.com/la5nta/pat/releases/download/v0.15.1/pat_0.15.1_linux_armhf.deb
+     dpkg --install pat_0.15.1_linux_armhf.deb`
 
 As your prefered user, in my case just pi.
 
@@ -136,16 +136,16 @@ You can try to set the ARDOP speed to 2000, as your user do
 
 ### VARA
 
-First step to use VARA with pat is to download and install a special VARA enabled 
-pat version. This is located on a google drive by Rainer Großkopf and Chris Keller
-(two names shows up on updates, unsure who to credit) :
-https://drive.google.com/drive/folders/1v__JXBHHD7w11SS5WyfPtMmVrzZ-uqx3
-
-The latest version (June 2022) is : pat_45c5064_linux_armhf.deb , this is the ARM 32 bit 
-version who work well with my RPi4. Close any running pat and install this package. 
+#### Pat
+First step to use VARA with pat is to download and install pat, VARA is 
+now supported by pat.
+The latest version (January 2024) is : pat_0.15.1_linux_armhf.deb, this is 
+the ARM 32 bit version who work well with my RPi4. Close any running pat 
+and install this package. 
 After restart of pat there should be a VARA entry in the menu of possible connections
 in the web interface. 
 
+#### Installing VARA
 Using VARA on a Raspberry Pi is not simple, the VARA is Windows
 program compiled for x86 processors. This require the Box86 x86
 emulator and the Windows emulator Wine. While Wine doesn't requite
@@ -162,9 +162,12 @@ I suggest doing it a bit more manual, as it's a one time job.
       ./install_winelink.sh vara_only
 
 It takes some time and the installer use X11 (Wine) so you need a
-console VNC or screen. It does not work using a ssh connection (maybe
-if you set up X11 forwarding? - I did not try). You need to answer a
-few questions. Select your audio device, often a USB device.
+console VNC or screen. It's a complicated installation, follow closely and
+do not ignore errors that might appear. Make sure to install the extras that
+are called for. You need to answer a few questions. Select your audio device, often a USB device.
+
+It does not work using a ssh connection (maybe if you set up X11 forwarding? 
+- I did not try), VNC is the safest option. 
 
 The instructions found in the git repo linked to above give far more details. 
 
