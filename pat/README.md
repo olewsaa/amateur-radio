@@ -79,6 +79,15 @@ For more info on the web interface there is a [https://github.com/la5nta/pat/wik
 in the google group pat.
 
 
+You can also add a GPS section to enable pat to query the gpsd server.
+
+	"gpsd": {
+		"enable_http": false,
+		"use_server_time": false,
+		"addr": "localhost:2947"
+	},
+
+
 You can find copy of my [config.json](https://github.com/olewsaa/Yacht-computer/edit/master/pat/config.json).
 
 ### ARDOP
@@ -190,13 +199,6 @@ The pat config file need to have a vara section, I use the following:
    	"ptt_ctrl": true
    	},
 
-You can also add a GPS section to enable pat to query the gpsd server.
-
-	"gpsd": {
-		"enable_http": false,
-		"use_server_time": false,
-		"addr": "localhost:2947"
-	},
   
 ### Hamlib
 
