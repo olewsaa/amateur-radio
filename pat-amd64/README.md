@@ -28,15 +28,16 @@ The Q900 has a frequency range from 100 kHz to 2 GHz receive and from
 1.8 to 434 MHz covering 160 m to 70 cm. Hence it support VARA FM 
 at 2 m and 70 cm. 
 
-The file "Q900-config.json" contain a config script (named
-config.json) for Pat with details showing how to set up VARA HF and VARA FM.
-VARA HF and VARA FM cannot be run at the same time. Both use port 8300
-and the audio device hence only one can be running at the same
-time. Pat cannot launch VARA, Pat expect VARA to be running when
-needed. This need to handled by the user.
+The file 
+[Q900-config.json](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/Q900-config.json) 
+contain a config script (named /home/$USER/.config/pat/config.json) for Pat with details showing 
+how to set up VARA HF and VARA FM. VARA HF and VARA FM cannot be run at the same time. Both use port 8300
+and the audio device hence only one can be running at the same time. Pat cannot launch VARA, 
+Pat expect VARA to be running when needed. This need to handled by the user.
 
-CAT control is handled by Pat using Hamlib and Flrig. VARA does not do PTT,
-it can be set up to do so over a serial port, but Pat do this via CAT control.
+CAT control is handled by Pat using [Hamlib](https://hamlib.github.io/) and 
+[Flrig](http://www.w1hkj.com/).  VARA does not do PTT, it can be set up to do so over a serial port, 
+but Pat do this nicely via CAT control.
 
 
 ### Step by step cut'n paste
