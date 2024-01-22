@@ -27,19 +27,6 @@
     },
     "rig": "G90"
   },
-  "serial-tnc": {
-    "path": "/dev/ttyUSB0",
-    "serial_baud": 9600,
-    "hbaud": 1200,
-    "type": "Kenwood"
-  },
-  "winmor": {
-    "addr": "localhost:8500",
-    "inbound_bandwidth": 1600,
-    "drive_level": 0,
-    "rig": "",
-    "ptt_ctrl": false
-  },
   "ardop": {
     "addr": "localhost:8515",
     "arq_bandwidth": {
@@ -51,18 +38,12 @@
     "beacon_interval": 0,
     "cwid_enabled": true
   },
-   "varahf": {
-        "host": "localhost",
-        "cmdPort": 8300,
-        "dataPort": 8301,
-        "rig": "G90",
-        "ptt_ctrl": true
-    },
-  "pactor": {
-    "path": "/dev/ttyUSB0",
-    "baudrate": 57600,
-    "rig": "",
-    "custom_init_script": ""
+  "varahf": {
+    "host": "localhost",
+    "cmdPort": 8300,
+    "dataPort": 8301,
+    "rig": "G90",
+    "ptt_ctrl": true
   },
   "telnet": {
     "listen_addr": ":8774",
