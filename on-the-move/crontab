@@ -10,7 +10,7 @@
 # These two scripts are run at boot time and will update
 # the positions. The Server need to be up.
 #
-# If NTP is now working, is not online or not synced we
+# If NTP is not working, is not online or not synced we
 # update the clock from SignalK, every 10 minutes, the
 # Python script test for valid NTP.
 */10 * * * * /home/orangepi/set-date-from-SignalK.py

@@ -18,11 +18,14 @@ connect to the radio. Using the FT8 app works fine.
 It works from built in battery or from 12 V input. The battery can be
 charged using USB-C connection.
 
+Mine is installed onboard [Algol](https://algol.homelinux.no/) 
+and uses an isolated backstay as HF antenna and 
+a fiberglass 2m/70cm antenna at the masthead. 
+
 ## CAT control
 CAT control is done via USB connection, the command set is compatible with 
 Yaesu FT-817. It works ok so far. PTT is most important which works nicely.
 Using flrig to control mode and frequency also works fine. 
-
 
 ## Pat
 Pat rely on hamlib and flrig to control the radio via CAT control and
