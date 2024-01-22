@@ -12,8 +12,8 @@ dedicated computer.
 As winlink and VARA are software running under Windows only some
 steps have been taken to address  the issue. The 
 [pat](https://getpat.io/) software is
-a noticeable piece of software. Written as an alternative for winlink
-usage with support for a range of transports layers, o.a. 
+a noticeable piece of software. Written as an alternative winlink client
+with support for a range of transports layers, o.a. 
 TCP/IP, ARDOP and VARA. ARDOP has Linux support with source code available, 
 but it's outperformed by the windows and x86/x86-64 only software VARA. 
 
