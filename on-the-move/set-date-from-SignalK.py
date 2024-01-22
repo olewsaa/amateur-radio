@@ -22,7 +22,7 @@ import os, json, requests
 NTPrunning=os.system('ntpstat>/dev/null') 
 #print("NTP status", NTPrunning)
 if (NTPrunning != 0):    
-    #resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/datetime/value', verify=False)a
+    #resp = requests.get('http://10.10.10.1:3000/signalk/v1/api/vessels/self/navigation/datetime/value', verify=False)
 
     resp = requests.get('http://demo.signalk.org/signalk/v1/api/vessels/self/navigation/datetime/value', verify=False)
 

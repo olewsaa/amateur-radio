@@ -44,6 +44,7 @@ cd  ${CWD}/install.tmp
 INSTDIR=${CWD}/install.tmp
 UNAME=$(whoami)
 
+sudo echo "set sudo"
 echo "Using install directory " $INSTDIR
 echo "Updating distro"
 sudo apt-get -q=2 -y update
