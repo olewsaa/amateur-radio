@@ -39,4 +39,7 @@ on the laptop side to keep the audio level in the "green".
 As CAT control and audio is working there are few issues with FT8 and
 other digital modes. 
 
+## Apps for phone and tabs
+There are apps that can control the radio as well as run FT8 via Bluetooth. 
+
 
