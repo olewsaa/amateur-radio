@@ -1,0 +1,61 @@
+{
+    "mycall": "CALLSIGN",
+    "secure_login_password": "PASSWORD",
+    "auxiliary_addresses": [],
+    "locator": "JO59jx",
+    "service_codes": [
+        "PUBLIC"
+    ],
+    "http_addr": "localhost:5000",
+    "motd": [
+        "Open source Winlink client - getpat.io"
+    ],
+    "connect_aliases": {
+        "telnet": "telnet://{mycall}:CMSTelnet@cms.winlink.org:8772/wl2k",
+	"LA2T-160m": "vara:///LA2T?freq=1843&bw=500",
+        "LA2T-80m":  "vara:///LA2T?freq=3595.5&bw=500",
+        "LA1T-60m":  "vara:///LA1T?freq=5273&bw=2300"
+    },
+    "listen": [],
+    "hamlib_rigs": {
+        "FT-817": {
+            "address": "localhost:4532",
+            "network": "tcp"
+        }
+    },
+    "ardop": {
+        "addr": "localhost:8515",
+        "arq_bandwidth": {
+            "Forced": false,
+            "Max": 2000
+        },
+        "rig": "FT-817",
+        "ptt_ctrl": true,
+        "beacon_interval": 0,
+        "cwid_enabled": true
+    },
+    "telnet": {
+        "listen_addr": ":8774",
+        "password": ""
+    },
+    "varahf": {
+        "addr": "localhost:8300",
+        "bandwidth": 2300,
+        "rig": "FT-817",
+        "ptt_ctrl": true
+    },
+    "varafm": {
+        "addr": "localhost:8300",
+        "bandwidth": 9600,
+        "rig": "FT-817",
+        "ptt_ctrl": true
+    },
+    "gpsd": {
+        "enable_http": false,
+        "allow_forms": false,
+        "use_server_time": false,
+        "addr": "10.10.10.1:2947"
+    },
+    "schedule": {},
+    "version_reporting_disabled": false
+}
