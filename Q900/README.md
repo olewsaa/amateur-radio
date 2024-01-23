@@ -23,9 +23,14 @@ and uses an isolated backstay as HF antenna and
 a fiberglass 2m/70cm antenna at the masthead. 
 
 ## CAT control
-CAT control is done via USB connection, the command set is compatible with 
-Yaesu FT-817. It works ok so far. PTT is most important which works nicely.
-Using flrig to control mode and frequency also works fine. 
+CAT control is done via USB connection, the command set is compatible
+with Yaesu FT-817, support in [hamlib](https://github.com/Hamlib/Hamlib)
+for the Q900 was just added, Jan '24. 
+It works fine, combined with [flrig](http://www.w1hkj.com/). 
+PTT is most important which works nicely. Using
+flrig to control mode and frequency also works fine. There are
+probably a few commands not yet implemented, like filters, modes, 
+various gain and volume controls. 
 
 ## Pat
 Pat rely on hamlib and flrig to control the radio via CAT control and
