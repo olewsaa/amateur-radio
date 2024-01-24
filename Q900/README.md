@@ -9,8 +9,8 @@ Station 100KHz-2GHz HF/VHF/UHF ALL Mode». The radio comes with built in
 *single USB cable* is needed to connect a laptop to the radio.
 
 The radio have two antenna connections one supporting 100 kHz to 74 MHz while
-the other support 74 to 2 GHz. It can transmit from 160 m to 70 cm. While it 
-can receive at the 23 cm band it cannot transmit. 
+the other support 74 to 2 GHz. It can transmit on the ha bands from 160 m to 70 cm. 
+While it can receive at the 23 cm band it cannot transmit. 
 
 The radio also have Bluetooth and several mobile phone apps exist to 
 connect to the radio. Using the FT8 app works fine. 
@@ -48,6 +48,7 @@ As CAT control and audio is working there are few issues with FT8 and
 other digital modes. 
 
 ## Apps for phone and tabs
-There are apps that can control the radio as well as run FT8 via Bluetooth. 
+There are apps that can control the radio as well as run 
+[FT8](https://github.com/N0BOY/FT8CN/releases) via Bluetooth. 
 
 
