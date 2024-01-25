@@ -7,9 +7,11 @@ From the web site «Q900 V4 Ultra-portable SDR Transceiver Short Wave Radio
 Station 100KHz-2GHz HF/VHF/UHF ALL Mode». The radio comes with built in 
 "sound card" which share the same USB cable/connection, hence only a 
 *single USB cable* is needed to connect a laptop to the radio.
+[Official Youtube channel](https://www.youtube.com/@GUOHETEC/featured)
 
-The radio have two antenna connections one supporting 100 kHz to 74 MHz while
-the other support 74 to 2 GHz. It can transmit on the ha bands from 160 m to 70 cm. 
+The radio have two antenna connections one supporting 100 kHz to 74 MHz using a 239 UHF
+connector while the other support 74 MHz to 2 GHz via the SMA connector. 
+It can transmit on the ham bands from 160 m to 70 cm. 
 While it can receive at the 23 cm band it cannot transmit. 
 
 The radio also have Bluetooth and several mobile phone apps exist to 
@@ -19,8 +21,9 @@ It works from built in battery or from 12 V input. The battery can be
 charged using USB-C connection.
 
 Mine is installed onboard [Algol](https://algol.homelinux.no/) 
-and uses an isolated backstay as HF antenna and 
-a fiberglass 2m/70cm antenna at the masthead. 
+and uses an [isolated backstay](https://www.homelinux.no/radio) as HF 
+antenna and a fiberglass 2m/70cm antenna at the masthead. 
+
 
 ## CAT control
 CAT control is done via USB connection, the command set is compatible
