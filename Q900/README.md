@@ -7,11 +7,12 @@ From the web site «Q900 V4 Ultra-portable SDR Transceiver Short Wave Radio
 Station 100KHz-2GHz HF/VHF/UHF ALL Mode». The radio comes with built in 
 "sound card" which share the same USB cable/connection, hence only a 
 *single USB cable* is needed to connect a laptop to the radio.
-[Official Youtube channel](https://www.youtube.com/@GUOHETEC/featured)
+The [Official Youtube channel](https://www.youtube.com/@GUOHETEC/featured)
+contain intruction and overview videos. Some are quite useful. 
 
-The radio have two antenna connections one supporting 100 kHz to 74 MHz using a 239 UHF
-connector while the other support 74 MHz to 2 GHz via the SMA connector. 
-It can transmit on the ham bands from 160 m to 70 cm. 
+The radio have two antenna connections one supporting 100 kHz to 74 MHz 
+using a 239 UHF connector while the other support 74 MHz to 2 GHz via 
+the SMA connector. It can transmit on the ham bands from 160 m to 70 cm. 
 While it can receive at the 23 cm band it cannot transmit. 
 
 The radio also have Bluetooth and several mobile phone apps exist to 
@@ -36,10 +37,10 @@ probably a few commands not yet implemented, like filters, modes,
 various gain and volume controls. 
 
 ## Pat
-Pat rely on hamlib and flrig to control the radio via CAT control and
-works fine.  The audio is built into the radio and is sharing the same
-USB connection, which mean that there is only *one* USB cable from the
-Q900 to the laptop. 
+Pat can use hamlib and flrig to control the radio via CAT control and
+this works fine.  The audio (sound card) is built into the radio and is 
+sharing the same USB connection, which mean that there is only *one* USB 
+cable from the Q900 to the laptop. 
 
 ### VARA 
 Both VARA HF and VARA FM works without any major issues, just select USB audio
@@ -53,5 +54,5 @@ other digital modes.
 ## Apps for phone and tabs
 There are apps that can control the radio as well as run 
 [FT8](https://github.com/N0BOY/FT8CN/releases) via Bluetooth. 
-
+gg
 
