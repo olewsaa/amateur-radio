@@ -1,8 +1,16 @@
 # Amateur-radio
 ## Introduction
 Code related to ham amateur radio using small single board computers
-like Raspberry Pi and Orange Pis. Centred around digital modes and in
+like Raspberry Pi and Orange Pis. Centered around digital modes and in
 particular Winlink email using pat.
+
+The Q900 radio is installed onboard Algol and as it have built in soundcard and
+can connect with a single USB cable I have connected it directly to the laptop.
+Simplicity is important when operating from a sailboat on battery power. The Q900
+cover the from 160 m to 70 cm which is ideal when space is limited. 
+
+The G90 is installed at home with a random wire antenna extending from a 
+window to an apple tree. Not great, but FT8 and winlink work.  
 
 ### Pat for Raspberry Pi
 The directory pat contain files and instructions for installing and using pat 
