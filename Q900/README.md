@@ -40,7 +40,11 @@ various gain and volume controls.
 Pat can use hamlib and flrig to control the radio via CAT control and
 this works fine.  The audio (sound card) is built into the radio and is 
 sharing the same USB connection, which mean that there is only *one* USB 
-cable from the Q900 to the laptop. 
+cable from the Q900 to the laptop. An 
+[example config file](https://github.com/olewsaa/amateur-radio/blob/main/Q900/config.json)
+can often be useful. The Q900 uses a command set compatible to the Yuesu FT-817.
+Newer versions of hamlib support Q900.
+
 
 ### VARA 
 Both VARA HF and VARA FM works without any major issues, just select USB audio
