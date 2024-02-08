@@ -8,12 +8,12 @@ not allowed in the file itself. Comments can be useful to document the
 different statements.  The whole object is enclosed in curly brackets, '{}'
 Well known for C programmers. 
 			   
-### IP Adreesses and ports.
+### IP Addresses and ports.
 Each node in an IP network has an IP number. Each node will have a set of ports open
-for communicatio. Common ports are 22 for ssh and 80 for web servers.
+for communication. Common ports are 22 for ssh and 80 for web servers.
 
 ### JSON format
-The json format is fairly simple, but all bracets and commas need to match.
+The json format is fairly simple, but all brackets and commas need to match.
 Some editing of the config file might be needed.
 ```
 {
@@ -59,7 +59,7 @@ from [Guohe Electronics](https://www.guohedz.com/).
 
 
 ## User info
-In order to be recongnised on the Winlink system one need to supply
+In order to be recognised on the Winlink system one need to supply
 personal information like call sign, location and password.
 
 If this is the first lines one need to have a '{' at the start of the text,
@@ -98,6 +98,7 @@ this match a closing '}' at the end of the file.
         "LA7F-40m":  "varahf:///LA7F?freq=7045&bw=500",
         "LA7F-30m":  "varahf:///LA7F?freq=10144&bw=500"
     },
+	
 ## Listen mode 	
 
     "listen": [],
@@ -111,9 +112,9 @@ this match a closing '}' at the end of the file.
 ## Telnet
 The telnet transport is a TCP/IP based transport that uses an unecrypted 
 internet connection to connect to the server cms.winlink.org . Telnet is
-an old connect comand that is commonly used to connect to computers, servers
+an old connect command that is commonly used to connect to computers, servers
 and devices. Being unencrypted is sends the password in plain text and poses
-a security risk it's being replaces by ssh (secure shell) tody.
+a security risk it's being replaces by ssh (secure shell) today.
 
     "telnet": {
         "listen_addr": ":8774",
@@ -122,7 +123,7 @@ a security risk it's being replaces by ssh (secure shell) tody.
 	
 ## ARDOP
 ARDOP [Amateur Radio Digital Open Protocol](https://github.com/hamarituc/ardop) 
-is Open source, free of charge and works fine, but with somewhat less througpout
+is Open source, free of charge and works fine, but with somewhat less throughput
 than VARA. This lessens it's uses as more users choose to use the better 
 performing (but licensed) VARA.
 
@@ -150,6 +151,7 @@ rig is important. Pat uses hamlib's rigctl.
         "rig": "FT-817",
         "ptt_ctrl": true
     },
+
 ## VARA FM	
 As for VARA HF VARA FM uses the same port, 8300. See VAFA HF 
 for setting the rig.
@@ -169,7 +171,9 @@ Connecting a Pactor modem via USB cable.
     "baudrate": 57600,
     "rig": "",
     "custom_init_script": ""
-  },
+	},
+
+  
 Some Pactor modems can connect via Bluetooth. Currently no info on how this is done.
 	
 ## GPS - gpsd server	
@@ -187,10 +191,10 @@ Some Pactor modems can connect via Bluetooth. Currently no info on how this is d
     "schedule": {},
     "version_reporting_disabled": false
 
-## Ending curly bracet 
+## Ending curly brackets 
 ```
 }
 ```
 
-It's important to make sure the commas and curley brackets are correct. 
-A good editor is helpful when ediing json files.
+It's important to make sure the commas and curly brackets are correct. 
+A good editor is helpful when editing json files.
