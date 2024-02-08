@@ -18,7 +18,7 @@ Some editing of the config file might be needed.
 ```
 {
 	"item" : "value",
-	"item" : "value,
+	"item" : "value",
 	"item" : ["a", "b"],
 	"item" : "value"
 }
