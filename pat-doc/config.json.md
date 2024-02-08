@@ -38,6 +38,17 @@ in multiple ways.
 Setting ```"ptt_ctrl": true``` will inform pat that it need to propagate 
 a push to talk signal to the radio. 
 
+## Setting the rig
+The name of the rig need to be set, like ```"rig": "Q900"```. 
+This rig must be supported in [hamlib](https://github.com/Hamlib/Hamlib), 
+[rigctl](https://man.archlinux.org/man/rigctl.1.en). Hamlib can rigctl demon
+can use [flrig](http://www.w1hkj.com/flrig-help/) to send the commands to the radio. 
+A line like this can be used:
+```
+rigctld -m 4 > rigctld.log &
+```
+The code 4 signify flrig.
+
 ## User info
 In order to be recongnised on the Winlink system one need to supply
 personal information like call sign, location and password.
