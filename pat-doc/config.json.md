@@ -47,7 +47,16 @@ A line like this can be used:
 ```bash
 rigctld -m 4 > rigctld.log &
 ```
-The code 4 signify flrig.
+The code 4 signify flrig. 
+
+An alternative which do not use flrig is to set the rig with the rigctl demon
+and provide a TTY device.
+```bash
+rigctld -m 1051  -r /dev/ttyUSB0 -s 19200  > rigctld.log &
+```
+The rig 1051 is the [Guohe Q900](https://www.guohedz.com/Q900) 
+from [Guohe Electronics](https://www.guohedz.com/).
+
 
 ## User info
 In order to be recongnised on the Winlink system one need to supply
