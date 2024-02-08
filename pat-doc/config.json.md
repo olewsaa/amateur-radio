@@ -27,6 +27,14 @@ Notice no comma after the last line.
 
 There are many pages that provide [tutorials](https://www.w3schools.com/js/js_json_intro.asp).
 
+## Push to Talk, transmit 
+The transceiver need to be keyed with a push to talk, ptt. This can be done 
+in multiple ways. 
+
+- VOX
+- Signal-link VOX with cable to transceiver
+- CAT control ptt
+
 
 ## User info
 In order to be recongnised on the Winlink system one need to supply
@@ -89,6 +97,7 @@ a security risk it's being replaces by ssh (secure shell) tody.
         "listen_addr": ":8774",
         "password": ""
     },
+	
 ## ARDOP
 ARDOP [Amateur Radio Digital Open Protocol](https://github.com/hamarituc/ardop) 
 is Open source, free of charge and works fine, but with somewhat less througpout
