@@ -35,6 +35,8 @@ in multiple ways.
 - Signal-link VOX with cable to transceiver
 - CAT control ptt
 
+Setting ```"ptt_ctrl": true``` will inform pat that it need to propagate 
+a push to talk signal to the radio. 
 
 ## User info
 In order to be recongnised on the Winlink system one need to supply
