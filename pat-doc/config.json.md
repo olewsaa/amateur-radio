@@ -44,7 +44,7 @@ This rig must be supported in [hamlib](https://github.com/Hamlib/Hamlib),
 [rigctl](https://man.archlinux.org/man/rigctl.1.en). Hamlib can rigctl demon
 can use [flrig](http://www.w1hkj.com/flrig-help/) to send the commands to the radio. 
 A line like this can be used:
-```
+```bash
 rigctld -m 4 > rigctld.log &
 ```
 The code 4 signify flrig.
