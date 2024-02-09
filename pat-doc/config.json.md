@@ -51,8 +51,8 @@ The transceiver need to be keyed with a push to talk, ptt. This can be done
 in multiple ways. 
 
 - VOX
-- Signal-link VOX with cable to transceiver
-- CAT control ptt
+- [SignaLink](https://tigertronics.com/slusbmain.htm) VOX with cable to transceiver
+- CAT control ptt (hamlib, flrig etc)
 
 Setting ```"ptt_ctrl": true``` will inform pat that it need to propagate 
 a push to talk signal to the radio. 
