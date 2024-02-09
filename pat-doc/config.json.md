@@ -8,7 +8,8 @@ not allowed in the file itself. Comments can be useful to document the
 different statements.  The whole object is enclosed in curly brackets, '{}'
 Well known for C programmers. 
 			   
-### IP Addresses and ports.  Each node in an IP network has an IP
+### IP Addresses and ports.
+Each node in an IP network has an IP
 number. Each node will have a set of ports open for
 communication. Common ports are 22 for ssh and 80 for web servers.
 The different programs that are involved need to exchange messages to
@@ -29,11 +30,11 @@ Some common port relevant for pat include:
 - 8515,  ARDOP.
 - 5000, PAT web server (if set to 5000 in config).
 
-Most of these communicate on the same system which is referred to a localhost
+Most of these communicate on the same host which is referred to a localhost
 (127.0.0.1 if an ip number is needed). In principle the other programs might
-run on different systems, a common example is gpsd, then both a valid
-ip address and the port number should be supplied (most gpsd clients
-have 2947 set as a default). 
+run on different hosts, a common example is gpsd, then both a valid
+ip address and the port number should be supplied (althrough most gpsd clients
+use the default 2947). 
 
 ### JSON format
 The json format is fairly simple, but all brackets and commas need to match.
@@ -46,7 +47,8 @@ Some editing of the config file might be needed.
 	"item" : "value"
 }
 ```
-Notice no comma after the last line. 
+Notice no comma after the last line. Programs that read json are not forgiving and
+pat is no expection. Any error will cause pat to abort.
 
 There are many pages that provide [tutorials](https://www.w3schools.com/js/js_json_intro.asp).
 
@@ -55,7 +57,7 @@ The transceiver need to be keyed with a push to talk, ptt. This can be done
 in multiple ways. 
 
 - VOX
-- [SignaLink](https://tigertronics.com/slusbmain.htm) VOX with cable to transceiver
+- [SignaLink](https://tigertronics.com/slusbmain.htm) VOX with cable ptt to transceiver
 - CAT control ptt (hamlib, flrig etc)
 
 Setting ```"ptt_ctrl": true``` will inform pat that it need to propagate 
