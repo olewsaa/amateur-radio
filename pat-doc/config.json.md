@@ -7,34 +7,7 @@ This is very common data format. A minor disadvantage is that comments are
 not allowed in the file itself. Comments can be useful to document the 
 different statements.  The whole object is enclosed in curly brackets, '{}'
 Well known for C programmers. 
-			   
-### IP Addresses and ports.
-Each node in an IP network has an IP
-number. Each node will have a set of ports open for
-communication. Common ports are 22 for ssh and 80 for web servers.
-The different programs that are involved need to exchange messages to
-each other.  Each of the programs listen or transmit on different
-ports. Each of the programs have its own dedicated ports. A common
-example is the web server, it normally listen on port 80 for incomming
-requests and send web page content on the
-[same port](https://youtu.be/PBWhzz_Gn10?si=6ed9sxvecI5Ju2C_).
-The port can be set by the user like the common usage of port 5000 for
-the pat web server.  (request then look like: http://localhost:5000).
-Some common port relevant for pat include:
 
-- 22,  secure shell, ssh.
-- 2947,  GPS, the gpsd server.  
-- 4533, Hamlib, rigctl, rigctld.
-- 12345, flrig.
-- 8300,  VARA, both HF and FM.
-- 8515,  ARDOP.
-- 5000, PAT web server (if set to 5000 in config).
-
-Most of these communicate on the same host which is referred to a localhost
-(127.0.0.1 if an ip number is needed). In principle the other programs might
-run on different hosts, a common example is gpsd, then both a valid
-ip address and the port number should be supplied (althrough most gpsd clients
-use the default 2947). 
 
 ### JSON format
 The json format is fairly simple, but all brackets and commas need to match.
@@ -51,6 +24,36 @@ Notice no comma after the last line. Programs that read json are not forgiving a
 pat is no expection. Any error will cause pat to abort.
 
 There are many pages that provide [tutorials](https://www.w3schools.com/js/js_json_intro.asp).
+
+
+### IP Addresses and ports.
+Each node in an IP network has an IP
+number. Each node will have a set of ports open for
+communication. Common ports are 22 for ssh and 80 for web servers.
+The different programs that are involved need to exchange messages to
+each other.  Each of the programs listen or transmit on different
+ports. Each of the programs have its own dedicated ports. A common
+example is the web server, it normally listen on port 80 for incomming
+requests and send web page content on the
+[same port](https://youtu.be/PBWhzz_Gn10?si=6ed9sxvecI5Ju2C_).
+The port can be set by the user like the common usage of port 5000 for
+the pat web server.  (request then look like: http://localhost:5000).
+Some common ports relevant for pat include:
+
+- 80, Common port for web servers.
+- 22,  secure shell, ssh.
+- 2947,  GPS, the gpsd server.  
+- 4533, Hamlib, rigctl, rigctld.
+- 12345, flrig.
+- 8300,  VARA, both HF and FM.
+- 8515,  ARDOP.
+- 5000, PAT web server (if set to 5000 in config).
+
+Most of these communicate on the same host which is referred to a localhost
+(127.0.0.1 if an ip number is needed). In principle the other programs might
+run on different hosts, a common example is gpsd, then both a valid
+ip address and the port number should be supplied (althrough most gpsd clients
+use the default 2947). 
 
 ## Push to Talk, transmit 
 The transceiver need to be keyed with a push to talk, ptt. This can be done 
