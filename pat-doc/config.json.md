@@ -43,7 +43,7 @@ Some common ports relevant for pat include:
 - 80, Common port for web servers.
 - 22,  secure shell, ssh.
 - 2947,  GPS, the gpsd server.  
-- 4533, Hamlib, rigctl, rigctld.
+- 4532, Hamlib, rigctl, rigctld.
 - 12345, flrig.
 - 8300,  VARA, both HF and FM.
 - 8515,  ARDOP.
@@ -130,12 +130,19 @@ this match a closing '}' at the end of the file.
 ## Listen mode 	
 
     "listen": [],
+
+## Hamlib rigs and IP address 
+Pat expect that the hamlib deamon is running and listening for messages on
+port 4532. (start with something like : ```rigctld -m 4 & ```)
+
     "hamlib_rigs": {
     "FT-817": {
             "address": "localhost:4532",
             "network": "tcp"
         }
     },
+Hamlib do support Q900, but it's just a copy of FT-817 so both works.
+
 	
 ## Telnet
 The telnet transport is a TCP/IP based transport that uses an unecrypted 
