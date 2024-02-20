@@ -133,7 +133,7 @@ this match a closing '}' at the end of the file.
 
 ## Hamlib rigs and IP address 
 Pat expect that the hamlib deamon is running and listening for messages on
-port 4532. (start with something like : ```rigctld -m 4 & ```)
+port 4532.
 
     "hamlib_rigs": {
     "FT-817": {
