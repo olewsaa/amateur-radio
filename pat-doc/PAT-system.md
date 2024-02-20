@@ -42,8 +42,9 @@ using the TCP protocl (UDP do not seem to be used).
 With help of the transport network (shared memory, Ethernet or wifi)
 the differnt programs interact and together provide the service we
 expect. This kind of co-operation is mostly refered as the
-client/server model. It offers great flexibility, just think how easy
-it is to change to ARDOP instead of VARA.
+[client/server model](https://en.wikipedia.org/wiki/Client%E2%80%93server_model). 
+It offers great flexibility, just think how easy it is to change to 
+ARDOP instead of VARA.
 
 
 
