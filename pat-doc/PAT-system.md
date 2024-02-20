@@ -31,7 +31,7 @@ Where line might look like :
 
 These rules deal with many user devices that are pluggable, 
 [udev documentation](https://opensource.com/article/18/11/udev) or
-{udev wiki](https://wiki.archlinux.org/title/udev).
+[udev wiki](https://wiki.archlinux.org/title/udev).
 
 
 ## Co-operation
