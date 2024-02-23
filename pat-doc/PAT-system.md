@@ -24,7 +24,7 @@ radio over the USB connection.
 
 A simpler solution is to let Hamlib connect to the radio using a command like this,
 ```
-rigctl -m 1051 -r /dev/ttyUSB1
+rigctld -m 1051 -r /dev/ttyUSB1 &
 ```
 The rig number 1051 is the [Guohe Q900](https://www.guohedz.com/Q900).
 Make sure the USB port is the correct one. 
