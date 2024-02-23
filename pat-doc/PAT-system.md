@@ -1,5 +1,31 @@
 # Pat services communications
 
+## Software and rig
+Some additional software are needed, most common are 
+[Hamlib](https://hamlib.github.io/) and [Flrig](http://www.w1hkj.com/).
+Hamlib (the rigctl command) takes commands from Pat and forward them to either the 
+radio or Flrig. Using flrig provides a graphical interface and full (well not really) 
+control of the radio. 
+
+The program that connects directly to the radio via USB cable need to support the
+radio. Hamlib and flrig have a different pool of supported radios. The supported
+radios can be listed with simple commands.
+
+- Hamlib: *rigctl -l*
+- Flrig : [documentation](http://www.w1hkj.com/flrig-help/supported_transceivers.html)
+
+To set the rig in Flrig use a pull down menu in the graphical interface. 
+For Hamlib, the rig number 4 is Flrig, which just forward the commands to 
+Flrig (port 12345).
+
+The box chart show Pat forward commands to Hamlib which forward again to Flrig.
+A simpler solution is to let Hamlib connect to the radio using a command like this,
+```
+rigctl -m 1051 -r /dev/ttyUSB1
+```
+The rig number 1051 is the [Guohe Q900](https://www.guohedz.com/Q900).
+Make sure the USB port is the correct one. 
+
 ## Hosts and ports
 IP addressing and ports are integral parts of a client server architecture. 
 Pat is a typical example of this kind of architecture. Pat act as a server 
