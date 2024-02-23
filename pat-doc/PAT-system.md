@@ -18,7 +18,10 @@ To set the rig in Flrig use a pull down menu in the graphical interface.
 For Hamlib, the rig number 4 is Flrig, which just forward the commands to 
 Flrig (port 12345).
 
-The box chart show Pat forward commands to Hamlib which forward again to Flrig.
+The box chart show Pat forward commands (over port 4532) to Hamlib which again forward  
+(over port 12345) to Flrig, which eventually send binary radio specific codes to the 
+radio over the USB connection.
+
 A simpler solution is to let Hamlib connect to the radio using a command like this,
 ```
 rigctl -m 1051 -r /dev/ttyUSB1
