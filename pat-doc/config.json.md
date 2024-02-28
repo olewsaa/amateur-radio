@@ -45,7 +45,7 @@ Some common ports relevant for pat include:
 - 2947,  GPS, the gpsd server.  
 - 4532, Hamlib, rigctl, rigctld.
 - 12345, flrig.
-- 8300,  VARA, both HF and FM.
+- 8300 (commands), 8301 (data) VARA, both HF and FM.
 - 8515,  ARDOP.
 - 5000, PAT web server (if set to 5000 in config).
 
