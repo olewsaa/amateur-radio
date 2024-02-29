@@ -217,8 +217,8 @@ check before using.
 This section deal with position from GPS.
 Setting up connection to a gpsd server, which
 can be locally attached or provieded from a remote
-server via the network (my local server is 10.10.10.0 ,
-but in many cases localhost is used).
+server via the network (my local server is 10.10.10.1 ,
+but in many cases localhost is used, e.g. a local USB GPS).
 
     "gpsd": {
         "enable_http": true,
