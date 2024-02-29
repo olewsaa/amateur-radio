@@ -217,7 +217,8 @@ check before using.
 This section deal with position from GPS.
 Setting up connection to a gpsd server, which
 can be locally attached or provieded from a remote
-server via the network. 
+server via the network (my local server is 10.10.10.0 ,
+but in many cases localhost is used).
 
     "gpsd": {
         "enable_http": true,
@@ -232,8 +233,10 @@ Enable *allow_forms* will allow position to automatically inserted into forms
 requesting positional data.
 
 The *use_server_time* will request the timestamp from the server rather than
-GPS. If you use ntpd or chrony to keep track of time the server time should be
-more accurate. In practice both are acceptable.
+GPS. If you use [ntp](https://en.wikipedia.org/wiki/Network_Time_Protocol),
+[ntpd](https://en.wikipedia.org/wiki/Ntpd) or
+[chrony](https://chrony-project.org/) to keep track of time the server time
+should be more accurate. In practice both are acceptable.
 	
 ## Misc
 
