@@ -47,7 +47,7 @@ Some common ports relevant for pat include:
 - 12345, flrig.
 - 8300 (commands), 8301 (data) VARA, both HF and FM.
 - 8515,  ARDOP.
-- 5000, PAT web server (if set to 5000 in config).
+- 5000, PAT web server (if set to 5000 in config, 8080 is also common).
 
 Most of these communicate on the same host which is referred to a localhost
 (127.0.0.1 if an ip number is needed). In principle the other programs might
@@ -109,7 +109,7 @@ this match a closing '}' at the end of the file.
 
     "connect_aliases": {
         "telnet": "telnet://{mycall}:CMSTelnet@cms.winlink.org:8772/wl2k",
-		"LA2T-160m": "varahf:///LA2T?freq=1843&bw=500",
+	"LA2T-160m": "varahf:///LA2T?freq=1843&bw=500",
         "LA1T-80m":  "varahf:///LA1T?freq=3592&bw=500",
         "LA2T-80m":  "varahf:///LA2T?freq=3595.5&bw=500",
         "LA5G-80m":  "varahf:///LA5G?freq=3594&bw=500",
@@ -220,12 +220,20 @@ can be locally attached or provieded from a remote
 server via the network. 
 
     "gpsd": {
-        "enable_http": false,
-        "allow_forms": false,
-        "use_server_time": false,
+        "enable_http": true,
+        "allow_forms": true,
+        "use_server_time": true,
         "addr": "10.10.10.1:2947"
     },
-	
+Setting *enable_http* give access to the GPS position for anyone on the network
+to the GPS position data through the Pat web interface. 
+
+Enable *allow_forms* will allow position to automatically inserted into forms
+requesting positional data.
+
+The *use_server_time* will request the timestamp from the server rather than
+GPS. If you use ntpd or chrony to keep track of time the server time should be
+more accurate. In practice both are acceptable.
 	
 ## Misc
 
