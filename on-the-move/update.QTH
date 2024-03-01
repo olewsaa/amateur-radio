@@ -57,23 +57,29 @@ def to_grid(dec_lat, dec_lon):
 # End to_grid
 
 
-def modify_xml(xml_file, tag_name, new_value):
+# With some help of chat GPT here.
+def modify_xml(xml_file, section_name, tag_name, new_value):
     tree = ET.parse(xml_file)
     root = tree.getroot()
 
-    # Find the XML element with the specified tag name
-    element_to_modify = root.find(".//{}".format(tag_name))
+    # Find the section with the specified name
+    section = root.find(".//StationData[@name='{}']".format(section_name))
 
-    if element_to_modify is not None:
-        # Update the value of the XML element
-        element_to_modify.text = new_value
+    if section is not None:
+        # Find the XML element with the specified tag name within the section
+        element_to_replace = section.find(".//{}".format(tag_name))
 
-        # Save the modified XML back to the file
-        tree.write(xml_file)
-#        print(f"Successfully modified the value of <{tag_name}> to '{new_value}' in {xml_file}")
+        if element_to_replace is not None:
+            # Update the value of the XML element
+            element_to_replace.text = new_value
+
+            # Save the modified XML back to the file
+            tree.write(xml_file)
+            print(f"Successfully replaced the value of <{tag_name}> with '{new_value}' in {xml_file}")
+        else:
+            print(f"Element with tag name '{tag_name}' not found in section '{section_name}'")
     else:
-        print(f"Element with tag name '{tag_name}' not found in {xml_file}")
-
+        print(f"Section with name '{section_name}' not found in {xml_file}")
 
 
 #  
@@ -225,11 +231,10 @@ if valid:
 
 #
 # The TQSL init file can contain several blocks for each QTH, line for home and mobile etc.
-# Only the first is my case need to be updated. The home QTH is fixed.
+# Only gridsquare in the named (here "Algol") is updated,
 
     configfile=MYHOME+"/.tqsl/station_data"
-    modify_xml(configfile,"GRIDSQUARE",grid)
-
+    modify_xml(configfile, "Algol", "GRIDSQUARE", grid)
 
 
 #
