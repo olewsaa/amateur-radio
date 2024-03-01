@@ -35,10 +35,11 @@ Common for these scripts is requesting information from the SignalK server.
 - showpos.py  -- Emit a lat, lon position and corresponding Maidenhead grid.
 - update.QTH  -- Update the position for Pat, WSJT, JS8Call and TQSL.
 
+![Control window](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/QTH-update.png)
 
 The script update.QTH open a window showing position and which 
 config files that have been updated.
-![Control window](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/QTH-update.png)
+
 
 ## Automatic run at boot time
 The two scripts can be launched at boot time by means of the cron system.
