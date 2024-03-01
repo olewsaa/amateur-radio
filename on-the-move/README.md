@@ -4,7 +4,8 @@
 When the station is located in your boat the QHT is a dynamic value. 
 Hence the config files do not necessarily contain the current location.
 While some applications can use gpsd to request a location this not
-always the case. I have put together a little selection of scripts that update the config files for some of the applications I use. 
+always the case. I have put together a little selection of scripts that 
+update the config files for some of the applications I use. 
 
 ## Showpos
 A small script that scan for GPSD and SignalK servers. It start with 
@@ -32,10 +33,10 @@ Common for these scripts is requesting information from the SignalK server.
 
 - set-date-from-SignalK.py --  set the correct time and date.
 - showpos.py  -- Emit a lat, lon position and corresponding Maidenhead grid.
-- update.pos.pat.conf.py --  update the position in pat's config file.
-- update.pos.WSJT-X.conf.py -- update the position in WSJT, JS8Call and TQSL.
+- update.QTH  -- Update the position for Pat, WSJT, JS8Call and TQSL.
 
-The script update.pos.WSJT-X.conf.py emit a window showing position and which 
+
+The script update.QTH open a window showing position and which 
 config files that have been updated.
 ![Control window](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/QTH-update.png)
 
@@ -43,6 +44,6 @@ config files that have been updated.
 The two scripts can be launched at boot time by means of the cron system.
 The cron file have a keyword to run a script at boot time. The file crotab
 contain an example of a typical setup to run the script that update the pat and
-other application containing QTH info.
+other application containing QTH info. 
 
 
