@@ -5,12 +5,15 @@
 # m h  dom mon dow   command
 #
 # No time driven event, this is at boot.
-@reboot /home/orangepi/update.pos.pat.conf.py
-@reboot /home/orangepi/update.pos.WSJT-X.conf.py
-# These two scripts are run at boot time and will update
-# the positions. The Server need to be up.
+@reboot /home/pi/bin/update.QTH
+#
+# This script is run at boot time and will update
+# the positions. The Server need to be up and the
+# GPS need to have a fix.
+#
+@reboot sleep 300;  /home/pi/bin/update.QTH
 #
 # If NTP is not working, is not online or not synced we
 # update the clock from SignalK, every 10 minutes, the
 # Python script test for valid NTP.
-*/10 * * * * /home/orangepi/set-date-from-SignalK.py
+*/10 * * * * /home/pi/bin/set-date-from-SignalK.py

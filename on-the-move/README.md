@@ -42,9 +42,11 @@ config files that have been updated.
 
 
 ## Automatic run at boot time
-The two scripts can be launched at boot time by means of the cron system.
-The cron file have a keyword to run a script at boot time. The file crotab
-contain an example of a typical setup to run the script that update the pat and
+The position update script can be launched at boot time by means of the cron system,
+but it must have a reliable GPS signal, hence if the GPS is locally attaced some delay is
+needed. 
+The cron file have a keyword to run a script at boot time, or after a time delay. 
+The file crotab contain an example of a typical setup to run the script that update the pat and
 other application containing QTH info. 
 
 
