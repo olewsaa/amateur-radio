@@ -91,7 +91,8 @@ In order to be recognised on the Winlink system one need to supply
 personal information like call sign, location and password.
 
 If this is the first lines one need to have a '{' at the start of the text,
-this match a closing '}' at the end of the file. 
+this match a closing '}' at the end of the file. Make sure these are kept 
+during any manual edit.
 
     "mycall": "CALL",
     "secure_login_password": "PASSWORD",
@@ -105,11 +106,20 @@ this match a closing '}' at the end of the file.
         "Open source Winlink client - getpat.io"
     ],
 
+I have chosen to use port 5000 for the web page connection. 
+
 ## Connect aliases 
+
+The syntax is strict, please note that frequencies are given in kHz and bandwidth in Hz. 
+The use of question mark and ampersand as separator is common web URL syntax. Please also 
+observe the lack of comma in the last line, the comma separate the different entries and the
+last entry in the set called *connect_aliases* do not have a comma. The sets in a jason file
+are simple comma separated entries.
+
 
     "connect_aliases": {
         "telnet": "telnet://{mycall}:CMSTelnet@cms.winlink.org:8772/wl2k",
-	"LA2T-160m": "varahf:///LA2T?freq=1843&bw=500",
+	    "LA2T-160m": "varahf:///LA2T?freq=1843&bw=500",
         "LA1T-80m":  "varahf:///LA1T?freq=3592&bw=500",
         "LA2T-80m":  "varahf:///LA2T?freq=3595.5&bw=500",
         "LA5G-80m":  "varahf:///LA5G?freq=3594&bw=500",
