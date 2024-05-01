@@ -23,6 +23,10 @@ Some editing of the config file might be needed.
 Notice no comma after the last line. Programs that read json are not forgiving and
 pat is no expection. Any error will cause pat to abort.
 
+Make sure that the opening and closing quotation mark are identical. Some editors
+add the closing quotation mark with a different one, make sure that they are
+identical, copy paste the opening is a good idea.
+
 There are many pages that provide [tutorials](https://www.w3schools.com/js/js_json_intro.asp).
 
 
