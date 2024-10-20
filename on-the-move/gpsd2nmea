@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Winlink Express do not support reading from
+# gpsd. It expect NMEA sentences. The utility
+# gpspipe does the converting from gpsd to
+# NMEA. Simple start script to only launch one
+# instance. 
+
+PORT=1234
+HOST=10.10.10.1
+GPSDPORT=2947
+
+PID_GPSPIPE=$(pidof gpspipe)
+if [ $? -ne 0 ]; then
+    #echo "starting gpsd2nmea"
+    gpspipe -r ${HOST}:$GPSDPORT | nc -l -p $PORT
+fi
