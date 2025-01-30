@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+
+"""
+Program to read touchstone files from NanoVNA and nanovna-saver to
+calculate and display Impedance or SWR. 
+
+Input from ChatGPT4, possibly pure ripoff from someone's git repo. 
+Impossible to give credit to original author, thanks anyway.
+
+Ver 0.1 27. Jan. 2025
+Ver 0.2 28. Jan. 2025
+
+Ole W. Saastad
+LB4PJ
+
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import sys, os, math
+
+
+def read_s1p(filename):
+    """
+    Reads a Touchstone .s1p file and returns frequency and S11 data.
+    """
+    freq = []
+    s11_real = []
+    s11_imag = []
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            if line.startswith('#') or line.startswith('!') or line.strip() == '':
+                # Skip comments and empty lines
+                continue
+            data = line.split()
+            freq.append(float(data[0]))
+            s11_real.append(float(data[1]))
+            s11_imag.append(float(data[2]))
+
+    freq = np.array(freq)  # Frequency in Hz or GHz (depends on the file)
+    s11 = np.array(s11_real) + 1j * np.array(s11_imag)  # Combine real and imag to form S11    
+    return freq, s11
+
+
+def calculate_Z(s11, z0=50):
+    """
+    Calculate impedance Z, call with second argument if z0!=50 or set z0.
+    """
+    Z = np.real(z0 * (1 + s11) / (1 - s11))
+    return Z
+
+
+def calculate_swr(s11):
+    """
+    Calculate SWR from S11 (reflection coefficient).
+    SWR = (1 + |S11|) / (1 - |S11|), |S11| < 1
+    """
+    gamma = np.abs(s11)
+    swr = (1 + gamma) / (1 - gamma)
+    return swr
+
+
+def bandlabels(freq, Par):
+    """
+    Set up amateur bands from 160m to 10m. The bands are represented by lines,
+    maybe it should be shaded rectangles ?    
+    Add ojects to the plot, lines and text.
+    """
+    bandsf=[1837000, 3710000, 5350000, 7100000, 10130000, 14200000, 18100000, 21200000, 24950000, 29000000]
+    bandsm=['160m ', ' 80m ', ' 60m ', ' 40m ', ' 30m ', ' 20m ', ' 17m ', ' 15m ', ' 12m ',' 10m ']
+    for frq, lb in zip(bandsf, bandsm):
+        # Find index for frequency, use that to look up Z og SWR.
+        wl=np.where( (freq>frq) & (freq<(frq+3000)) ) 
+        mx=np.max(Par) # Get a number to fix text for band lines. 
+        s=Par[wl][1]    
+        lbl=lb+str(round(s,2))
+        plt.axvline(frq/1e6, color='blue', linestyle='dotted', label=lbl)        
+        # Add 0.1 to move text and 70% height in plot.
+        plt.text(frq/1e6+0.1, 0.7*mx, lbl, rotation=90, va='center')
+
+        
+def plot_Z(freq, Z, filename):
+    """ 
+    Plot impedence Z
+    """
+    plt.figure(figsize=(16, 12))
+    plt.plot(freq / 1e6, Z, label='Z', color='blue')  # Convert frequency to MHz
+    bandlabels(freq, Z)
+    plt.axhline(50, color='red', linestyle='--', label='50Ω')
+    plt.xlabel('Frequency (MHz)')
+    plt.ylabel('Z (Ω)')
+    title='Z vs Frequency.  File: '+filename
+    plt.title(title)    
+    plt.grid(True)
+    plt.legend()
+    plt.savefig(filename.replace('s1p','Z.png')) # Include Z in plotfile name.
+    plt.show()
+    
+    
+    
+def plot_swr(freq, swr, filename):
+    """
+    Plot SWR vs. frequency.
+    """
+    plt.figure(figsize=(16, 12))
+    plt.plot(freq / 1e6, swr, label='SWR', color='blue')  # Convert frequency to MHz
+    bandlabels(freq, swr)
+    plt.axhline(1.5, color='green', linestyle='--', label='SWR = 1.5')
+    plt.axhline(5.0, color='red', linestyle='--', label='SWR = 5.0')
+    plt.text(29.3, 5.1, 'ATU max')  # G90 ATU can match up to SWR equal 5.
+    plt.xlabel('Frequency (MHz)')
+    plt.ylabel('SWR')
+    title='SWR vs Frequency.  File: '+filename
+    plt.title(title)
+    plt.grid(True)
+    plt.legend()
+    plt.savefig(filename.replace('s1p','SWR.png')) # Include SWR in plotfile name.
+    plt.show()
+
+
+def main():
+    mode = sys.argv[1] # Must be Z or SWR. 
+    filename=(str(sys.argv[2]))
+
+    # Get the S1P filename from command line and check both
+    # number of arguments and that file exist.
+    if (len(sys.argv) < 3) or not os.path.exists(filename):
+        print("Usage: swr-Z <SWR | Z> <filename>")
+        exit(2) # User error.
+
+    # Read the Touchstone file
+    freq, s11 = read_s1p(filename)
+
+    if mode == 'SWR' :
+        swr = calculate_swr(s11)
+        plot_swr(freq, swr, filename)
+
+    if mode == 'Z':
+        Z = calculate_Z(s11)
+        plot_Z(freq, Z, filename)
+        
+if __name__ == '__main__':
+    main()
