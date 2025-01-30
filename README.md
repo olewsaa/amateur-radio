@@ -12,18 +12,25 @@ cover the from 160 m to 70 cm which is ideal when space is limited.
 The G90 is installed at home with a random wire antenna extending from a 
 window to an apple tree. Not great, but FT8 and winlink work.  
 
+### NanoVNA software
+The directory NanoVNA contain Python script to plot Z and SWR from a
+.s1p file.  The nanovna-saver if a nice piece of software, but the
+plotting is not it's stongest side.
+
 ### Pat for Raspberry Pi
 The directory pat contain files and instructions for installing and using pat 
 (and Winlink) for email using Raspberry Pi 4. This is currently running nicely 
 onboard Algol. 
 
 ### Issues with position and grid when on the move
-Onboard SignalK is used for communication between devices. Position and time is 
-available using a http request. This can then be used to update the init files for 
-pat and for WSJT-X and JS8Call as well as setting the date and time on the system 
-that run the ham radio software. Unfortunately the init files are read when
-the program is launched, it will not update later. If you move and keep the programs
-running the current grid position and the position used by the programs might differ.
+Onboard SignalK is used for communication between devices. Position
+and time is available using a http request. This can then be used to
+update the init files for pat and for WSJT-X and JS8Call as well as
+setting the date and time on the system that run the ham radio
+software. Unfortunately the init files are read when the program is
+launched, it will not update later. If you move and keep the programs
+running the current grid position and the position used by the
+programs might differ.
 
 I have put the Python scrips for this in the directory named 
 [on-the-move](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move).
