@@ -2,13 +2,14 @@
 
 """
 Program to read touchstone files from NanoVNA and nanovna-saver to
-calculate and display Impedance or SWR. 
+calculate and display Impedance and SWR. 
 
-Input from ChatGPT4, possibly pure ripoff from someone's git repo. 
+Input from ChatGPT4, possibly pure ripoff from a git repo. 
 Impossible to give credit to original author, thanks anyway.
 
-Ver 0.1 27. Jan. 2025
-Ver 0.2 28. Jan. 2025
+Ver 0.1  27. Jan. 2025 Initial work
+Ver 0.2  28. Jan. 2025 Added Z plot
+Ver 0.3  31. Jan. 2025 Added band stripes 
 
 Ole W. Saastad
 LB4PJ
@@ -27,6 +28,7 @@ def read_s1p(filename):
     freq = []
     s11_real = []
     s11_imag = []
+
     
     with open(filename, 'r') as file:
         for line in file:
@@ -45,7 +47,7 @@ def read_s1p(filename):
 
 def calculate_Z(s11, z0=50):
     """
-    Calculate impedance Z, call with second argument if z0!=50 or set z0.
+    Calculate impedance Z, call with second argument if z0!=50.
     """
     Z = np.real(z0 * (1 + s11) / (1 - s11))
     return Z
@@ -62,14 +64,15 @@ def calculate_swr(s11):
 
 
 def bandlabels(freq, Par):
-    """
-    Set up amateur bands from 160m to 10m. The bands are represented by lines,
-    maybe it should be shaded rectangles ?    
-    Add ojects to the plot, lines and text.
-    """
-    bandsf=[1837000, 3710000, 5350000, 7100000, 10130000, 14200000, 18100000, 21200000, 24950000, 29000000]
+    # Bands lower and upper limits.
+    bandslower=[1843000, 3500000, 5351500, 7000000, 10100000, 14000000, 18068000, 21000000, 24890000, 28000000]
+    bandsupper=[2000000, 3800000, 5366500, 7200000, 10150000, 14350000, 18168000, 21450000, 24990000, 29700000]
+    # Center of SSB QRP activity. 
+    bandscf=[1837000, 3710000, 5335000, 7100000, 10130000, 14200000, 18130000, 21285000, 24950000, 28360000]
+    # Bands i meters.
     bandsm=['160m ', ' 80m ', ' 60m ', ' 40m ', ' 30m ', ' 20m ', ' 17m ', ' 15m ', ' 12m ',' 10m ']
-    for frq, lb in zip(bandsf, bandsm):
+
+    for frq, lb in zip(bandscf, bandsm):
         # Find index for frequency, use that to look up Z og SWR.
         wl=np.where( (freq>frq) & (freq<(frq+3000)) ) 
         mx=np.max(Par) # Get a number to fix text for band lines. 
@@ -78,6 +81,10 @@ def bandlabels(freq, Par):
         plt.axvline(frq/1e6, color='blue', linestyle='dotted', label=lbl)        
         # Add 0.1 to move text and 70% height in plot.
         plt.text(frq/1e6+0.1, 0.7*mx, lbl, rotation=90, va='center')
+
+    # Print band width.
+    for bl, bu in zip(bandslower, bandsupper):
+        plt.axvspan(bl/1e6, bu/1e6 , color='green', alpha=0.15)
 
         
 def plot_Z(freq, Z, filename):
@@ -94,7 +101,7 @@ def plot_Z(freq, Z, filename):
     plt.title(title)    
     plt.grid(True)
     plt.legend()
-    plt.savefig(filename.replace('s1p','Z.png')) # Include Z in plotfile name.
+    plt.savefig(filename.replace('s1p','Z.png'))
     plt.show()
     
     
@@ -108,27 +115,32 @@ def plot_swr(freq, swr, filename):
     bandlabels(freq, swr)
     plt.axhline(1.5, color='green', linestyle='--', label='SWR = 1.5')
     plt.axhline(5.0, color='red', linestyle='--', label='SWR = 5.0')
-    plt.text(29.3, 5.1, 'ATU max')  # G90 ATU can match up to SWR equal 5.
+    plt.text(29.3, 5.1, 'ATU max')
     plt.xlabel('Frequency (MHz)')
     plt.ylabel('SWR')
     title='SWR vs Frequency.  File: '+filename
     plt.title(title)
     plt.grid(True)
     plt.legend()
-    plt.savefig(filename.replace('s1p','SWR.png')) # Include SWR in plotfile name.
+    plt.savefig(filename.replace('s1p','SWR.png'))
     plt.show()
 
 
 def main():
-    mode = sys.argv[1] # Must be Z or SWR. 
+    # Check parameters 
+    if (len(sys.argv) != 3):
+        print("Usage: swr <SWR | Z> <filename>")
+        exit(2)
+        
+    mode = sys.argv[1]
     filename=(str(sys.argv[2]))
 
-    # Get the S1P filename from command line and check both
-    # number of arguments and that file exist.
-    if (len(sys.argv) < 3) or not os.path.exists(filename):
-        print("Usage: swr-Z <SWR | Z> <filename>")
-        exit(2) # User error.
+    # Check if filename exist and parameters are correct.
+    if not (os.path.exists(str(sys.argv[2]))) or (mode != 'Z') and (mode != 'SWR'):
+        print("Usage: swr <SWR | Z> <filename>")
+        exit(2)
 
+        
     # Read the Touchstone file
     freq, s11 = read_s1p(filename)
 
