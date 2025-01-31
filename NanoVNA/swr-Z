@@ -136,7 +136,7 @@ def main():
     filename=(str(sys.argv[2]))
 
     # Check if filename exist and parameters are correct.
-    if not (os.path.exists(str(sys.argv[2]))) or (mode != 'Z') and (mode != 'SWR'):
+    if not (os.path.exists(str(filename))) or (mode != 'Z') and (mode != 'SWR'):
         print("Usage: swr <SWR | Z> <filename>")
         exit(2)
 
