@@ -10,6 +10,7 @@ Impossible to give credit to original author, thanks anyway.
 Ver 0.1  27. Jan. 2025 Initial work
 Ver 0.2  28. Jan. 2025 Added Z plot
 Ver 0.3  31. Jan. 2025 Added band stripes 
+Ver 0.4   4. Feb. 2025 Modyfied band stripes arrays
 
 Ole W. Saastad
 LB4PJ
@@ -65,8 +66,9 @@ def calculate_swr(s11):
 
 def bandlabels(freq, Par):
     # Bands lower and upper limits.
-    bandslower=[1843000, 3500000, 5351500, 7000000, 10100000, 14000000, 18068000, 21000000, 24890000, 28000000]
-    bandsupper=[2000000, 3800000, 5366500, 7200000, 10150000, 14350000, 18168000, 21450000, 24990000, 29700000]
+    bands=[(1850000, 2000000), (3500000, 3800000), (5351500, 5366500), (7000000, 7200000),
+           (10100000, 10150000), (14000000, 14350000), (18068000, 18168000),(21000000, 21450000),
+           (24890000, 24990000), (28000000, 29700000)]  
     # Center of SSB QRP activity. 
     bandscf=[1837000, 3710000, 5335000, 7100000, 10130000, 14200000, 18130000, 21285000, 24950000, 28360000]
     # Bands i meters.
@@ -83,16 +85,16 @@ def bandlabels(freq, Par):
         plt.text(frq/1e6+0.1, 0.7*mx, lbl, rotation=90, va='center')
 
     # Print band width.
-    for bl, bu in zip(bandslower, bandsupper):
-        plt.axvspan(bl/1e6, bu/1e6 , color='green', alpha=0.15)
-
-        
+    for l,u in bands:
+        plt.axvspan(l/1e6, u/1e6 , color='green', alpha=0.15) 
+    
+    
 def plot_Z(freq, Z, filename):
     """ 
     Plot impedence Z
     """
     plt.figure(figsize=(16, 12))
-    plt.plot(freq / 1e6, Z, label='Z', color='blue')  # Convert frequency to MHz
+    plt.plot(freq/1e6, Z, label='Z', color='blue')  # Convert frequency to MHz
     bandlabels(freq, Z)
     plt.axhline(50, color='red', linestyle='--', label='50Ω')
     plt.xlabel('Frequency (MHz)')
@@ -104,14 +106,13 @@ def plot_Z(freq, Z, filename):
     plt.savefig(filename.replace('s1p','Z.png'))
     plt.show()
     
-    
-    
+        
 def plot_swr(freq, swr, filename):
     """
     Plot SWR vs. frequency.
     """
     plt.figure(figsize=(16, 12))
-    plt.plot(freq / 1e6, swr, label='SWR', color='blue')  # Convert frequency to MHz
+    plt.plot(freq/1e6, swr, label='SWR', color='blue')  # Convert frequency to MHz
     bandlabels(freq, swr)
     plt.axhline(1.5, color='green', linestyle='--', label='SWR = 1.5')
     plt.axhline(5.0, color='red', linestyle='--', label='SWR = 5.0')
@@ -125,22 +126,24 @@ def plot_swr(freq, swr, filename):
     plt.savefig(filename.replace('s1p','SWR.png'))
     plt.show()
 
+    
+def usage():
+    print("Usage: swr <SWR | Z> <filename>")
+    exit(2) # 2 is incorrect user input. 
 
+    
 def main():
-    # Check parameters 
+    # Check parameters, two more than just the command name, argv[0].
     if (len(sys.argv) != 3):
-        print("Usage: swr <SWR | Z> <filename>")
-        exit(2)
+        usage()
         
     mode = sys.argv[1]
     filename=(str(sys.argv[2]))
 
-    # Check if filename exist and parameters are correct.
+    # Check if filename exist and parameters are either 'Z' or 'SWR'
     if not (os.path.exists(str(filename))) or (mode != 'Z') and (mode != 'SWR'):
-        print("Usage: swr <SWR | Z> <filename>")
-        exit(2)
+        usage()
 
-        
     # Read the Touchstone file
     freq, s11 = read_s1p(filename)
 
