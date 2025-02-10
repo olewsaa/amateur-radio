@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Hamlib rigctld start
+
+zenity  --question --text='Start rigctl? - no to kill it'
+
+if [ $? -eq 0 ]; then 
+    # Start rigctl deamon -m 4 (4 is flrig) if not running already. 
+    PID_FLRIG=$(pidof rigctld)
+    if [ $? -ne 0 ]; then
+        #echo "starting rigctld"
+	rigctld -m 4  &
+    fi
+    pid=$(pidof rigctld)
+    zenity --info --text="rigctld PID: "${pid}
+else
+    # Clean up
+    killall rigctld
+fi

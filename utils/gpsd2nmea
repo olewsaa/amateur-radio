@@ -1,0 +1,23 @@
+#!/bin/bash
+PORT=1234
+HOST=10.10.10.1
+GPSD=2947
+
+zenity  --question --text='Start gpsd? - no to kill' 
+if [ $? -eq 0 ]; then
+    # Start if not already started.    
+    PID_GPSPIPE=$(pidof gpspipe)
+    if [ $? -ne 0 ]; then
+	#echo "starting gpsd2nmea"
+	gpspipe -r ${HOST}:$GPSD | nc -l -p $PORT  &
+    fi
+    pidgpspipe=$(pidof gpspipe)
+    pidnc=$(pidof nc)
+    zenity --info --text='gpspipe &amp; nc '${pidgpspipe}' '${pidnc}
+else
+    # Clean up if the 'no' button is clicked. 
+    killall -9 gpspipe
+    kill -9 $(pidof nc)
+    killall -9 gpsd2nmea
+fi
+
