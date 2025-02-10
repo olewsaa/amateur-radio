@@ -4,7 +4,7 @@
 Winlink express expect a stream of NMEA sentences to pick up
 the postion. The yacht server on board serves all other hosts and 
 units with GPS data via GPSD on port 2947. Winlink do not support
-GPSD. 
+GPSD, only direct attached USB/serial GPS "mice".
 
 The script *gpsd2nmea* convert to NMEA sentences which Winlink
 can pick up. Winlink support tcp connection in addition to serial
