@@ -15,7 +15,7 @@ This is fortunately not in conflict with Flrig and Hamlib which uses
 port 12345. 
 
 The script also provide info about the PID number in 
-order to veryfy	that it's actually started. The	'no' button
+order to verify	that it's actually started. The	'no' button
 can be used to shut it down.
 
 Using the CLI is not always practical in a boat, icons to click on is often 
