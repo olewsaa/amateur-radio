@@ -18,6 +18,9 @@ The script also provide info about the PID number in
 order to veryfy	that it's actually started. The	'no' button
 can be used to shut it down.
 
+Using the CLI is not always practical in a boat, icons to click on is often 
+easier, file gpsd2nmea.png is a suitable icon for the button that control the 
+gpsd2nmea. 
 
 
 ## Rigctl / Hamlib
