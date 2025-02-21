@@ -11,6 +11,7 @@ Ver 0.1  27. Jan. 2025 Initial work
 Ver 0.2  28. Jan. 2025 Added Z plot
 Ver 0.3  31. Jan. 2025 Added band stripes 
 Ver 0.4   4. Feb. 2025 Simplified band stripes arrays
+Ver 0.5  21. Feb. 2025 Test for full HF bans or not, test no. points.
 
 Ole W. Saastad
 LB4PJ
@@ -76,7 +77,8 @@ def bandlabels(freq, Par):
 
     for frq, lb in zip(bandscf, bandsm):
         # Find index for frequency, use that to look up Z og SWR.
-        wl=np.where( (freq>frq) & (freq<(frq+3000)) ) 
+        wl=np.where( (freq>frq) & (freq<(frq+3000)) )
+        #print(frq, wl)
         mx=np.max(Par) # Get a number to fix text for band lines. 
         s=Par[wl][1]    
         lbl=lb+str(round(s,2))
@@ -95,7 +97,8 @@ def plot_Z(freq, Z, filename):
     """
     plt.figure(figsize=(16, 12))
     plt.plot(freq/1e6, Z, label='Z', color='blue')  # Convert frequency to MHz
-    bandlabels(freq, Z)
+    # Need enough data to plot full HF rannge. 
+    if (len(freq)>10000): bandlabels(freq, Z)
     plt.axhline(50, color='red', linestyle='--', label='50Ω')
     plt.xlabel('Frequency (MHz)')
     plt.ylabel('Z (Ω)')
@@ -113,7 +116,7 @@ def plot_swr(freq, swr, filename):
     """
     plt.figure(figsize=(16, 12))
     plt.plot(freq/1e6, swr, label='SWR', color='blue')  # Convert frequency to MHz
-    bandlabels(freq, swr)
+    if (len(freq)>10000): bandlabels(freq, swr)
     plt.axhline(1.5, color='green', linestyle='--', label='SWR = 1.5')
     plt.axhline(5.0, color='red', linestyle='--', label='SWR = 5.0')
     plt.text(29.3, 5.1, 'ATU max')
@@ -146,6 +149,7 @@ def main():
 
     # Read the Touchstone file
     freq, s11 = read_s1p(filename)
+
 
     if mode == 'SWR' :
         swr = calculate_swr(s11)
