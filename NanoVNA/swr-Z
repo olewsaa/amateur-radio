@@ -11,7 +11,7 @@ Ver 0.1  27. Jan. 2025 Initial work
 Ver 0.2  28. Jan. 2025 Added Z plot
 Ver 0.3  31. Jan. 2025 Added band stripes 
 Ver 0.4   4. Feb. 2025 Simplified band stripes arrays
-Ver 0.5  21. Feb. 2025 Test for full HF bans or not, test no. points.
+Ver 0.5  21. Feb. 2025 Test for full HF bands or not, test no. points.
 
 Ole W. Saastad
 LB4PJ
@@ -94,12 +94,16 @@ def bandlabels(freq, Par):
 def plot_Z(freq, Z, filename):
     """ 
     Plot impedence Z
+
+    Q900 ATU can tune from 16.7Ω to 150Ω.
     """
     plt.figure(figsize=(16, 12))
     plt.plot(freq/1e6, Z, label='Z', color='blue')  # Convert frequency to MHz
     # Need enough data to plot full HF rannge. 
     if (len(freq)>10000): bandlabels(freq, Z)
-    plt.axhline(50, color='red', linestyle='--', label='50Ω')
+    plt.axhline(50, color='blue', linestyle='--', label='50Ω')
+    plt.axhline(16.7, color='red', linestyle='--', label='ATU min')
+    plt.axhline(150, color='red', linestyle='--', label='ATU max')
     plt.xlabel('Frequency (MHz)')
     plt.ylabel('Z (Ω)')
     title='Z vs Frequency.  File: '+filename
