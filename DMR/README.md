@@ -17,10 +17,10 @@ is used to write the data to the radio as the TYT codeplug editor do
 not support writing to the 1701. In addition the buttons need to
 programmed using the official CPE.
 
-Unfortunately the software only run under windows, so either use Virtual
-Box (or another virtual machine platform) to run the windows software. 
-Using VirtualBox running Win10 and with the correct mapping of the USB
-devices it works th no issues.
+Unfortunately the software only run under windows, so if you run Linux
+either use Virtual Box (or another virtual machine platform) to run
+the windows software.  Using VirtualBox running Win10 and with the
+correct mapping of the USB devices it works th no issues.
 
 ### Mapping, names and geolocation
 
@@ -33,7 +33,8 @@ individual locations. I use names instead of call signs since it
 generally easier to remember names than call signs. 
 
 The memory only have room for 10k digital contacts so only a few 
-can be stored. Normally the "last heared" are loaded and updated.
+can be stored. Normally the *last heard* are loaded and updated.
 
 The file 'BF1701-example-codeplug.rdt' is an anonymous version of
 my latest code plug file. 
+
