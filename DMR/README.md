@@ -16,15 +16,18 @@ is used to write the data to the radio as the TYT codeplug editor do
 not support writing to the 1701. In addition the buttons need to
 programmed using the official CPE.
 
-Unfortunately the software only run under windows, so if you run Linux
+Unfortunately the software only run under windows. 
+Both of the CPEs run fine using [wine](https://www.winehq.org/).
+
+However, to get access to the USB port with Linux you must
 either use Virtual Box (or another virtual machine platform) to run
-the windows software.  Using VirtualBox running Win10 and with the
-correct mapping of the USB devices it works th no issues.
+the windows software. Using VirtualBox running Win10 and with the
+correct mapping of the USB devices it works with no issues.
 
 ### Mapping, names and geolocation
 
 I wrote the code plug from scratch, both to learn how it works
-and also to have full control. There is a high probabilty that I
+and also to have full control. There is a high probability that I
 missed something. However, it works as expected (more or less).
 
 I have used zones for different regions. Then a two letter code for the
