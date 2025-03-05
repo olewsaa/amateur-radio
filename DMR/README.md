@@ -8,11 +8,10 @@ To edit the code plug I use the
 [TYT Code plug editor](https://www.miklor.com/DMR/DMR-380-CPEditor.php),
 with a [download link](https://www.miklor.com/DMR/software/DMR_CPE.1.1.21.zip).
 
-The [download section]([Baofeng 1701](https://www.baofengradio.com/pages/download) 
-on the Baofeng web pages contain software for multiple radios, including the 1701.
+The download section on the Baofeng web pages contain software for multiple radios, 
+including the [Baofeng 1701](https://www.baofengradio.com/pages/download).
 
-The official [code plug editor
-(CPE)](https://baofeng.s3.amazonaws.com/Baofeng_DM-1701_CPS_1.05.zip)
+The official [code plug editor(CPE)](https://baofeng.s3.amazonaws.com/Baofeng_DM-1701_CPS_1.05.zip)
 is used to write the data to the radio as the TYT codeplug editor do
 not support writing to the 1701. In addition the buttons need to
 programmed using the official CPE.
