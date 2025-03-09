@@ -12,6 +12,7 @@ Ver 0.2  28. Jan. 2025 Added Z plot
 Ver 0.3  31. Jan. 2025 Added band stripes 
 Ver 0.4   4. Feb. 2025 Simplified band stripes arrays
 Ver 0.5  21. Feb. 2025 Test for full HF bands or not, test no. points.
+Ver 0.51 09. Mar. 2025 Ham band issues, fixed.
 
 Ole W. Saastad
 LB4PJ
@@ -77,10 +78,11 @@ def bandlabels(freq, Par):
 
     for frq, lb in zip(bandscf, bandsm):
         # Find index for frequency, use that to look up Z og SWR.
-        wl=np.where( (freq>frq) & (freq<(frq+3000)) )
+        wl=np.where( (freq>frq) & (freq<(frq+5000)) )
         #print(frq, wl)
-        mx=np.max(Par) # Get a number to fix text for band lines. 
-        s=Par[wl][1]    
+        mx=np.max(Par) # Get a number to fix text for band lines.
+        #print("wl ",wl," mx ",mx)
+        s=Par[wl][0]    
         lbl=lb+str(round(s,2))
         plt.axvline(frq/1e6, color='blue', linestyle='dotted', label=lbl)        
         # Add 0.1 to move text and 70% height in plot.
