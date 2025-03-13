@@ -2,7 +2,13 @@
 
 ## Introduction
 
+Disclaimer.
+
+The code plug is manually written and there is a fair chance of
+errors. Trust, but verify. 
+
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
+So far I'm very happy with the radio, no issues found so far. 
 
 
 ### Edit codeplug using Wine/Virtual machine
