@@ -1,0 +1,88 @@
+﻿
+
+
+
+Norge
+RK	- Røverkollen	    - LD1OA 
+KO	- Kolsås	    - LA1KRR
+FO	- Follo		    - LA2YRR
+BG	- Bislingen	    - LA8OR
+HV	- Hvittingen	    - LA6HR
+GM	- Gardermoen	    - LA2YRR
+SK	- Skien		    - LD3GL
+TB	- Tønsberg	    - LD3ST
+SB	- Sarpsborg	    - LD1SG
+GR	- Grimstad	    - LD4FH
+EG	- Egersund	    - LD4GA
+SV	- Stavanger	    - LD4LI
+BE	- Bergen	    - LD5BR
+HS	- Haugesund	    - LD5HH
+FL	- Florø		    - LD6FF
+TR	- Trondheim	    - LD7TD
+ST	- Stjørdal	    - LD7FF-B	
+BR	- Brønnøysund	    - LD8BSDMR 
+SS	- Sandnessjøen      - LD8SA
+MO	- Mo i Rana	    - LD8MR
+
+
+
+Sverige
+TN	- Tanumshede        - SK6IF
+KH 	- Kungshamn	    - SK6IF
+GB	- Göteborg          - SK6RKI	
+OK	- Ockerö            - SK6RKI 
+HL 	- Halmstad	    - SK6RKG  
+HE	- Helsingborg	    - SK7REE  
+ML 	- Malmø	 	    - SK7RPQ  
+SM 	- Simrishamn	    - SK7RNQ  
+OL	- Øland		    - SK7RFL  
+VV	- Vestervik	    - SK7JD   
+NH	- Nynäshamn	    - SM0WIU-3
+DO 	- Dalarø	    - SM0WIU-5
+AL	- Almstad	    - SK0EN-2 
+
+Finland
+AA	- Åland		    - OH0RUB 
+RP	- Raasepori 	    - OH2DMRR
+IK	- Inkoo		    - OH2DMRI
+ES	- Espoo	 	    - OH2DMRE
+
+Estland
+TL	- Tallin	    - ES2DMR  
+
+Latvia
+RG	- Riga		    - YL3RCL
+CK	- Carnikava	    - YL3ROO   
+
+Litauen
+KP	- Klaipeda	    - LY0RBA 
+
+Polen
+CY	- Chwaszczyno	    - SR2UVG   
+GD	- Gdansk 	    - SR2GDD   
+KB	- Kolobrzeg 	    - SR1KG 
+
+Tyskland
+GW	- Greifswald	    - DB0HGW   
+RG	- Ruegen	    - DM0RUG   
+SU	- Stralsund	    - DB0FHS
+RS	- Rostock	    - DB0HRO
+BD	- Bad Doberan	    - DB0DBR
+HF	- Heiligenhafen	    - DO0OHO
+FB	- Flensburg	    - DM0FL
+
+Danmark
+AB	- Ålborg	    - OZ1REC
+HO	- Helsingør	    - OZ6DMR
+HD	- Heddinge  	    - OZ2REN
+
+USA
+RP	- Rockford	    - N9DEA-442.100
+RF	- Rockford-N	    - NN9P-Rockford
+MA	- Madison	    - W9YT
+RW	- Red Wing	    - N0BVE
+SL	- St.Louis          - N0KQG 70cm
+SL2 	- St.Louis	    - WB0HSI
+SL3	- St.Louis	    - N0KQG 2m
+
+
