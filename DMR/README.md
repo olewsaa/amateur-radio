@@ -2,9 +2,7 @@
 
 ## Introduction
 
-Disclaimer.
-
-The code plug is manually written and there is a fair chance of
+Disclaimer: The code plug is manually written and there is a fair chance of
 errors. Trust, but verify. 
 
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
