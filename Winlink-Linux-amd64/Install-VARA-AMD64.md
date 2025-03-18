@@ -6,11 +6,10 @@
 To learn more about this topic these sites provide valuable 
 insight.
 
-- https://aarg.club/?page_id=308 I did not install Winlink Express.
 - https://wiki.winehq.org/Winetricks
 - https://rosmodem.wordpress.com/
 - https://forum.winehq.org/viewtopic.php?t=18949
-
+- https://gitlab.winehq.org/wine/wine/-/wikis/Winetricks
 
 ## Installing WINE
 
