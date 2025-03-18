@@ -70,8 +70,8 @@ Just click yes to install the required software.
 ![VB](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VB.png)
 "Clik yes"
 
-![VCRedist](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VCRedist.png
-"Click yes")
+![VCRedist](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VCRedist.png)
+"Click yes"
 
 
 ## Installing VARA
