@@ -58,17 +58,17 @@ winetricks vcrun2015
 
 
 Click install to install mono:
-![wine mono](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/wine-mono.png
-"Click yes to install mono")
+![wine mono](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/wine-mono.png)
+"Click yes to install mono"
 
 
 Click unzip, ok and close to unpack the needed files:
-![unzip](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/unzip.png
-"click unzip, ok and close")
+![unzip](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/unzip.png)
+"click unzip, ok and close"
 
 Just click yes to install the required software.
-![VB](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VB.png
-"Clik yes")
+![VB](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VB.png)
+"Clik yes"
 
 ![VCRedist](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VCRedist.png
 "Click yes")
