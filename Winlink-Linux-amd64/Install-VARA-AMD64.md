@@ -118,14 +118,14 @@ the USB port the radio provides, in the Q900 case it's ttyACM0.
 ole@nina:~/.wine/dosdevices $ ls -l COM33 
 lrwxrwxrwx 1 ole ole 12 mars  17  2025 COM33 -> /dev/ttyACM0
 ```
-The name ttyACM0 is not always the same and it's possible to write rules that 
+The name /dev/ttyACM0 is not always the same and it's possible to write rules that 
 trigger setting of more sensible names. Some day I'll put up the udev rules here.
 
 
 I have configured CAT control in Winlink:
 
 - Select Radio model : Yaesu FT-817
-- USB 
+- Select USB 
 - Tick off Use Radio Internal Soundcard. 
 - Select serial port COM33.
 - Select baud rate 19200.
