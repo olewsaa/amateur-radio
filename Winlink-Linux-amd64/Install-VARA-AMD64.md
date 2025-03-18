@@ -148,7 +148,7 @@ If you want GPS signal from a gpsd server some more steps are required.
 The Winlink program only support direct attached GPS devices. 
 
 See the page about 
-[One the move]((https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/README.md),
+[One the move](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/README.md),
 I have the radio station omboard a boat so QTH changes from day to day.
 
 
