@@ -113,7 +113,7 @@ issues to the CAT control.
 ### Winlink
 
 Make sure the symlink for COM33 in `$HOME/.wine/dosdevices` is present and point to
-the USB port the radio provides, in the Q900 case it's ttyACM0. 
+the USB port the radio provides, in the Q900 case it's `/dev/ttyACM0`. 
 ```
 ole@nina:~/.wine/dosdevices $ ls -l COM33 
 lrwxrwxrwx 1 ole ole 12 mars  17  2025 COM33 -> /dev/ttyACM0
