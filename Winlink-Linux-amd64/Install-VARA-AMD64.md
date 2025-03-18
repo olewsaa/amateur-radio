@@ -120,6 +120,8 @@ lrwxrwxrwx 1 ole ole 12 mars  17  2025 COM33 -> /dev/ttyACM0
 ```
 
 I have configured CAT control in Winlink:
+
+
 ![Winlink radio setup](https://github.com/olewsaa/amateur-radio/blob/main/Winlink-Linux-amd64/Winlink.Q900.setup.png)
 
 - Select Radio model : Yaesu FT-817
