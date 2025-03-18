@@ -1,5 +1,5 @@
 
-# Installing Wine, Winlinlk, VARA on amd64 system running Linux.
+# Installing Wine, Winlink, VARA on amd64 system running Linux.
 
 ## Relevant web pages to start with.
 
@@ -61,13 +61,13 @@ Click install to install mono:
 "Click yes to install mono"
 
 
-Click unzip, ok and close to unpack the needed files:
+Click unzip, OK and close to unpack the needed files:
 ![unzip](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/unzip.png)
-"click unzip, ok and close"
+"click unzip, OK and close"
 
 Just click yes to install the required software.
 ![VB](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VB.png)
-"Clik yes"
+"Click yes"
 
 ![VCRedist](https://github.com/olewsaa/amateur-radio/blob/main/pat-amd64/VCRedist.png)
 "Click yes, or in this case Ja"
@@ -100,13 +100,13 @@ cp ~/.wine/drive_c/users/${USER}/Temp/pdh.??? ~/.wine/drive_c/windows/system32/
 wine ~/Downloads/VARA\ setup\ \(Run\ as\ Administrator\).exe
 wine ~/Downloads/VARA\ FM\ setup\ \(Run\ as\ Administrator\).exe
 ```
-If all went ok it should work ok.
+If all went OK it should work OK.
 
 
 ## Radio configuration
 
 The [Q900](https://www.guohedz.com/Q900#) provide a command set compatible 
-with Yeasu FT-817. Hence selecting Yuesu FT-817 should work, I not experienced any
+with Yaesu FT-817. Hence selecting Yaesu FT-817 should work, I not experienced any
 issues to the CAT control.
 
 ### Winlink
@@ -129,7 +129,7 @@ I have configured CAT control in Winlink:
 - Select serial port COM33.
 - Select baud rate 19200.
 - Leave Enable RTS and DTR off.
-- The PPT port need to be selcted, select FT-817.
+- The PPT port need to be selected, select FT-817.
 - Tick off the log if logging is needed.
 
 
@@ -151,7 +151,7 @@ The Winlink program only support direct attached GPS devices.
 
 See the page about 
 [One the move](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/README.md),
-I have the radio station omboard a boat so QTH changes from day to day.
+I have the radio station onboard a boat so QTH changes from day to day.
 
 
 
