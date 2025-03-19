@@ -13,18 +13,12 @@ insight.
 
 ## Installing WINE
 
-Wine is part of the distribution and can be installed using the usual commands with
-Debian/Ubuntu. I have also had success with just the repo installation. The current 
-version is Wine 9.
+Wine is part of the distribution and can be installed using the usual
+commands with Debian/Ubuntu. I have also had success with just the
+repo installation. At the time of writing the current version is Wine 9.
 
-This transcripts shows a more manual approach. 
-### A transcript of the commands used.
-```
-sudo dpkg --add-architecture i386
-sudo mkdir -pm755 /etc/apt/keyrings
-sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-
-```
+This transcripts shows a more manual approach, with explicit versioning of 
+the distribution, in this case Bookworm. 
 
 ### A transcript of the commands used.
 ```
@@ -38,6 +32,10 @@ sudo apt install --install-recommends winehq-stable
 winecfg
 wine iexplore
 ```
+The 32-bit version (i386) is added to include 32-bit libraries. Even decades
+after the introduction of x86-64 architecture many programs are still 
+32-bit. 
+
 ### Winetricks
 
 The [Winetricks](https://gitlab.winehq.org/wine/wine/-/wikis/Winetricks) 
