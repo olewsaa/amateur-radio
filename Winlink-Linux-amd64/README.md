@@ -17,7 +17,7 @@ VARA setup (Run as Administrator).exe: PE32 executable (GUI) Intel 80386, for MS
 As these 32-bit applications are run using Wine some settings are needed to 
 accommodate this. When both Windows and Linux got upgraded to 64-bit architectures 
 the 32-bit comp ability were ensured and exist to this day.
- 
+
 
 
 ## Laptop for Q900 
@@ -49,11 +49,11 @@ other methods and allowing you to cleanly integrate Windows
 applications into your desktop."_
 
 In order to run Winlink and VARA the well known and well established
-windows compatibility layer software [WINE](https://www.winehq.org/)
-is needed.  While a mature piece of software (latest is version 9)
-it's slightly tedious to install.  WINE is available with the current
-Linux distributions and only require packages to install, in addition
-some extras and some configurations.
+windows compatibility layer software [Wine](https://www.winehq.org/)
+is needed.  While a mature piece of software (at the time of writing
+the latest is version 9) it's slightly tedious to install.  Wine is
+available with the current Linux distributions and only require
+packages to install, in addition some extras and some configurations.
 
 The Q900 has a frequency range from 100 kHz to 2 GHz receive and from
 1.8 to 434 MHz covering 160 m to 70 cm. Hence it support VARA FM 
