@@ -67,7 +67,7 @@ A script would make perfect sense if this processes would be repeated,
 but we live in a dynamic world where versions change quite often. Even this
 manual procedure break from time to time. 
 
-The file [Install-VARA-AMD64.md](https://github.com/olewsaa/amateur-radio/blob/main/Winlink-Linux-amd64/Install-VARA-AMD64.md) 
+The file [Install-Winlink-VARA-AMD64.md](https://github.com/olewsaa/amateur-radio/blob/main/Winlink-Linux-amd64/Install-VARA-AMD64.md) 
 contain a step by step installation instructions for manual assisted 
 installation. This can used for a full control manual installations, 
 just cut'n paste the commands and review each step. Some images of Wine 
