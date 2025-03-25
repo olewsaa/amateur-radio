@@ -4,7 +4,7 @@
 The Winlink and VARA software are written for the Windows operating system
 and compiled for the x86 architecture. The Winlink itself is a 32-bit program.
 However in both Windows and Linux 32-bit programs run fine on a 64-bit OS 
-installation.
+installation. The command below shows this:
 ```
 file Winlink_Express_install.exe 
 Winlink_Express_install.exe: PE32 executable (GUI) Intel 80386, for MS Windows
