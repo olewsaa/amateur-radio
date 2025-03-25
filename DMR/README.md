@@ -8,6 +8,8 @@ errors. Trust, but verify.
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
 So far I'm very happy with the radio, no issues found so far. 
 
+My codeplug is [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
+(with personal info removed). 
 
 ### Edit codeplug using Wine/Virtual machine
 
