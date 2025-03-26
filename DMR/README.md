@@ -52,6 +52,15 @@ the export import from and and the DMR CPE mentioned above is a major
 issue. The qdmr uses an ascii format making it easy to move code plugs 
 from one radio to another.
 
+The qdmr software is still in it's early stages with some feeatures still 
+missing for some radions, like BF-1701. Export and import is still not where
+files from one program to another could be exchanged. 
+
+The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
+utility for programming the radio under Linux. While not a GUI program like
+the others it offers a text based input which is easy to share with others. 
+
+
 
 ### Mapping, names and geolocation
 
