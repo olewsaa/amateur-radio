@@ -59,7 +59,14 @@ files from one program to another could be exchanged.
 The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
 utility for programming the radio under Linux. While not a GUI program like
 the others it offers a text based input which is easy to share with others. 
-
+While the source code is on git and available, the Make file is not fully 
+correct. There are a some missing libraries. The BSD libraries are not
+included in the prerequisites. I have made an updated 
+[Makefile](https://github.com/olewsaa/amateur-radio/blob/main/DMR/Makefile.dmrconfig) 
+which contain the needed information to build dmrconfig.
+Very small changes *apt-get install libbsd libbsd-dev* and 
+*-lbsd* in the link library line. The function *strnstr* are only found the in
+the BSD library. 
 
 
 ### Mapping, names and geolocation
