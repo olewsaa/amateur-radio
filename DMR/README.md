@@ -36,6 +36,7 @@ correct mapping of the USB devices it works with no issues.
 
 ### Edit codeplug Linux
 
+#### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
 codeplug under Linux. This is major advantage, no need for wine or VirtualBox
 (using a Windows virtual machine).
@@ -56,6 +57,7 @@ The qdmr software is still in it's early stages with some feeatures still
 missing for some radions, like BF-1701. Export and import is still not where
 files from one program to another could be exchanged. 
 
+#### dmrconfig 
 The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
 utility for programming the radio under Linux. While not a GUI program like
 the others it offers a text based input which is easy to share with others. 
