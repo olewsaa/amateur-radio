@@ -66,8 +66,8 @@ correct. There are a some missing libraries. The BSD libraries are not
 included in the prerequisites. I have made an updated 
 [Makefile](https://github.com/olewsaa/amateur-radio/blob/main/DMR/Makefile.dmrconfig) 
 which contain the needed information to build dmrconfig.
-Very small changes *apt-get install libbsd libbsd-dev* and 
-*-lbsd* in the link library line. The function *strnstr* are only found the in
+Very small changes *"apt-get install libbsd libbsd-dev"* and 
+*"-lbsd"* in the link library line. The function *strnstr* is only found the in
 the BSD library. 
 
 
