@@ -71,7 +71,7 @@ Very small changes *"apt-get install libbsd libbsd-dev"* and
 the BSD library. 
 
 A codeplug 
-[text config file]((https://github.com/olewsaa/amateur-radio/blob/main/DMR/device.BF1701.conf) 
+[text config file](https://github.com/olewsaa/amateur-radio/blob/main/DMR/device.BF1701.conf) 
 is available as an example. 
 
 
