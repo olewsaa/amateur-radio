@@ -8,7 +8,8 @@ errors. Trust, but verify.
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
 So far I'm very happy with the radio, no issues found so far. 
 
-My codeplug is [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
+My codeplug (*.rdt) file is 
+[available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
 (with personal info removed). 
 
 ### Edit codeplug using Wine/Virtual machine
@@ -34,12 +35,12 @@ either use Virtual Box (or another virtual machine platform) to run
 the windows software. Using VirtualBox running Win10 and with the
 correct mapping of the USB devices it works with no issues.
 
-### Edit codeplug Linux
+### Edit codeplug using Linux
 
 #### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
 codeplug under Linux. This is major advantage, no need for wine or VirtualBox
-(using a Windows virtual machine).
+(using a Windows 10 virtual machine).
 
 The software is available in some distributions,
 like Ubuntu (and hence Mint). However, to get the most recent version
@@ -74,8 +75,17 @@ A codeplug
 [text config file](https://github.com/olewsaa/amateur-radio/blob/main/DMR/device.BF1701.conf) 
 is available as an example. 
 
+This software is a command line tool. The actual configuration code must
+be entered in a text editor or copied from a binary code plug file, a .rtd file.
+As the GUI codeplug editor works nicely under wine I use this for much of
+the programming. Then dmrconfig to copy it to the radio. All done using 
+Linux (Linux Mint). 
 
-### Mapping, names and geolocation
+The [wiki page](https://github.com/OpenRTX/dmrconfig/wiki) 
+for dmrconfig contain a lot of information about usage 
+of dmiconfig. 
+
+### Mapping, names and geolocation by name
 
 I wrote the code plug from scratch, both to learn how it works
 and also to have full control. There is a high probability that I
