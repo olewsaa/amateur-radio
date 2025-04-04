@@ -33,7 +33,7 @@ is pending.
 ### Pat for Raspberry Pi
 The directory pat contain files and instructions for installing and using pat 
 (and Winlink) for email using Raspberry Pi 4. This is currently running nicely 
-onboard Algol. 
+at home. Connect with VNC from several computers.  
 
 ### Issues with position and grid when on the move
 Onboard SignalK is used for communication between devices. Position
