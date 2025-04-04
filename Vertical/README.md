@@ -22,6 +22,6 @@ The [Python script](https://github.com/olewsaa/amateur-radio/blob/main/NanoVNA/s
 used to produce this figure is found under the NanoVNA section.
 
 
-![image](./Vertikal.jpg)
+![image](./Vertikal.png)
 
 
