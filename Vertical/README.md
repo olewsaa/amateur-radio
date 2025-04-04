@@ -18,6 +18,6 @@ vertical the lower bands suffer.
 
 ![image](./HF-4.SWR.png)
 
-The [Python code](https://github.com/olewsaa/amateur-radio/blob/main/NanoVNA/swr-Z)
+The [Python script](https://github.com/olewsaa/amateur-radio/blob/main/NanoVNA/swr-Z)
 used to produce this figure is found under the NanoVNA section.
 
