@@ -26,8 +26,9 @@ an all Linux environment.
 
 ### NanoVNA software
 The directory NanoVNA contain Python script to plot Z and SWR from a
-.s1p file.  The nanovna-saver if a nice piece of software, but the
-plotting is not it's stongest side.
+.s1p file.  The nanovna-saver is a nice piece of software, but the
+plotting is not it's stongest side. However, a Python script for a Smith diagram 
+is pending. 
 
 ### Pat for Raspberry Pi
 The directory pat contain files and instructions for installing and using pat 
