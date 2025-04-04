@@ -21,9 +21,6 @@ vertical the lower bands suffer.
 The [Python script](https://github.com/olewsaa/amateur-radio/blob/main/NanoVNA/swr-Z)
 used to produce this figure is found under the NanoVNA section.
 
-
-![image](./Vertikal.png)
-
 [<img src="./Vertikal.png" width="250"/>](./Vertikal.png)
 
 
