@@ -24,6 +24,6 @@ used to produce this figure is found under the NanoVNA section.
 
 ![image](./Vertikal.png)
 
-[<img src="./Vertical.png" width="250"/>](./Vertical.png)
+[<img src="./Vertikal.png" width="250"/>](./Vertikal.png)
 
 
