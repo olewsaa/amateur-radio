@@ -15,8 +15,9 @@ My codeplug (*.rdt) file is
 ### Edit codeplug using Wine/Virtual machine
 
 To edit the code plug I use the 
-[TYT Code plug editor](https://www.miklor.com/DMR/DMR-380-CPEditor.php),
+[TYT Code plug editor](https://www.miklor.com/DMR/DMR-380-CPEditor.php) (CPE),
 with a [download link](https://www.miklor.com/DMR/software/DMR_CPE.1.1.21.zip).
+
 
 The download section on the Baofeng web pages contain software for multiple 
 radios, including the 
@@ -25,7 +26,7 @@ radios, including the
 The official [code plug editor(CPE)](https://baofeng.s3.amazonaws.com/Baofeng_DM-1701_CPS_1.05.zip)
 is used to write the data to the radio as the TYT codeplug editor do
 not support writing to the 1701. In addition the buttons need to
-programmed using the official CPE.
+programmed using the official CPE. 
 
 Unfortunately the software only run under windows. 
 Both of the CPEs run fine using [wine](https://www.winehq.org/).
@@ -55,7 +56,7 @@ issue. The qdmr uses an ascii format making it easy to move code plugs
 from one radio to another.
 
 The qdmr software is still in it's early stages with some feeatures still 
-missing for some radions, like BF-1701. Export and import is still not where
+missing for some radios, like BF-1701. Export and import is still not where
 files from one program to another could be exchanged. 
 
 #### dmrconfig 
@@ -84,6 +85,9 @@ Linux (Linux Mint).
 The [wiki page](https://github.com/OpenRTX/dmrconfig/wiki) 
 for dmrconfig contain a lot of information about usage 
 of dmiconfig. 
+
+I have not verified that the button programming can be done using dmrconfig 
+device script. The buttons were programmed using the official CPE and VirtualBox Win10.
 
 ### Mapping, names and geolocation by name
 
