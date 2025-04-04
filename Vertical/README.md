@@ -22,8 +22,8 @@ The [Python script](https://github.com/olewsaa/amateur-radio/blob/main/NanoVNA/s
 used to produce this figure is found under the NanoVNA section.
 
 
-![image](./Vertikal.png =250x)
+![image](./Vertikal.png)
 
-[<img src="Vertical.png" width="250"/>](Vertical.png)
+[<img src="./Vertical.png" width="250"/>](./Vertical.png)
 
 
