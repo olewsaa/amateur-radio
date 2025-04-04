@@ -12,7 +12,7 @@ cover the from 160 m to 70 cm which is ideal when space is limited.
 The G90 is installed at home with a random wire antenna extending from a 
 window to an apple tree. Not great, but FT8 and winlink work.  
 
-### DNR
+### DMR
 Programming the radios in a all Linux environment is slightly more tedious than
 using a Windows environmemt. A shortcut is Win10 virtual machine using VirtualBox
 (this works surpringly well BTW, including USB). 
