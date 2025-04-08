@@ -1,0 +1,239 @@
+#!/usr/bin/env python3
+
+"""
+Program to read touchstone files from NanoVNA and nanovna-saver to
+calculate and display Impedance and SWR. 
+
+Input from ChatGPT4, possibly pure ripoff from a git repo. 
+Impossible to give credit to original author, thanks anyway.
+
+Ver 0.1  27. Jan. 2025 Initial work
+Ver 0.2  28. Jan. 2025 Added Z plot
+Ver 0.3  31. Jan. 2025 Added band stripes 
+Ver 0.4   4. Feb. 2025 Simplified band stripes arrays
+Ver 0.5  21. Feb. 2025 Test for full HF bands or not, test no. points.
+Ver 0.51 09. Mar. 2025 Ham band issues, fixed.
+Ver 0.6  08. Apr. 2025 Added Smith plot.
+
+Ole W. Saastad
+LB4PJ
+
+"""
+
+import numpy as np
+import skrf as rf
+import matplotlib.pyplot as plt
+import sys, os, math
+
+
+def read_s1p(filename):
+    """
+    Reads a Touchstone .s1p file and returns frequency and S11 data.
+    """
+    freq = []
+    s11_real = []
+    s11_imag = []
+
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            if line.startswith('#') or line.startswith('!') or line.strip() == '':
+                # Skip comments and empty lines
+                continue
+            data = line.split()
+            freq.append(float(data[0]))
+            s11_real.append(float(data[1]))
+            s11_imag.append(float(data[2]))
+
+    freq = np.array(freq)  # Frequency in Hz or GHz (depends on the file)
+    s11 = np.array(s11_real) + 1j * np.array(s11_imag)  # Combine real and imag to form S11    
+    return freq, s11
+
+
+def calculate_Z(s11, z0=50):
+    """
+    Calculate impedance Z, call with second argument if z0!=50.
+    """
+    Z = np.real(z0 * (1 + s11) / (1 - s11))
+    return Z
+
+
+def calculate_swr(s11):
+    """
+    Calculate SWR from S11 (reflection coefficient).
+    SWR = (1 + |S11|) / (1 - |S11|), |S11| < 1
+    """
+    gamma = np.abs(s11)
+    swr = (1 + gamma) / (1 - gamma)
+    return swr
+
+
+def bandlabels(freq, Par):
+    # Bands lower and upper limits.
+    bands=[(1850000, 2000000), (3500000, 3800000), (5351500, 5366500), (7000000, 7200000),
+           (10100000, 10150000), (14000000, 14350000), (18068000, 18168000),(21000000, 21450000),
+           (24890000, 24990000), (28000000, 29700000)]  
+    # Center of SSB QRP activity. 
+    bandscf=[1837000, 3710000, 5335000, 7100000, 10130000, 14200000, 18130000, 21285000, 24950000, 28360000]
+    # Bands i meters.
+    bandsm=['160m ', ' 80m ', ' 60m ', ' 40m ', ' 30m ', ' 20m ', ' 17m ', ' 15m ', ' 12m ',' 10m ']
+
+    for frq, lb in zip(bandscf, bandsm):
+        # Find index for frequency, use that to look up Z og SWR.
+        wl=np.where( (freq>frq) & (freq<(frq+5000)) )
+        #print(frq, wl)
+        mx=np.max(Par) # Get a number to fix text for band lines.
+        #print("wl ",wl," mx ",mx)
+        s=Par[wl][0]    
+        lbl=lb+str(round(s,2))
+        plt.axvline(frq/1e6, color='blue', linestyle='dotted', label=lbl)        
+        # Add 0.1 to move text and 70% height in plot.
+        plt.text(frq/1e6+0.1, 0.7*mx, lbl, rotation=90, va='center')
+
+    # Print band width.
+    for l,u in bands:
+        plt.axvspan(l/1e6, u/1e6 , color='green', alpha=0.15) 
+    
+    
+def plot_Z(freq, Z, filename):
+    """ 
+    Plot impedence Z
+
+    Q900 ATU can tune from 16.7Ω to 150Ω.
+    """
+    plt.figure(figsize=(16, 12))
+    plt.plot(freq/1e6, Z, label='Z', color='blue')  # Convert frequency to MHz
+    # Need enough data to plot full HF rannge. 
+    if (len(freq)>10000): bandlabels(freq, Z)
+    plt.axhline(50, color='blue', linestyle='--', label='50Ω')
+    plt.axhline(16.7, color='red', linestyle='--', label='ATU min')
+    plt.axhline(150, color='red', linestyle='--', label='ATU max')
+    plt.xlabel('Frequency (MHz)')
+    plt.ylabel('Z (Ω)')
+    title='Z vs Frequency.  File: '+filename
+    plt.title(title)    
+    plt.grid(True)
+    plt.legend()
+    plt.savefig(filename.replace('s1p','Z.png'))
+    plt.show()
+    
+        
+def plot_swr(freq, swr, filename):
+    """
+    Plot SWR vs. frequency.
+    """
+    plt.figure(figsize=(16, 12))
+    plt.plot(freq/1e6, swr, label='SWR', color='blue')  # Convert frequency to MHz
+    if (len(freq)>10000): bandlabels(freq, swr)
+    plt.axhline(1.5, color='green', linestyle='--', label='SWR = 1.5')
+    plt.axhline(5.0, color='red', linestyle='--', label='SWR = 5.0')
+    plt.text(29.3, 5.1, 'ATU max')
+    plt.xlabel('Frequency (MHz)')
+    plt.ylabel('SWR')
+    title='SWR vs Frequency.  File: '+filename
+    plt.title(title)
+    plt.grid(True)
+    plt.legend()
+    plt.savefig(filename.replace('s1p','SWR.png'))
+    plt.show()
+
+    
+
+def plot_smith_chart(s1p_file, frequencies_to_annotate=None):
+    # Load the S-parameters from the S1P file
+    s_params = rf.Network(s1p_file)
+
+    # Create a Smith chart plot
+    plt.figure(figsize=(16, 14))
+    ax = plt.subplot(111)
+    #background = plt.imread('figures/smithchart.png')
+    s_params.plot_s_smith(ax=ax)  # Plot the Smith chart
+
+    plt.title(f"Smith Chart for {s1p_file}")
+
+    ax.annotate('50Ω',
+                xy=(0,0),
+                textcoords="offset points", 
+                fontsize=14, 
+                color='red',
+                xytext=(-8, -4))
+    
+    # Check if there are frequencies to annotate
+    if frequencies_to_annotate is not None:
+        #print(frequencies_to_annotate)
+        for freq in frequencies_to_annotate:
+            # Frequency in Hz for comparison
+            target_freq = freq 
+
+            # Find the index of the closest frequency in the S-parameter dataset
+            closest_idx = (abs(s_params.f - target_freq)).argmin()
+            #print(s_params.f - target_freq)
+            #print(closest_idx, s_params.f, target_freq)
+                  
+            # Extract the corresponding reflection coefficient S11 (real and imaginary parts)
+            reflection_coefficient = s_params.s[closest_idx, 0, 0]  # S11 is at index [0, 0]
+
+            # Ensure the reflection coefficient is within the unit circle
+            if np.iscomplex(reflection_coefficient):  # Check if it's a complex number
+                real_part = reflection_coefficient.real
+                imag_part = reflection_coefficient.imag
+
+                # Annotate the reflection coefficient on the Smith chart        
+        
+                ax.annotate(f'{int(freq/1000)} kHz', 
+                             xy=(real_part, imag_part), 
+                             textcoords="offset points", 
+                             fontsize=14, 
+                             color='red',
+                             xytext=(5, 5))  # Offset for label
+
+                # Mark the point on the Smith chart
+                ax.plot(real_part, imag_part, 'ro')                
+    plt.grid()
+    plt.savefig(s1p_file.replace('s1p','smith.png'))
+    plt.show()
+
+
+    
+    
+def usage():
+    print("Usage: swr <SWR | Z | S> <filename>")
+    exit(2) # 2 is incorrect user input. 
+
+    
+def main():
+    # Check parameters, two more than just the command name, argv[0].
+    if (len(sys.argv) != 3):
+        usage()
+        
+    mode = sys.argv[1]
+    filename=(str(sys.argv[2]))
+
+    # Check if filename exist and parameters are either 'Z', 'S' or 'SWR'
+    if not (os.path.exists(str(filename))) or (mode != 'Z') and\
+       (mode != 'SWR') and (mode != 'S'):
+        usage()
+
+    # Read the Touchstone file
+    freq, s11 = read_s1p(filename)
+
+
+    if mode == 'SWR' :
+        swr = calculate_swr(s11)
+        plot_swr(freq, swr, filename)
+
+    if mode == 'Z':
+        Z = calculate_Z(s11)
+        plot_Z(freq, Z, filename)
+
+    # Print a Smith diagram 
+    if mode == 'S':
+        # Center of SSB QRP activity. 
+        frequencies_to_annotate=[1837000, 3710000, 5335000, 7100000, 10130000, \
+                                 14200000, 18130000, 21285000, 24950000, 28360000]
+        plot_smith_chart(filename, frequencies_to_annotate) 
+
+        
+        
+if __name__ == '__main__':
+    main()
