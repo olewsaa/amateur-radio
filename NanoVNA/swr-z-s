@@ -214,15 +214,16 @@ def main():
        (mode != 'SWR') and (mode != 'S'):
         usage()
 
-    # Read the Touchstone file
-    freq, s11 = read_s1p(filename)
-
-
+    # Print a SWR diagram
     if mode == 'SWR' :
+        # Read the Touchstone file
+        freq, s11 = read_s1p(filename)
         swr = calculate_swr(s11)
         plot_swr(freq, swr, filename)
 
+    # Print a impedance Z diagram    
     if mode == 'Z':
+        freq, s11 = read_s1p(filename)
         Z = calculate_Z(s11)
         plot_Z(freq, Z, filename)
 
@@ -232,7 +233,6 @@ def main():
         frequencies_to_annotate=[1837000, 3710000, 5335000, 7100000, 10130000, \
                                  14200000, 18130000, 21285000, 24950000, 28360000]
         plot_smith_chart(filename, frequencies_to_annotate) 
-
         
         
 if __name__ == '__main__':
