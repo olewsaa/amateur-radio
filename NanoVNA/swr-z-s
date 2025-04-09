@@ -14,6 +14,7 @@ Ver 0.4   4. Feb. 2025 Simplified band stripes arrays
 Ver 0.5  21. Feb. 2025 Test for full HF bands or not, test no. points.
 Ver 0.51 09. Mar. 2025 Ham band issues, fixed.
 Ver 0.6  08. Apr. 2025 Added Smith plot.
+Ver 0.61 09. Apr. 2025 Added Smith plot background.
 
 Ole W. Saastad
 LB4PJ
@@ -144,9 +145,10 @@ def plot_smith_chart(s1p_file, frequencies_to_annotate=None):
     s_params = rf.Network(s1p_file)
 
     # Create a Smith chart plot
-    plt.figure(figsize=(16, 14))
+    plt.figure(figsize=(16, 16))
     ax = plt.subplot(111)
-    #background = plt.imread('figures/smithchart.png')
+    background = plt.imread('Smith_chart.png')
+    ax.imshow(background, extent=[-1.186, 1.191, -1.186, 1.185])
     s_params.plot_s_smith(ax=ax)  # Plot the Smith chart
 
     plt.title(f"Smith Chart for {s1p_file}")
