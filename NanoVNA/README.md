@@ -15,7 +15,7 @@ needed to just display SWR or Z. Hence two scripts. Both script write the plot t
 disk as a .png file. File name is same as input file name (with path) 
 with a .png extension.
 
-The syntax is standard C applications : *swr-Z <SWR|Z> <filename.s1p>
+The syntax is standard C applications : *swr-Z <SWR|Z> <filename.s1p>*
 
 It's an executable (starting with '#!/usr/bin/env python3').
 
