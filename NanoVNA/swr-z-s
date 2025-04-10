@@ -147,7 +147,7 @@ def plot_smith_chart(s1p_file, frequencies_to_annotate=None):
     # Create a Smith chart plot
     plt.figure(figsize=(16, 16))
     ax = plt.subplot(111)
-    background = plt.imread('Smith_chart.png')
+    background = plt.imread('/home/ole/Python/Smith_chart.png')
     ax.imshow(background, extent=[-1.186, 1.191, -1.186, 1.185])
     s_params.plot_s_smith(ax=ax)  # Plot the Smith chart
 
