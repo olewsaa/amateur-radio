@@ -34,14 +34,15 @@ Both of the CPEs run fine using [wine](https://www.winehq.org/).
 However, to get access to the USB port with Linux you must
 either use Virtual Box (or another virtual machine platform) to run
 the windows software. Using VirtualBox running Win10 and with the
-correct mapping of the USB devices it works with no issues.
+correct mapping  of the USB 
+devices it works with no issues (selecting the correct USB device in the setting for the VM). 
 
 ### Edit codeplug using Linux
 
 #### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
-codeplug under Linux. This is major advantage, no need for wine or VirtualBox
-(using a Windows 10 virtual machine).
+codeplug under Linux. This is major advantage, no need for Wine or VirtualBox
+(using a Windows 10 virtual machine). 
 
 The software is available in some distributions,
 like Ubuntu (and hence Mint). However, to get the most recent version
@@ -57,7 +58,7 @@ from one radio to another.
 
 The qdmr software is still in it's early stages with some feeatures still 
 missing for some radios, like BF-1701. Export and import is still not where
-files from one program to another could be exchanged. 
+files from one program to another could be exchanged.  
 
 #### dmrconfig 
 The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
