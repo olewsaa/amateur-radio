@@ -12,37 +12,13 @@ My codeplug (*.rdt) file is
 [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
 (with personal info removed). 
 
-### Edit codeplug using Wine/Virtual machine
-
-To edit the code plug I use the 
-[TYT Code plug editor](https://www.miklor.com/DMR/DMR-380-CPEditor.php) (CPE),
-with a [download link](https://www.miklor.com/DMR/software/DMR_CPE.1.1.21.zip).
-
-
-The download section on the Baofeng web pages contain software for multiple 
-radios, including the 
-[Baofeng 1701](https://www.baofengradio.com/pages/download).
-
-The official [code plug editor(CPE)](https://baofeng.s3.amazonaws.com/Baofeng_DM-1701_CPS_1.05.zip)
-is used to write the data to the radio as the TYT codeplug editor do
-not support writing to the 1701. In addition the buttons need to
-programmed using the official CPE. 
-
-Unfortunately the software only run under windows. 
-Both of the CPEs run fine using [wine](https://www.winehq.org/).
-
-However, to get access to the USB port with Linux you must
-either use Virtual Box (or another virtual machine platform) to run
-the windows software. Using VirtualBox running Win10 and with the
-correct mapping  of the USB 
-devices it works with no issues (selecting the correct USB device in the setting for the VM). 
-
 ### Edit codeplug using Linux
 
 #### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
 codeplug under Linux. This is major advantage, no need for Wine or VirtualBox
-(using a Windows 10 virtual machine). 
+(using a Windows 10 virtual machine). The software is still under activce
+development which is very good signal. 
 
 The software is available in some distributions,
 like Ubuntu (and hence Mint). However, to get the most recent version
@@ -51,14 +27,13 @@ building from scratch is needed. The
 with installation [instructions](https://dm3mat.darc.de/qdmr/install.html).
 Read the instructions to set up the build environment before starting cmake.
 
-The syntax with qdmr differ from the two above. This is a major issue, but
-the export import from and and the DMR CPE mentioned above is a major
-issue. The qdmr uses an ascii format making it easy to move code plugs 
-from one radio to another.
-
 The qdmr software is still in it's early stages with some feeatures still 
-missing for some radios, like BF-1701. Export and import is still not where
-files from one program to another could be exchanged.  
+missing for some radios, like BF-1701. However, it works well enough to
+fulfill what's needed. 
+
+It still misses capabilities to program the buttons, this can be done
+with the official code plug editor and we below how to deal with Windows 
+software.
 
 #### dmrconfig 
 The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
@@ -105,4 +80,32 @@ can be stored. Normally the *last heard* are loaded and updated.
 
 The file 'BF1701-example-codeplug.rdt' is an anonymous version of
 my latest code plug file. 
+
+
+
+### Edit codeplug using Wine/Virtual machine
+
+To edit the code plug I use the 
+[TYT Code plug editor](https://www.miklor.com/DMR/DMR-380-CPEditor.php) (CPE),
+with a [download link](https://www.miklor.com/DMR/software/DMR_CPE.1.1.21.zip).
+
+
+The download section on the Baofeng web pages contain software for multiple 
+radios, including the 
+[Baofeng 1701](https://www.baofengradio.com/pages/download).
+
+The official [code plug editor(CPE)](https://baofeng.s3.amazonaws.com/Baofeng_DM-1701_CPS_1.05.zip)
+is used to write the data to the radio as the TYT codeplug editor do
+not support writing to the 1701. In addition the buttons need to
+programmed using the official CPE. 
+
+Unfortunately the software only run under windows. 
+Both of the CPEs run fine using [wine](https://www.winehq.org/).
+
+However, to get access to the USB port with Linux you must
+either use Virtual Box (or another virtual machine platform) to run
+the windows software. Using VirtualBox running Win10 and with the
+correct mapping  of the USB 
+devices it works with no issues (selecting the correct USB device in the setting for the VM). 
+
 
