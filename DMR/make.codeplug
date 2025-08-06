@@ -1,0 +1,192 @@
+#!/bin/bash
+
+ANALOG_INPUT_FILE=analog.channels.inp
+REPEATER_INPUT_FILE=digital.repeaters.inp
+TG_INPUT_FILE=talkgroups.inp
+
+USER_ID=2420509
+CALLSIGN=LB4PJ
+NAME=Ole
+
+echo "#Config file for dmrconfig"
+echo Radio: Retevis RT84
+echo Last Programmed Date: $(date +"%Y-%m-%d %H:%M")
+echo CPS Software Version: V01.05
+cat <<EOF
+#
+# Table of digital channels.
+# 1) Channel number: 1-3000
+# 2) Name: up to 16 characters, use '_' instead of space
+# 3) Receive frequency in MHz
+# 4) Transmit frequency or +/- offset in MHz
+# 5) Transmit power: High, Mid, Low
+# 6) Scan list: - or index in Scanlist table
+# 7) Transmit timeout timer in seconds: 0, 15, 30, 45... 555
+# 8) Receive only: -, +
+# 9) Admit criteria: -, Free, Color
+# 10) Color code: 0, 1, 2, 3... 15
+# 11) Time slot: 1 or 2
+# 12) Receive group list: - or index in Grouplist table
+# 13) Contact for transmit: - or index in Contacts table# 13) Bandwidth in kHz: 12.5, 20, 25
+#
+Digital Name          Receive   Transmit Power Scan TOT RO Admit  Color Slot RxGL TxContact
+#
+EOF
+#
+# The digital entries and talkgroups.
+# The talkgroups are found in the mal (template).
+#
+# List of digital channels start at 200.
+start=200
+info=$(head -2 $REPEATER_INPUT_FILE| tail -1)
+
+entries=$(cat $REPEATER_INPUT_FILE | wc -l)
+entries=$((entries -1))
+
+for n in  $(seq 2 $entries); do
+    info=$(head -$n $REPEATER_INPUT_FILE | tail -1)
+    ./gen2.sh $start $info 
+    incr=$(cat $TG_INPUT_FILE | wc -l)
+    start=$((start + incr))
+done
+#
+#
+cat <<EOF
+#
+# Table of analog channels.
+# 1) Channel number: 1-3000
+# 2) Name: up to 16 characters, use '_' instead of space
+# 3) Receive frequency in MHz
+# 4) Transmit frequency or +/- offset in MHz
+# 5) Transmit power: High, Mid, Low
+# 6) Scan list: - or index
+# 7) Transmit timeout timer in seconds: 0, 15, 30, 45... 555
+# 8) Receive only: -, +
+# 9) Admit criteria: -, Free, Tone
+# 10) Squelch level: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+# 11) Guard tone for receive, or '-' to disable
+# 12) Guard tone for transmit, or '-' to disable
+# 13) Bandwidth in kHz: 12.5, 20, 25
+#
+EOF
+
+
+
+# List of analog channels start at 1
+
+echo "Analog  Name             Receive   Transmit Power Scan TOT RO Admit  Sq RxTone TxTone Width"
+cat $ANALOG_INPUT_FILE | awk 'BEGIN {n=1}{
+    if ($1 == "#")
+        {NAME=$2}
+    else {printf("%4d\t%-15s\t  %s\t%s\t%s\t%s\t%s  %s\t%s  \t%s\t%s\t%s\t%s\t\n"\
+    ,n++, $2, $3, $4, $5, $6, $7, $8, $9,$10,$11,$12,$13)}
+    }'
+
+
+cat <<EOF
+
+# Table of channel zones.
+# 1) Zone number: 1-250
+# 2) Name: up to 16 characters, use '_' instead of space
+# 3) List of channels: numbers and ranges (N-M) separated by comma
+#
+Zone    Name             Channels
+EOF
+
+
+# Analog zones first
+
+# Use ascript to generate the anlog zones.
+./gen.analog.zones $ANALOG_INPUT_FILE
+
+
+
+# The list of zones with channels and talkgroups.
+#
+# Number of analog zones listed before the digitalantries need to be known.
+numanalog=$(grep \# analog.channels.inp | wc -l)
+
+# Sequence of digital repeaters start at:
+start=200
+
+# Number of digital repeaters 
+entries=$(cat $REPEATER_INPUT_FILE | wc -l)
+entries=$((entries -1))
+
+for n in  $(seq 2 $entries); do
+    export zone=$((n + numanalog -1))
+    info=$(head -$n $REPEATER_INPUT_FILE| tail -1)
+    echo $info | awk '{printf("%4s%c", ENVIRON["zone"],"a")}'
+    echo $info | awk '{printf("\t%-10s\t",$1)}'
+    echo $start"-"$((start + 5))
+    echo $info | awk '{printf("%4s%c \t%c\t\t",ENVIRON["zone"],"b", "-")}'
+    tgs=$(cat  $TG_INPUT_FILE | wc -l)
+    echo $((start + 6))"-"$((start + tgs -1))
+    incr=$(cat $TG_INPUT_FILE | wc -l)
+    start=$((start+ incr))
+done
+
+echo 
+
+
+cat <<EOF
+# Table of group lists.
+# 1) Group list number: 1-250
+# 2) Name: up to 16 characters, use '_' instead of space
+# 3) List of contacts: numbers and ranges (N-M) separated by comma
+#
+Grouplist Name             Contacts
+    1     GroupList1       1,3-5,16-17,21,26
+
+# Table of text messages.
+# 1) Message number: 1-50
+# 2) Text: up to 144 characters
+#
+Message Text
+    1   wx
+    2   wx oslo
+    3   SMSGTE @+4790853536 Klem
+    4   rpt
+    5   rssi
+
+EOF
+echo "# Unique DMR ID and name of this radio."
+echo "ID: " $USER_ID
+echo "Name: "$CALLSIGN
+echo 
+echo "# Text displayed when the radio powers up."
+echo "Intro Line 1: $CALLSIGN
+echo "Intro Line 2: $NAME
+echo 
+
+
+
+cat <<EOF
+# Table of scan lists.
+# 1) Scan list number: 1-250
+# 2) Name: up to 16 characters, use '_' instead of space
+# 3) Priority channel 1 (50% of scans): -, Sel or index
+# 4) Priority channel 2 (25% of scans): -, Sel or index
+# 5) Designated transmit channel: Last, Sel or index
+# 6) List of channels: numbers and ranges (N-M) separated by comma
+#
+Scanlist Name             PCh1 PCh2 TxCh Channels
+    1    ScanList1        4    4    Last 1-4,10-12
+
+# Table of contacts.
+# 1) Contact number: 1-10000
+# 2) Name: up to 16 characters, use '_' instead of space
+# 3) Call type: Group, Private, All
+# 4) Call ID: 1...16777215
+# 5) Call receive tone: -, +
+#
+EOF
+#cat contacts.inp
+
+echo "# list of last heard users :"
+echo "#BF1701 has only space for 10k entroes."
+echo "#"
+
+# Just inout the list from last head DB:
+cat last.heard.inp 
+
