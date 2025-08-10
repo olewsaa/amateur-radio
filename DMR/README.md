@@ -12,6 +12,9 @@ My codeplug (*.rdt) file is
 [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
 (with personal info removed). 
 
+I have also written a [script to generate a code plug configuration](make.codeplug.md) file 
+for dmrconfig making it a fairly simple process or generating a code plug from scratch.
+
 ### Edit codeplug using Linux
 
 #### qdmr
