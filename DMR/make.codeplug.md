@@ -25,6 +25,11 @@ no longer is online and the new currently do not support download of last heard.
 
 As my radio (BF1701) has limited memory, it can only hold 10k entries. 
 
+At the top of the codeplug there is a line describing the radio. 
+```
+Radio: Retevis RT84
+```
+This is compatible with BF1701.
 
 
 ## analog.channels.inp
@@ -83,3 +88,4 @@ As these seldom changes I did not program in the automatic numbering.
 This is just a numbered dump of the last seen "last heard" contact data base.
 
 
+## Writing the codeplug to the radio.
