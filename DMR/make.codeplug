@@ -156,7 +156,7 @@ EOF
 
 # Use ascript to generate the anlog zones.
 # This is a Python scripe generated with AI (deepseek) so called Vibe coding
-# where you just tell what you want and the AI generates the core for you.
+# where you just tell what you want and the AI generates the code for you.
 
 ./gen.analog.zones $ANALOG_INPUT_FILE
 
