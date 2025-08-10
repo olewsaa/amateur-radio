@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ANALOG_INPUT_FILE=analog.channels.inp
-REPEATER_INPUT_FILE=digital.repeaters.inp
-TG_INPUT_FILE=talkgroups.inp
+export ANALOG_INPUT_FILE=analog.channels.inp
+export REPEATER_INPUT_FILE=digital.repeaters.inp
+export TG_INPUT_FILE=talkgroups.inp
 
 USER_ID=2420509
 CALLSIGN=LB4PJ
@@ -12,7 +12,62 @@ echo "#Config file for dmrconfig"
 echo Radio: Retevis RT84
 echo Last Programmed Date: $(date +"%Y-%m-%d %H:%M")
 echo CPS Software Version: V01.05
+
+
+gen2() {
+    # This is the parameters given to the gen function.
+    # Most of these come from the input digital.repeaters.inp
+
+    # This is the input file containing the talkgroups
+    # to be includer for each repeater.
+
+    # This is the file containg talk groups for each repeater.
+    # All repeaters have identical talkgroups. 
+    TG_INPUT_FILE=talkgroups.inp
+
+    export number=$1
+    export name=$2
+    export call=$3
+    export freq=$4
+    export offset=$5
+    export color=$6
+
+    #echo $slot 
+    echo "# " $2 $3
+    #
+    # awk script to print and format the input. With some constants and shortcuts.
+    #
+    # Use sed to remove any blank lines in the talkgroup template file, if there
+    # should be ones "sed /^$/d' .
+    
+    tail +2 $TG_INPUT_FILE | awk '\
+    BEGIN{number=ENVIRON["number"]}\
+	{	 
+      	  printf("  %d\t  %-15s\t %s\t %-4s  High - 240 - Color  %s  %s\t%s\t%s\t%s %s\n",
+      	  number++ ,      	      # Talkgroup sequencr number \
+      	  $1,      		      # Timeslot\
+      	  ENVIRON["freq"],	      # Frequency\
+      	  ENVIRON["offset"],          # Frequency offset\
+      	  ENVIRON["color"],	      # Codeword color\
+      	  $2,		      	      # Color code\
+      	  $3,		      	      # Receive group\
+      	  $4,		      	      # Sequence number\
+      	  $5,		      	      # Comment character\
+      	  $6)		      	      # Name of talkgroup comment\
+	}'
+echo "#"
+}
+
+ 
+
+
 cat <<EOF
+# This is the parameters given to the gen2.sh script. Most of these come from
+# the input info.for.gen.
+
+# This is the input file containing the talkgroups
+# to be includer for each repeater.
+
 #
 # Table of digital channels.
 # 1) Channel number: 1-3000
@@ -32,6 +87,7 @@ cat <<EOF
 Digital Name          Receive   Transmit Power Scan TOT RO Admit  Color Slot RxGL TxContact
 #
 EOF
+
 #
 # The digital entries and talkgroups.
 # The talkgroups are found in the mal (template).
@@ -42,10 +98,12 @@ info=$(head -2 $REPEATER_INPUT_FILE| tail -1)
 
 entries=$(cat $REPEATER_INPUT_FILE | wc -l)
 entries=$((entries -1))
+entries=$((entries +3)) # num analog -
+# However something is not right here, CHECK !
 
 for n in  $(seq 2 $entries); do
     info=$(head -$n $REPEATER_INPUT_FILE | tail -1)
-    ./gen2.sh $start $info 
+    gen2 $start $info 
     incr=$(cat $TG_INPUT_FILE | wc -l)
     start=$((start + incr))
 done
@@ -97,6 +155,9 @@ EOF
 # Analog zones first
 
 # Use ascript to generate the anlog zones.
+# This is a Python scripe generated with AI (deepseek) so called Vibe coding
+# where you just tell what you want and the AI generates the core for you.
+
 ./gen.analog.zones $ANALOG_INPUT_FILE
 
 
@@ -105,16 +166,19 @@ EOF
 #
 # Number of analog zones listed before the digitalantries need to be known.
 numanalog=$(grep \# analog.channels.inp | wc -l)
+numanalog=$((numanalog -1))
 
 # Sequence of digital repeaters start at:
 start=200
+# This imply a limit of analog channels of 199. 
 
-# Number of digital repeaters 
+# Number of digital repeaters
 entries=$(cat $REPEATER_INPUT_FILE | wc -l)
-entries=$((entries -1))
-
+# Some number magic to get things to line up.
+entries=$((entries + 2)) 
 for n in  $(seq 2 $entries); do
-    export zone=$((n + numanalog -1))
+    #echo "digital repeaters ", $n, $start
+    export zone=$((n + numanalog))
     info=$(head -$n $REPEATER_INPUT_FILE| tail -1)
     echo $info | awk '{printf("%4s%c", ENVIRON["zone"],"a")}'
     echo $info | awk '{printf("\t%-10s\t",$1)}'
@@ -155,8 +219,8 @@ echo "ID: " $USER_ID
 echo "Name: "$CALLSIGN
 echo 
 echo "# Text displayed when the radio powers up."
-echo "Intro Line 1: $CALLSIGN
-echo "Intro Line 2: $NAME
+echo "Intro Line 1:" $CALLSIGN
+echo "Intro Line 2:" $NAME
 echo 
 
 
@@ -181,11 +245,11 @@ Scanlist Name             PCh1 PCh2 TxCh Channels
 # 5) Call receive tone: -, +
 #
 EOF
-#cat contacts.inp
+cat contacts.inp
 
-echo "# list of last heard users :"
-echo "#BF1701 has only space for 10k entroes."
-echo "#"
+#echo "# list of last heard users :"
+#echo "#BF1701 has only space for 10k entroes."
+#echo "#"
 
 # Just inout the list from last head DB:
 cat last.heard.inp 

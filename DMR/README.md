@@ -17,7 +17,7 @@ My codeplug (*.rdt) file is
 #### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
 codeplug under Linux. This is major advantage, no need for Wine or VirtualBox
-(using a Windows 10 virtual machine). The software is still under activce
+(using a Windows 10 virtual machine). The software is still under active
 development which is very good signal. 
 
 The software is available in some distributions,
@@ -27,7 +27,7 @@ building from scratch is needed. The
 with installation [instructions](https://dm3mat.darc.de/qdmr/install.html).
 Read the instructions to set up the build environment before starting cmake.
 
-The qdmr software is still in it's early stages with some feeatures still 
+The qdmr software is still in it's early stages with some features still 
 missing for some radios, like BF-1701. However, it works well enough to
 fulfill what's needed. 
 
@@ -65,22 +65,21 @@ of dmiconfig.
 I have not verified that the button programming can be done using dmrconfig 
 device script. The buttons were programmed using the official CPE and VirtualBox Win10.
 
-### Mapping, names and geolocation by name
+### Generating a code plug using script and very simple input files
 
 I wrote the code plug from scratch, both to learn how it works
 and also to have full control. There is a high probability that I
 missed something. However, it works as expected (more or less).
 
-I have used zones for different regions. Then a two letter code for the
-individual locations. I use names instead of call signs since it 
-generally easier to remember names than call signs. 
+As I found the editing process boring and tedious I wrote a bash script
+that take some inout files that contain the bare minimum of information
+needed. As much as possible is left as defaults. 
 
 The memory only have room for 10k digital contacts so only a few 
 can be stored. Normally the *last heard* are loaded and updated.
 
-The file 'BF1701-example-codeplug.rdt' is an anonymous version of
-my latest code plug file. 
-
+The script as it's own page [make.codeplug](make.codeplug.md). Some background and
+how to use. 
 
 
 ### Edit codeplug using Wine/Virtual machine
