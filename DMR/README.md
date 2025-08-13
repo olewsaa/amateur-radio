@@ -2,18 +2,22 @@
 
 ## Introduction
 
-Disclaimer: The code plug is manually written and there is a fair chance of
-errors. Trust, but verify. 
+Disclaimer: My code plugs are manually written and there is a fair chance of
+errors. Most of the analog and digital repeaters have been tested. 
 
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
 So far I'm very happy with the radio, no issues found so far. 
+
+
+I have written a [script to generate a code plug configuration](make.codeplug.md) file 
+for [dmrconfig]((https://github.com/OpenRTX/dmrconfi) making it a fairly simple process or 
+generating a code plug from scratch. In some ways text files are simpler than spreadsheet
+interface. 
 
 My codeplug (*.rdt) file is 
 [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
 (with personal info removed). 
 
-I have also written a [script to generate a code plug configuration](make.codeplug.md) file 
-for dmrconfig making it a fairly simple process or generating a code plug from scratch.
 
 ### Edit codeplug using Linux
 
