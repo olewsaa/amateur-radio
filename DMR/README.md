@@ -10,7 +10,7 @@ So far I'm very happy with the radio, no issues found so far.
 
 
 I have written a [script to generate a code plug configuration](make.codeplug.md) file 
-for [dmrconfig]((https://github.com/OpenRTX/dmrconfi) making it a fairly simple process or 
+for [dmrconfig](https://github.com/OpenRTX/dmrconfi) making it a fairly simple process or 
 generating a code plug from scratch. In some ways text files are simpler than spreadsheet
 interface. 
 
