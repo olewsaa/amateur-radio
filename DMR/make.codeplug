@@ -1,15 +1,35 @@
 #!/bin/bash
 
+#
+# Script to generate a config file for dmrconfig to program DMR radios.
+#
+# Written by Ole W. Saastad, LB4PJ, DMR i.d. 2420509
+#
+# v1.0 18 August 2025 
+
+# Input files:
+
 export ANALOG_INPUT_FILE=analog.channels.inp
 export REPEATER_INPUT_FILE=digital.repeaters.inp
 export TG_INPUT_FILE=talkgroups.inp
+export CONTACTS=contacts.inp
+export LAST_HEARD_CONTACTS=last.heard.inp
 
-USER_ID=2420509
-CALLSIGN=LB4PJ
-NAME=Ole
+# Some input parameters:
+
+RADIO="Retevis RT84"  # This is compatible with Baofeng DM 1701.
+USER_ID=2420509       # My i.d.
+CALLSIGN=LB4PJ        # My call sign.
+NAME=Ole              # My fist name.
+
+
+# The script emit output to standard out, output should be
+# redirected to file like:
+# make.codeplug > Codeplufile.conf
+# 
 
 echo "#Config file for dmrconfig"
-echo Radio: Retevis RT84
+echo Radio: $RADIO
 echo Last Programmed Date: $(date +"%Y-%m-%d %H:%M")
 echo CPS Software Version: V01.05
 
@@ -245,12 +265,12 @@ Scanlist Name             PCh1 PCh2 TxCh Channels
 # 5) Call receive tone: -, +
 #
 EOF
-cat contacts.inp
+cat $CONTACTS
 
 #echo "# list of last heard users :"
 #echo "#BF1701 has only space for 10k entroes."
 #echo "#"
 
 # Just inout the list from last head DB:
-cat last.heard.inp 
 
+cat $LAST_HEARD_CONTACTS
