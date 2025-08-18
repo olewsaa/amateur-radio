@@ -95,7 +95,8 @@ This is just a numbered dump of the last seen "last heard" contact data base.
 
 
 ## Generating the config file
-To generate the config file just issue the command:
+To generate the config file just issue the command (remember to make it 
+executable using chmod +x make.codeplug) :
 ```bash
 ./make.codeplug > my-config-script.conf
 ```
