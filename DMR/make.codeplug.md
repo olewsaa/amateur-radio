@@ -4,6 +4,12 @@
 Editing the codeplug is boring and tedious whether one use a spreadsheet type GUI with put'n-paste 
 or edit a text file with the needed information. 
 
+The syntax of the input files have been set to the bare minimum. Just the major information
+need to be input manually. Anything more complicated need to be edited in the generated
+config file. The manjor issue with manual editing is the sequence of channels, talkgroups etc.
+Hence a script which do the tedious heavy lifting of keeping track and make sure the numbers
+are unique and don't overlap is productive.
+
 I did some work on a script that could take only the minimum information and generate a 
 DMR config file for dmrconfig. The analog repeaters are limited in numbers so I did not
 put too much automation these lines. That are close to what's in the final config file.
@@ -12,7 +18,7 @@ A major issue is that each entry need to be correctly numbered for the dmrconfig
 which zones contain which talkgrous groups etc. This script make sure that the numbering is
 correct. 
 
-There are presently five input file :
+There are presently five input files :
 - analog.channels.inp
 - digital.repeaters.inp
 - talkgroups.inp
@@ -88,4 +94,24 @@ As these seldom changes I did not program in the automatic numbering.
 This is just a numbered dump of the last seen "last heard" contact data base.
 
 
+## Generating the config file
+To generate the config file just issue the command:
+```bash
+./make.codeplug > my-config-script.conf
+```
+this will make an ASCII test file containing the configuration, AKA codeplug.
+Being a text file it can be edited in a normal text editor. Just keep in mind
+that the numbering of entries are sensitive to any changes. 
+
+
 ## Writing the codeplug to the radio.
+
+After making the config file it can be written to the radio :
+```bash
+dmrconfig -c my-config-script.conf
+```
+The config file should probably have some sensible naming like 2025-AUG-15.conf or something
+similar to keep a older ones when updates and additions might introduce errors.
+
+The command name might sound like I'm using a make file to do the job, which I did not,
+initially I called it generate.codeplug. However, make.codeplug sounded better.
