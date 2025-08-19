@@ -5,7 +5,8 @@
 #
 # Written by Ole W. Saastad, LB4PJ, DMR i.d. 2420509
 #
-# v1.0 18 August 2025 
+# v1.0  18 August 2025
+# v1.01 19 August 2025
 
 # Input files:
 
@@ -23,10 +24,15 @@ CALLSIGN=LB4PJ        # My call sign.
 NAME=Ole              # My fist name.
 
 
+#
 # The script emit output to standard out, output should be
 # redirected to file like:
 # make.codeplug > Codeplufile.conf
 # 
+
+
+# The generative part of the script start here, everything is
+# emitted to stdout.
 
 echo "#Config file for dmrconfig"
 echo Radio: $RADIO
@@ -45,6 +51,10 @@ gen2() {
     # All repeaters have identical talkgroups. 
     TG_INPUT_FILE=talkgroups.inp
 
+    # This script scan through all the requested talkgroups and add them to
+    # the current repeater / zone, as I have given each digital repeater its
+    # own zone. 
+    
     export number=$1
     export name=$2
     export call=$3
@@ -64,7 +74,7 @@ gen2() {
     BEGIN{number=ENVIRON["number"]}\
 	{	 
       	  printf("  %d\t  %-15s\t %s\t %-4s  High - 240 - Color  %s  %s\t%s\t%s\t%s %s\n",
-      	  number++ ,      	      # Talkgroup sequencr number \
+      	  number++ ,      	      # Talkgroup sequence number \
       	  $1,      		      # Timeslot\
       	  ENVIRON["freq"],	      # Frequency\
       	  ENVIRON["offset"],          # Frequency offset\
@@ -149,6 +159,10 @@ cat <<EOF
 EOF
 
 
+# The analog channels take location/area/city/region as a zone. About handful or two
+# of analog repeaters seem suitable for each geographical zone. Differ from the digital
+# where there are a large number of talk groups per repeater.  The analog input file
+# use the hash sign to name a geographical region name.
 
 # List of analog channels start at 1
 
@@ -175,7 +189,7 @@ EOF
 # Analog zones first
 
 # Use ascript to generate the anlog zones.
-# This is a Python scripe generated with AI (deepseek) so called Vibe coding
+# This is a Python script generated with AI (deepseek) so called Vibe coding
 # where you just tell what you want and the AI generates the code for you.
 
 ./gen.analog.zones $ANALOG_INPUT_FILE
