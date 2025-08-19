@@ -45,7 +45,7 @@ gen2() {
     # Most of these come from the input digital.repeaters.inp
 
     # This is the input file containing the talkgroups
-    # to be includer for each repeater.
+    # to be included for each repeater.
 
     # This is the file containg talk groups for each repeater.
     # All repeaters have identical talkgroups. 
@@ -92,8 +92,8 @@ echo "#"
 
 
 cat <<EOF
-# This is the parameters given to the gen2.sh script. Most of these come from
-# the input info.for.gen.
+# This is the parameters given to script. 
+# Most of these come from the input files:  *.inp .
 
 # This is the input file containing the talkgroups
 # to be includer for each repeater.
