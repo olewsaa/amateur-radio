@@ -5,9 +5,10 @@
 #
 # Written by Ole W. Saastad, LB4PJ, DMR i.d. 2420509
 #
-# v1.0  18 August 2025
-# v1.01 19 August 2025
-
+# v1.0.0 18 August 2025 Initial working version.
+# v1.0.1 19 August 2025 Bug fixing + spelling.
+# v1.0.2 20 August 2025 Bug fix in number of zones.
+#
 # Input files:
 
 export ANALOG_INPUT_FILE=analog.channels.inp
@@ -27,7 +28,7 @@ NAME=Ole              # My fist name.
 #
 # The script emit output to standard out, output should be
 # redirected to file like:
-# make.codeplug > Codeplufile.conf
+# make.codeplug > Codeplugfile.conf
 # 
 
 
