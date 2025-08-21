@@ -13,7 +13,7 @@ loop at the top (adding some extra capacity).
 
 With 20m LMR-240 to the shack it works better than any of the random wire antennas.
 
-The SWR is not quite good and well within the tuning range of the Xiegu G90. As expected with a very short 
+The SWR is not quite good, but well within the tuning range of the Xiegu G90. As expected with a very short 
 vertical the lower bands suffer. 
 
 ![image](./HF-4.SWR.png)
