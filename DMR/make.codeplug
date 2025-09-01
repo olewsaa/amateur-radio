@@ -2,12 +2,25 @@
 
 #
 # Script to generate a config file for dmrconfig to program DMR radios.
+# Saves a lot of time and effort entering talkgroups by generating
+# entries for all talkgroups for all repeaters. It's is (IMHO) less
+# work than cut and paste in a spreadsheet interface.
 #
+# For info about dmrconfig see https://github.com/OpenRTX/dmrconfig/wiki
+#
+# As an example of what needed to be entered (currently):
+# wc -l digital.repeaters.inp are 32 lines. 
+# wc -l talkgroups.inp are 27 lines.
+# wc -l contacts.inp 29 lines.
+# wc -l analog.channels.inp 82 lines long, one per frequency. 
+#
+# 
 # Written by Ole W. Saastad, LB4PJ, DMR i.d. 2420509
 #
 # v1.0.0 18 August 2025 Initial working version.
 # v1.0.1 19 August 2025 Bug fixing + spelling.
 # v1.0.2 20 August 2025 Bug fix in number of zones.
+# v1.0.3 01 September 2025 Added comments and some renaming.
 #
 # Input files:
 
@@ -23,6 +36,9 @@ RADIO="Retevis RT84"  # This is compatible with Baofeng DM 1701.
 USER_ID=2420509       # My i.d.
 CALLSIGN=LB4PJ        # My call sign.
 NAME=Ole              # My fist name.
+
+# For more information about support for different radios
+# see the githib pages as listed above. 
 
 
 #
@@ -41,8 +57,9 @@ echo Last Programmed Date: $(date +"%Y-%m-%d %H:%M")
 echo CPS Software Version: V01.05
 
 
-gen2() {
-    # This is the parameters given to the gen function.
+gen_TG_list() {
+    # These are the parameters given to the gen_TG_list function
+    # named $1 $2 etc. 
     # Most of these come from the input digital.repeaters.inp
 
     # This is the input file containing the talkgroups
@@ -53,8 +70,9 @@ gen2() {
     TG_INPUT_FILE=talkgroups.inp
 
     # This script scan through all the requested talkgroups and add them to
-    # the current repeater / zone, as I have given each digital repeater its
-    # own zone. 
+    # the current repeater or zone, as I have given each digital repeater its
+    # own zone. I have chosen to give them geographical names, it's easier
+    # to remember then their call sign. 
     
     export number=$1
     export name=$2
@@ -69,8 +87,8 @@ gen2() {
     # awk script to print and format the input. With some constants and shortcuts.
     #
     # Use sed to remove any blank lines in the talkgroup template file, if there
-    # should be ones "sed /^$/d' .
-    
+    # should be any use sed to delete them:  sed -i /^$/d  <tgroups file>
+    #
     tail +2 $TG_INPUT_FILE | awk '\
     BEGIN{number=ENVIRON["number"]}\
 	{	 
@@ -84,7 +102,7 @@ gen2() {
       	  $3,		      	      # Receive group\
       	  $4,		      	      # Sequence number\
       	  $5,		      	      # Comment character\
-      	  $6)		      	      # Name of talkgroup comment\
+      	  $6)		      	      # Name of talkgroup, comment\
 	}'
 echo "#"
 }
@@ -121,7 +139,8 @@ EOF
 
 #
 # The digital entries and talkgroups.
-# The talkgroups are found in the mal (template).
+# The talkgroups are found in the template,
+# TG_INPUT_FILE.
 #
 # List of digital channels start at 200.
 start=200
@@ -130,11 +149,11 @@ info=$(head -2 $REPEATER_INPUT_FILE| tail -1)
 entries=$(cat $REPEATER_INPUT_FILE | wc -l)
 entries=$((entries -1))
 entries=$((entries +2)) # num analog 
-# However something is not right here, CHECK !
+# Check for any issues or errors !
 
 for n in  $(seq 2 $entries); do
     info=$(head -$n $REPEATER_INPUT_FILE | tail -1)
-    gen2 $start $info 
+    gen_TG_list $start $info 
     incr=$(cat $TG_INPUT_FILE | wc -l)
     start=$((start + incr))
 done
