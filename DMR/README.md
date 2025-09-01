@@ -8,27 +8,28 @@ errors. Most of the analog and digital repeaters have been tested.
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
 So far I'm very happy with the radio, no issues found so far. 
 
-
+### Script to generate a codeplug config file for dmrconfig 
 I have written a [script to generate a code plug configuration](make.codeplug.md) file 
 for [dmrconfig](https://github.com/OpenRTX/dmrconfi) making it a fairly simple process or 
 generating a code plug from scratch. In some ways text files are simpler than spreadsheet
 interface. 
 
+### My codeplug for BF1701 (binary)
 My codeplug (*.rdt) file is 
 [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
 (with personal info removed). 
 
 
-### Edit codeplug using Linux
+## Edit codeplug using Linux
 
-#### qdmr
+### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
 codeplug under Linux. This is major advantage, no need for Wine or VirtualBox
 (using a Windows 10 virtual machine). The software is still under active
 development which is very good signal. 
 
 The software is available in some distributions,
-like Ubuntu (and hence Mint). However, to get the most recent version
+like Ubuntu (including Mint). However, to get the most recent version
 building from scratch is needed. The 
 [code is on gihub](https://github.com/hmatuschek/qdmr) 
 with installation [instructions](https://dm3mat.darc.de/qdmr/install.html).
@@ -42,7 +43,7 @@ It still misses capabilities to program the buttons, this can be done
 with the official code plug editor and we below how to deal with Windows 
 software.
 
-#### dmrconfig 
+### dmrconfig 
 The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
 utility for programming the radio under Linux. While not a GUI program like
 the others it offers a text based input which is easy to share with others. 
@@ -108,10 +109,14 @@ programmed using the official CPE.
 Unfortunately the software only run under windows. 
 Both of the CPEs run fine using [wine](https://www.winehq.org/).
 
-However, to get access to the USB port with Linux you must
-either use Virtual Box (or another virtual machine platform) to run
-the windows software. Using VirtualBox running Win10 and with the
-correct mapping  of the USB 
-devices it works with no issues (selecting the correct USB device in the setting for the VM). 
+However, to get access to the USB port with Linux you must either use
+Virtual Box (or another virtual machine platform) to run the windows
+software. Using VirtualBox running Win10 and with the correct mapping
+of the USB devices it works with no issues (selecting the correct USB
+device in the setting for the VM).
 
+Unfortunately wine do not take control over the USB ports as a Virtual
+Machine.  Wine is an emulator that allow Windows programs to be run
+under Linux, it do not offer the same degree of control over the
+complete system line a virtualisation platform.
 
