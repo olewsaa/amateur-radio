@@ -10,7 +10,7 @@ So far I'm very happy with the radio, no issues found so far.
 
 ### Script to generate a codeplug config file for dmrconfig 
 The wish to have an all Linux envirnment made me start using the command line 
-tool[dmrconfig](https://github.com/OpenRTX/dmrconfig). This have support for 
+tool [dmrconfig](https://github.com/OpenRTX/dmrconfig). This have support for 
 a fair share of radios. Being a command line tool means that the application
 works with text config files. This si an easy, but can be tedious to enter or
 even copy paste can be boring enough. The make is less tedious I decided to write
@@ -21,7 +21,11 @@ generate a dmr.conf file that can be written directly to the radio using dmrconf
 I have written a [script to generate a code plug configuration](make.codeplug.md) file 
 for [dmrconfig](https://github.com/OpenRTX/dmrconfig) making it a fairly simple process or 
 generating a code plug from scratch. In some ways text files are simpler than spreadsheet
-interface. 
+interface. The script is a mixture of shell script and some Python code (this I got
+some AI help to write).
+
+The analog part is mostly alike the analog section in the dmrconfig configuration file
+as there is just one line per repeater. 
 
 ### My codeplug for BF1701 (binary)
 My codeplug (*.rdt) file is 
