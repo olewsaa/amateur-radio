@@ -12,11 +12,19 @@ So far I'm very happy with the radio, no issues found so far.
 The wish to have an all Linux envirnment made me start using the command line 
 tool [dmrconfig](https://github.com/OpenRTX/dmrconfig). This have support for 
 a fair share of radios. Being a command line tool means that the application
-works with text config files. This si an easy, but can be tedious to enter or
-even copy paste can be boring enough. The make is less tedious I decided to write
-a script that have a few relatively simple input files containing the bare minimum 
-of information. Using these few small and simple input files as input the script
-generate a dmr.conf file that can be written directly to the radio using dmrconfig.
+works with text config files. This is an easy way to do it, but can be tedious to enter or
+even copy paste can be boring. 
+
+I sail around in Scandinavia and the Baltics and have a fair number of DMR repeaters 
+that need to be entered. It would ba a far too big job to enter all this manually.
+Even with a spreadsheet it would be a significant task.
+
+To make it is less tedious I decided to write a script that have a few relatively simple 
+input files containing the bare minimum of information. Using these few small and simple 
+input files as input the script generate a dmr.conf file that can be written directly to 
+the radio using dmrconfig. The most important issues is the numbering and ordering of 
+the talkgroups for each station. To insert a talkgroup the rest of the numbers need to
+be reordered. 
 
 I have written a [script to generate a code plug configuration](make.codeplug.md) file 
 for [dmrconfig](https://github.com/OpenRTX/dmrconfig) making it a fairly simple process or 
