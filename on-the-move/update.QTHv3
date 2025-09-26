@@ -1,0 +1,293 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# Python script to collect the current GPS position from 
+# Signal K and use it to update the MyGrid settings in the
+# .ini files for WSJT-X and JS8Call.
+#
+# Adapted, collected and edited by Ole W. Saastad, LB4PJ
+# 02 March 2023. 
+# 25 March 2023, added support for gpsd. 
+# 15 Sept  2023, check servers, GUI, pat, WJT-X, JS8Call updates
+# 26 Sept  2023, added userhome as script is run sudo.
+# 29 Feb   2024, Changed TQSL update due to an extra section in xml station_data
+# 24 Sept. 2025, Added manual entry CLI & GUI
+
+MYHOME="/home/ole/"
+
+
+# Function "to_grid".
+# Original code to request from Signal K - from user «Sailoog» at 
+# openmarine forum.
+# 
+# Converting to grid, original code by Walter Underwood, K6WRU 
+#
+# Convert latitude and longitude to Maidenhead grid locators.
+#
+# Arguments are in signed decimal latitude and longitude. For example,
+# the location of my QTH Palo Alto, CA is: 37.429167, -122.138056 or
+# in degrees, minutes, and seconds: 37° 24' 49" N 122° 6' 26" W
+
+upper = 'ABCDEFGHIJKLMNOPQRSTUVWX'
+lower = 'abcdefghijklmnopqrstuvwx'
+
+def to_grid(dec_lat, dec_lon):
+    if not (-180<=dec_lon<180):
+        sys.stderr.write('longitude must be -180<=lon<180, given %f\n'%dec_lon)
+        sys.exit(32)
+    if not (-90<=dec_lat<90):
+        sys.stderr.write('latitude must be -90<=lat<90, given %f\n'%dec_lat)
+        sys.exit(33) # can't handle north pole, sorry, [A-R]
+
+    adj_lat = dec_lat + 90.0
+    adj_lon = dec_lon + 180.0
+
+    grid_lat_sq = upper[int(adj_lat/10)];
+    grid_lon_sq = upper[int(adj_lon/20)];
+
+    grid_lat_field = str(int(adj_lat%10))
+    grid_lon_field = str(int((adj_lon/2)%10))
+
+    adj_lat_remainder = (adj_lat - int(adj_lat)) * 60
+    adj_lon_remainder = ((adj_lon) - int(adj_lon/2)*2) * 60
+
+    grid_lat_subsq = lower[int(adj_lat_remainder/2.5)]
+    grid_lon_subsq = lower[int(adj_lon_remainder/5)]
+
+    return grid_lon_sq + grid_lat_sq + grid_lon_field + grid_lat_field + grid_lon_subsq + grid_lat_subsq
+# End to_grid
+
+
+# With some help of chat GPT here.
+def modify_xml(xml_file, section_name, tag_name, new_value):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    # Find the section with the specified name
+    section = root.find(".//StationData[@name='{}']".format(section_name))
+
+    if section is not None:
+        # Find the XML element with the specified tag name within the section
+        element_to_replace = section.find(".//{}".format(tag_name))
+
+        if element_to_replace is not None:
+            # Update the value of the XML element
+            element_to_replace.text = new_value
+
+            # Save the modified XML back to the file
+            tree.write(xml_file)
+            print(f"Successfully replaced the value of <{tag_name}> with '{new_value}' in {xml_file}")
+        else:
+            print(f"Element with tag name '{tag_name}' not found in section '{section_name}'")
+    else:
+        print(f"Section with name '{section_name}' not found in {xml_file}")
+
+
+#  
+def gpsdclient(ip):
+    import gps
+    host=ip
+    port='2947'
+    max=0
+    session = gps.gps(host=host, port=port,mode=gps.WATCH_ENABLE)
+    while 0 == session.read() :
+        max=max+1
+        if max>10:
+            return 0.0, 0.0
+            break
+        if not (gps.MODE_SET & session.valid):
+            # not useful, probably not a TPV message
+            continue        
+        if ((gps.isfinite(session.fix.latitude) and
+             gps.isfinite(session.fix.longitude))):
+            #print(" Lat %.6f Lon %.6f" %
+            #      (session.fix.latitude, session.fix.longitude))
+            return session.fix.latitude, session.fix.longitude
+            break
+    session.close()
+# End gpsdclient
+    
+    
+def signalkclient():
+    import json, requests
+
+# Select a SignalK server:
+
+    host="demo.signalk.org"
+    #host="localhost"
+    #host="10.10.10.1
+
+# This is a demo address for SignalK
+    resp = requests.get('http://'+host+'/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+
+# Localhost    
+    #resp = requests.get('http://'+host+':3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+
+# Specify a network SignalK server, insert your local SignalK server name or
+# IP number and default port 3000
+    #resp = requests.get('http://'+host+':3000/signalk/v1/api/vessels/self/navigation/position/value', verify=False)
+    
+    if (resp.status_code == 404):
+        return 0.0, 0.0
+        # Just return zeros if no valid response from the SignalK server.
+
+    data = json.loads(resp.content)
+    return float(data['latitude']), float(data['longitude'])
+# End signalkclient
+
+    
+def check_server(ip):
+    #print("Check server ",ip)
+    cmd="ping -q  -w 1 "+ip+" >/dev/null"
+    ret=os.system(cmd) # It return a 16 bit word, where the msb is return value.
+    ret= ret >> 8      # Shifting to get it msb to lsb.
+    if ret!=0:
+        #print("GPS server not accessable",ret)
+        return "0.0.0.0"        
+    else:
+        return ip
+
+def display_info(serv, lat, lon, grid):
+    tk.Label(master, text="TQSL, pat, WSJT-X, JS8C pos update",anchor="e").grid(row=0,columnspan = 2)
+    lb=["Server ","Lat    ","Lon    ","Grid   "]
+    a=[serv, lat, lon, grid]
+    for r in range(len(lb)):
+        tk.Label(master, text=lb[r]).grid(row=r+1)
+        e  = tk.Entry(master, width="12")
+        e.insert(0, a[r])
+        e.grid(row=r+1, column=1)
+
+        
+
+# Main start here,  convert lat long from signalK or gpsd to grid:
+
+import sys, os, json
+import xml.etree.ElementTree as ET
+import tkinter as tk
+from tkinter import simpledialog
+
+
+#signalK client or GPS client
+
+SignalK=False
+GPSD=True
+Manual=False
+
+#print(sys.argv)
+if len(sys.argv) > 1:
+    NS=float(sys.argv[1]);
+    MS=float(sys.argv[2]);
+    EW=float(sys.argv[3]);
+    ME=float(sys.argv[4]);
+    print(NS,MS,EW,ME)
+    lat=NS+MS/60.0
+    lon=EW+ME/60.0
+    grid=to_grid(lat, lon)
+    #print(lat, lon, grid)
+    valid=True
+    Manual=True
+    host="manual"
+
+elif SignalK:
+    host="SignalK"
+    lat, lon = signalkclient()
+    valid = not (lat==0.0 and lon==0.0)
+    grid = to_grid(lat, lon)
+    print(lat,lon,grid)
+else:
+# GPSD
+# Check GPS for known GPS servers
+    valid=False 
+    openplotter="10.10.10.1"  # OpenPlotter
+    RPi4="192.168.0.160"      # RPi4 home
+    for ip in openplotter, RPi4:
+        host=check_server(ip)
+        if host!="0.0.0.0":
+            valid=True
+            break
+        #print(host)
+    lat=0.0 ; lon=0.0
+    if host != "0.0.0.0":
+        lat, lon = gpsdclient(host)
+    if lat != '0.0' and lon != '0.0':
+        grid=to_grid(lat, lon)
+        if len(grid) != 6 :
+            #print("Length differ from valid grid")
+            grid="000000"
+            valid=False
+# GPS block end here.
+
+if not valid:
+#    print(valid, lat, lon, grid)
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+
+    L=simpledialog.askstring("Lattitude", "Enter numbers DD mm.m :")
+    numbers=L.split()
+    lat = float(numbers[0]) + float(numbers[1])/60.0
+    
+    numbers=simpledialog.askstring("Longitude", "Enter numbers DD mm.m :").split()
+    lon = float(numbers[0]) + float(numbers[1])/60.0    
+
+    root.destroy()
+    
+    grid=to_grid(lat, lon)    
+    valid=True
+    host="Manual"
+# Sources tried SignalK, GPSD and Manual.
+
+
+    
+# Open a dialog box with info.
+master = tk.Tk()
+master.title("Position update init files")
+
+if valid:
+    resp="OK"
+else:
+    resp="NOT OK"
+display_info(host, lat, lon, grid)
+tk.Button(master, text=resp, height="2",
+          command=master.quit).grid(row=5, column=1, sticky=tk.W, pady=1)
+master.mainloop()
+
+
+if valid:
+#
+#   The WSJT-X.ini and JS8Call.ini are easy, it's just a simple assignment to a variable.
+#
+#    print("Updating ESJT-X, JS8Call & tsql grid to new Grid: ",grid)
+    cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ "+MYHOME+"/.config/WSJT-X.ini"
+#    print(cmd)
+    os.system(cmd)
+    cmd="sed -i s/MyGrid=....../MyGrid="+grid+"/ "+MYHOME+"/.config/JS8Call.ini"
+#    print(cmd)
+    os.system(cmd)
+
+#
+# The TQSL init file can contain several blocks for each QTH, line for home and mobile etc.
+# Only gridsquare in the named (here "Algol") is updated,
+
+    configfile=MYHOME+"/.tqsl/station_data"
+    modify_xml(configfile, "Algol", "GRIDSQUARE", grid)
+
+
+#
+# The Pat config file is a json file, just load the json object and update the
+# relevant entry and save. 
+    
+    cf=MYHOME+"/.config/pat/config.json"
+    f=open(cf,"r+")
+    config = json.load(f)
+    config['locator']=grid
+    json_obj=json.dumps(config, indent=4)
+    f.truncate(0) # Clear the file 
+    f.seek(0) # I miss the rewind statement.
+    f.write(json_obj)
+    f.close()
+
+
+# At this point all the config files should be updated with the current position from
+# GPS or SignalK.
+
+    print("Grid updated:", grid)

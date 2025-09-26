@@ -40,6 +40,12 @@ Common for these scripts is requesting information from the SignalK server.
 The script update.QTH open a window showing position and which 
 config files that have been updated.
 
+The updated versions v2 and v3 both have the option to enter lat lon manually, either 
+on the command line or via a pop-up GUI asking for input. the two versions have a 
+slightly differen GUI input, and the v2 version also update winlink (which I run under wine).
+I did include test if there is a winlink .ini file to avoid errors if the file was not
+present. 
+ 
 
 ## Automatic run at boot time
 The position update script can be launched at boot time by means of the cron system,
