@@ -240,11 +240,11 @@ if not valid:
     )
     EW=simpledialog.askfloat(
         title="Longitude",
-        prompt="Enter East/West minutes:", initialvalue=10
+        prompt="Enter East/West Deg", initialvalue=10
     )
     ED=simpledialog.askfloat(
-        title="Co-ordinates DD mm.m DD mm.m",
-        prompt="Enter East/West dd:", initialvalue=47.1
+        title="Longitude",
+        prompt="Enter East/West minutes", initialvalue=47.1
     )
 
     #print(NS, ND, EW, ED)
