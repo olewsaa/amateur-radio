@@ -1,5 +1,5 @@
 
-# Installing Wine, Winlink, VARA on amd64 system running Linux.
+# Installing Wine, Winlink (RMS Express), VARA on amd64 system running Linux.
 
 ## Relevant web pages to start with.
 
@@ -103,28 +103,32 @@ If all went OK it should work OK.
 
 ## Radio configuration
 
-The [Q900](https://www.guohedz.com/Q900#) provide a command set compatible 
-with Yaesu FT-817. Hence selecting Yaesu FT-817 should work, I not experienced any
-issues to the CAT control.
+The [Q900](https://www.guohedz.com/Q900#) and the newer PMR-171, provide a 
+command set compatible with Yaesu FT-817. Hence selecting Yaesu FT-817 should work, 
+I not experienced any issues to the CAT control.
 
 ### Winlink
+Unfortunately RMS Express do not support Hamlib (and hence flrig). It uses the
+COM ports directly with a small selection of radios. In my case the Q900 and the
+PMR-171 is compatible with the FT-817 command set.
 
-Make sure the symlink for COM33 in `$HOME/.wine/dosdevices` is present and point to
+Make sure the symlink for com33 in `$HOME/.wine/dosdevices` is present and point to
 the USB port the radio provides, in the Q900 case it's `/dev/ttyACM0`. 
 ```
-ole@nina:~/.wine/dosdevices $ ls -l COM33 
-lrwxrwxrwx 1 ole ole 12 mars  17  2025 COM33 -> /dev/ttyACM0
+ole@nina:~/.wine/dosdevices $ ln -sf /dev/ttyACM0 com33
+ole@nina:~/.wine/dosdevices $ ls -l com33 
+lrwxrwxrwx 1 ole ole 12 mars  17  2025 com33 -> /dev/ttyACM0
 ```
 The name `/dev/ttyACM0` is not always the same and it's possible to write rules that 
 trigger setting of more sensible names. Some day I'll put up the udev rules here.
 
 
-I have configured CAT control in Winlink:
+I have configured CAT control for RMS Express :
 
 - Select Radio model : Yaesu FT-817
 - Select USB 
 - Tick off Use Radio Internal Soundcard. 
-- Select serial port COM33.
+- Select serial port com33.
 - Select baud rate 19200.
 - Leave Enable RTS and DTR off.
 - The PPT port need to be selected, select FT-817.
@@ -136,10 +140,22 @@ I have configured CAT control in Winlink:
 
 ### VARA
 
-Set the correct soundcard, the Q900 should appear in the pull down
-soundcard menu in VARA. Select input and output correspondingly. 
-Test the TUNE button and see if the radio transmit and regulate the 
-gain to a suitable level. 
+Set the correct soundcard, the Q900, or another radio, should appear
+in the pull down soundcard menu in VARA. Select input and output
+correspondingly.  Test the TUNE button and see if the radio transmit
+and regulate the gain to a suitable level.
+
+
+VARA FM do not suppport more than 16 COM ports. Hence in order to get the 
+PTT to work a symbolic link to com16 is needed. And select com16 for PTT 
+control.
+```
+ln -sf /dev/ttyACM0 com16
+ole@nina:~/.wine/dosdevices $ ls -l com16
+lrwxrwxrwx 1 ole ole 12 okt.  15 16:45 com16 -> /dev/ttyACM0
+```
+The fact that two com ports point to the same /dev/ttyACM0 is normally not 
+an issue.
 
 
 
@@ -150,6 +166,3 @@ The Winlink program only support direct attached GPS devices.
 See the page about 
 [One the move](https://github.com/olewsaa/amateur-radio/blob/main/on-the-move/README.md),
 I have the radio station onboard a boat so QTH changes from day to day.
-
-
-
