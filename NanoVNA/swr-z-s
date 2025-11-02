@@ -15,6 +15,7 @@ Ver 0.5  21. Feb. 2025 Test for full HF bands or not, test no. points.
 Ver 0.51 09. Mar. 2025 Ham band issues, fixed.
 Ver 0.6  08. Apr. 2025 Added Smith plot.
 Ver 0.61 09. Apr. 2025 Added Smith plot background.
+Ver 0.62 02. Nov. 2025 Added support for VHF/UHF
 
 Ole W. Saastad
 LB4PJ
@@ -70,6 +71,10 @@ def calculate_swr(s11):
 
 
 def bandlabels(freq, Par):
+    # Higher than 30 MHz we do not plot bandlabels of lines for HF bands in meters.
+    if freq[0]>30000000:
+        return
+    
     # Bands lower and upper limits.
     bands=[(1850000, 2000000), (3500000, 3800000), (5351500, 5366500), (7000000, 7200000),
            (10100000, 10150000), (14000000, 14350000), (18068000, 18168000),(21000000, 21450000),
@@ -160,8 +165,9 @@ def plot_smith_chart(s1p_file, frequencies_to_annotate=None):
                 color='red',
                 xytext=(-8, -4))
     
-    # Check if there are frequencies to annotate
-    if frequencies_to_annotate is not None:
+    # Check if there are frequencies to annotate or that the frequencies given
+    # are below 30 MHz. If higher we only plot the obtained data.
+    if frequencies_to_annotate is not None and frequencies_to_annotate[0]>30000000:
         #print(frequencies_to_annotate)
         for freq in frequencies_to_annotate:
             # Frequency in Hz for comparison
@@ -190,7 +196,8 @@ def plot_smith_chart(s1p_file, frequencies_to_annotate=None):
                              xytext=(5, 5))  # Offset for label
 
                 # Mark the point on the Smith chart
-                ax.plot(real_part, imag_part, 'ro')                
+                ax.plot(real_part, imag_part, 'ro')
+    #print("Saving figure")
     plt.grid()
     plt.savefig(s1p_file.replace('s1p','smith.png'))
     plt.show()
