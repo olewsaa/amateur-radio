@@ -119,8 +119,16 @@ ole@nina:~/.wine/dosdevices $ ln -sf /dev/ttyACM0 com33
 ole@nina:~/.wine/dosdevices $ ls -l com33 
 lrwxrwxrwx 1 ole ole 12 mars  17  2025 com33 -> /dev/ttyACM0
 ```
-The name `/dev/ttyACM0` is not always the same and it's possible to write rules that 
-trigger setting of more sensible names. Some day I'll put up the udev rules here.
+The name `/dev/ttyACM0` is not always the same and it's possible to 
+write rules that  trigger setting of more sensible names. Some day I'll 
+put up the udev rules here.
+
+A USB GPS might come in handy to get the position automatically, even
+if the radio and laptop is statinary. However, as the GPS always 
+connected it's often the case that the GPS gets the /dev/ttyACM0 and the
+radio gets the second one /dev/ttyACM1. This poses a problem as wine
+sets ports to point to com33 and com34. Suddenly com33 will no longer
+point to the radio, but rather the GPS. This can yield unwanted surprises. 
 
 
 I have configured CAT control for RMS Express :
