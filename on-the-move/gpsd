@@ -5,8 +5,10 @@
 
 # Devices gpsd should collect to at boot time.
 # They need to be read/writeable, either by user gpsd or the group dialout.
-DEVICES="/dev/ttyACM0"
-#DEVICES="/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_7_-_GPS_GNSS_Receiver-if00"
+#DEVICES="/dev/ttyACM0"
+DEVICES="/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_7_-_GPS_GNSS_Receiver-if00"
+# The safest option is to map the device by the name, ttyUSB0 or
+# tty ACM0 (or 1,2 etc) might not point to the correct device. 
 
 
 # Other options you want to pass to gpsd
