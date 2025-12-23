@@ -1,19 +1,36 @@
 #!/bin/bash
 
-# Hamlib rigctld start
+# We need this symlink for VARA FM to work.
+# However, if GPS is attached, it normally start
+# before the radio and is assigned to ACM0 while
+# the radio gets assigned to ACM1. Use device names
+# is a better option (need to be fixed).
+ln -sf /dev/ttyACM0 /home/ole/.wine/dosdevices/com16
 
 zenity  --question --text='Start rigctl? - no to kill it'
 
+
+
 if [ $? -eq 0 ]; then 
-    # Start rigctl deamon -m 4 (4 is flrig) if not running already. 
-    PID_FLRIG=$(pidof rigctld)
+    # Start rigctl deamon -m 4 (4 is flrig).
+    PID_RIGCTLD=$(pidof rigctld)
     if [ $? -ne 0 ]; then
         #echo "starting rigctld"
 	rigctld -m 4  &
     fi
-    pid=$(pidof rigctld)
-    zenity --info --text="rigctld PID: "${pid}
+    pidrigctld=$(pidof rigctld)
+    echo $pidrigctld 
+    PID_FLRIG=$(pidof flrig)
+     if [ $? -ne 0 ]; then
+        echo "starting rigctld"
+	flrig &
+    fi
+    pidflrig=$(pidof flrig)
+
+
+    
+    zenity --info --text="COM16 set, rigctld PID: "${pidrigctld}" flrig PID:"${pidflrig}
 else
-    # Clean up
     killall rigctld
+    killall flrig
 fi
