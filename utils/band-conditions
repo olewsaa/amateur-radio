@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Script to display the "Band Condition" on an X11 screen.
+# Automatic download and automatic display update.
+#
+# https://www.hamqsl.com/solar.html#addwebsite 
+# Uses "feh" with reload option to display the image. 
+# 
+# Ole W. Saastad, LB4PJ
+# Initial version 30. December 2025
+#
+# 
+
+curl  -s -o /tmp/solarn0nbh.gif https://www.hamqsl.com/solarn0nbh.php
+feh -R 100  /tmp/solarn0nbh.gif &
+
+# The script is terminated when thr window is closed.
+
+PID_FEH=$(pidof feh)
+while  [ $? -eq 0 ]; do
+    #echo -n "feh running"
+    #date
+    sleep 300
+    curl  -s -o /tmp/solarn0nbh.gif https://www.hamqsl.com/solarn0nbh.php
+    PID_FEH=$(pidof feh)
+done
+# Clean up
+rm  /tmp/solarn0nbh.gif
+
