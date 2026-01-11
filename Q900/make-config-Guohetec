@@ -77,7 +77,7 @@ import re
    
 
 # The frequency and some DMR parameters are stored as a 32 bit
-# integer slpit into 4 bytes each of these bytes represented
+# integer split into 4 bytes each of these bytes represented
 # as a decimal number. Shift and mask the two bytes.
 #
 # Word is 32 bit. We shift the most leftmost byte
