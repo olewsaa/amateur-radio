@@ -1,0 +1,607 @@
+#!/usr/bin/env python3
+
+"""
+Generate config file for the CPE (Code Plug Editor)
+GHTerminal, Guohetec and the PMR-171.  
+
+The GHTerminal is a spreadsheet interface, but do no support
+add, delete lines or cut'n paste etc. all fields need to be
+entereded manually. It does not support CSV files from a
+spreadsheet. 
+
+This script reads very simple plaintext input files which
+can be used with Baofeng DM1701 (dmrconfig), Guohetec Q900
+and PMP-171, thet have different jason file formats. 
+
+Not all Guohetec radios support DMR. A switch "no-DMR" will
+only configure Analog channels.
+
+For DMR it's more work as a two digit talkggroups need to be
+entered for each repeater frequency. This is best done with some
+scripting as entering 1000 entries (the PMR-171 only support 1000
+channels) by hand is too much.
+Two loops are needed one for the DMR repeaters and one for the 
+talkgroups. 
+
+The input files are made as simple as practially possible.
+analog.channels.inp
+contacts.inp
+digital.repeaters.inp
+last.heard.inp
+talkgroups.inp
+
+These input files are shared with a similar projects for the
+Guohetec Q900 and the Baofeng DM1701. The latter uses
+dmrconfig which support a range of DMR radios.
+The digital input files are not needed for an analog only usage.
+
+The file last heard can be appended to the contacts file,
+this is done for dmrconfig.  Not sure how many contacts
+if any that can be stored in MR-171. 
+
+ 
+Written by Ole W. Saastad, LB4PJ, DMR i.d. 2420509
+
+Version 0.1  20Nov2025  Initial version, only analog channels.
+Version 0.2  24Nov2025  Started including digital channels.
+Version 0.3  25Nov2025  Generating json file for DMR channels.
+Version 0.4  27Nov2025  Fixed time slot issue.
+Version 0.5  10Jan2026  Added no-DMR for Guohetec radios without no DMR
+"""
+
+# Setup section, user ID and input files.
+
+# Input files:
+analog_infile="analog.channels.inp"
+digital_infile="digital.repeaters.inp"
+talkgroup_infile="talkgroups.inp"
+contact_infile="contacts.inp"
+
+# Output file:
+outfile="channels.json"
+
+# My DMR id.
+OWN_ID = 2420509 
+
+
+# Python code start
+
+import json
+import re
+
+# _____ _   _ _   _  ____ _____ ___ ___  _   _ ____  
+# |  ___| | | | \ | |/ ___|_   _|_ _/ _ \| \ | / ___| 
+# | |_  | | | |  \| | |     | |  | | | | |  \| \___ \ 
+# |  _| | |_| | |\  | |___  | |  | | |_| | |\  |___) |
+# |_|    \___/|_| \_|\____| |_| |___\___/|_| \_|____/ 
+   
+
+# The frequency and some DMR parameters are stored as a 32 bit
+# integer slpit into 4 bytes each of these bytes represented
+# as a decimal number. Shift and mask the two bytes.
+#
+# Word is 32 bit. We shift the most leftmost byte
+# 24 bits which place it at the rightmost byte. 
+# We mask off everythign else than the righmost byte
+# and get a one byte number that. Then shift the second byte
+# 16 bits which make it the rightmost byte, mask and continue.
+
+
+def convert2(n):
+  i=0
+  a={}
+  for j in 8, 0:
+    a[i]=(n >> j & 0xff)
+    i=i+1
+  return a
+
+def convert4(n):
+  a={}
+  for i, j in zip(range(4), range(24, -1, -8)):
+    a[i]=(n  >> j & 0xff)
+  return a
+
+# Convert frequency to Hz (remove decimal point and add zeros)
+def freq_to_hz(freq_str):
+  # Handle comma as decimal separator
+  freq_str = freq_str.replace(',', '.')
+  if '.' in freq_str:
+    whole, decimal = freq_str.split('.')
+    return whole + decimal.ljust(6, '0')[:6]
+  else:
+    return freq_str + '000000'
+
+
+  
+#     _    _   _    _    _     ___   ____           ____ _____  _    ____ _____ 
+#    / \  | \ | |  / \  | |   / _ \ / ___|         / ___|_   _|/ \  |  _ \_   _|
+#   / _ \ |  \| | / _ \ | |  | | | | |  _   _____  \___ \ | | / _ \ | |_) || |  
+#  / ___ \| |\  |/ ___ \| |__| |_| | |_| | |_____|  ___) || |/ ___ \|  _ < | |  
+# /_/   \_\_| \_/_/   \_\_____\___/ \____|         |____/ |_/_/   \_\_| \_\|_|  
+
+
+# Analog channels 
+def parse_plaintext_analog_to_json(channels,\
+                                   input_analog_file):
+  
+  # Woxun CTCSS tone to numeric code mapping
+  ctcss_codes = {
+    '67.0': 1, '69.3': 2, '71.9': 3, '74.4': 4, '77.0': 5, '79.7': 6,
+    '82.5': 7, '85.4': 8, '88.5': 9, '91.5': 10, '94.8': 11, '97.4': 12,
+    '100.0': 13, '103.5': 14, '107.2': 15, '110.9': 16, '114.8': 17,
+    '118.8': 18, '123.0': 19, '127.3': 20, '131.8': 21, '136.5': 22,
+    '141.3': 23, '146.2': 24, '151.4': 25, '156.7': 26, '159.8': 27,
+    '162.2': 28, '165.5': 29, '167.9': 30, '171.3': 31, '173.8': 32,
+    '177.3': 33, '179.9': 34, '183.5': 35, '186.2': 36, '189.9': 37,
+    '192.8': 38, '196.6': 39, '199.5': 40, '203.5': 41, '206.5': 42,
+    '210.7': 43, '218.1': 44, '225.7': 45, '229.1': 46, '233.6': 47,
+    '241.8': 48, '250.3': 49, '254.1': 50
+  }
+
+  
+# parse_plaintext_to_json analog channels start here 
+
+  CallIDs=[]
+  channel_number = 0
+
+  # Analog repeater and frequencies file
+  with open(input_analog_file, 'r', encoding='utf-8') as fa:
+    lines = fa.readlines()
+        
+  for line in lines:
+    line = line.strip()
+     
+    # Skip empty lines and comments
+    if not line or line.startswith('#'):      
+      continue
+    
+    # Parse the line using regex to handle variable whitespace
+    parts = re.split(r'\s+', line)
+    
+    # Skip if not enough parts
+    if len(parts) < 11:
+      continue
+    
+    # Extract fields
+    band = parts[0]  # 'a' or 'b'
+    name = parts[1]
+    for j in range(len(name)-1,11):
+      #print(j, len(name), name[j])
+      name=name+'\u0000'
+    rx_freq_str = parts[2]
+    shift_str = parts[3]  # +0, -0.6, -2, etc.
+      
+    # Parse receive frequency
+    rx_freq_hz = freq_to_hz(rx_freq_str)
+    
+    # Calculate transmit frequency from RX frequency and offset
+    rx_freq_mhz = float(rx_freq_str.replace(',', '.'))
+    
+    if shift_str.startswith('+'):
+      offset_mhz = float(shift_str[1:])
+      tx_freq_mhz = rx_freq_mhz + offset_mhz
+    elif shift_str.startswith('-'):
+      offset_mhz = float(shift_str[1:])
+      tx_freq_mhz = rx_freq_mhz - offset_mhz
+    else:  # +0 or no offset
+      tx_freq_mhz = rx_freq_mhz
+      
+    # Convert TX frequency to Hz
+    tx_freq_hz = str(int(tx_freq_mhz * 1000000)).zfill(9)
+    
+    # Determine A_B based on whether VFA_FREQ and VFB_FREQ are the same
+    if rx_freq_hz == tx_freq_hz:
+      a_b = 2  # Same frequency
+    else:
+      a_b = 1  # Different frequencies
+      
+    # Determine if split frequency
+    # SPLIT = 0 if frequencies are different (split ON)
+    # SPLIT = 1 if frequencies are the same (split OFF)
+    if rx_freq_hz == tx_freq_hz:
+      split = 1  # Split OFF
+    else:
+      split = 0  # Split ON
+
+    # Convert to PMP171 32 bit word in byte decimal rep.
+    # rx freq.
+    FRQrx = convert4(int(rx_freq_hz))
+    # tx freq. 
+    FRQtx = convert4(int(tx_freq_hz))
+      
+    rx_freq_str = parts[2]
+    shift_str = parts[3]  # +0, -0.6, -2, etc.
+    power = parts[4]  # High/Low
+    tone_mode = parts[8]  # '-', 'Tone'
+    ctcss_tx =  parts[10] if len(parts) > 10 else '-'
+    ctcss_rx =  parts[11] if len(parts) > 11 else '-'
+    bandwidth = parts[12] if len(parts) > 12 else '12.5'
+    
+    # Parse receive frequency
+    rx_freq_hz = freq_to_hz(rx_freq_str)
+    
+    # Calculate transmit frequency from RX frequency and offset
+    rx_freq_mhz = float(rx_freq_str.replace(',', '.'))
+    
+    if shift_str.startswith('+'):
+      offset_mhz = float(shift_str[1:])
+      tx_freq_mhz = rx_freq_mhz + offset_mhz
+    elif shift_str.startswith('-'):
+      offset_mhz = float(shift_str[1:])
+      tx_freq_mhz = rx_freq_mhz - offset_mhz
+    else:  # +0 or no offset
+      tx_freq_mhz = rx_freq_mhz
+      
+    # Convert TX frequency to Hz
+    tx_freq_hz = str(int(tx_freq_mhz * 1000000)).zfill(9)
+    
+    # Determine A_B based on whether VFA_FREQ and VFB_FREQ are the same
+    if rx_freq_hz == tx_freq_hz:
+      a_b = 2  # Same frequency
+    else:
+      a_b = 1  # Different frequencies
+      
+    # Determine if split frequency
+    # SPLIT = 0 if frequencies are different (split ON)
+    # SPLIT = 1 if frequencies are the same (split OFF)
+    if rx_freq_hz == tx_freq_hz:
+      split = 1  # Split OFF
+    else:
+      split = 0  # Split ON
+
+    # Convert to PMP171 32 bit word in byte decimal rep.
+    # rx freq.
+    FRQrx = convert4(int(rx_freq_hz))
+
+    # tx freq. 
+    FRQtx = convert4(int(tx_freq_hz))
+      
+    # Determine CTCSS codes
+    tx_ctcss_code = ctcss_codes.get(ctcss_tx, 0) if ctcss_tx != '-' else 255
+    rx_ctcss_code = ctcss_codes.get(ctcss_rx, 0) if ctcss_rx != '-' else 255
+    
+    # If only one CTCSS is specified, use it for both
+    if tx_ctcss_code == 0 and rx_ctcss_code > 0:
+      tx_ctcss_code = rx_ctcss_code
+    elif rx_ctcss_code == 0 and tx_ctcss_code > 0:
+      rx_ctcss_code = tx_ctcss_code
+      
+    # Determine mode based on bandwidth
+    if bandwidth == '25':
+      mode = 5
+    elif bandwidth == '12.5':
+      mode = 6
+    else:
+      mode = 0
+      
+# This is the json object for a single channel. 
+    channel={
+      "callFormat": 255,
+      "callId1": 0,
+      "callId2": 0,
+      "callId3": 0,
+      "callId4": 0,
+      "chBsMode": 0,
+      "chType": 255,
+      "channelHigh": 0,
+      "channelLow": channel_number,
+      "channelName": name,
+      "dmodGain": 0,
+      "emitYayin": tx_ctcss_code,
+      "ownId1": 0,
+      "ownId2": 0,
+      "ownId3": 0,
+      "ownId4": 0,
+      "receiveYayin": rx_ctcss_code,
+      "rxCc": 0,
+      "rxCtcss": 255,
+      "scrEn": 0,
+      "scrSeed1": 0,
+      "scrSeed2": 0,
+      "slot": 0,
+      "spkgain": 0,
+      "sqlevel": 0,
+      "txCc": 0,
+      "txCtcss": 255,
+      "vfoaFrequency1": FRQrx[0],
+      "vfoaFrequency2": FRQrx[1],
+      "vfoaFrequency3": FRQrx[2],
+      "vfoaFrequency4": FRQrx[3],
+      "vfoaMode": mode,
+      "vfobFrequency1": FRQtx[0],
+      "vfobFrequency2": FRQtx[1],
+      "vfobFrequency3": FRQtx[2],
+      "vfobFrequency4": FRQtx[3],
+      "vfobMode": mode
+    }  
+
+# Old approach. 
+#      channels.append(channel)
+#      channels[channel_number] = channel
+
+    # Add channel with numeric key
+    channels[str(channel_number)] = channel
+    channel_number += 1
+
+    # End for "line"  loop
+  # End with loop
+
+  channel_number=channel_number-1  # Loop end with an increment, so -1.
+  fa.close()  # Close repeater and frequencies file.
+
+  return  channels  # Return the list of json objects. 
+
+# End og Analog channels. 
+
+#     _    _   _    _    _     ___   ____           _____ _   _ ____  
+#    / \  | \ | |  / \  | |   / _ \ / ___|         | ____| \ | |  _ \ 
+#   / _ \ |  \| | / _ \ | |  | | | | |  _   _____  |  _| |  \| | | | |
+#  / ___ \| |\  |/ ___ \| |__| |_| | |_| | |_____| | |___| |\  | |_| |
+# /_/   \_\_| \_/_/   \_\_____\___/ \____|         |_____|_| \_|____/ 
+
+
+
+####################################################################################
+
+
+
+#  ____ ___ ____ ___ _____  _    _               ____ _____  _    ____ _____ 
+# |  _ \_ _/ ___|_ _|_   _|/ \  | |             / ___|_   _|/ \  |  _ \_   _|
+# | | | | | |  _ | |  | | / _ \ | |      _____  \___ \ | | / _ \ | |_) || |  
+# | |_| | | |_| || |  | |/ ___ \| |___  |_____|  ___) || |/ ___ \|  _ < | |  
+# |____/___\____|___| |_/_/   \_\_____|         |____/ |_/_/   \_\_| \_\|_|  
+
+# Digital channels
+
+
+def getslot(talkgroup, tg):
+  slot=1 # In case there is no match, we just return a "safe" value of 1.
+#  for j in range(len(tg)):
+  for j in tg:
+    if tg[j][3]==str(talkgroup):
+      slot=tg[j][1]
+      break
+  return slot
+
+
+
+def parse_plaintext_digital_to_json(channels, \
+                                    input_digital_file, \
+                                    contacts_file, \
+                                    talkgroup_file):
+  CHAN=[]
+  CallIDs=[]
+  
+  #print("Digital channels, start at channel ", number_of_analog_channels)
+  
+  Own_id=convert4(OWN_ID) 
+  #Own_id[0] etc for DMR ID. For analog channels hardcoded to 0.
+
+  print("My DMR ID ", OWN_ID)
+  channel_number=len(channels)
+
+  # Used to get timeslot. Input files comes from dmrconfig project. 
+  with open(talkgroup_file, 'r', encoding='utf-8') as ft:
+    lines = ft.readlines()
+    tg={}
+    j=0
+    for line in lines[1:]:  # Omit the firt comment line, start from 1.
+      line = line.strip()      
+      tg[j]=line.split() # Fill the datastructure tg with the content of the file. 
+      j=j+1      
+      
+  # Open DRM repeater file.
+  with open(input_digital_file, 'r', encoding='utf-8') as fr:
+    lines = fr.readlines()
+  
+  for line in lines[1:]: # Skip first line as this is heading. 
+    line = line.strip()
+
+    # This is DMR and mode is fixed.
+    mode = 9
+    
+    # Parse the line using regex to handle variable whitespace
+    parts = re.split(r'\s+', line)
+
+    name = parts[0]
+    print("DMR Repeater", name)
+    color_code=parts[4]
+    rx_freq_str=parts[2]
+    shift_str = parts[3]  # +0, -0.6, -2, etc.
+    
+    # Parse receive frequency
+    rx_freq_hz = freq_to_hz(rx_freq_str)
+    
+    # Calculate transmit frequency from RX frequency and offset
+    rx_freq_mhz = float(rx_freq_str.replace(',', '.'))
+    
+    if shift_str.startswith('+'):
+      offset_mhz = float(shift_str[1:])
+      tx_freq_mhz = rx_freq_mhz + offset_mhz
+    elif shift_str.startswith('-'):
+      offset_mhz = float(shift_str[1:])
+      tx_freq_mhz = rx_freq_mhz - offset_mhz
+    else:  # +0 or no offset
+      tx_freq_mhz = rx_freq_mhz
+      
+    # Convert TX frequency to Hz
+    tx_freq_hz = str(int(tx_freq_mhz * 1000000)).zfill(9)
+    
+    # Determine A_B based on whether VFA_FREQ and VFB_FREQ are the same
+    if rx_freq_hz == tx_freq_hz:
+      a_b = 2  # Same frequency
+    else:
+      a_b = 1  # Different frequencies
+      
+    # Determine if split frequency
+    # SPLIT = 0 if frequencies are different (split ON)
+    # SPLIT = 1 if frequencies are the same (split OFF)
+    if rx_freq_hz == tx_freq_hz:
+      split = 1  # Split OFF
+    else:
+      split = 0  # Split ON
+
+    # Convert to PMP171 32 bit word in byte decimal rep.
+    # rx freq.
+    FRQrx = convert4(int(rx_freq_hz))
+
+    # tx freq. 
+    FRQtx = convert4(int(tx_freq_hz))
+    
+# At this stage all repeater variables are set, frequency, offset,
+# color code etc.
+
+# Entries for each talkgroups/contacts for the current repeater is following:
+
+    # Loop through the talkgrups to be added to the current
+    # repeater.
+    with open(contacts_file, 'r', encoding='utf-8') as cf:
+      cflines = cf.readlines()
+      
+    for cfline in cflines[1:]: # Skip first line as this is heading. 
+      cline = cfline.strip()
+      # Parse the line using regex to handle variable whitespace
+      cparts = cfline.split()
+      name = name[0:4]+'-'+cparts[1][0:7] # Need to fit repeater name and
+      for j in range(len(name)-1,11):     # talkgroup into 12 characters. 
+        name=name+'\u0000'                # Fill with space UTF-8. 
+
+      
+      # Convert from talkgroup number to 32 bit integer into 4 separte bytes.
+      TG = convert4(int(cparts[3]))
+
+      # Type of DMR call. 
+      if cparts[2] == 'Private':
+        callformat = 0
+      elif cparts[2] == 'Group':
+        callformat = 1
+
+      # Get the time slot, tg is the datastructure for all the talkgroup data.
+      timeslot=getslot(cparts[0],tg)
+        
+      # Channels have 16 bit nubering, split into two bytes as decimal.
+      CHAN = convert2(channel_number)
+        
+      # This is the json object for a single channel with a said talkgroup
+      # is ready to be fully populated.
+
+      channel={
+        "callFormat": callformat,
+        "callId1": TG[0],
+        "callId2": TG[1],
+        "callId3": TG[2],
+        "callId4": TG[3],
+        "chBsMode": 0,
+        "chType": 255,
+        "channelHigh": CHAN[0],
+        "channelLow":  CHAN[1],
+        "channelName": name,
+        "dmodGain": 0,
+        "emitYayin": "",
+        "ownId1": Own_id[0],
+        "ownId2": Own_id[1],
+        "ownId3": Own_id[2],
+        "ownId4": Own_id[3],
+        "receiveYayin": "" ,
+        "rxCc": color_code,
+        "rxCtcss": 255,
+        "scrEn": 0,
+        "scrSeed1": 0,
+        "scrSeed2": 0,
+        "slot": timeslot,
+        "spkgain": 0,
+        "sqlevel": 0,
+        "txCc": color_code,
+        "txCtcss": 255,
+        "vfoaFrequency1": FRQrx[0],
+        "vfoaFrequency2": FRQrx[1],
+        "vfoaFrequency3": FRQrx[2],
+        "vfoaFrequency4": FRQrx[3],
+        "vfoaMode": mode,
+        "vfobFrequency1": FRQtx[0],
+        "vfobFrequency2": FRQtx[1],
+        "vfobFrequency3": FRQtx[2],
+        "vfobFrequency4": FRQtx[3],
+        "vfobMode": mode          
+      }  
+      
+
+      # Add channel with numeric key
+      channels[str(channel_number)] = channel
+      channel_number += 1 
+      if channel_number>999:
+        print("Too many channels ",channel_number)
+                
+  # End talkgroup contacts loop.
+        
+  # End digital repeaters loop.
+
+  # Be nice close the open files. 
+  ft.close()
+  fr.close()
+  cf.close() 
+
+# Return the list of channels back to caller. 
+  return  channels
+
+# ____ ___ ____ ___ _____  _    _               _____ _   _ ____        
+# |  _ \_ _/ ___|_ _|_   _|/ \  | |             | ____| \ | |  _ \ 
+# | | | | | |  _ | |  | | / _ \ | |      _____  |  _| |  \| | | | |
+# | |_| | | |_| || |  | |/ ___ \| |___  |_____| | |___| |\  | |_| |
+# |____/___\____|___| |_/_/   \_\_____|         |_____|_| \_|____/ 
+
+
+
+
+
+#  __  __    _    ___ _   _           ____ _____  _    ____ _____ 
+# |  \/  |  / \  |_ _| \ | |         / ___|_   _|/ \  |  _ \_   _|
+# | |\/| | / _ \  | ||  \| |  _____  \___ \ | | / _ \ | |_) || |  
+# | |  | |/ ___ \ | || |\  | |_____|  ___) || |/ ___ \|  _ < | |  
+# |_|  |_/_/   \_\___|_| \_|         |____/ |_/_/   \_\_| \_\|_|  
+
+
+# Main start here
+
+import sys
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == '-no-DMR' :
+      DMR=False
+    else:
+      print("Something went wrong")
+      print("Usage make-config-Guohetec [-no-DMR]")    
+else:
+  DMR=True
+
+if DMR:  
+  print("Generate PMR-171 code plug file for the CPE program.")
+else:
+  print("Generate analog only config for the CPE program.")
+
+channels={}
+
+# Analog channels
+channels = parse_plaintext_analog_to_json(channels,\
+                                          analog_infile)
+print("Processed ",len(channels)," analog channels")
+
+# Digital channels
+if DMR:
+  channels = parse_plaintext_digital_to_json(channels,\
+                                             digital_infile,\
+                                             contact_infile,\
+                                             talkgroup_infile)
+
+print("Processed ",len(channels)," channels in total")
+if len(channels) > 1000:
+  print("PRM-171 only suppprt storage of 1000 channels")
+
+# Write to the JSON file
+with open(outfile, 'w', encoding='utf-8') as fj:
+  json.dump(channels, fj, indent=4, ensure_ascii=False)
+fj.close()
+
+print("done")
+
+
