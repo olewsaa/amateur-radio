@@ -12,6 +12,27 @@ be too few. Number of repeaters times number of talkgroups can easily
 reach 1000+ entries. 
 
 The script "make-config-Guohetec" can be used to generate a config file 
-that ran be read bu the "GHTerminal" CPE program.
+that ran be read by the "GHTerminal" CPE program.
+
+### Script 
+
+To use the script some input files files are needed.
+
+- analog.channels.inp
+- digital.repeaters.inp
+- talkgroups.inp
+- contacts.inp
+
+The just run:
+```Terminal
+./make-config-Guohetec
+```
+This will generate a JSON file that can be read in by the GHTerminal program.
+In the case where only analog channels are to be configured adding the option
+"-no-DMR" can be used.
+```Terminal
+./make-config-Guohetec -no-DMR
+```
+
 
 
