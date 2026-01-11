@@ -33,6 +33,7 @@ talkgroups.inp
 These input files are shared with a similar projects for the
 Guohetec Q900 and the Baofeng DM1701. The latter uses
 dmrconfig which support a range of DMR radios.
+The digital input files are not needed for an analog only usage.
 
 The file last heard can be appended to the contacts file,
 this is done for dmrconfig.  Not sure how many contacts
@@ -566,7 +567,10 @@ import sys
 
 if len(sys.argv) > 1:
     if sys.argv[1] == '-no-DMR' :
-      DMR=False        
+      DMR=False
+    else:
+      print("Something went wrong")
+      print("Usage make-config-Guohetec [-no-DMR]")    
 else:
   DMR=True
 
