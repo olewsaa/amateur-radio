@@ -4,13 +4,16 @@ Code related to ham amateur radio using small single board computers
 like Raspberry Pi and Orange Pis. Centered around digital modes and in
 particular Winlink email using pat.
 
-The Q900 radio is installed onboard Algol and as it have built in soundcard and
-can connect with a single USB cable I have connected it directly to the laptop.
-Simplicity is important when operating from a sailboat on battery power. The Q900
-cover the from 160 m to 70 cm which is ideal when space is limited. 
+The PMR-171 radio from Guohetec is installed onboard Algol and as it
+have built in soundcard and can connect with a single USB cable I have
+connected it directly to the laptop.  Simplicity is important when
+operating from a sailboat on battery power. The PMR-171 cover the from
+160 m to 70 cm which is ideal when space is limited. In practice the 
+backstay antenna cannot be tuned on all bands. Unfortunately this cover
+80m which as widely used for regional rings. 
 
-The G90 is installed at home with a random wire antenna extending from a 
-window to an apple tree. Not great, but FT8 and winlink work.  
+The G90 is installed at home with a vertical (7.2m high) antenna. 
+Not great, but FT8 and winlink work. 
 
 ### DMR
 Programming the radios in a all Linux environment is slightly more tedious than
@@ -21,19 +24,22 @@ Windows programs to run under Linux, like the graphical «TYT Code Plug Editor»
 which is very user friendly tool. 
 
 I have collected a set of tools that makes it possible to program the radio using 
-an all Linux environment. 
+an all Linux environment. DMR info can be found in the DMR section and radio
+specific in the Q900 and PMR-171 sections. 
 
 
 ### NanoVNA software
 The directory NanoVNA contain Python script to plot Z and SWR from a
 .s1p file.  The nanovna-saver is a nice piece of software, but the
-plotting is not it's stongest side. However, a Python script for a Smith diagram 
-is pending. 
+plotting is not it's stongest side. However, a Python script for 
+SWR, Z and Smith diagram is now 
+[available](https://github.com/olewsaa/amateur-radio/blob/main/NanoVNA/swr-z-s).
+
 
 ### Pat for Raspberry Pi
 The directory pat contain files and instructions for installing and using pat 
 (and Winlink) for email using Raspberry Pi 4. This is currently running nicely 
-at home. Connect with VNC from several computers.  
+at home. Connect with VNC from several computers.
 
 ### Issues with position and grid when on the move
 Onboard SignalK is used for communication between devices. Position
@@ -68,9 +74,9 @@ The only issue is VARA with its x86 emulation and Wine for windows
 environment, which is a bit demanding. 
 
 
-## Upgrading the G90 firmware 
+## Upgrading the Xiegu G90 firmware 
 I have included some instructions to explain and document how to 
 upgrade the G90's firmware using a Pi or a x86-64 based PC running Linux.
-Script and explanations are found in the G90 directory.
+Script and explanations are found in the G90 directory. See the G90 section. 
 
 
