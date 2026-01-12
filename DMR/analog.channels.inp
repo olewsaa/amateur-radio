@@ -1,0 +1,118 @@
+# Simplex_FM
+a	Call-2m          145.500   +0       High  -    240 -  -      1  -      -      12.5
+a 	145.5125	 145.5125  +0       High  -    240 -  -      1  -      -      12.5
+a 	145.5250	 145.5250  +0       High  -    240 -  -      1  -      -      12.5
+a 	145.5375	 145.5375  +0       High  -    240 -  -      1  -      -      12.5
+a 	145.5500	 145.5500  +0       High  -    240 -  -      1  -      -      12.5
+a	145.5625	 145.5625  +0       High  -    240 -  -      1  -      -      12.5
+b  	Call-70cm        433.500   +0       High  -    240 -  -      1  -      -      12.5
+b  	433.5250         433.5250  +0       High  -    240 -  -      1  -      -      12.5
+b  	433.5375         433.5375  +0       High  -    240 -  -      1  -      -      12.5
+b  	433.5500         433.5500  +0       High  -    240 -  -      1  -      -      12.5
+b	433.5625	 433.5625  +0       High  -    240 -  -      1  -      -      12.5
+b  	433.5750	 433.5750  +0       High  -    240 -  -      1  -      -      12.5
+b  	433.5875         433,5875  +0       High  -    240 -  -      1  -      -      12.5
+# Oslo
+a	Tryvann          145.600   -0.6     High  -    240 -  Tone   1  123.0  123.0	12.5
+a   	Brannfjell       434.775   -2       High  -    240 -  Tone   1  123.0  123.0  	12.5
+a  	Kolsaas          434.925   -2       High  -    240 -  Tone   1  110.9  110.9  	12.5
+b   	Nesodden         145.675   -0.6     High  -    240 -  Tone   1  123.0  123.0  	12.5
+b    	Heggedal         145.2375  +0       High  -    240 -  Tone   1  123.0  123.0  	12.5
+b	Follo		 145.1875  -0.6	    High  -    240 -  Tone   1  123.0  123.0  	12.5
+# Oslofjorden
+a	Drammen-2m	 145.7250  -0.6	    High  -    240 -  Tone   1  74.4	74.4  	12.5
+a	Drammen-70	 434.7250  -2	    High  -    240 -  Tone   1  74.4	74.4  	12.5
+a	Hvittingen	 145.2250  -0.6	    High  -    240 -  Tone   1  74.4	74.4  	12.5
+a 	Horten		 145.6250  -0.6	    High  -    240 -  Tone   1  74.4	74.4  	12.5
+a	Vealos		 434.5875  -2	    High  -    240 -  Tone   1  74.4 	74.4  	12.5
+a	Tonsberg	 434.9500  -2	    High  -    240 -  Tone   1  74.4 	74.4  	12.5
+a	Sandefjord	 434.8000  -2	    High  -    240 -  Tone   1  74.4  	74.4  	12.5
+a 	Kongsberg	 145.7000  -0.6	    High  -    240 -  Tone   1  74.4  	74.4  	12.5
+b	Follo-2m	 145.7875  -0.6	    High  -    240 -  Tone   1  123.0 	123.0  	12.5
+b	Follo-70cm	 434.9000  -2	    High  -    240 -  Tone   1  123.0 	123.0  	12.5
+b	Moss		 145.6625  -0.6	    High  -    240 -  Tone   1  123.0 	123.0  	12.5
+b	Fredrikstd 	 434.7000  -2	    High  -    240 -  Tone   1  123.0 	123.0  	12.5
+b	Halden-2m	 145.7750  -0.6	    High  -    240 -  Tone   1   67.0	67.0	12.5
+b 	Halden-70c 	 434.8750  -2	    High  -    240 -  Tone   1   67.0 	67.0  	12.5
+# Innlandet
+a	Eidsvoll	 434.87500 -2	    High  -    240 -  Tone   1  123.0  123.0  	12.5
+a	Hamar		 434.70000 -2	    High  -    240 -  Tone   1  71.9   71.9  	12.5
+a	Bringen1750	 145.71250 -0.6     High  -    240 -  -      1  -      -      	12.5
+b	OS		 145.7250  -0.6	    High  -    240 -  Tone   1  88.5   88.5  	25
+b	OSLO		 145.6375  -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+b	HEDMARK		 145.625   -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+b	TRONFJELL        145.600   -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+b	OSTERDALEN       145.650   -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+b	TRYSIL		 145.725   -0.6     High  -    240 -  Tone   1  88.5   88.5   	25	
+b	GUDBRDALEN	 145.6625  -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+b	DOVRE         	 145.700   -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+b	HALLINGDAL	 145.7750  -0.6     High  -    240 -  Tone   1  88.5   88.5   	25
+# Sørlandet
+a	Risor		 145.7750  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	Arendal		 145.7000  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	KrSandS		 145.6125  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	Mandal		 145.6125  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	Flekkefjord	 145.6250  -0.6	    High  -    240 -  Tone   1  77.0   77.0   	12.5
+b	Egersund	 145.7250  -0.6	    High  -    240 -  Tone   1  107.2  107.2   	12.5
+b	Eigeroya	 434.8750  -2.0	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+# Vestlandet
+a	Sandnes		 434.8500  -2.0	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	Rennesoy	 434.6000  -2.0	    High  -    240 -  Tone   1  88.5   88.5   	12.5
+a	Bru		 434.9000  -2.0	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	Hauges175	 145.6500  -0.6	    High  -    240 -  Tone   1  -      -   	12.5
+a	Stord		 145.6250  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+a	Bergen		 145.7500  -0.6	    High  -    240 -  Tone   1  97.4   97.4    	12.5
+a	Braatsvik	 145.7750  -0.6	    High  -    240 -  Tone   1  97.4   97.4    	12.5
+a	Floroe		 145.6250  -0.6	    High  -    240 -  Tone   1  82.5   82.5    	12.5
+b	Foerde		 145.7000  -0.6	    High  -    240 -  Tone   1  82.5   82.5    	12.5
+b	Bremanger	 145.6750  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	25
+b	Ulsteinvik	 145.7250  -0.6	    High  -    240 -  Tone   1  82.5   82.5    	25
+b 	Aalesund	 145.6000  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+b	Molde		 145.7750  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	25
+b	KrSundN		 145.6000  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	25
+# Trondelag
+a	RutenTRD	 145.7500  -0.6	    High  -    240 -  Tone   1  85.4   85.4    	25
+a	Grakallen	 145.7000  -0.6     High  -    240 -  Tone   1  123.0  123.0	25
+a	Stjoerd1750	 145.6750  -0.6	    High  -    240 -  -      1  -      -      	25	
+a	Grakallen	 434.7250  -2	    High  -    240 -  Tone   1  123.0  123.0	25
+a	Fosen		 145.6250  -0.6	    High  -    240 -  -      1  123.0  123.0  	25
+a	Brekstad175	 145.7875  -0.6	    High  -    240 -  -      1  -      -      	25
+b	Gjetheia	 145.6500  -0.6	    High  -    240 -  -      1  123.0  123.0	25
+b	Vattafjell	 145.7750  -0.6	    High  -    240 -  Tone   1  85.4   85.4    	25
+b	Sandnessj	 145.7250  -0.6	    High  -    240 -  Tone   1  85.4   85.4    	25
+b	Nessna		 433.9500  -2	    High  -    240 -  Tone   1  88.5   88.5 	25
+# Nordland
+a	VetenMo		 145.6750  -0.6	    High  -    240 -  Tone   1  88.5   88.5 	12.5
+a	MoiRana		 145.7750  -0.6	    High  -    240 -  Tone   1  123.0  123.0   	12.5
+b	Bodo		 145.7500  -0.6	    High  -    240 -  -      1  -      -      	25
+b	Evenskjar	 433.0250  -288.375 High  -    240 -  -      1  88.5   88.5   	25
+# Sverige
+a	Simrishamn	 434.6375  -2	    High  -    240 -  Tone   1	79.7	79.7	12.5
+a	Ystad		 434.9250  -2	    High  -    240 -  Tone   1	79.7	79.7	12.5
+a	Helsingborg	 145.6500  -0.6	    High  -    240 -  Tone   1	156.7	156.7	25
+a	Hallandsasen	 145.7875  -0.6	    High  -    240 -  Tone   1	79.7	79.7	12.5
+a	Halmstad	 145.675   -0.6	    High  -    240 -  Tone   1  114.8	114.8	12.5
+b 	Kungsbacka	 145.7250  -0.6	    High  -    240 -  Tone   1  114.8	114.8	12.5
+b	Molndal		 145.7000  -0.6	    High  -    240 -  Tone   1  118.8	118.8	12.5
+b	Goteborg	 145.7875  -0.6	    High  -    240 -  Tone   1  114.8	114.8	12.5
+b 	Uddevalla	 145.6375  -0.6	    High  -    240 -  Tone   1  118.8	118.8	25
+b	Stenungsund	 145.7125  -0.6	    High  -    240 -  Tone   1  114.8	114.8	12.5
+b	Bokenes		 145.600   -0.6	    High  -    240 -  Tone   1  118.8	118.8	25
+b	Lysekil		 434.800   -2	    High  -    240 -  Tone   1	118.8	118.8	12.5
+b   	Kungshamn	 145.575   -0.6	    High  -    240 -  Tone   1  118.8	118.8   12.5
+b	Tanumshede	 145.675   -0.6	    High  -    240 -  Tone   1  94.8   	94.8 	12.5
+b	Stromstad1750	 434.8250  -1.6	    High  -    240 -  Tone   1	-	-      	12.5
+# Danmark
+a	Kobenhavn	 145.700   -0.6	    High  -    240 -  Tone   1	82.5	82.5    12.5
+b	Greena1750	 145.662   -0.6	    High  -    240 -  -      1	-	-    	12.5
+b	Seaby1750	 145.775   -0.6	    High  -    240 -  -      1	-	-    	12.5
+b	Gilleleje1750	 145.725   -0.6	    High  -    240 -  -      1	-	-    	12.5
+# Maritime 
+a	K16		  156.800  +0       High  -    240 -  -      1  -      -	25
+a 	K06		  156.300  +0       High  -    240 -  -      1  -      -	25
+a	K08		  156.400  +0       High  -    240 -  -      1  -      -	25
+a	K72		  156.625  +0       High  -    240 -  -      1  -      -	25
+a	K77		  156.875  +0       High  -    240 -  -      1  -      -	25
+b	L1		  155.500  +0       High  -    240 -  -      1  -      -	25
+b	L2		  155.525  +0       High  -    240 -  -      1  -      -	25
+b	L3		  155.605  +0       High  -    240 -  -      1  -      -	25
