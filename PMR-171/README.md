@@ -13,7 +13,7 @@ be too few. Number of repeaters times number of talkgroups can easily
 reach 1000+ entries. 
 
 The script "make-config-Guohetec" can be used to generate a config file 
-that ran be read by the "GHTerminal" CPE program.
+that ran be read by the *GHTerminal* CPE program.
 
 ### Script 
 
