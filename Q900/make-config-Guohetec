@@ -2,7 +2,7 @@
 
 """
 Generate config file for the CPE (Code Plug Editor)
-GHTerminal, Guohetec and the PMR-171.  
+GHTerminal, Guohetec, Q900 & PMR-171.  
 
 The GHTerminal is a spreadsheet interface, but do no support
 add, delete lines or cut'n paste etc. all fields need to be
@@ -47,18 +47,19 @@ Version 0.2  24Nov2025  Started including digital channels.
 Version 0.3  25Nov2025  Generating json file for DMR channels.
 Version 0.4  27Nov2025  Fixed time slot issue.
 Version 0.5  10Jan2026  Added no-DMR for Guohetec radios without no DMR
+Version 0.51 24Feb2026  Added help text.
 """
 
 # Setup section, user ID and input files.
 
 # Input files:
-analog_infile="analog.channels.inp"
-digital_infile="digital.repeaters.inp"
-talkgroup_infile="talkgroups.inp"
-contact_infile="contacts.inp"
-
+analog_infile    = "analog.channels.inp"
+digital_infile   = "digital.repeaters.inp"
+talkgroup_infile = "talkgroups.inp"
+contact_infile   = "contacts.inp"
+ 
 # Output file:
-outfile="channels.json"
+outfile = "channels.json"
 
 # My DMR id.
 OWN_ID = 2420509 
@@ -74,7 +75,30 @@ import re
 # | |_  | | | |  \| | |     | |  | | | | |  \| \___ \ 
 # |  _| | |_| | |\  | |___  | |  | | |_| | |\  |___) |
 # |_|    \___/|_| \_|\____| |_| |___\___/|_| \_|____/ 
-   
+
+
+def help():
+  print("""
+  Usage ./make-config-Guohetec {-h | -no-DMR}
+  
+  To generate Analog and DMR channels into the
+  standard output file 'channels.json' just issue
+  command ./make-config-Huohetec with no arguments
+  To genetate only analog channels use -no-DMR
+  
+  The input files:
+  - analog.channels.inp
+  - digital.repeaters.inp
+  - talkgroups.inp
+  - contacts.inp
+  
+  Need to be present.
+
+  The syntax of the input files are kept as simple as
+  possible. It should be self explainatory.  
+
+  """)
+  
 
 # The frequency and some DMR parameters are stored as a 32 bit
 # integer split into 4 bytes each of these bytes represented
@@ -267,7 +291,7 @@ def parse_plaintext_analog_to_json(channels,\
       rx_ctcss_code = tx_ctcss_code
       
     # Determine mode based on bandwidth
-    if bandwidth == '25':
+    if bandwidth == '25' or bandwidth == '25.0':
       mode = 5
     elif bandwidth == '12.5':
       mode = 6
@@ -566,8 +590,11 @@ def parse_plaintext_digital_to_json(channels, \
 import sys
 
 if len(sys.argv) > 1:
-    if sys.argv[1] == '-no-DMR' :
+    if sys.argv[1] == '-no-DMR':
       DMR=False
+    elif  sys.argv[1] == '-h':
+      help()
+      exit(0)
     else:
       print("Something went wrong")
       print("Usage make-config-Guohetec [-no-DMR]")    
@@ -598,6 +625,7 @@ if len(channels) > 1000:
   print("PRM-171 only suppprt storage of 1000 channels")
 
 # Write to the JSON file
+print("Output written to file : ",outfile)
 with open(outfile, 'w', encoding='utf-8') as fj:
   json.dump(channels, fj, indent=4, ensure_ascii=False)
 fj.close()

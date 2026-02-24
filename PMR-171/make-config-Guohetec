@@ -625,6 +625,7 @@ if len(channels) > 1000:
   print("PRM-171 only suppprt storage of 1000 channels")
 
 # Write to the JSON file
+print("Output written to file : ",outfile)
 with open(outfile, 'w', encoding='utf-8') as fj:
   json.dump(channels, fj, indent=4, ensure_ascii=False)
 fj.close()
