@@ -34,6 +34,9 @@ In the case where only analog channels are to be configured adding the option
 ```Terminal
 ./make-config-Guohetec -no-DMR
 ```
-
+```Terminal
+./make-config-Guohetec -h
+```
+Will emit som help info.
 
 

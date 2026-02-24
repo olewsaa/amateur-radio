@@ -58,5 +58,27 @@ other digital modes.
 ## Apps for phone and tabs
 There are apps that can control the radio as well as run 
 [FT8](https://github.com/N0BOY/FT8CN/releases) via Bluetooth. 
-gg
 
+## Programmig channels
+
+Guohetec provide a CPE to add channels to the radio. For analig
+channels this normally quite ok. For DMR is becomes more elaborate and
+a script that generate the JSON object for each channel is a simpler
+solution.  The script "make-config-Guohetec" can generate an inut file
+for the GHTerminal program with both analog and digital entries. Below
+is how to invoke the script for analog only and both analog and digila
+DMR channels.
+
+```Terminal
+./make-config-Guohetec -no-DMR
+```
+```Terminal
+./make-config-Guohetec 
+```
+```Terminal
+./make-config-Guohetec -h
+```
+Will emit som help info.
+
+
+More info about DMR in the DMR section. 
