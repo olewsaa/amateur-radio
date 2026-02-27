@@ -18,18 +18,19 @@ A major issue is that each entry need to be correctly numbered for the dmrconfig
 which zones contain which talkgrous groups etc. This script make sure that the numbering is
 correct. 
 
-There are presently five input files :
+There are presently four input files :
 - analog.channels.inp
 - digital.repeaters.inp
 - talkgroups.inp
 - contacts.inp
-- last.heard.inp
+
 
 The names should be self explanatory. 
-The last.heard file is not updated since the database that used to host this information
-no longer is online and the new currently do not support download of last heard. 
+A number of Nordic users are extracted from the radioID data base and are 
+inlcuded as contacts. 
 
-As my radio (BF1701) has limited memory, it can only hold 10k entries. 
+As my radio (BF1701) has limited memory, it can only hold 10k entries,
+hence only Nordic users.
 
 At the top of the codeplug there is a line describing the radio. 
 ```
@@ -90,9 +91,6 @@ Contact Name             Type    ID       RxTone
 As these seldom changes I did not program in the automatic numbering. 
 
 
-## last.heard.inp
-This is just a numbered dump of the last seen "last heard" contact data base.
-
 
 ## Generating the config file
 To generate the config file just issue the command (remember to make it 
@@ -104,6 +102,9 @@ this will make an ASCII test file containing the configuration, AKA codeplug.
 Being a text file it can be edited in a normal text editor. Just keep in mind
 that the numbering of entries are sensitive to any changes. 
 
+The script will download the list of DMR users from radioID and extract 
+Nordic users. There is an elaborate RegExp selecting only Nordic users. 
+This can be altered to select other regions og countries. 
 
 ## Writing the codeplug to the radio.
 
@@ -111,7 +112,7 @@ After making the config file it can be written to the radio :
 ```bash
 dmrconfig -c my-config-script.conf
 ```
-The config file should probably have some sensible naming like 2025-AUG-15.conf or something
+The config file should probably have some sensible naming like 2026-FEB-27.conf or something
 similar to keep a older ones when updates and additions might introduce errors.
 
 The command name might sound like I'm using a make file to do the job, which I did not,

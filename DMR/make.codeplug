@@ -1,6 +1,9 @@
 #!/bin/bash
 
 #
+# usage: ./make.codeplug > <outputfile>
+#
+#
 # Script to generate a config file for dmrconfig to program DMR radios.
 # Saves a lot of time and effort entering talkgroups by generating
 # entries for all talkgroups for all repeaters. It's is (IMHO) less
@@ -14,13 +17,18 @@
 # wc -l contacts.inp 29 lines.
 # wc -l analog.channels.inp 82 lines long, one per frequency. 
 #
-# 
+#
+# A list of contacts/users are included from the radioid
+# data base. As only 10k entries are available a selection
+# of north European countries are included, 
+#
 # Written by Ole W. Saastad, LB4PJ, DMR i.d. 2420509
 #
 # v1.0.0 18 August 2025 Initial working version.
 # v1.0.1 19 August 2025 Bug fixing + spelling.
 # v1.0.2 20 August 2025 Bug fix in number of zones.
 # v1.0.3 01 September 2025 Added comments and some renaming.
+# v1.0.4 27 February 2026 Added users from radioid database.
 #
 # Input files:
 
@@ -28,7 +36,7 @@ export ANALOG_INPUT_FILE=analog.channels.inp
 export REPEATER_INPUT_FILE=digital.repeaters.inp
 export TG_INPUT_FILE=talkgroups.inp
 export CONTACTS=contacts.inp
-export LAST_HEARD_CONTACTS=last.heard.inp
+
 
 # Some input parameters:
 
@@ -67,7 +75,7 @@ gen_TG_list() {
 
     # This is the file containg talk groups for each repeater.
     # All repeaters have identical talkgroups. 
-    TG_INPUT_FILE=talkgroups.inp
+    #TG_INPUT_FILE=talkgroups.inp
 
     # This script scan through all the requested talkgroups and add them to
     # the current repeater or zone, as I have given each digital repeater its
@@ -89,7 +97,7 @@ gen_TG_list() {
     # Use sed to remove any blank lines in the talkgroup template file, if there
     # should be any use sed to delete them:  sed -i /^$/d  <tgroups file>
     #
-    tail +2 $TG_INPUT_FILE | awk '\
+    tail -n +2 $TG_INPUT_FILE | awk '\
     BEGIN{number=ENVIRON["number"]}\
 	{	 
       	  printf("  %d\t  %-15s\t %s\t %-4s  High - 240 - Color  %s  %s\t%s\t%s\t%s %s\n",
@@ -301,10 +309,26 @@ Scanlist Name             PCh1 PCh2 TxCh Channels
 EOF
 cat $CONTACTS
 
-#echo "# list of last heard users :"
-#echo "#BF1701 has only space for 10k entroes."
-#echo "#"
+# list of last heard users. 
+# BF1701 has only space for 10k entries.
 
-# Just inout the list from last head DB:
+# Number of contacts which is Talkgroups:
+export NC=$(cat $CONTACTS |wc -l)
+# Start counting at NC
 
-cat $LAST_HEARD_CONTACTS
+
+# Get the selected users from the radioID database.
+curl -s  https://radioid.net/static/user.csv |\
+  egrep '(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}'|\
+  awk -F, '{gsub(" ","_",$3);\
+    print "   "NR+ENVIRON["NC"]-1"\t"$2"_" substr($3,1,6)"\tPrivate\t" $1"  -"}'
+
+# A list of users with their call sign and name should now been appended to
+# the  configure file.
+
+
+
+
+
+
+
