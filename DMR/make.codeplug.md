@@ -27,7 +27,8 @@ There are presently four input files :
 
 The names should be self explanatory. 
 A number of Nordic users are extracted from the radioID data base and are 
-inlcuded as contacts. 
+inlcuded as contacts. However, the input is picky, like 12.5 and 25 for width. 
+*No decimal for 25*. 
 
 As my radio (BF1701) has limited memory, it can only hold 10k entries,
 hence only Nordic users.
@@ -50,8 +51,9 @@ the B entries are listed.
 a	Call_2m          145.500   +0       High  -    240 -  -      1  -      -      12.5
 a 	145.5125     	 145.5125  +0       High  -    240 -  -      1  -      -      12.5
 b  	Call_70cm        433.500   +0       High  -    240 -  -      1  -      -      12.5
-b  	433.5250         433.5250  +0       High  -    240 -  -      1  -      -      12.5
+b  	433.5250         433.5250  +0       High  -    240 -  -      1  -      -      25
 ```
+No decimal for channels width of 25 kHz.
 
 ## digital.repeaters.inp
 This file lists the digital repeaters to be programmed into the radio. The user only need t

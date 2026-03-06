@@ -325,17 +325,31 @@ export NC=$(cat $CONTACTS |wc -l)
 
 echo "Dowloading digital contacts from radioid site" > /dev/stderr
 
+# Set up a regexp :
+export USERS='(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}|K6ST|KD9WSO|M7NTE|M0JXE|SP4PSP|YL3IM|OH2DND|KB9TZQ|PU1JLA|G7KDZ|VE3KKA|M7LAG|VU3EFZ|TA3AUW|VA6PW|KG5YCU|WX9USA|LB2OK'
+
 # Get the selected users from the radioID database.
+#curl -s  https://radioid.net/static/user.csv |\
+#  egrep '(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}|K6ST|KD9WSO|M7NTE|M0JXE|SP4PSP|Y#L3IM|OH2DND|KB9TZQ|PU1JLA|G7KDZ|VE3KKA|M7LAG|VU3EFZ|TA3AUW|VA6PW|KG5YCU|WX9USA|LB2OK'|\
+#  awk -F, '{gsub(" ","_",$3);\
+#    print "   "NR+ENVIRON["NC"]-1"\t"$2"_" substr($3,1,6)"\tPrivate\t" $1"  -"}'
+
 curl -s  https://radioid.net/static/user.csv |\
-  egrep '(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}'|\
-  awk -F, '{gsub(" ","_",$3);\
+  egrep "$USERS" |awk -F, '{gsub(" ","_",$3);\
     print "   "NR+ENVIRON["NC"]-1"\t"$2"_" substr($3,1,6)"\tPrivate\t" $1"  -"}'
+
+
+
 
 # A list of users with their call sign and name should now been appended to
 # the  configure file.
 
+# These are net controllers for the world wide check in.
+# K6ST KD9WSO M7NTE M0JXE SP4PSP  YL3IM OH2DND KB9TZQ PU1JLA G7KDZ VE3KKA M7LAG
+# VU3EFZ TA3AUW VA6PW KG5YCU WX9USA LB2OK 
 
 echo "All done" > /dev/stderr
+
 
 
 
