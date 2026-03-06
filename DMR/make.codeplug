@@ -30,6 +30,9 @@
 # v1.0.3 01 September 2025 Added comments and some renaming.
 # v1.0.4 27 February 2026 Added users from radioid database.
 #
+
+echo "Start" > /dev/stderr
+
 # Input files:
 
 export ANALOG_INPUT_FILE=analog.channels.inp
@@ -116,7 +119,7 @@ echo "#"
 }
 
  
-
+echo "Digital entries" > /dev/stderr
 
 cat <<EOF
 # This is the parameters given to the script. 
@@ -185,6 +188,10 @@ cat <<EOF
 # 13) Bandwidth in kHz: 12.5, 20, 25
 #
 EOF
+
+
+echo "Analog entries" > /dev/stderr
+
 
 
 # The analog channels take location/area/city/region as a zone. About handful or two
@@ -316,6 +323,7 @@ cat $CONTACTS
 export NC=$(cat $CONTACTS |wc -l)
 # Start counting at NC
 
+echo "Dowloading digital contacts from radioid site" > /dev/stderr
 
 # Get the selected users from the radioID database.
 curl -s  https://radioid.net/static/user.csv |\
@@ -327,7 +335,7 @@ curl -s  https://radioid.net/static/user.csv |\
 # the  configure file.
 
 
-
+echo "All done" > /dev/stderr
 
 
 
