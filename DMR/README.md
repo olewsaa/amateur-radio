@@ -2,55 +2,29 @@
 
 ## Introduction
 
-Disclaimer: My code plugs are manually written and there is a fair chance of
-errors. Most of the analog and digital repeaters have been tested. 
+Disclaimer: The code plug is manually written and there is a fair chance of
+errors. Trust, but verify. 
 
 My radio is a [Baofeng 1701](https://www.baofengradio.com/).
 So far I'm very happy with the radio, no issues found so far. 
 
-### Script to generate a codeplug config file for dmrconfig 
-The wish to have an all Linux envirnment made me start using the command line 
-tool [dmrconfig](https://github.com/OpenRTX/dmrconfig). This have support for 
-a fair share of radios. Being a command line tool means that the application
-works with text config files. This is an easy way to do it, but can be tedious to enter or
-even copy paste can be boring. 
-
-I sail around in Scandinavia and the Baltics and have a fair number of DMR repeaters 
-that need to be entered. It would ba a far too big job to enter all this manually.
-Even with a spreadsheet it would be a significant task.
-
-To make it is less tedious I decided to write a script that have a few relatively simple 
-input files containing the bare minimum of information. Using these few small and simple 
-input files as input the script generate a dmr.conf file that can be written directly to 
-the radio using dmrconfig. The most important issues is the numbering and ordering of 
-the talkgroups for each station. To insert a talkgroup the rest of the numbers need to
-be reordered. 
-
-I have written a [script to generate a code plug configuration](make.codeplug.md) file 
-for [dmrconfig](https://github.com/OpenRTX/dmrconfig) making it a fairly simple process or 
-generating a code plug from scratch. In some ways text files are simpler than spreadsheet
-interface. The script is a mixture of shell script and some Python code (this I got
-some AI help to write).
-
-The analog part is mostly alike the analog section in the dmrconfig configuration file
-as there is just one line per repeater. 
-
-### My codeplug for BF1701 (binary)
 My codeplug (*.rdt) file is 
 [available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
 (with personal info removed). 
 
+I have also written a [script to generate a code plug configuration](make.codeplug.md) file 
+for dmrconfig making it a fairly simple process or generating a code plug from scratch.
 
-## Edit codeplug using Linux
+### Edit codeplug using Linux
 
-### qdmr
+#### qdmr
 The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
 codeplug under Linux. This is major advantage, no need for Wine or VirtualBox
 (using a Windows 10 virtual machine). The software is still under active
 development which is very good signal. 
 
 The software is available in some distributions,
-like Ubuntu (including Mint). However, to get the most recent version
+like Ubuntu (and hence Mint). However, to get the most recent version
 building from scratch is needed. The 
 [code is on gihub](https://github.com/hmatuschek/qdmr) 
 with installation [instructions](https://dm3mat.darc.de/qdmr/install.html).
@@ -64,7 +38,7 @@ It still misses capabilities to program the buttons, this can be done
 with the official code plug editor and we below how to deal with Windows 
 software.
 
-### dmrconfig 
+#### dmrconfig 
 The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
 utility for programming the radio under Linux. While not a GUI program like
 the others it offers a text based input which is easy to share with others. 
@@ -110,6 +84,20 @@ can be stored. Normally the *last heard* are loaded and updated.
 The script as it's own page [make.codeplug](make.codeplug.md). Some background and
 how to use. 
 
+### Writing it to the radio
+The dmrconfig utility has a simple syntax to write codeplug data to the radio. 
+```bash
+./dmrconfig -c BF1701.2026-05-19.conf 
+Connect to Retevis RT84.
+Read device: ########################## done.
+Last Programmed Date: 2026-03-11 20:57:14
+CPS Software Version: V=1.01
+Write codeplug to file 'backup.img'.
+Read configuration from file 'BF1701.2026-05-19.conf'.
+Total 948 channels, 40 zones, 1 scanlists, 7616 contacts, 1 grouplists.
+Write device: ########################################### done.
+Close device.
+```
 
 ### Edit codeplug using Wine/Virtual machine
 
@@ -130,14 +118,10 @@ programmed using the official CPE.
 Unfortunately the software only run under windows. 
 Both of the CPEs run fine using [wine](https://www.winehq.org/).
 
-However, to get access to the USB port with Linux you must either use
-Virtual Box (or another virtual machine platform) to run the windows
-software. Using VirtualBox running Win10 and with the correct mapping
-of the USB devices it works with no issues (selecting the correct USB
-device in the setting for the VM).
+However, to get access to the USB port with Linux you must
+either use Virtual Box (or another virtual machine platform) to run
+the windows software. Using VirtualBox running Win10 and with the
+correct mapping  of the USB 
+devices it works with no issues (selecting the correct USB device in the setting for the VM). 
 
-Unfortunately wine do not take control over the USB ports as a Virtual
-Machine.  Wine is an emulator that allow Windows programs to be run
-under Linux, it do not offer the same degree of control over the
-complete system line a virtualisation platform.
 
