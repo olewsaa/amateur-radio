@@ -1,127 +1,124 @@
-# DMR
+# Linux-Native DMR Codeplug Generator
 
-## Introduction
+A lightweight, UNIX-centric Bash and Awk script to automatically build DMR 
+and analog codeplugs for `dmrconfig`. 
 
-Disclaimer: The code plug is manually written and there is a fair chance of
-errors. Trust, but verify. 
+Maintained by **Ole W. Saastad, LB4PJ** (DMR ID: 2420509).
 
-My radio is a [Baofeng 1701](https://www.baofengradio.com/).
-So far I'm very happy with the radio, no issues found so far. 
 
-My codeplug (*.rdt) file is 
-[available](https://github.com/olewsaa/amateur-radio/blob/main/DMR/BF1701-example-codeplug.rdt) 
-(with personal info removed). 
+## Why use this?
+Instead of wrestling with clunky Windows CPS software or heavy 
+spreadsheet GUIs, this workflow treats your radio configuration as plain text.
 
-I have also written a [script to generate a code plug configuration](make.codeplug.md) file 
-for dmrconfig making it a fairly simple process or generating a code plug from scratch.
+* **Automated Talkgroup Mapping:** Enter your talkgroups once; the script 
+dynamically maps them to every digital repeater.
+* **Smart Zoning:** Automatically generates clean geographical zones for 
+analog and digital repeaters.
+* **Automated DMR Data Fetching:** The script connects directly to Brandmeister 
+and RadioID databases to pull real-time callsigns and user IDs. It filters these 
+down using regional constraints (e.g., Scandinavia/North Europe) to populate 
+your radio’s digital contacts up to its hardware limit, ensuring the display 
+shows the correct ham identity upon reception.
+* **Multi-Radio Ready:** Easily adapts to multiple radios supported 
+by `dmrconfig` (e.g., TYT MD-9600, Baofeng DM-1701/Retevis RT84) by 
+modifying a single parameter.
 
-### Edit codeplug using Linux
-
-#### qdmr
-The utility [qdmr](https://dm3mat.darc.de/qdmr/) can be used to edit the 
-codeplug under Linux. This is major advantage, no need for Wine or VirtualBox
-(using a Windows 10 virtual machine). The software is still under active
-development which is very good signal. 
-
-The software is available in some distributions,
-like Ubuntu (and hence Mint). However, to get the most recent version
-building from scratch is needed. The 
-[code is on gihub](https://github.com/hmatuschek/qdmr) 
-with installation [instructions](https://dm3mat.darc.de/qdmr/install.html).
-Read the instructions to set up the build environment before starting cmake.
-
-The qdmr software is still in it's early stages with some features still 
-missing for some radios, like BF-1701. However, it works well enough to
-fulfill what's needed. 
-
-It still misses capabilities to program the buttons, this can be done
-with the official code plug editor and we below how to deal with Windows 
-software.
-
-#### dmrconfig 
-The project [dmrconfig](https://github.com/OpenRTX/dmrconfig) is another
-utility for programming the radio under Linux. While not a GUI program like
-the others it offers a text based input which is easy to share with others. 
+## Prerequisites
+You must have `dmrconfig` installed. See the 
+[OpenRTX dmrconfig Wiki](https://github.com) for installation details 
+and supported hardware.
+### Note on building from source
 While the source code is on git and available, the Make file is not fully 
 correct. There are a some missing libraries. The BSD libraries are not
 included in the prerequisites. I have made an updated 
 [Makefile](https://github.com/olewsaa/amateur-radio/blob/main/DMR/Makefile.dmrconfig) 
 which contain the needed information to build dmrconfig.
 Very small changes *"apt-get install libbsd libbsd-dev"* and 
-*"-lbsd"* in the link library line. The function *strnstr* is only found the in
-the BSD library. 
+*"-lbsd"* in the link library line. The function *strnstr* is only found 
+the in the BSD library. 
 
-A codeplug 
-[text config file](https://github.com/olewsaa/amateur-radio/blob/main/DMR/device.BF1701.conf) 
-is available as an example. 
 
-This software is a command line tool. The actual configuration code must
-be entered in a text editor or copied from a binary code plug file, a .rtd file.
-As the GUI codeplug editor works nicely under wine I use this for much of
-the programming. Then dmrconfig to copy it to the radio. All done using 
-Linux (Linux Mint). 
 
-The [wiki page](https://github.com/OpenRTX/dmrconfig/wiki) 
-for dmrconfig contain a lot of information about usage 
-of dmiconfig. 
+## Input File Formats
+The script builds the configuration by compiling four simple text files. 
+Create these files in the same directory:
 
-I have not verified that the button programming can be done using dmrconfig 
-device script. The buttons were programmed using the official CPE and VirtualBox Win10.
-
-### Generating a code plug using script and very simple input files
-
-I wrote the code plug from scratch, both to learn how it works
-and also to have full control. There is a high probability that I
-missed something. However, it works as expected (more or less).
-
-As I found the editing process boring and tedious I wrote a bash script
-that take some inout files that contain the bare minimum of information
-needed. As much as possible is left as defaults. 
-
-The memory only have room for 10k digital contacts so only a few 
-can be stored. Normally the *last heard* are loaded and updated.
-
-The script as it's own page [make.codeplug](make.codeplug.md). Some background and
-how to use. 
-
-### Writing it to the radio
-The dmrconfig utility has a simple syntax to write codeplug data to the radio. 
-```bash
-./dmrconfig -c BF1701.2026-05-19.conf 
-Connect to Retevis RT84.
-Read device: ########################## done.
-Last Programmed Date: 2026-03-11 20:57:14
-CPS Software Version: V=1.01
-Write codeplug to file 'backup.img'.
-Read configuration from file 'BF1701.2026-05-19.conf'.
-Total 948 channels, 40 zones, 1 scanlists, 7616 contacts, 1 grouplists.
-Write device: ########################################### done.
-Close device.
+### 1. `talkgroups.inp`
+*Template for the talkgroups applied to every digital repeater.*
+```text
+# TG name Timeslot Receive group Ref.no. Comment
+Parrot 1 - 1 # Parrot
+Norway 1 1 2 # Norway
 ```
 
-### Edit codeplug using Wine/Virtual machine
+### 2. `digital.repeaters.inp`
+*List of your local or frequented DMR repeaters.*
+```text
+Name Callsign RxFreq TxOffset ColorCode
+Oslo_DMR LA1B 434.5000 -2.0000 1
+Bergen_DMR LA2G 434.9000 -2.0000 2
+```
 
-To edit the code plug I use the 
-[TYT Code plug editor](https://www.miklor.com/DMR/DMR-380-CPEditor.php) (CPE),
-with a [download link](https://www.miklor.com/DMR/software/DMR_CPE.1.1.21.zip).
+### 3. `analog.channels.inp`
+*Analog channels grouped under geographical header markers (`#`).*
+```text
+# Simplex_FM
+a Call-2m 145.5000 +0 High - 240 - - 1 - - 12.5
+b Call-70cm 433.5000 +0 High - 240 - - 1 - - 12.5
+# Oslo
+a Tryvann 145.600 -0.6 High - 240 - Tone 1 123.0 123.0 12.5
+b Follo 145.7875 -0.6 High - 240 - Tone 1 123.0 123.0 12.5
+```
+
+### 4. `contacts.inp`
+*A static baseline file for essential static contacts/Talkgroups.*
+```text
+Contact Name Type ID RxTone
+1 Disconnect Private 4000 +
+2 Norway Group 242 +
+```
+
+### Real codeplut files
+The files 
+ - analog.channels.inp
+ - digital.repeaters.inp
+ - talkgroups.inp
+ - contacts.inp
+are real files used in my radios. 
 
 
-The download section on the Baofeng web pages contain software for multiple 
-radios, including the 
-[Baofeng 1701](https://www.baofengradio.com/pages/download).
 
-The official [code plug editor(CPE)](https://baofeng.s3.amazonaws.com/Baofeng_DM-1701_CPS_1.05.zip)
-is used to write the data to the radio as the TYT codeplug editor do
-not support writing to the 1701. In addition the buttons need to
-programmed using the official CPE. 
+## Usage
+1. Open `make.codeplug` and verify your `RADIO`, `USER_ID`, and `CALLSIGN` 
+configurations at the top of the script.
+2. Run the script and redirect the output to a `.conf` file:
+```bash
+chmod +x make.codeplug
+./make.codeplug > my_codeplug.conf
+```
+3. Flash it to your radio via `dmrconfig`:
+```bash
+# Read and backup first!
+dmrconfig -r -o backup.img
+# Write your newly generated codeplug
+dmrconfig -c my_codeplug.conf
+```
 
-Unfortunately the software only run under windows. 
-Both of the CPEs run fine using [wine](https://www.winehq.org/).
+## Note on "Last Heard" Data Fetching
+In earlier versions of the amateur radio DMR networks, a master flat-file 
+containing a simple "Last Heard" active user dump was easily scrapable or 
+exposed directly online. Due to architectural changes, database load 
+restrictions, and optimizations on the Brandmeister network (migrating 
+backend lookups ahead of time to master servers), these legacy raw text 
+endpoints are no longer available or updated.
 
-However, to get access to the USB port with Linux you must
-either use Virtual Box (or another virtual machine platform) to run
-the windows software. Using VirtualBox running Win10 and with the
-correct mapping  of the USB 
-devices it works with no issues (selecting the correct USB device in the setting for the VM). 
-
-
+To circumvent this and still generate a highly relevant, localized user 
+contact database, this script:
+1. Queries the **RadioID.net** centralized registry dump combined 
+with **Brandmeister API hooks** to fetch active registered users.
+2. Uses localized regular expressions (Regex) in `Awk`/`Bash` to strictly 
+target specific country prefixes (e.g., MCC `242` for Norway, `240` for Sweden, etc.).
+3. Orders the resulting dataset to prioritize stations with recent active 
+server interactions where data parameters match, filling up the maximum 
+available digital contact slots on your radio with the hams you are most 
+likely to encounter over the air.

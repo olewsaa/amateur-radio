@@ -29,7 +29,15 @@
 # v1.0.2 20 August 2025 Bug fix in number of zones.
 # v1.0.3 01 September 2025 Added comments and some renaming.
 # v1.0.4 27 February 2026 Added users from radioid database.
+# v1.0.5 29 September 2026 Rewritten last heard section.
+
+
 #
+# The script emit output to standard out, output should be
+# redirected to file like:
+# make.codeplug > Codeplugfile.conf
+# 
+
 
 echo "Start" > /dev/stderr
 
@@ -43,20 +51,14 @@ export CONTACTS=contacts.inp
 
 # Some input parameters:
 
-RADIO="Retevis RT84"  # This is compatible with Baofeng DM 1701.
+#RADIO="Retevis RT84"  # This is compatible with Baofeng DM 1701.
+RADIO="TYT MD-9600"   # TYT MD-9600 .
 USER_ID=2420509       # My i.d.
 CALLSIGN=LB4PJ        # My call sign.
 NAME=Ole              # My fist name.
 
 # For more information about support for different radios
 # see the github pages as listed above. 
-
-
-#
-# The script emit output to standard out, output should be
-# redirected to file like:
-# make.codeplug > Codeplugfile.conf
-# 
 
 
 # The generative part of the script start here, everything is
@@ -66,6 +68,19 @@ echo "#Config file for dmrconfig"
 echo Radio: $RADIO
 echo Last Programmed Date: $(date +"%Y-%m-%d %H:%M")
 echo CPS Software Version: V01.05
+
+
+# If a file caled radio is present include it:
+
+if  [ -f radio.inp  ]; then
+# Some failsafe if the script is run in the DF1701 directory.
+     if  [ "$RADIO" = "TYT MD-9600" ]; then cat radio.inp; fi; 
+fi
+
+# Its intention is to include things like code for setting
+# buttons or other radio specific code. If file is not
+# present nothing is included. 
+
 
 
 gen_TG_list() {
@@ -325,20 +340,27 @@ export NC=$(cat $CONTACTS |wc -l)
 
 echo "Dowloading digital contacts from radioid site" > /dev/stderr
 
+
+./last-heard.py 1>&2 
+tail +2 9900_last_heard.csv|awk -F,  '{gsub(" ","_",$3);\
+     	print "   "NR+ENVIRON["NC"]-1"\t" substr($3,1,15) "\tPrivate\t" $1"  -"}'
+
+
 # Set up a regexp :
-export USERS='(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}|K6ST|KD9WSO|M7NTE|M0JXE|SP4PSP|YL3IM|OH2DND|KB9TZQ|PU1JLA|G7KDZ|VE3KKA|M7LAG|VU3EFZ|TA3AUW|VA6PW|KG5YCU|WX9USA|LB2OK'
+#export USERS='(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}|K6ST|KD9WSO|M7NTE|M0JXE|SP4PSP|YL3IM|OH2DND|KB9TZQ|PU1JLA|G7KDZ|VE3KKA|M7LAG|VU3EFZ|TA3AUW|VA6PW|KG5YCU|WX9USA|LB2OK'
 
 # Get the selected users from the radioID database.
 #curl -s  https://radioid.net/static/user.csv |\
-#  egrep '(L[A-N]|S[A-M]|O[U-Z]|O[F-J]|JW|3Y|TF|ES|YL|LY)[0-9][A-Z]{2}|K6ST|KD9WSO|M7NTE|M0JXE|SP4PSP|Y#L3IM|OH2DND|KB9TZQ|PU1JLA|G7KDZ|VE3KKA|M7LAG|VU3EFZ|TA3AUW|VA6PW|KG5YCU|WX9USA|LB2OK'|\
-#  awk -F, '{gsub(" ","_",$3);\
+#  egrep "$USERS" |awk -F, '{gsub(" ","_",$3);\
 #    print "   "NR+ENVIRON["NC"]-1"\t"$2"_" substr($3,1,6)"\tPrivate\t" $1"  -"}'
 
-curl -s  https://radioid.net/static/user.csv |\
-  egrep "$USERS" |awk -F, '{gsub(" ","_",$3);\
-    print "   "NR+ENVIRON["NC"]-1"\t"$2"_" substr($3,1,6)"\tPrivate\t" $1"  -"}'
 
+# Alternative method to get the database, with a limit of 95000:
 
+# Only Europe - over 100k entries.
+#USERS='^2[0-9]{6}'  ; curl -s  https://radioid.net/static/user.csv |\
+#  egrep "$USERS" |awk -F, '{gsub(" ","_",$3);\
+#    print "   "NR+ENVIRON["NC"]-1"\t"$2"_" substr($3,1,6)"\tPrivate\t" $1"  -"}' | head -95000 
 
 
 # A list of users with their call sign and name should now been appended to

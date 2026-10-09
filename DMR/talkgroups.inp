@@ -1,9 +1,9 @@
 # TG name   Timeslot	Receive group	Ref.no.	Comment 
 Parrot         	1	-		1	# Parrot
 Norway         	1	1		2	# Norway
-SorOstNorge   	1	1		8	# SE_Norge
+Sor/OstNorge   	1	1		8	# SE_Norge
 VestNorge      	1	1		9	# V_Norge
-InnTrd        	1	1		10	# Midt_Norge
+Inn/Trd        	1	1		10	# Midt_Norge
 NordNorge      	1	1		11	# Nord_Norge
 Chat1          	2	-		3	# NOChat_1
 Chat2          	2	-		4	# NOChat_2
