@@ -70,7 +70,7 @@ echo Last Programmed Date: $(date +"%Y-%m-%d %H:%M")
 echo CPS Software Version: V01.05
 
 
-# If a file caled radio is present include it:
+# If a file named radio is present include it:
 
 if  [ -f radio.inp  ]; then
 # Some failsafe if the script is run in the DF1701 directory.
