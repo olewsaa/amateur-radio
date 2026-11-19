@@ -1,0 +1,41 @@
+# PAT services communications
+
+## Hosts and ports
+IP addressing and ports are integral parts of a client server architecture. 
+PAT is a typical example of this kind of architecture. PAT act as a server 
+and a client. The different programs communicate and exchange data usign the 
+addressing and for each host each service has its own port. For small systems 
+like a computer running PAT all these programs run cuncurrently on one host, 
+referred to as *localhost* (ip numbner 127.0.0,1). Hence only the different 
+ports are of interest (most of the times). 
+
+
+## Local USB connections
+Deviced commected to USB are typically a class calles *character devices*. 
+They are known with
+the associalted device file in the /dev directory, ttyXXX (Linux used file 
+mapping for input and output). 
+There are two common USB device files, ttyUSBx (ttyUSB have chipset-specific 
+drivers in the Linux kernel) and tty/ACMAx (ACM is a generic USB class driver 
+for a modem) they represent 
+[different USB devices](https://rfc1149.net/blog/2013/03/05/what-is-the-difference-between-devttyusbx-and-devttyacmx/). 
+
+- ttyACM is a modem interface, but works for serial devices with no modem.
+- ttyUSB have chipset specific drivers in the Linux kernel.
+- ttyS has a UART in the host, like RS232 communication.
+
+There are [rules defined](https://michaelbergeron.com/blog/gpsd-raspberrypi) 
+for many types of hardware. A common class is a GPS connected through USB. 
+Where line might look like :
+«ACTION=="add", KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idProduct}=="2303", ATTRS{idVendor}=="067b", SYMLINK+="gps"».
+
+These rules deal with many user devices that are pluggable, 
+[udev documentation](https://opensource.com/article/18/11/udev).
+
+
+
+
+
+
+
+
